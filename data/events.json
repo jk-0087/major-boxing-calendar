@@ -18,8 +18,7 @@
     },
     "ring_walk": {
       "value": null,
-      "confidence": "tba",
-      "note": "TBA"
+      "confidence": "tba"
     },
     "venue": {
       "name": "Jeddah Superdome",
@@ -27,8 +26,7 @@
       "country": "Saudi Arabia"
     },
     "promotion": [
-      "Riyadh Season",
-      "Matchroom Boxing"
+      "Riyadh Season / Matchroom Boxing"
     ],
     "titles": [
       "WBO super middleweight world title: Hamzah Sheeraz vs Zachenhuber",
@@ -90,8 +88,7 @@
     },
     "ring_walk": {
       "value": null,
-      "confidence": "tba",
-      "note": "Estimated 2:00–3:00 pm AEST"
+      "confidence": "estimated"
     },
     "venue": {
       "name": "Venue TBA",
@@ -160,8 +157,7 @@
     },
     "ring_walk": {
       "value": null,
-      "confidence": "tba",
-      "note": "TBA"
+      "confidence": "tba"
     },
     "venue": {
       "name": "Infosys Theater at Madison Square Garden",
@@ -230,8 +226,7 @@
     },
     "ring_walk": {
       "value": null,
-      "confidence": "tba",
-      "note": "Estimated 7:00–8:00 am AEST"
+      "confidence": "estimated"
     },
     "venue": {
       "name": "3Arena",
@@ -300,8 +295,7 @@
     },
     "ring_walk": {
       "value": null,
-      "confidence": "tba",
-      "note": "Estimated 1:00–2:00 pm AEST"
+      "confidence": "estimated"
     },
     "venue": {
       "name": "The Theater at Virgin Hotels",
@@ -370,8 +364,7 @@
     },
     "ring_walk": {
       "value": null,
-      "confidence": "tba",
-      "note": "Estimated 1:00–2:00 pm AEST"
+      "confidence": "estimated"
     },
     "venue": {
       "name": "Venue TBA",
@@ -440,8 +433,7 @@
     },
     "ring_walk": {
       "value": null,
-      "confidence": "tba",
-      "note": "Estimated 11:30 am–12:30 pm AEST"
+      "confidence": "estimated"
     },
     "venue": {
       "name": "Venue TBA",
@@ -510,8 +502,7 @@
     },
     "ring_walk": {
       "value": null,
-      "confidence": "tba",
-      "note": "Estimated 5:00–6:00 am AEST"
+      "confidence": "estimated"
     },
     "venue": {
       "name": "The O2",
@@ -580,8 +571,7 @@
     },
     "ring_walk": {
       "value": null,
-      "confidence": "tba",
-      "note": "Estimated 7:00–8:00 am AEST"
+      "confidence": "estimated"
     },
     "venue": {
       "name": "Venue TBA",
@@ -650,8 +640,7 @@
     },
     "ring_walk": {
       "value": null,
-      "confidence": "tba",
-      "note": "Estimated 5:00–6:00 am AEST"
+      "confidence": "estimated"
     },
     "venue": {
       "name": "Venue TBA",

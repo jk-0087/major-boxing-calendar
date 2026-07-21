@@ -1,12 +1,21 @@
 # Major Boxing Calendar v4
 
-Review-first GitHub Pages automation.
+`data/events.json` is the source of truth.
 
-- Source of truth: `data/events.json`
-- Generated outputs: `major-boxing-calendar.ics` and `index.html`
-- Build workflow validates, tests, generates and commits changes.
-- Discovery workflow creates a review pull request.
+## Generated files
 
-The discovery script is deliberately a safe placeholder. It does not publish unreviewed scraped data.
+- `major-boxing-calendar.ics`
+- `index.html`
 
-Upload the repository contents while preserving folders, then run **Build and Publish Calendar** from the Actions tab.
+## Workflows
+
+- `build-calendar.yml` validates, tests, generates, and commits generated files.
+- `discover-updates.yml` runs a review-first discovery placeholder and opens a pull request only when proposed data changes.
+
+## Install
+
+Upload the repository contents while preserving folders, then run
+**Build and Publish Calendar** from the GitHub Actions tab.
+
+The discovery component is deliberately review-first. It does not publish
+unverified fight data directly to subscribers.
