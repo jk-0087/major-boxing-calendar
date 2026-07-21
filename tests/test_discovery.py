@@ -28,3 +28,15 @@ def test_date_change_preserves_uid_and_increments_sequence():
     assert event["uid"] == "stable-id@example.com"
     assert event["sequence"] == 4
     assert event["start"]["value"].startswith("2026-08-02")
+
+
+def test_matchroom_source_is_identified():
+    event = sample_event()
+    discovered = DiscoveredEvent(
+        "Errol Spence vs Tim Tszyu",
+        date(2026, 7, 26),
+        "https://www.matchroomboxing.com/events/spence-vs-tszyu/",
+    )
+    changes = update_existing(event, discovered, "2026-07-21T21:00:00+10:00")
+    assert "Added Matchroom schedule source" in changes
+    assert event["sources"][0]["publisher"] == "Matchroom"

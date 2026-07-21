@@ -15,18 +15,19 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from scripts.models import DiscoveredEvent
-from scripts.sources.dazn import DAZN_SCHEDULE_URL, DaznSourceError, fetch_dazn_events
+from scripts.sources.dazn import DaznSourceError, fetch_dazn_events
+from scripts.sources.matchroom import (
+    MATCHROOM_EVENTS_URL,
+    MatchroomSourceError,
+    fetch_matchroom_events,
+)
 
 EVENTS_PATH = ROOT / "data/events.json"
 PROPOSALS_PATH = ROOT / "data/proposed-events.json"
 SYDNEY = ZoneInfo("Australia/Sydney")
 
-ALIASES = {
-    "jr": "",
-    "junior": "",
-    "ii": "",
-    "iii": "",
-}
+ALIASES = {"jr": "", "junior": "", "ii": "", "iii": ""}
+
 
 def normalise_name(value: str) -> str:
     value = value.casefold().replace("’", "'")
@@ -34,11 +35,13 @@ def normalise_name(value: str) -> str:
     words = [ALIASES.get(word, word) for word in value.split()]
     return " ".join(word for word in words if word)
 
+
 def fighter_pair(title: str) -> tuple[str, str]:
     if " vs " not in title:
         return normalise_name(title), ""
     left, right = title.split(" vs ", 1)
     return normalise_name(left), normalise_name(right)
+
 
 def pair_score(existing_title: str, discovered_title: str) -> float:
     e1, e2 = fighter_pair(existing_title)
@@ -47,6 +50,7 @@ def pair_score(existing_title: str, discovered_title: str) -> float:
     reverse = (SequenceMatcher(None, e1, d2).ratio() + SequenceMatcher(None, e2, d1).ratio()) / 2
     return max(direct, reverse)
 
+
 def date_score(existing: dict, discovered: DiscoveredEvent) -> bool:
     start = existing.get("start", {}).get("value")
     if not start:
@@ -54,23 +58,36 @@ def date_score(existing: dict, discovered: DiscoveredEvent) -> bool:
     existing_date = datetime.fromisoformat(start).astimezone(SYDNEY).date()
     return abs((existing_date - discovered.event_date).days) <= 14
 
+
 def best_match(events: list[dict], discovered: DiscoveredEvent) -> tuple[dict | None, float]:
     candidates = [(event, pair_score(event["title"], discovered.title)) for event in events if date_score(event, discovered)]
     if not candidates:
         return None, 0.0
     return max(candidates, key=lambda item: item[1])
 
+
+def source_publisher(url: str) -> str:
+    if "matchroomboxing.com" in url:
+        return "Matchroom"
+    if "dazn.com" in url:
+        return "DAZN"
+    return "Official source"
+
+
 def update_existing(event: dict, discovered: DiscoveredEvent, checked_at: str) -> list[str]:
     changes: list[str] = []
-    source = next((x for x in event["sources"] if "dazn.com" in x.get("url", "")), None)
+    publisher = source_publisher(discovered.source_url)
+    domain = "matchroomboxing.com" if publisher == "Matchroom" else "dazn.com"
+    source = next((x for x in event["sources"] if domain in x.get("url", "")), None)
     if source is None:
-        event["sources"].append({"url": discovered.source_url, "publisher": "DAZN", "checked_at": checked_at})
-        changes.append("Added DAZN schedule source")
-    elif source.get("url") != discovered.source_url:
-        source["url"] = discovered.source_url
-        source["publisher"] = "DAZN"
+        event["sources"].append({"url": discovered.source_url, "publisher": publisher, "checked_at": checked_at})
+        changes.append(f"Added {publisher} schedule source")
+    else:
         source["checked_at"] = checked_at
-        changes.append("Updated DAZN schedule source")
+        if source.get("url") != discovered.source_url:
+            source["url"] = discovered.source_url
+            source["publisher"] = publisher
+            changes.append(f"Updated {publisher} schedule source")
 
     current_date = datetime.fromisoformat(event["start"]["value"]).astimezone(SYDNEY).date()
     if current_date != discovered.event_date:
@@ -84,27 +101,48 @@ def update_existing(event: dict, discovered: DiscoveredEvent, checked_at: str) -
     if changes:
         event["sequence"] += 1
         next_version = max(item["version"] for item in event["history"]) + 1
-        event["history"].append({
-            "version": next_version,
-            "date": checked_at[:10],
-            "changes": changes,
-        })
-        for source_item in event["sources"]:
-            if "dazn.com" in source_item.get("url", ""):
-                source_item["checked_at"] = checked_at
+        event["history"].append({"version": next_version, "date": checked_at[:10], "changes": changes})
     return changes
+
+
+def discover_all() -> tuple[list[DiscoveredEvent], list[dict]]:
+    discovered: list[DiscoveredEvent] = []
+    statuses: list[dict] = []
+
+    # Matchroom is the primary required source. A failure aborts without modifying files.
+    try:
+        items = fetch_matchroom_events()
+        discovered.extend(items)
+        statuses.append({"source": "Matchroom", "url": MATCHROOM_EVENTS_URL, "status": "ok", "events": len(items)})
+    except MatchroomSourceError as exc:
+        raise RuntimeError(str(exc)) from exc
+
+    # DAZN is optional because it blocks GitHub Actions with HTTP 403.
+    try:
+        items = fetch_dazn_events()
+        discovered.extend(items)
+        statuses.append({"source": "DAZN", "status": "ok", "events": len(items)})
+    except DaznSourceError as exc:
+        statuses.append({"source": "DAZN", "status": "skipped", "error": str(exc)})
+        print(f"Optional DAZN source skipped: {exc}", file=sys.stderr)
+
+    deduped: dict[tuple[str, object], DiscoveredEvent] = {}
+    for item in discovered:
+        deduped.setdefault((normalise_name(item.title), item.event_date), item)
+    return sorted(deduped.values(), key=lambda x: (x.event_date, x.title)), statuses
+
 
 def run(apply: bool) -> int:
     existing = json.loads(EVENTS_PATH.read_text(encoding="utf-8"))
     try:
-        discovered = fetch_dazn_events()
-    except DaznSourceError as exc:
+        discovered, statuses = discover_all()
+    except RuntimeError as exc:
         print(str(exc), file=sys.stderr)
         return 2
 
     checked_at = datetime.now(SYDNEY).replace(microsecond=0).isoformat()
     updated = deepcopy(existing)
-    report = {"source": DAZN_SCHEDULE_URL, "checked_at": checked_at, "changes": [], "unmatched": []}
+    report = {"checked_at": checked_at, "sources": statuses, "changes": [], "unmatched": []}
 
     matched_uids: set[str] = set()
     for item in discovered:
@@ -115,19 +153,17 @@ def run(apply: bool) -> int:
             if changes:
                 report["changes"].append({"uid": match["uid"], "title": match["title"], "score": round(score, 3), "changes": changes})
         elif item.event_date >= datetime.now(SYDNEY).date():
-            report["unmatched"].append({"title": item.title, "date": item.event_date.isoformat(), "score": round(score, 3)})
+            report["unmatched"].append({"title": item.title, "date": item.event_date.isoformat(), "source": item.source_url, "score": round(score, 3)})
 
     PROPOSALS_PATH.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     if report["changes"] and apply:
         EVENTS_PATH.write_text(json.dumps(updated, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         print(f"Applied {len(report['changes'])} matched event update(s).")
         return 10
-    if report["changes"]:
-        print(f"Dry run found {len(report['changes'])} matched event update(s).")
-    else:
-        print("No safe existing-event changes detected.")
+    print("No safe existing-event changes detected." if not report["changes"] else f"Dry run found {len(report['changes'])} matched event update(s).")
     print(f"Staged {len(report['unmatched'])} unmatched future fight(s) for inspection.")
     return 0
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
