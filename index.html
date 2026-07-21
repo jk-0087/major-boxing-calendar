@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Major Boxing Calendar</title>
+  <meta name="description" content="A private trial calendar for major professional boxing events.">
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0d0d0f;
+      color: #f5f5f5;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+    main {
+      width: min(680px, 100%);
+      background: #17171b;
+      border: 1px solid #303036;
+      border-radius: 22px;
+      padding: 36px;
+      box-shadow: 0 18px 60px rgba(0,0,0,.35);
+    }
+    .eyebrow { color: #b8b8c0; font-size: .82rem; text-transform: uppercase; letter-spacing: .12em; }
+    h1 { font-size: clamp(2rem, 7vw, 3.5rem); line-height: 1; margin: 14px 0 18px; }
+    p { color: #c9c9d0; line-height: 1.6; }
+    .actions { display: grid; gap: 12px; margin: 28px 0; }
+    a.button {
+      display: block;
+      padding: 15px 18px;
+      border-radius: 12px;
+      text-decoration: none;
+      text-align: center;
+      font-weight: 700;
+    }
+    .primary { background: #f5f5f5; color: #111; }
+    .secondary { border: 1px solid #44444b; color: #f5f5f5; }
+    .note {
+      background: #222228;
+      border-radius: 12px;
+      padding: 16px;
+      font-size: .94rem;
+    }
+    code { word-break: break-all; color: #fff; }
+    footer { margin-top: 28px; color: #85858d; font-size: .82rem; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="eyebrow">Private trial</div>
+    <h1>🥊 Major Boxing Calendar</h1>
+    <p>
+      A curated calendar for major professional boxing cards from leading global
+      promotions, displayed automatically in your device’s local timezone.
+    </p>
+
+    <div class="actions">
+      <a class="button primary"
+         href="webcal://jk-0087.github.io/major-boxing-calendar/major-boxing-calendar.ics">
+        Subscribe in Apple Calendar
+      </a>
+      <a class="button secondary" href="major-boxing-calendar.ics">
+        Download calendar file
+      </a>
+    </div>
+
+    <div class="note">
+      <strong>Subscription address</strong><br><br>
+      <code>https://jk-0087.github.io/major-boxing-calendar/major-boxing-calendar.ics</code>
+    </div>
+
+    <footer>
+      Trial calendar · Updated 21 July 2026
+    </footer>
+  </main>
+</body>
+</html>
