@@ -1,21 +1,29 @@
-# Major Boxing Calendar v4
+# Major Boxing Calendar — automatic update build
 
-`data/events.json` is the source of truth.
+The live source of truth is `data/events.json`. Every six hours, GitHub Actions checks the official DAZN boxing schedule.
 
-## Generated files
+## Automatic behavior
 
-- `major-boxing-calendar.ics`
-- `index.html`
+- strongly matches DAZN listings to existing fights
+- preserves every existing UID
+- updates a matched event date and shifts its stored finish/ring-walk times by the same number of days
+- increments `SEQUENCE` only when a meaningful field changes
+- regenerates `major-boxing-calendar.ics` and `index.html` only when safe changes are applied
+- never deletes events because a source item disappears
+- stops if the DAZN parser returns suspiciously few results
+- stages unmatched fights in `data/proposed-events.json` instead of publishing them automatically
 
-## Workflows
+## Workflow
 
-- `build-calendar.yml` validates, tests, generates, and commits generated files.
-- `discover-updates.yml` runs a review-first discovery placeholder and opens a pull request only when proposed data changes.
+`.github/workflows/auto-update-calendar.yml` runs every six hours and can also be run manually from GitHub Actions.
 
-## Install
+## Local commands
 
-Upload the repository contents while preserving folders, then run
-**Build and Publish Calendar** from the GitHub Actions tab.
-
-The discovery component is deliberately review-first. It does not publish
-unverified fight data directly to subscribers.
+```bash
+python -m pip install -r requirements.txt -r requirements-dev.txt
+python scripts/discover.py          # dry run
+python scripts/discover.py --apply  # apply safe matched changes
+python scripts/validate.py
+python scripts/generate.py
+pytest -q
+```
