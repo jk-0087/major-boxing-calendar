@@ -83,14 +83,23 @@ def parse_official_schedule(html: str, spec: SourceSpec, today: date) -> list[Di
             current_date = parsed
         if not current_date:
             continue
-        window = " ".join(lines[index : index + 4])
-        for fight in FIGHT_RE.finditer(window):
+
+        fight = FIGHT_RE.fullmatch(line) or FIGHT_RE.search(line)
+        if fight:
             left = _clean(fight.group("a"))
             right = _clean(fight.group("b"))
-            if not left or not right or len(left.split()) > 7 or len(right.split()) > 7:
-                continue
-            title = f"{left} vs {right}"
-            found[(title.casefold(), current_date)] = DiscoveredEvent(title, current_date, spec.url)
+        elif line.casefold().rstrip(".") in {"v", "vs", "versus"} and 0 < index < len(lines) - 1:
+            left = _clean(lines[index - 1])
+            right = _clean(lines[index + 1])
+        else:
+            continue
+
+        if not left or not right or len(left.split()) > 7 or len(right.split()) > 7:
+            continue
+        if _parse_date(left, today) or _parse_date(right, today):
+            continue
+        title = f"{left} vs {right}"
+        found[(title.casefold(), current_date)] = DiscoveredEvent(title, current_date, spec.url)
 
     return sorted(found.values(), key=lambda event: (event.event_date, event.title))
 
