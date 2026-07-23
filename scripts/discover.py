@@ -21,6 +21,11 @@ from scripts.sources.matchroom import (
     MatchroomSourceError,
     fetch_matchroom_events,
 )
+from scripts.sources.official import (
+    OFFICIAL_SOURCES,
+    OfficialSourceError,
+    fetch_official_events,
+)
 
 EVENTS_PATH = ROOT / "data/events.json"
 PROPOSALS_PATH = ROOT / "data/proposed-events.json"
@@ -71,6 +76,9 @@ def source_publisher(url: str) -> str:
         return "Matchroom"
     if "dazn.com" in url:
         return "DAZN"
+    for spec in OFFICIAL_SOURCES:
+        if spec.url.split("/")[2] in url:
+            return spec.name
     return "Official source"
 
 
@@ -127,6 +135,15 @@ def discover_all() -> tuple[list[DiscoveredEvent], list[dict]]:
     except DaznSourceError as exc:
         statuses.append({"source": "DAZN", "status": "skipped", "error": str(exc)})
         print(f"Optional DAZN source skipped: {exc}", file=sys.stderr)
+
+    for spec in OFFICIAL_SOURCES:
+        try:
+            items = fetch_official_events(spec)
+            discovered.extend(items)
+            statuses.append({"source": spec.name, "url": spec.url, "status": "ok", "events": len(items)})
+        except OfficialSourceError as exc:
+            statuses.append({"source": spec.name, "url": spec.url, "status": "skipped", "error": str(exc)})
+            print(f"Optional {spec.name} source skipped: {exc}", file=sys.stderr)
 
     deduped: dict[tuple[str, object], DiscoveredEvent] = {}
     for item in discovered:
