@@ -4,6 +4,7 @@ from scripts.discover import discover_all, pair_score, best_match, update_existi
 from scripts.models import DiscoveredEvent
 from scripts.sources.dazn import DaznSourceError
 from scripts.sources.matchroom import MatchroomSourceError
+from scripts.sources.mvp import MvpSourceError
 from scripts.sources.official import OFFICIAL_SOURCES, OfficialSourceError
 
 
@@ -46,6 +47,7 @@ def test_matchroom_source_is_identified():
     assert event["sources"][0]["publisher"] == "Matchroom"
 
 
+@patch("scripts.discover.fetch_mvp_events", side_effect=MvpSourceError("MVP unavailable"))
 @patch(
     "scripts.discover.fetch_official_events",
     side_effect=OfficialSourceError("Official source unavailable"),
@@ -57,10 +59,10 @@ def test_matchroom_source_is_identified():
         "Safety stop: expected at least 2 Matchroom schedule entries, parsed 0"
     ),
 )
-def test_all_source_failures_are_safe_no_change(mock_matchroom, mock_dazn, mock_official):
+def test_all_source_failures_are_safe_no_change(mock_matchroom, mock_dazn, mock_official, mock_mvp):
     events, statuses = discover_all()
     assert events == []
     assert all(item["status"] == "skipped" for item in statuses)
-    assert len(statuses) == 2 + len(OFFICIAL_SOURCES)
+    assert len(statuses) == 3 + len(OFFICIAL_SOURCES)
     assert "parsed 0" in statuses[0]["error"]
     assert "HTTP 403" in statuses[1]["error"]
