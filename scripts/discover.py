@@ -21,6 +21,7 @@ from scripts.sources.matchroom import (
     MatchroomSourceError,
     fetch_matchroom_events,
 )
+from scripts.sources.mvp import MVP_EVENTS_URL, MvpSourceError, fetch_mvp_events
 from scripts.sources.official import (
     OFFICIAL_SOURCES,
     OfficialSourceError,
@@ -76,6 +77,16 @@ def source_publisher(url: str) -> str:
         return "Matchroom"
     if "dazn.com" in url:
         return "DAZN"
+    if "mostvaluablepromotions.com" in url:
+        return "Most Valuable Promotions"
+    try:
+        items = fetch_mvp_events()
+        discovered.extend(items)
+        statuses.append({"source": "Most Valuable Promotions", "url": MVP_EVENTS_URL, "status": "ok", "events": len(items)})
+    except MvpSourceError as exc:
+        statuses.append({"source": "Most Valuable Promotions", "url": MVP_EVENTS_URL, "status": "skipped", "error": str(exc)})
+        print(f"Optional MVP source skipped: {exc}", file=sys.stderr)
+
     for spec in OFFICIAL_SOURCES:
         if spec.url.split("/")[2] in url:
             return spec.name
@@ -85,7 +96,7 @@ def source_publisher(url: str) -> str:
 def update_existing(event: dict, discovered: DiscoveredEvent, checked_at: str) -> list[str]:
     changes: list[str] = []
     publisher = source_publisher(discovered.source_url)
-    domain = "matchroomboxing.com" if publisher == "Matchroom" else "dazn.com"
+    domain = discovered.source_url.split("/")[2]
     source = next((x for x in event["sources"] if domain in x.get("url", "")), None)
     if source is None:
         event["sources"].append({"url": discovered.source_url, "publisher": publisher, "checked_at": checked_at})
@@ -170,7 +181,7 @@ def run(apply: bool) -> int:
         elif item.event_date >= datetime.now(SYDNEY).date():
             report["unmatched"].append({"title": item.title, "date": item.event_date.isoformat(), "source": item.source_url, "score": round(score, 3)})
 
-    PROPOSALS_PATH.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    PROPOSALS_PATH.write_text(json.dumps(report["unmatched"], indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     if report["changes"] and apply:
         EVENTS_PATH.write_text(json.dumps(updated, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         print(f"Applied {len(report['changes'])} matched event update(s).")
