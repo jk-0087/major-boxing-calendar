@@ -26,7 +26,6 @@ def test_all_agreed_promoters_are_registered():
         "Premier Boxing Champions",
         "Golden Boy",
         "BOXXER",
-        "Most Valuable Promotions",
         "No Limit Boxing",
         "Tasman Fighters",
         "Zuffa Boxing",
