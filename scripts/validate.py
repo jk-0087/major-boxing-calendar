@@ -18,7 +18,13 @@ for index, event in enumerate(events, start=1):
     if event["title"] != expected_title:
         errors.append(f"{prefix}: title does not match fighter names")
 
-    for field in ("start", "end", "ring_walk"):
+    if "start" in event:
+        errors.append(f"{prefix}: legacy start field is not allowed; use main_card_start")
+    if "main_card_start" not in event:
+        errors.append(f"{prefix}: missing main_card_start")
+        continue
+
+    for field in ("main_card_start", "end", "ring_walk"):
         value = event[field]["value"]
         if value:
             try:
@@ -26,10 +32,18 @@ for index, event in enumerate(events, start=1):
             except ValueError:
                 errors.append(f"{prefix}: invalid ISO datetime in {field}")
 
-    start = event["start"]["value"]
+    main_card_start = event["main_card_start"]["value"]
     end = event["end"]["value"]
-    if start and end and datetime.fromisoformat(end) <= datetime.fromisoformat(start):
-        errors.append(f"{prefix}: end must be after start")
+    ring_walk = event["ring_walk"]["value"]
+    if main_card_start and end:
+        start_dt = datetime.fromisoformat(main_card_start)
+        end_dt = datetime.fromisoformat(end)
+        if end_dt <= start_dt:
+            errors.append(f"{prefix}: end must be after main-card start")
+        if ring_walk:
+            ring_walk_dt = datetime.fromisoformat(ring_walk)
+            if ring_walk_dt < start_dt or ring_walk_dt >= end_dt:
+                errors.append(f"{prefix}: ring walk must be between main-card start and end")
 
     versions = [item["version"] for item in event["history"]]
     if versions != sorted(set(versions)):
