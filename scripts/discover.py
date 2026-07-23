@@ -79,14 +79,6 @@ def source_publisher(url: str) -> str:
         return "DAZN"
     if "mostvaluablepromotions.com" in url:
         return "Most Valuable Promotions"
-    try:
-        items = fetch_mvp_events()
-        discovered.extend(items)
-        statuses.append({"source": "Most Valuable Promotions", "url": MVP_EVENTS_URL, "status": "ok", "events": len(items)})
-    except MvpSourceError as exc:
-        statuses.append({"source": "Most Valuable Promotions", "url": MVP_EVENTS_URL, "status": "skipped", "error": str(exc)})
-        print(f"Optional MVP source skipped: {exc}", file=sys.stderr)
-
     for spec in OFFICIAL_SOURCES:
         if spec.url.split("/")[2] in url:
             return spec.name
@@ -146,6 +138,14 @@ def discover_all() -> tuple[list[DiscoveredEvent], list[dict]]:
     except DaznSourceError as exc:
         statuses.append({"source": "DAZN", "status": "skipped", "error": str(exc)})
         print(f"Optional DAZN source skipped: {exc}", file=sys.stderr)
+
+    try:
+        items = fetch_mvp_events()
+        discovered.extend(items)
+        statuses.append({"source": "Most Valuable Promotions", "url": MVP_EVENTS_URL, "status": "ok", "events": len(items)})
+    except MvpSourceError as exc:
+        statuses.append({"source": "Most Valuable Promotions", "url": MVP_EVENTS_URL, "status": "skipped", "error": str(exc)})
+        print(f"Optional MVP source skipped: {exc}", file=sys.stderr)
 
     for spec in OFFICIAL_SOURCES:
         try:
