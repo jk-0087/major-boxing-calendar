@@ -79,6 +79,20 @@ STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:mbc-2026-08-08-johnson-thorslund@jk-0087.github.io
+DTSTAMP:20260723T112000Z
+LAST-MODIFIED:20260723T112000Z
+SEQUENCE:1
+DTSTART:20260809T020000Z
+DTEND:20260809T070000Z
+SUMMARY:Cherneka Johnson vs Dina Thorslund
+LOCATION:Caribe Royale
+DESCRIPTION:Status\nOfficial\n\nPromotion\nMost Valuable Promotions\n\nCity\nOrlando\, Florida\n\nCountry\nUSA\n\nTitles\nUndisputed bantamweight world championship\nUnified middleweight world championship: Desley Robinson vs Tammara Thibeault\n\nAustralia\nESPN / YouTube (availability varies)\n\nMain Card Start\n12:00 PM\, Sun 9 Aug 2026 (Confirmed)\n\nEstimated Finish\n5:00 PM\, Sun 9 Aug 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nCherneka Johnson vs Dina Thorslund\nDesley Robinson vs Tammara Thibeault\nShurretta Metcalf vs Amanda Galle\nKrystal Rosado vs Alondra Hernandez\n\nOfficial / Schedule Source\nhttps://www.mostvaluablepromotions.com/event/mvpw-05-johnson-vs-thorslund/\n\nVerified\n23 Jul 2026\, 9:20 PM
+URL:https://www.mostvaluablepromotions.com/event/mvpw-05-johnson-vs-thorslund/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:mbc-2026-08-15-shields-scott@jk-0087.github.io
 DTSTAMP:20260721T100000Z
 LAST-MODIFIED:20260721T100000Z
@@ -89,6 +103,20 @@ SUMMARY:Claressa Shields vs Kaye Scott
 LOCATION:Venue TBA
 DESCRIPTION:Status\nOfficial\n\nPromotion\nSalita Promotions\n\nCity\nTBA\n\nCountry\nUSA\n\nTitles\nMajor women's world championship bout\n\nAustralia\nDAZN\n\nMain Card Start\n10:00 AM\, Sun 16 Aug 2026 (Confirmed)\n\nEstimated Finish\n3:00 PM\, Sun 16 Aug 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\n10:00 am AEST\n\nOfficial / Schedule Source\nhttps://www.dazn.com/en-US/news/boxing/dazn-boxing-schedule-2026-fight-dates-and-live-stream-for-confirmed-cards/ehgk0syi2n4a13u2yglrd8h84\n\nVerified\n21 Jul 2026\, 8:00 PM
 URL:https://www.dazn.com/en-US/news/boxing/dazn-boxing-schedule-2026-fight-dates-and-live-stream-for-confirmed-cards/ehgk0syi2n4a13u2yglrd8h84
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:mbc-2026-08-21-serrano-manzur@jk-0087.github.io
+DTSTAMP:20260723T112000Z
+LAST-MODIFIED:20260723T112000Z
+SEQUENCE:1
+DTSTART:20260822T010000Z
+DTEND:20260822T060000Z
+SUMMARY:Amanda Serrano vs Lucrecia Manzur
+LOCATION:Pechanga Resort Casino
+DESCRIPTION:Status\nOfficial\n\nPromotion\nMost Valuable Promotions\n\nCity\nTemecula\, California\n\nCountry\nUSA\n\nTitles\nUnified featherweight world championship\n\nAustralia\nTikTok LIVE\n\nMain Card Start\n11:00 AM\, Sat 22 Aug 2026 (Confirmed)\n\nEstimated Finish\n4:00 PM\, Sat 22 Aug 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nAmanda Serrano vs Lucrecia Manzur\nJahmal Harvey vs Hammet Keb\nJully Oliveira vs Cinderella Linnear\nIyana Verduzco vs Miguelina Hernandez\nNelvie Tiafack vs Salvador Zavala\nJocelyn Camarillo vs Ashley Felix\n\nOfficial / Schedule Source\nhttps://www.mostvaluablepromotions.com/event/serrano-vs-manzur/\n\nVerified\n23 Jul 2026\, 9:20 PM
+URL:https://www.mostvaluablepromotions.com/event/serrano-vs-manzur/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -117,6 +145,20 @@ SUMMARY:Moses Itauma vs Filip Hrgovic
 LOCATION:The O2
 DESCRIPTION:Status\nOfficial\n\nPromotion\nQueensberry Promotions\n\nCity\nLondon\n\nCountry\nEngland\n\nTitles\nHeavyweight feature bout\n\nAustralia\nDAZN\n\nMain Card Start\n2:00 AM\, Sun 30 Aug 2026 (Confirmed)\n\nEstimated Finish\n7:00 AM\, Sun 30 Aug 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\n2:00 am AEST\n\nOfficial / Schedule Source\nhttps://www.dazn.com/en-US/news/boxing/moses-itauma-vs-filip-hrgovic-announced-august-29-london-o2-arena/17cqc3q02l6391h6331qplor4b\n\nVerified\n21 Jul 2026\, 8:00 PM
 URL:https://www.dazn.com/en-US/news/boxing/moses-itauma-vs-filip-hrgovic-announced-august-29-london-o2-arena/17cqc3q02l6391h6331qplor4b
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:mbc-2026-08-29-mayer-cameron@jk-0087.github.io
+DTSTAMP:20260723T112000Z
+LAST-MODIFIED:20260723T112000Z
+SEQUENCE:1
+DTSTART:20260829T160000Z
+DTEND:20260829T210000Z
+SUMMARY:Mikaela Mayer vs Chantelle Cameron
+LOCATION:bp pulse LIVE
+DESCRIPTION:Status\nOfficial\n\nPromotion\nMost Valuable Promotions\n\nCity\nBirmingham\n\nCountry\nUnited Kingdom\n\nTitles\nUnified junior middleweight world championship\nUnified lightweight world championship: Caroline Dubois vs Amelia Moore\n\nAustralia\nESPN / ESPN+ (availability TBA)\n\nMain Card Start\n2:00 AM\, Sun 30 Aug 2026 (Confirmed)\n\nEstimated Finish\n7:00 AM\, Sun 30 Aug 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nMikaela Mayer vs Chantelle Cameron\nCaroline Dubois vs Amelia Moore\nTerri Harper vs Miranda Reyes\n\nOfficial / Schedule Source\nhttps://www.mostvaluablepromotions.com/event/mvpw-06-mayer-vs-cameron/\n\nVerified\n23 Jul 2026\, 9:20 PM
+URL:https://www.mostvaluablepromotions.com/event/mvpw-06-mayer-vs-cameron/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
