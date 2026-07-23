@@ -19,7 +19,7 @@ class SourceSpec:
 
 OFFICIAL_SOURCES = (
     SourceSpec("Queensberry", "https://queensberry.co.uk/"),
-    SourceSpec("Top Rank", "https://toprank.com/events"),
+    SourceSpec("Top Rank", "https://toprank.com/"),
     SourceSpec("The Ring / Riyadh Season", "https://www.ringmagazine.com/"),
     SourceSpec("Premier Boxing Champions", "https://www.premierboxingchampions.com/boxing-schedule"),
     SourceSpec("Golden Boy", "https://www.goldenboy.com/"),
@@ -40,8 +40,8 @@ DATE_RE = re.compile(
     re.I,
 )
 FIGHT_RE = re.compile(
-    r"(?P<a>[A-ZÀ-ÖØ-öø-ÿ][\wÀ-ÖØ-öø-ÿ.'’\- ]{1,55}?)\s+"
-    r"(?:v(?:s\.?|\.)|versus)\s+"
+    r"(?P<a>[A-ZÀ-ÖØ-öø-ÿ][\wÀ-ÖØ-öø-ÿ.'’\- ]{1,55}?)\s*"
+    r"(?:v(?:s\.?|\.)|versus)(?:\s*\(versus\))?\s*"
     r"(?P<b>[A-ZÀ-ÖØ-öø-ÿ][\wÀ-ÖØ-öø-ÿ.'’\- ]{1,55})",
     re.I,
 )
