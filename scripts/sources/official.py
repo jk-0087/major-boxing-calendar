@@ -24,7 +24,6 @@ OFFICIAL_SOURCES = (
     SourceSpec("Premier Boxing Champions", "https://www.premierboxingchampions.com/boxing-schedule"),
     SourceSpec("Golden Boy", "https://www.goldenboy.com/"),
     SourceSpec("BOXXER", "https://www.boxxer.com/"),
-    SourceSpec("Most Valuable Promotions", "https://www.mostvaluablepromotions.com/events/"),
     SourceSpec("No Limit Boxing", "https://nolimitboxing.com.au/events"),
     SourceSpec("Tasman Fighters", "https://www.tasmanfighters.com/event-list"),
     SourceSpec("Zuffa Boxing", "https://www.ufc.com/zuffaboxing"),
