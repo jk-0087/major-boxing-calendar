@@ -57,7 +57,7 @@ def pair_score(existing_title: str, discovered_title: str) -> float:
 
 
 def date_score(existing: dict, discovered: DiscoveredEvent) -> bool:
-    start = existing.get("start", {}).get("value")
+    start = existing.get("main_card_start", {}).get("value")
     if not start:
         return True
     existing_date = datetime.fromisoformat(start).astimezone(SYDNEY).date()
@@ -97,10 +97,10 @@ def update_existing(event: dict, discovered: DiscoveredEvent, checked_at: str) -
             source["publisher"] = publisher
             changes.append(f"Updated {publisher} schedule source")
 
-    current_date = datetime.fromisoformat(event["start"]["value"]).astimezone(SYDNEY).date()
+    current_date = datetime.fromisoformat(event["main_card_start"]["value"]).astimezone(SYDNEY).date()
     if current_date != discovered.event_date:
         delta = discovered.event_date - current_date
-        event["start"]["value"] = (datetime.fromisoformat(event["start"]["value"]) + timedelta(days=delta.days)).isoformat()
+        event["main_card_start"]["value"] = (datetime.fromisoformat(event["main_card_start"]["value"]) + timedelta(days=delta.days)).isoformat()
         event["end"]["value"] = (datetime.fromisoformat(event["end"]["value"]) + timedelta(days=delta.days)).isoformat()
         if event["ring_walk"].get("value"):
             event["ring_walk"]["value"] = (datetime.fromisoformat(event["ring_walk"]["value"]) + timedelta(days=delta.days)).isoformat()
