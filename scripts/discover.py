@@ -109,13 +109,15 @@ def discover_all() -> tuple[list[DiscoveredEvent], list[dict]]:
     discovered: list[DiscoveredEvent] = []
     statuses: list[dict] = []
 
-    # Matchroom is the primary required source. A failure aborts without modifying files.
+    # Matchroom is the primary source. Source failures are recorded but never
+    # allowed to modify or empty the existing calendar.
     try:
         items = fetch_matchroom_events()
         discovered.extend(items)
         statuses.append({"source": "Matchroom", "url": MATCHROOM_EVENTS_URL, "status": "ok", "events": len(items)})
     except MatchroomSourceError as exc:
-        raise RuntimeError(str(exc)) from exc
+        statuses.append({"source": "Matchroom", "url": MATCHROOM_EVENTS_URL, "status": "skipped", "error": str(exc)})
+        print(f"Primary Matchroom source skipped safely: {exc}", file=sys.stderr)
 
     # DAZN is optional because it blocks GitHub Actions with HTTP 403.
     try:
@@ -134,11 +136,7 @@ def discover_all() -> tuple[list[DiscoveredEvent], list[dict]]:
 
 def run(apply: bool) -> int:
     existing = json.loads(EVENTS_PATH.read_text(encoding="utf-8"))
-    try:
-        discovered, statuses = discover_all()
-    except RuntimeError as exc:
-        print(str(exc), file=sys.stderr)
-        return 2
+    discovered, statuses = discover_all()
 
     checked_at = datetime.now(SYDNEY).replace(microsecond=0).isoformat()
     updated = deepcopy(existing)
