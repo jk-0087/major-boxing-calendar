@@ -1,6 +1,9 @@
 from datetime import date
-from scripts.discover import pair_score, best_match, update_existing
+from unittest.mock import patch
+from scripts.discover import discover_all, pair_score, best_match, update_existing
 from scripts.models import DiscoveredEvent
+from scripts.sources.dazn import DaznSourceError
+from scripts.sources.matchroom import MatchroomSourceError
 
 
 def sample_event():
@@ -40,3 +43,18 @@ def test_matchroom_source_is_identified():
     changes = update_existing(event, discovered, "2026-07-21T21:00:00+10:00")
     assert "Added Matchroom schedule source" in changes
     assert event["sources"][0]["publisher"] == "Matchroom"
+
+
+@patch("scripts.discover.fetch_dazn_events", side_effect=DaznSourceError("DAZN returned HTTP 403"))
+@patch(
+    "scripts.discover.fetch_matchroom_events",
+    side_effect=MatchroomSourceError(
+        "Safety stop: expected at least 2 Matchroom schedule entries, parsed 0"
+    ),
+)
+def test_all_source_failures_are_safe_no_change(mock_matchroom, mock_dazn):
+    events, statuses = discover_all()
+    assert events == []
+    assert [item["status"] for item in statuses] == ["skipped", "skipped"]
+    assert "parsed 0" in statuses[0]["error"]
+    assert "HTTP 403" in statuses[1]["error"]
