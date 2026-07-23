@@ -29,7 +29,7 @@ def friendly(value: str | None, confidence: str) -> str:
     rendered = parse_dt(value).strftime("%-I:%M %p, %a %-d %b %Y")
     return f"{rendered} ({confidence.title()})"
 
-events.sort(key=lambda item: item["start"]["value"] or "9999")
+events.sort(key=lambda item: item["main_card_start"]["value"] or "9999")
 
 ics_lines = [
     "BEGIN:VCALENDAR",
@@ -58,10 +58,10 @@ for event in events:
         f"Country\n{event['venue']['country']}\n\n"
         f"Titles\n" + "\n".join(event["titles"]) + "\n\n"
         f"Australia\n{event['broadcast']['australia']}\n\n"
-        f"Main Card\n{friendly(event['start']['value'], event['start']['confidence'])}\n\n"
+        f"Main Card Start\n{friendly(event['main_card_start']['value'], event['main_card_start']['confidence'])}\n\n"
         f"Estimated Finish\n{friendly(event['end']['value'], event['end']['confidence'])}\n\n"
         f"Ring Walk\n{friendly(event['ring_walk']['value'], event['ring_walk']['confidence'])}\n\n"
-        f"Main Card\n" + "\n".join(event["main_card"]) + "\n\n"
+        f"Main Card Bouts\n" + "\n".join(event["main_card"]) + "\n\n"
         f"Official / Schedule Source\n{source_url}\n\n"
         f"Verified\n{checked_dt.strftime('%d %b %Y, %-I:%M %p')}"
     )
@@ -73,7 +73,7 @@ for event in events:
         f"DTSTAMP:{modified}",
         f"LAST-MODIFIED:{modified}",
         f"SEQUENCE:{event['sequence']}",
-        f"DTSTART:{utc_stamp(event['start']['value'])}",
+        f"DTSTART:{utc_stamp(event['main_card_start']['value'])}",
         f"DTEND:{utc_stamp(event['end']['value'])}",
         f"SUMMARY:{escape_ics(event['title'])}",
         f"LOCATION:{escape_ics(event['venue']['name'])}",
