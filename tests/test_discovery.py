@@ -12,7 +12,7 @@ def sample_event():
         "uid": "stable-id@example.com",
         "sequence": 3,
         "title": "Errol Spence Jr vs Tim Tszyu",
-        "start": {"value": "2026-07-26T11:00:00+10:00", "confidence": "estimated"},
+        "main_card_start": {"value": "2026-07-26T11:00:00+10:00", "confidence": "estimated"},
         "end": {"value": "2026-07-26T16:00:00+10:00", "confidence": "estimated"},
         "ring_walk": {"value": "2026-07-26T14:30:00+10:00", "confidence": "estimated"},
         "sources": [],
@@ -31,7 +31,7 @@ def test_date_change_preserves_uid_and_increments_sequence():
     assert changes
     assert event["uid"] == "stable-id@example.com"
     assert event["sequence"] == 4
-    assert event["start"]["value"].startswith("2026-08-02")
+    assert event["main_card_start"]["value"].startswith("2026-08-02")
 
 
 def test_matchroom_source_is_identified():
