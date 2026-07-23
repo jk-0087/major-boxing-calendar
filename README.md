@@ -4,10 +4,10 @@ The live source of truth is `data/events.json`. Every six hours, GitHub Actions 
 
 ## Sources
 
-- **Matchroom Boxing:** primary required source
+- **Matchroom Boxing:** primary source; failures are logged and skipped safely
 - **DAZN:** optional secondary source; HTTP 403 or other source failures are logged and skipped
 
-If Matchroom cannot be fetched or returns suspiciously few events, discovery stops before modifying `events.json`.
+If Matchroom or DAZN cannot be fetched—or returns suspiciously few events—the source is skipped and `events.json` remains unchanged. A run with no usable sources completes as a safe no-change result.
 
 ## Automatic behavior
 
