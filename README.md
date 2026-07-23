@@ -25,7 +25,8 @@ If Matchroom or DAZN cannot be fetched—or returns suspiciously few events—th
 
 - strongly matches official listings to existing fights
 - preserves every existing UID
-- updates a matched event date and shifts its stored finish/ring-walk times by the same number of days
+- uses `main_card_start` as the calendar event start (`DTSTART`); ring-walk estimates remain description-only
+- updates a matched event date and shifts its stored main-card start, finish, and ring-walk times by the same number of days
 - increments `SEQUENCE` only when a meaningful field changes
 - regenerates `major-boxing-calendar.ics` and `index.html` only when safe changes are applied
 - never deletes events because a source item disappears
