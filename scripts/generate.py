@@ -84,7 +84,7 @@ for event in events:
         "END:VEVENT",
     ])
 
-    date_label = parse_dt(event["start"]["value"]).strftime("%-d %b")
+    date_label = parse_dt(event["main_card_start"]["value"]).strftime("%-d %b")
     cards.append(
         '<article class="event">'
         f'<div class="date">{html.escape(date_label)}</div>'
