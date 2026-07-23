@@ -5,12 +5,18 @@ from datetime import date
 
 import requests
 from bs4 import BeautifulSoup
+from dateutil import parser as date_parser
 
 from scripts.models import DiscoveredEvent
-from scripts.sources.official import FIGHT_RE, _clean, _parse_date
+from scripts.sources.official import FIGHT_RE, _clean
 
 MVP_EVENTS_URL = "https://www.mostvaluablepromotions.com/events/"
 MVP_PREFIX_RE = re.compile(r"^MVPW\s*\d+\s*[-–—:]\s*", re.I)
+MVP_DATE_RE = re.compile(
+    r"(?:January|February|March|April|May|June|July|August|September|October|November|December)"
+    r"\s+\d{1,2},\s+\d{4}",
+    re.I,
+)
 
 
 class MvpSourceError(RuntimeError):
@@ -29,6 +35,16 @@ def _fight_title(line: str) -> str | None:
     return f"{left} vs {right}"
 
 
+def _mvp_date(line: str) -> date | None:
+    match = MVP_DATE_RE.search(line)
+    if not match:
+        return None
+    try:
+        return date_parser.parse(match.group(0), fuzzy=False).date()
+    except (ValueError, OverflowError):
+        return None
+
+
 def parse_mvp_schedule(html: str, today: date) -> list[DiscoveredEvent]:
     soup = BeautifulSoup(html, "html.parser")
     lines = [_clean(line) for line in soup.get_text("\n").splitlines() if _clean(line)]
@@ -41,7 +57,7 @@ def parse_mvp_schedule(html: str, today: date) -> list[DiscoveredEvent]:
             pending_title = title
             continue
 
-        event_date = _parse_date(line, today)
+        event_date = _mvp_date(line)
         if pending_title and event_date:
             if event_date >= today:
                 found[(pending_title.casefold(), event_date)] = DiscoveredEvent(
