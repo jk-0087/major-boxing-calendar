@@ -4,8 +4,20 @@ The live source of truth is `data/events.json`. Every six hours, GitHub Actions 
 
 ## Sources
 
-- **Matchroom Boxing:** primary source; failures are logged and skipped safely
-- **DAZN:** optional secondary source; HTTP 403 or other source failures are logged and skipped
+- **Matchroom Boxing:** primary source
+- **DAZN:** optional schedule source
+- **Queensberry Promotions**
+- **Top Rank**
+- **The Ring / Riyadh Season**
+- **Premier Boxing Champions (PBC)**
+- **Golden Boy Promotions**
+- **BOXXER**
+- **Most Valuable Promotions (MVP)**
+- **No Limit Boxing**
+- **Tasman Fighters**
+- **Zuffa Boxing**
+
+Every source is isolated: HTTP errors, timeouts, blocking, or suspicious parser results are logged and skipped without failing the workflow or changing the existing calendar.
 
 If Matchroom or DAZN cannot be fetched—or returns suspiciously few events—the source is skipped and `events.json` remains unchanged. A run with no usable sources completes as a safe no-change result.
 
