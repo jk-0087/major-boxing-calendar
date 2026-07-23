@@ -34,7 +34,7 @@ jobs:
             exit "$code"
           fi
       - run: python scripts/validate.py
-      - run: pytest -q
+      - run: python -m pytest -q
       - name: Regenerate calendar and website
         if: steps.discover.outputs.exit_code == '10'
         run: python scripts/generate.py
