@@ -936,5 +936,62 @@
       "value": "2026-08-30T02:00:00+10:00",
       "confidence": "confirmed"
     }
+  },
+  {
+    "uid": "mbc-2026-09-12-garcia-benn@jk-0087.github.io",
+    "sequence": 1,
+    "status": "Official",
+    "title": "Ryan Garcia vs Conor Benn",
+    "fighters": {
+      "red": "Ryan Garcia",
+      "blue": "Conor Benn"
+    },
+    "end": {
+      "value": "2026-09-13T15:00:00+10:00",
+      "confidence": "estimated"
+    },
+    "ring_walk": {
+      "value": null,
+      "confidence": "tba"
+    },
+    "venue": {
+      "name": "T-Mobile Arena",
+      "city": "Las Vegas, Nevada",
+      "country": "USA"
+    },
+    "promotion": [
+      "Zuffa Boxing"
+    ],
+    "titles": [
+      "WBC welterweight world championship"
+    ],
+    "broadcast": {
+      "australia": "Paramount+"
+    },
+    "main_card": [
+      "Ryan Garcia vs Conor Benn",
+      "Undercard TBA"
+    ],
+    "sources": [
+      {
+        "url": "https://www.ufc.com/news/dana-white-makes-it-official-ryan-garcia-vs-conor-benn-sept-12",
+        "publisher": "Zuffa Boxing / UFC",
+        "checked_at": "2026-07-23T21:45:00+10:00"
+      }
+    ],
+    "history": [
+      {
+        "version": 1,
+        "date": "2026-07-23",
+        "changes": [
+          "Approved official Garcia vs Benn event",
+          "Main-card start estimated pending official announcement"
+        ]
+      }
+    ],
+    "main_card_start": {
+      "value": "2026-09-13T10:00:00+10:00",
+      "confidence": "estimated"
+    }
   }
 ]
