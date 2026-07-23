@@ -38,11 +38,17 @@ jobs:
       - name: Regenerate calendar and website
         if: steps.discover.outputs.exit_code == '10'
         run: python scripts/generate.py
-      - name: Commit automatic update
-        if: steps.discover.outputs.exit_code == '10'
+      - name: Commit discovery results
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/events.json data/proposed-events.json major-boxing-calendar.ics index.html
-          git commit -m "Automatically update boxing calendar"
+          git add data/proposed-events.json
+          if [ "${{ steps.discover.outputs.exit_code }}" = "10" ]; then
+            git add data/events.json major-boxing-calendar.ics index.html
+          fi
+          if git diff --cached --quiet; then
+            echo "No discovery changes to commit."
+            exit 0
+          fi
+          git commit -m "Automatically update boxing discovery results"
           git push
