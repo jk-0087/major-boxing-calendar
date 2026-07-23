@@ -190,4 +190,18 @@ URL:https://www.dazn.com/en-US/news/boxing/dazn-boxing-schedule-2026-fight-dates
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
+BEGIN:VEVENT
+UID:mbc-2026-09-12-garcia-benn@jk-0087.github.io
+DTSTAMP:20260723T114500Z
+LAST-MODIFIED:20260723T114500Z
+SEQUENCE:1
+DTSTART:20260913T000000Z
+DTEND:20260913T050000Z
+SUMMARY:Ryan Garcia vs Conor Benn
+LOCATION:T-Mobile Arena
+DESCRIPTION:Status\nOfficial\n\nPromotion\nZuffa Boxing\n\nCity\nLas Vegas\, Nevada\n\nCountry\nUSA\n\nTitles\nWBC welterweight world championship\n\nAustralia\nParamount+\n\nMain Card Start\n10:00 AM\, Sun 13 Sep 2026 (Estimated)\n\nEstimated Finish\n3:00 PM\, Sun 13 Sep 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nRyan Garcia vs Conor Benn\nUndercard TBA\n\nOfficial / Schedule Source\nhttps://www.ufc.com/news/dana-white-makes-it-official-ryan-garcia-vs-conor-benn-sept-12\n\nVerified\n23 Jul 2026\, 9:45 PM
+URL:https://www.ufc.com/news/dana-white-makes-it-official-ryan-garcia-vs-conor-benn-sept-12
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
 END:VCALENDAR
