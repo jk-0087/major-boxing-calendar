@@ -759,5 +759,182 @@
       "value": "2026-09-13T02:00:00+10:00",
       "confidence": "confirmed"
     }
+  },
+  {
+    "uid": "mbc-2026-08-08-johnson-thorslund@jk-0087.github.io",
+    "sequence": 1,
+    "status": "Official",
+    "title": "Cherneka Johnson vs Dina Thorslund",
+    "fighters": {
+      "red": "Cherneka Johnson",
+      "blue": "Dina Thorslund"
+    },
+    "end": {
+      "value": "2026-08-09T17:00:00+10:00",
+      "confidence": "estimated"
+    },
+    "ring_walk": {
+      "value": null,
+      "confidence": "tba"
+    },
+    "venue": {
+      "name": "Caribe Royale",
+      "city": "Orlando, Florida",
+      "country": "USA"
+    },
+    "promotion": [
+      "Most Valuable Promotions"
+    ],
+    "titles": [
+      "Undisputed bantamweight world championship",
+      "Unified middleweight world championship: Desley Robinson vs Tammara Thibeault"
+    ],
+    "broadcast": {
+      "australia": "ESPN / YouTube (availability varies)"
+    },
+    "main_card": [
+      "Cherneka Johnson vs Dina Thorslund",
+      "Desley Robinson vs Tammara Thibeault",
+      "Shurretta Metcalf vs Amanda Galle",
+      "Krystal Rosado vs Alondra Hernandez"
+    ],
+    "sources": [
+      {
+        "url": "https://www.mostvaluablepromotions.com/event/mvpw-05-johnson-vs-thorslund/",
+        "publisher": "Most Valuable Promotions",
+        "checked_at": "2026-07-23T21:20:00+10:00"
+      }
+    ],
+    "history": [
+      {
+        "version": 1,
+        "date": "2026-07-23",
+        "changes": [
+          "Approved from MVP staged events"
+        ]
+      }
+    ],
+    "main_card_start": {
+      "value": "2026-08-09T12:00:00+10:00",
+      "confidence": "confirmed"
+    }
+  },
+  {
+    "uid": "mbc-2026-08-21-serrano-manzur@jk-0087.github.io",
+    "sequence": 1,
+    "status": "Official",
+    "title": "Amanda Serrano vs Lucrecia Manzur",
+    "fighters": {
+      "red": "Amanda Serrano",
+      "blue": "Lucrecia Manzur"
+    },
+    "end": {
+      "value": "2026-08-22T16:00:00+10:00",
+      "confidence": "estimated"
+    },
+    "ring_walk": {
+      "value": null,
+      "confidence": "tba"
+    },
+    "venue": {
+      "name": "Pechanga Resort Casino",
+      "city": "Temecula, California",
+      "country": "USA"
+    },
+    "promotion": [
+      "Most Valuable Promotions"
+    ],
+    "titles": [
+      "Unified featherweight world championship"
+    ],
+    "broadcast": {
+      "australia": "TikTok LIVE"
+    },
+    "main_card": [
+      "Amanda Serrano vs Lucrecia Manzur",
+      "Jahmal Harvey vs Hammet Keb",
+      "Jully Oliveira vs Cinderella Linnear",
+      "Iyana Verduzco vs Miguelina Hernandez",
+      "Nelvie Tiafack vs Salvador Zavala",
+      "Jocelyn Camarillo vs Ashley Felix"
+    ],
+    "sources": [
+      {
+        "url": "https://www.mostvaluablepromotions.com/event/serrano-vs-manzur/",
+        "publisher": "Most Valuable Promotions",
+        "checked_at": "2026-07-23T21:20:00+10:00"
+      }
+    ],
+    "history": [
+      {
+        "version": 1,
+        "date": "2026-07-23",
+        "changes": [
+          "Approved from MVP staged events"
+        ]
+      }
+    ],
+    "main_card_start": {
+      "value": "2026-08-22T11:00:00+10:00",
+      "confidence": "confirmed"
+    }
+  },
+  {
+    "uid": "mbc-2026-08-29-mayer-cameron@jk-0087.github.io",
+    "sequence": 1,
+    "status": "Official",
+    "title": "Mikaela Mayer vs Chantelle Cameron",
+    "fighters": {
+      "red": "Mikaela Mayer",
+      "blue": "Chantelle Cameron"
+    },
+    "end": {
+      "value": "2026-08-30T07:00:00+10:00",
+      "confidence": "estimated"
+    },
+    "ring_walk": {
+      "value": null,
+      "confidence": "tba"
+    },
+    "venue": {
+      "name": "bp pulse LIVE",
+      "city": "Birmingham",
+      "country": "United Kingdom"
+    },
+    "promotion": [
+      "Most Valuable Promotions"
+    ],
+    "titles": [
+      "Unified junior middleweight world championship",
+      "Unified lightweight world championship: Caroline Dubois vs Amelia Moore"
+    ],
+    "broadcast": {
+      "australia": "ESPN / ESPN+ (availability TBA)"
+    },
+    "main_card": [
+      "Mikaela Mayer vs Chantelle Cameron",
+      "Caroline Dubois vs Amelia Moore",
+      "Terri Harper vs Miranda Reyes"
+    ],
+    "sources": [
+      {
+        "url": "https://www.mostvaluablepromotions.com/event/mvpw-06-mayer-vs-cameron/",
+        "publisher": "Most Valuable Promotions",
+        "checked_at": "2026-07-23T21:20:00+10:00"
+      }
+    ],
+    "history": [
+      {
+        "version": 1,
+        "date": "2026-07-23",
+        "changes": [
+          "Approved from MVP staged events"
+        ]
+      }
+    ],
+    "main_card_start": {
+      "value": "2026-08-30T02:00:00+10:00",
+      "confidence": "confirmed"
+    }
   }
 ]
