@@ -17,9 +17,9 @@ The live source of truth is `data/events.json`. Every six hours, GitHub Actions 
 - **Tasman Fighters**
 - **Zuffa Boxing**
 
-Every source is isolated: HTTP errors, timeouts, blocking, or suspicious parser results are logged and skipped without failing the workflow or changing the existing calendar.
+Every source is isolated: HTTP errors, timeouts, blocking, or suspicious parser results are logged and skipped without failing the workflow. A failed source never causes existing calendar events to be deleted or cleared.
 
-If Matchroom or DAZN cannot be fetched—or returns suspiciously few events—the source is skipped and `events.json` remains unchanged. A run with no usable sources completes as a safe no-change result.
+If any source—including Matchroom or DAZN—cannot be fetched or returns suspiciously few events, that source is skipped while the remaining sources continue. A run with no usable sources leaves `events.json` unchanged.
 
 ## Automatic behavior
 
@@ -28,7 +28,7 @@ If Matchroom or DAZN cannot be fetched—or returns suspiciously few events—th
 - uses `main_card_start` as the calendar event start (`DTSTART`); ring-walk estimates remain description-only
 - updates a matched event date and shifts its stored main-card start, finish, and ring-walk times by the same number of days
 - increments `SEQUENCE` only when a meaningful field changes
-- regenerates `major-boxing-calendar.ics` and `index.html` only when safe changes are applied
+- regenerates `major-boxing-calendar.ics` and `index.html` after safe matched updates; the build workflow also keeps both generated files current after relevant pushes
 - never deletes events because a source item disappears
 - stages unmatched fights in `data/proposed-events.json` instead of publishing them automatically
 
