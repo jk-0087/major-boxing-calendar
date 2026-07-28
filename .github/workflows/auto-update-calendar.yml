@@ -36,15 +36,14 @@ jobs:
       - run: python scripts/validate.py
       - run: python -m pytest -q
       - name: Regenerate calendar and website
-        if: steps.discover.outputs.exit_code == '10'
         run: python scripts/generate.py
       - name: Commit discovery results
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/proposed-events.json
+          git add data/proposed-events.json major-boxing-calendar.ics index.html
           if [ "${{ steps.discover.outputs.exit_code }}" = "10" ]; then
-            git add data/events.json major-boxing-calendar.ics index.html
+            git add data/events.json
           fi
           if git diff --cached --quiet; then
             echo "No discovery changes to commit."

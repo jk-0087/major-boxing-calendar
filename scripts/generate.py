@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import html
 import json
+import os
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -29,7 +30,15 @@ def friendly(value: str | None, confidence: str) -> str:
     rendered = parse_dt(value).strftime("%-I:%M %p, %a %-d %b %Y")
     return f"{rendered} ({confidence.title()})"
 
+def current_time() -> datetime:
+    override = os.environ.get("MBC_NOW")
+    now = parse_dt(override) if override else datetime.now(timezone.utc)
+    if now.tzinfo is None:
+        raise ValueError("MBC_NOW must include a timezone offset")
+    return now
+
 events.sort(key=lambda item: item["main_card_start"]["value"] or "9999")
+now = current_time()
 
 ics_lines = [
     "BEGIN:VCALENDAR",
@@ -84,18 +93,21 @@ for event in events:
         "END:VEVENT",
     ])
 
-    date_label = parse_dt(event["main_card_start"]["value"]).strftime("%-d %b")
-    cards.append(
-        '<article class="event">'
-        f'<div class="date">{html.escape(date_label)}</div>'
-        '<div>'
-        f'<h2>{html.escape(event["title"])}</h2>'
-        f'<p>{html.escape(event["venue"]["name"])} · {html.escape(event["venue"]["city"])}</p>'
-        f'<p><strong>{html.escape(event["status"])}</strong> · '
-        f'{html.escape(event["broadcast"]["australia"])}</p>'
-        '</div>'
-        '</article>'
-    )
+    # Keep completed cards in the source data and subscription feed, but remove
+    # them from the public upcoming-events page after their estimated finish.
+    if parse_dt(event["end"]["value"]) > now:
+        date_label = parse_dt(event["main_card_start"]["value"]).strftime("%-d %b")
+        cards.append(
+            '<article class="event">'
+            f'<div class="date">{html.escape(date_label)}</div>'
+            '<div>'
+            f'<h2>{html.escape(event["title"])}</h2>'
+            f'<p>{html.escape(event["venue"]["name"])} · {html.escape(event["venue"]["city"])}</p>'
+            f'<p><strong>{html.escape(event["status"])}</strong> · '
+            f'{html.escape(event["broadcast"]["australia"])}</p>'
+            '</div>'
+            '</article>'
+        )
 
 ics_lines.append("END:VCALENDAR")
 (ROOT / "major-boxing-calendar.ics").write_text(
@@ -134,4 +146,7 @@ p { margin: 4px 0; color: #444; }
 """
 
 (ROOT / "index.html").write_text(index_html, encoding="utf-8")
-print(f"Generated calendar and website for {len(events)} events.")
+print(
+    f"Generated calendar for {len(events)} events and website for "
+    f"{len(cards)} upcoming events."
+)
