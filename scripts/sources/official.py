@@ -234,26 +234,94 @@ def parse_official_schedule(html: str, spec: SourceSpec, today: date) -> list[Di
     return sorted(found.values(), key=lambda event: (event.event_date, event.title))
 
 
+def parse_no_limit_event_detail(
+    html: str,
+    source_url: str,
+    today: date,
+) -> DiscoveredEvent | None:
+    soup = BeautifulSoup(html, "html.parser")
+    page_text = _clean(soup.get_text(" ", strip=True))
+    event_date = _parse_date(page_text, today)
+    if not event_date or event_date < today:
+        return None
+
+    candidates = []
+    if soup.title:
+        candidates.append(_clean(soup.title.get_text(" ", strip=True).split("|", 1)[0]))
+    candidates.extend(
+        _clean(node.get_text(" ", strip=True))
+        for node in soup.select("h1, h2, h3")
+    )
+    lines = [_clean(line) for line in soup.get_text("\n").splitlines() if _clean(line)]
+    candidates.extend(lines)
+    candidates.extend(
+        f"{lines[index - 1]} vs {lines[index + 1]}"
+        for index in range(1, len(lines) - 1)
+        if lines[index].casefold().rstrip(".") in {"v", "vs", "versus"}
+    )
+
+    for candidate in candidates:
+        fight = FIGHT_RE.fullmatch(candidate) or FIGHT_RE.search(candidate)
+        if not fight:
+            continue
+        left = _clean_fighter(fight.group("a"))
+        right = _clean_fighter(fight.group("b"))
+        if looks_like_fight(left, right):
+            return DiscoveredEvent(f"{left} vs {right}", event_date, source_url)
+    return None
+
+
+def fetch_no_limit_events(
+    listing_html: str,
+    spec: SourceSpec,
+    today: date,
+    headers: dict[str, str],
+) -> list[DiscoveredEvent]:
+    soup = BeautifulSoup(listing_html, "html.parser")
+    detail_urls = {
+        urljoin(spec.url, anchor.get("href", ""))
+        for anchor in soup.select('a[href*="/events/"]')
+        if urljoin(spec.url, anchor.get("href", "")).rstrip("/")
+        != spec.url.rstrip("/")
+    }
+    found: dict[tuple[str, date], DiscoveredEvent] = {}
+    for detail_url in sorted(detail_urls):
+        try:
+            response = requests.get(detail_url, timeout=30, headers=headers)
+        except requests.RequestException:
+            continue
+        if response.status_code != 200:
+            continue
+        event = parse_no_limit_event_detail(response.text, detail_url, today)
+        if event:
+            found[(event.title.casefold(), event.event_date)] = event
+    return sorted(found.values(), key=lambda event: (event.event_date, event.title))
+
+
 def fetch_official_events(spec: SourceSpec, today: date | None = None) -> list[DiscoveredEvent]:
     today = today or date.today()
+    headers = {
+        "User-Agent": (
+            "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+            "Chrome/126.0 Safari/537.36 MajorBoxingCalendar/1.0"
+        ),
+        "Accept-Language": "en-AU,en;q=0.9",
+    }
     try:
         response = requests.get(
             spec.url,
             timeout=30,
-            headers={
-                "User-Agent": (
-                    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
-                    "Chrome/126.0 Safari/537.36 MajorBoxingCalendar/1.0"
-                ),
-                "Accept-Language": "en-AU,en;q=0.9",
-            },
+            headers=headers,
         )
     except requests.RequestException as exc:
         raise OfficialSourceError(f"Unable to fetch {spec.name}: {exc}") from exc
     if response.status_code != 200:
         raise OfficialSourceError(f"{spec.name} returned HTTP {response.status_code}")
 
-    events = parse_official_schedule(response.text, spec, today)
+    if spec.name == "No Limit Boxing":
+        events = fetch_no_limit_events(response.text, spec, today, headers)
+    else:
+        events = parse_official_schedule(response.text, spec, today)
     if not events:
         raise OfficialSourceError(f"Safety stop: {spec.name} parsed 0 schedule entries")
     return events

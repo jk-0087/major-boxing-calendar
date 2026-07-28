@@ -1,6 +1,13 @@
 from datetime import date
+from unittest.mock import Mock, patch
 
-from scripts.sources.official import OFFICIAL_SOURCES, SourceSpec, parse_official_schedule
+from scripts.sources.official import (
+    OFFICIAL_SOURCES,
+    SourceSpec,
+    fetch_official_events,
+    parse_no_limit_event_detail,
+    parse_official_schedule,
+)
 
 
 HTML = """
@@ -70,4 +77,44 @@ def test_registered_source_parser_handles_split_names_and_numeric_date():
     events = parse_official_schedule(html, spec, date(2026, 7, 28))
     assert ("Moses Itauma vs Filip Hrgovic", "2026-08-29") in [
         (event.title, event.event_date.isoformat()) for event in events
+    ]
+
+
+NO_LIMIT_DETAIL_HTML = """
+<html>
+  <head><title>Nikita Tszyu vs Ben Mahoney | No Limit Boxing</title></head>
+  <body>
+    <p>Two undefeated Australians go head-to-head on Wednesday, 26 August.</p>
+    <time>Wednesday 26 August, 6:00PM AEST</time>
+  </body>
+</html>
+"""
+
+
+def test_no_limit_detail_parser_extracts_bout_and_date():
+    event = parse_no_limit_event_detail(
+        NO_LIMIT_DETAIL_HTML,
+        "https://nolimitboxing.com.au/events/nikita-tszyu-vs-ben-mahoney",
+        date(2026, 7, 28),
+    )
+    assert event is not None
+    assert event.title == "Nikita Tszyu vs Ben Mahoney"
+    assert event.event_date.isoformat() == "2026-08-26"
+
+
+@patch("scripts.sources.official.requests.get")
+def test_no_limit_fetch_follows_event_detail_links(mock_get):
+    listing = """
+    <a href="/events/nikita-tszyu-vs-ben-mahoney">
+      Nikita Tszyu VS Ben Mahoney
+    </a>
+    """
+    mock_get.side_effect = [
+        Mock(status_code=200, text=listing),
+        Mock(status_code=200, text=NO_LIMIT_DETAIL_HTML),
+    ]
+    spec = next(source for source in OFFICIAL_SOURCES if source.name == "No Limit Boxing")
+    events = fetch_official_events(spec, today=date(2026, 7, 28))
+    assert [(event.title, event.event_date.isoformat()) for event in events] == [
+        ("Nikita Tszyu vs Ben Mahoney", "2026-08-26"),
     ]
