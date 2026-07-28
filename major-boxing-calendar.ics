@@ -192,15 +192,15 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:mbc-2026-09-12-canelo-mbilli@jk-0087.github.io
-DTSTAMP:20260721T100000Z
-LAST-MODIFIED:20260721T100000Z
-SEQUENCE:4
-DTSTART:20260912T160000Z
-DTEND:20260912T210000Z
+DTSTAMP:20260728T120946Z
+LAST-MODIFIED:20260728T120946Z
+SEQUENCE:5
+DTSTART:20261031T150000Z
+DTEND:20261031T200000Z
 SUMMARY:Canelo Alvarez vs Christian Mbilli
 LOCATION:Venue TBA
-DESCRIPTION:Status\nOfficial\n\nPromotion\nRiyadh Season\n\nCity\nRiyadh\n\nCountry\nSaudi Arabia\n\nTitles\nWBC super middleweight world title\n\nAustralia\nDAZN / DAZN PPV status TBA\n\nMain Card Start\n2:00 AM\, Sun 13 Sep 2026 (Confirmed)\n\nEstimated Finish\n7:00 AM\, Sun 13 Sep 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\n2:00 am AEST\n\nOfficial / Schedule Source\nhttps://www.dazn.com/en-US/news/boxing/dazn-boxing-schedule-2026-fight-dates-and-live-stream-for-confirmed-cards/ehgk0syi2n4a13u2yglrd8h84\n\nVerified\n21 Jul 2026\, 8:00 PM
-URL:https://www.dazn.com/en-US/news/boxing/dazn-boxing-schedule-2026-fight-dates-and-live-stream-for-confirmed-cards/ehgk0syi2n4a13u2yglrd8h84
+DESCRIPTION:Status\nOfficial\n\nPromotion\nRiyadh Season\n\nCity\nRiyadh\n\nCountry\nSaudi Arabia\n\nTitles\nWBC super middleweight world title\n\nAustralia\nDAZN / DAZN PPV status TBA\n\nMain Card Start\n2:00 AM\, Sun 1 Nov 2026 (Estimated)\n\nEstimated Finish\n7:00 AM\, Sun 1 Nov 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nUndercard TBA\n\nOfficial / Schedule Source\nhttps://boxingnewsonline.net/news/canelo-announces-new-date-for-mbilli/\n\nVerified\n28 Jul 2026\, 10:09 PM
+URL:https://boxingnewsonline.net/news/canelo-announces-new-date-for-mbilli/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT

@@ -751,7 +751,7 @@
   },
   {
     "uid": "mbc-2026-09-12-canelo-mbilli@jk-0087.github.io",
-    "sequence": 4,
+    "sequence": 5,
     "status": "Official",
     "title": "Canelo Alvarez vs Christian Mbilli",
     "fighters": {
@@ -759,7 +759,7 @@
       "blue": "Christian Mbilli"
     },
     "end": {
-      "value": "2026-09-13T07:00:00+10:00",
+      "value": "2026-11-01T07:00:00+11:00",
       "confidence": "estimated"
     },
     "ring_walk": {
@@ -781,9 +781,14 @@
       "australia": "DAZN / DAZN PPV status TBA"
     },
     "main_card": [
-      "2:00 am AEST"
+      "Undercard TBA"
     ],
     "sources": [
+      {
+        "url": "https://boxingnewsonline.net/news/canelo-announces-new-date-for-mbilli/",
+        "publisher": "Boxing News (Canelo confirmation)",
+        "checked_at": "2026-07-28T22:09:46+10:00"
+      },
       {
         "url": "https://www.dazn.com/en-US/news/boxing/dazn-boxing-schedule-2026-fight-dates-and-live-stream-for-confirmed-cards/ehgk0syi2n4a13u2yglrd8h84",
         "publisher": "Schedule source",
@@ -818,11 +823,19 @@
         "changes": [
           "Defined calendar DTSTART explicitly as the main-card broadcast start"
         ]
+      },
+      {
+        "version": 5,
+        "date": "2026-07-28",
+        "changes": [
+          "Moved event from 12 September to 31 October 2026 after Canelo confirmed the new date",
+          "Changed main-card start confidence to estimated pending an official broadcast time"
+        ]
       }
     ],
     "main_card_start": {
-      "value": "2026-09-13T02:00:00+10:00",
-      "confidence": "confirmed"
+      "value": "2026-11-01T02:00:00+11:00",
+      "confidence": "estimated"
     }
   },
   {
