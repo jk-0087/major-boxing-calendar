@@ -25,6 +25,17 @@ def test_name_matching_handles_junior_suffix():
     assert pair_score("Errol Spence Jr vs Tim Tszyu", "Errol Spence vs Tim Tszyu") > 0.95
 
 
+def test_name_matching_handles_surname_only_schedule_titles():
+    assert pair_score(
+        "Cherneka Johnson vs Dina Thorslund",
+        "Johnson vs Thorslund",
+    ) == 1.0
+    assert pair_score(
+        "Troy Williamson vs Callum Simpson",
+        "Williamson vs Simpson 2",
+    ) == 1.0
+
+
 def test_date_change_preserves_uid_and_increments_sequence():
     event = sample_event()
     discovered = DiscoveredEvent("Errol Spence vs Tim Tszyu", date(2026, 8, 2), "https://www.dazn.com/example")

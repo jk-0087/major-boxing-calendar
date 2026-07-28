@@ -9,6 +9,7 @@ from bs4 import BeautifulSoup
 from dateutil import parser as date_parser
 
 from scripts.models import DiscoveredEvent
+from scripts.sources.official import looks_like_fight
 
 DAZN_SCHEDULE_URL = (
     "https://www.dazn.com/en-US/news/boxing/"
@@ -71,12 +72,11 @@ def fetch_dazn_events(today: date | None = None) -> list[DiscoveredEvent]:
         if parsed_date:
             current_date = parsed_date
         for fight in FIGHT_RE.finditer(line):
-            if not current_date:
+            if not current_date or current_date < today:
                 continue
             left = _normalise_name(fight.group("a"))
             right = _normalise_name(fight.group("b"))
-            # Avoid headings or sentence fragments that are clearly too long.
-            if len(left.split()) > 7 or len(right.split()) > 7:
+            if not looks_like_fight(left, right):
                 continue
             title = f"{left} vs {right}"
             event = DiscoveredEvent(title, current_date, DAZN_SCHEDULE_URL)

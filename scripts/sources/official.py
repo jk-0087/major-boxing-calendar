@@ -1,8 +1,10 @@
 from __future__ import annotations
 
 import re
+import json
 from dataclasses import dataclass
 from datetime import date
+from urllib.parse import urljoin
 
 import requests
 from bs4 import BeautifulSoup
@@ -18,16 +20,34 @@ class SourceSpec:
 
 
 OFFICIAL_SOURCES = (
-    SourceSpec("Queensberry", "https://queensberry.co.uk/"),
-    SourceSpec("Top Rank", "https://toprank.com/"),
-    SourceSpec("The Ring / Riyadh Season", "https://www.ringmagazine.com/"),
+    SourceSpec("Queensberry", "https://queensberry.co.uk/pages/events"),
+    SourceSpec("Top Rank", "https://toprank.com/events/upcoming"),
+    SourceSpec("The Ring / Riyadh Season", "https://www.ringmagazine.com/events"),
     SourceSpec("Premier Boxing Champions", "https://www.premierboxingchampions.com/boxing-schedule"),
-    SourceSpec("Golden Boy", "https://www.goldenboy.com/"),
-    SourceSpec("BOXXER", "https://www.boxxer.com/"),
+    SourceSpec("Golden Boy", "https://www.goldenboy.com/events/"),
+    SourceSpec("BOXXER", "https://www.boxxer.com/tickets/"),
     SourceSpec("No Limit Boxing", "https://nolimitboxing.com.au/events"),
     SourceSpec("Tasman Fighters", "https://www.tasmanfighters.com/event-list"),
     SourceSpec("Zuffa Boxing", "https://www.ufc.com/zuffaboxing"),
 )
+
+EDITORIAL_WORDS = {
+    "angle",
+    "anniversary",
+    "delivered",
+    "highlights",
+    "hoodie",
+    "interview",
+    "post-show",
+    "provides",
+    "results",
+    "scorecards",
+    "shirt",
+    "statement",
+    "update",
+    "video",
+    "weigh-in",
+}
 
 MONTHS = (
     "January|February|March|April|May|June|July|August|September|October|November|December|"
@@ -37,6 +57,9 @@ DATE_RE = re.compile(
     rf"\b(?:(?:{MONTHS})\s+\d{{1,2}}(?:st|nd|rd|th)?(?:,)?(?:\s+\d{{4}})?|"
     rf"\d{{1,2}}(?:st|nd|rd|th)?\s+(?:{MONTHS})(?:\s+\d{{4}})?)\b",
     re.I,
+)
+NUMERIC_DATE_RE = re.compile(
+    r"\b(?P<day>\d{1,2})\s*\|\s*(?P<month>\d{1,2})\s*\|\s*(?P<year>\d{2}|\d{4})\b"
 )
 FIGHT_RE = re.compile(
     r"(?P<a>[A-ZÀ-ÖØ-öø-ÿ][\wÀ-ÖØ-öø-ÿ.'’\- ]{1,55}?)\s*"
@@ -54,7 +77,35 @@ def _clean(value: str) -> str:
     return " ".join(value.strip(" -–—:;,.\t\n").split())
 
 
+def _clean_fighter(value: str) -> str:
+    value = re.sub(r"\s+Tickets$", "", value, flags=re.I)
+    value = re.sub(r"\s+Live on\s+.+$", "", value, flags=re.I)
+    value = " ".join(part.strip("-–—") for part in _clean(value).split())
+    if value.isupper() or value.islower():
+        value = value.title()
+    return value
+
+
+def looks_like_fight(left: str, right: str) -> bool:
+    words = {word.casefold().strip(".'’") for word in f"{left} {right}".split()}
+    return (
+        bool(left and right)
+        and len(left.split()) <= 7
+        and len(right.split()) <= 7
+        and not words.intersection(EDITORIAL_WORDS)
+    )
+
+
 def _parse_date(value: str, today: date) -> date | None:
+    numeric = NUMERIC_DATE_RE.search(value)
+    if numeric:
+        year = int(numeric.group("year"))
+        if year < 100:
+            year += 2000
+        try:
+            return date(year, int(numeric.group("month")), int(numeric.group("day")))
+        except ValueError:
+            return None
     match = DATE_RE.search(value)
     if not match:
         return None
@@ -75,25 +126,105 @@ def parse_official_schedule(html: str, spec: SourceSpec, today: date) -> list[Di
     lines = [_clean(line) for line in soup.get_text("\n").splitlines() if _clean(line)]
     found: dict[tuple[str, date], DiscoveredEvent] = {}
     current_date: date | None = None
+    date_line = -100
+
+    # Prefer schema.org event data when a schedule exposes it.
+    for script in soup.select('script[type="application/ld+json"]'):
+        try:
+            payload = json.loads(script.string or script.get_text())
+        except (json.JSONDecodeError, TypeError):
+            continue
+        stack = payload if isinstance(payload, list) else [payload]
+        while stack:
+            item = stack.pop()
+            if isinstance(item, list):
+                stack.extend(item)
+                continue
+            if not isinstance(item, dict):
+                continue
+            stack.extend(value for value in item.values() if isinstance(value, (dict, list)))
+            if item.get("@type") not in {"Event", "SportsEvent"} or not item.get("startDate"):
+                continue
+            try:
+                event_date = date_parser.parse(str(item["startDate"])).date()
+            except (ValueError, OverflowError):
+                continue
+            fight = FIGHT_RE.search(str(item.get("name", "")))
+            if not fight or event_date < today:
+                continue
+            left, right = _clean_fighter(fight.group("a")), _clean_fighter(fight.group("b"))
+            if looks_like_fight(left, right):
+                title = f"{left} vs {right}"
+                found[(title.casefold(), event_date)] = DiscoveredEvent(title, event_date, spec.url)
+
+    # Event-card links are more reliable than unrestricted page text on sites
+    # that mix schedules with news, merchandise, and historical content.
+    for anchor in soup.select("a[href]"):
+        href = urljoin(spec.url, anchor.get("href", ""))
+        anchor_text = _clean(anchor.get_text(" ", strip=True))
+        if not (
+            FIGHT_RE.search(anchor_text)
+            or re.search(r"/(?:events?/|event-details/|the-event/|fight-night-)[^?#]+", href, re.I)
+            or re.search(r"/pages/[^?#]*-vs-", href, re.I)
+        ):
+            continue
+        candidates = [anchor_text]
+        parent = anchor
+        for _ in range(8):
+            text = _clean(parent.get_text(" ", strip=True))
+            event_date = _parse_date(text, today)
+            if event_date and event_date >= today:
+                candidates.extend(
+                    _clean(node.get_text(" ", strip=True))
+                    for node in parent.select("h1, h2, h3, h4, h5, h6")
+                )
+                strings = [_clean(value) for value in parent.stripped_strings]
+                candidates.extend(strings)
+                name_width = 2 if spec.name == "Queensberry" else 1
+                candidates.extend(
+                    f"{' '.join(strings[max(0, index - name_width):index])} vs "
+                    f"{' '.join(strings[index + 1:index + 1 + name_width])}"
+                    for index in range(1, len(strings) - 1)
+                    if strings[index].casefold().rstrip(".") in {"v", "vs", "versus"}
+                )
+                for candidate in candidates:
+                    fight = FIGHT_RE.fullmatch(candidate) or FIGHT_RE.search(candidate)
+                    if not fight:
+                        continue
+                    left, right = _clean_fighter(fight.group("a")), _clean_fighter(fight.group("b"))
+                    if looks_like_fight(left, right):
+                        title = f"{left} vs {right}"
+                        found[(title.casefold(), event_date)] = DiscoveredEvent(
+                            title, event_date, href
+                        )
+                        break
+                break
+            parent = parent.parent
+            if parent is None:
+                break
+
+    if spec in OFFICIAL_SOURCES:
+        return sorted(found.values(), key=lambda event: (event.event_date, event.title))
 
     for index, line in enumerate(lines):
         parsed = _parse_date(line, today)
         if parsed:
             current_date = parsed
-        if not current_date:
+            date_line = index
+        if not current_date or current_date < today or index - date_line > 10:
             continue
 
         fight = FIGHT_RE.fullmatch(line) or FIGHT_RE.search(line)
         if fight:
-            left = _clean(fight.group("a"))
-            right = _clean(fight.group("b"))
+            left = _clean_fighter(fight.group("a"))
+            right = _clean_fighter(fight.group("b"))
         elif line.casefold().rstrip(".") in {"v", "vs", "versus"} and 0 < index < len(lines) - 1:
-            left = _clean(lines[index - 1])
-            right = _clean(lines[index + 1])
+            left = _clean_fighter(lines[index - 1])
+            right = _clean_fighter(lines[index + 1])
         else:
             continue
 
-        if not left or not right or len(left.split()) > 7 or len(right.split()) > 7:
+        if not looks_like_fight(left, right):
             continue
         if _parse_date(left, today) or _parse_date(right, today):
             continue

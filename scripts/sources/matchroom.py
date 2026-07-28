@@ -98,26 +98,38 @@ def fetch_matchroom_events(today: date | None = None) -> list[DiscoveredEvent]:
         href = urljoin(MATCHROOM_EVENTS_URL, anchor.get("href", ""))
         if href.rstrip("/") == MATCHROOM_EVENTS_URL.rstrip("/"):
             continue
-        anchor_text = _clean(anchor.get_text(" ", strip=True))
-        fight = FIGHT_RE.fullmatch(anchor_text) or FIGHT_RE.search(anchor_text)
-        if not fight:
-            continue
-        left = _clean(fight.group("a"))
-        right = _clean(fight.group("b"))
-        if not left or not right or len(left.split()) > 7 or len(right.split()) > 7:
-            continue
+        title_candidates = [_clean(anchor.get_text(" ", strip=True))]
         parent = anchor
-        event_date = None
-        for _ in range(5):
+        event = None
+        for _ in range(6):
             text = _clean(parent.get_text(" ", strip=True))
             event_date = _parse_date(text, today)
             if event_date:
-                break
+                title_candidates.extend(
+                    _clean(node.get_text(" ", strip=True))
+                    for node in parent.select("h1, h2, h3, h4, h5, h6")
+                )
+                strings = [_clean(value) for value in parent.stripped_strings]
+                title_candidates.extend(strings)
+                title_candidates.extend(
+                    f"{strings[index - 1]} vs {strings[index + 1]}"
+                    for index in range(1, len(strings) - 1)
+                    if strings[index].casefold().rstrip(".") in {"v", "vs", "versus"}
+                )
+                for candidate in title_candidates:
+                    fight = FIGHT_RE.fullmatch(candidate) or FIGHT_RE.search(candidate)
+                    if not fight:
+                        continue
+                    left, right = _clean(fight.group("a")), _clean(fight.group("b"))
+                    if left and right and len(left.split()) <= 7 and len(right.split()) <= 7:
+                        event = DiscoveredEvent(f"{left} vs {right}", event_date, href)
+                        break
+                if event:
+                    break
             parent = parent.parent
             if parent is None:
                 break
-        if event_date:
-            event = DiscoveredEvent(f"{left} vs {right}", event_date, href)
+        if event and event.event_date >= today:
             found[(event.title.casefold(), event.event_date)] = event
 
     # Fallback for layouts where the event title is not wrapped by the event link.
@@ -129,7 +141,7 @@ def fetch_matchroom_events(today: date | None = None) -> list[DiscoveredEvent]:
             if parsed:
                 current_date = parsed
             fight = FIGHT_RE.search(line)
-            if current_date and fight:
+            if current_date and current_date >= today and fight:
                 left, right = _clean(fight.group("a")), _clean(fight.group("b"))
                 if left and right and len(left.split()) <= 7 and len(right.split()) <= 7:
                     title = f"{left} vs {right}"

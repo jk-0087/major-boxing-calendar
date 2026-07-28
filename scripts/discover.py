@@ -32,7 +32,7 @@ EVENTS_PATH = ROOT / "data/events.json"
 PROPOSALS_PATH = ROOT / "data/proposed-events.json"
 SYDNEY = ZoneInfo("Australia/Sydney")
 
-ALIASES = {"jr": "", "junior": "", "ii": "", "iii": ""}
+ALIASES = {"jr": "", "junior": "", "ii": "", "iii": "", "2": ""}
 
 
 def normalise_name(value: str) -> str:
@@ -52,6 +52,16 @@ def fighter_pair(title: str) -> tuple[str, str]:
 def pair_score(existing_title: str, discovered_title: str) -> float:
     e1, e2 = fighter_pair(existing_title)
     d1, d2 = fighter_pair(discovered_title)
+    e_surnames = (e1.rsplit(" ", 1)[-1] if e1 else "", e2.rsplit(" ", 1)[-1] if e2 else "")
+    d_surnames = (d1.rsplit(" ", 1)[-1] if d1 else "", d2.rsplit(" ", 1)[-1] if d2 else "")
+    if (
+        e_surnames[0] == d_surnames[0]
+        and e_surnames[1] == d_surnames[1]
+    ) or (
+        e_surnames[0] == d_surnames[1]
+        and e_surnames[1] == d_surnames[0]
+    ):
+        return 1.0
     direct = (SequenceMatcher(None, e1, d1).ratio() + SequenceMatcher(None, e2, d2).ratio()) / 2
     reverse = (SequenceMatcher(None, e1, d2).ratio() + SequenceMatcher(None, e2, d1).ratio()) / 2
     return max(direct, reverse)
