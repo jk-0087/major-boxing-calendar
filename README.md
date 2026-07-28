@@ -14,7 +14,6 @@ The live source of truth is `data/events.json`. Every six hours, GitHub Actions 
 - **BOXXER**
 - **Most Valuable Promotions (MVP)**
 - **No Limit Boxing**
-- **Tasman Fighters**
 - **Zuffa Boxing**
 
 Every source is isolated: HTTP errors, timeouts, blocking, or suspicious parser results are logged and skipped without failing the workflow. A failed source never causes existing calendar events to be deleted or cleared.

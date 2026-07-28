@@ -34,7 +34,6 @@ def test_all_agreed_promoters_are_registered():
         "Golden Boy",
         "BOXXER",
         "No Limit Boxing",
-        "Tasman Fighters",
         "Zuffa Boxing",
     }
 

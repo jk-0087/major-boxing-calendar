@@ -27,7 +27,6 @@ OFFICIAL_SOURCES = (
     SourceSpec("Golden Boy", "https://www.goldenboy.com/events/"),
     SourceSpec("BOXXER", "https://www.boxxer.com/tickets/"),
     SourceSpec("No Limit Boxing", "https://nolimitboxing.com.au/events"),
-    SourceSpec("Tasman Fighters", "https://www.tasmanfighters.com/event-list"),
     SourceSpec("Zuffa Boxing", "https://www.ufc.com/zuffaboxing"),
 )
 
