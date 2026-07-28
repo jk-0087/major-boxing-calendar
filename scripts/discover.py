@@ -15,7 +15,6 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from scripts.models import DiscoveredEvent
-from scripts.sources.dazn import DaznSourceError, fetch_dazn_events
 from scripts.sources.matchroom import (
     MATCHROOM_EVENTS_URL,
     MatchroomSourceError,
@@ -85,8 +84,6 @@ def best_match(events: list[dict], discovered: DiscoveredEvent) -> tuple[dict | 
 def source_publisher(url: str) -> str:
     if "matchroomboxing.com" in url:
         return "Matchroom"
-    if "dazn.com" in url:
-        return "DAZN"
     if "mostvaluablepromotions.com" in url:
         return "Most Valuable Promotions"
     for spec in OFFICIAL_SOURCES:
@@ -139,15 +136,6 @@ def discover_all() -> tuple[list[DiscoveredEvent], list[dict]]:
     except MatchroomSourceError as exc:
         statuses.append({"source": "Matchroom", "url": MATCHROOM_EVENTS_URL, "status": "skipped", "error": str(exc)})
         print(f"Primary Matchroom source skipped safely: {exc}", file=sys.stderr)
-
-    # DAZN is optional because it blocks GitHub Actions with HTTP 403.
-    try:
-        items = fetch_dazn_events()
-        discovered.extend(items)
-        statuses.append({"source": "DAZN", "status": "ok", "events": len(items)})
-    except DaznSourceError as exc:
-        statuses.append({"source": "DAZN", "status": "skipped", "error": str(exc)})
-        print(f"Optional DAZN source skipped: {exc}", file=sys.stderr)
 
     try:
         items = fetch_mvp_events()

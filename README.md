@@ -5,7 +5,6 @@ The live source of truth is `data/events.json`. Every six hours, GitHub Actions 
 ## Sources
 
 - **Matchroom Boxing**
-- **DAZN**
 - **Queensberry Promotions**
 - **Top Rank**
 - **The Ring / Riyadh Season**
