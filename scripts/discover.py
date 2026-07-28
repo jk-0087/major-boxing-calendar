@@ -6,7 +6,7 @@ import json
 import re
 import sys
 from copy import deepcopy
-from datetime import datetime, timedelta
+from datetime import datetime
 from difflib import SequenceMatcher
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -107,14 +107,10 @@ def update_existing(event: dict, discovered: DiscoveredEvent, checked_at: str) -
             source["publisher"] = publisher
             changes.append(f"Updated {publisher} schedule source")
 
-    current_date = datetime.fromisoformat(event["main_card_start"]["value"]).astimezone(SYDNEY).date()
-    if current_date != discovered.event_date:
-        delta = discovered.event_date - current_date
-        event["main_card_start"]["value"] = (datetime.fromisoformat(event["main_card_start"]["value"]) + timedelta(days=delta.days)).isoformat()
-        event["end"]["value"] = (datetime.fromisoformat(event["end"]["value"]) + timedelta(days=delta.days)).isoformat()
-        if event["ring_walk"].get("value"):
-            event["ring_walk"]["value"] = (datetime.fromisoformat(event["ring_walk"]["value"]) + timedelta(days=delta.days)).isoformat()
-        changes.append(f"Changed event date from {current_date.isoformat()} to {discovered.event_date.isoformat()}")
+    # Schedule adapters expose the advertised date at the venue, while stored
+    # starts are Australian broadcast datetimes. Those dates commonly differ by
+    # one day, so a date-only discovery must never rewrite a confirmed/estimated
+    # Sydney start. Schedule changes require a timezone-aware verified update.
 
     if changes:
         event["sequence"] += 1

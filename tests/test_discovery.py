@@ -35,14 +35,19 @@ def test_name_matching_handles_surname_only_schedule_titles():
     ) == 1.0
 
 
-def test_date_change_preserves_uid_and_increments_sequence():
+def test_venue_date_does_not_rewrite_sydney_broadcast_date():
     event = sample_event()
-    discovered = DiscoveredEvent("Errol Spence vs Tim Tszyu", date(2026, 8, 2), "https://example.com/schedule")
+    original_start = event["main_card_start"]["value"]
+    original_end = event["end"]["value"]
+    original_ring_walk = event["ring_walk"]["value"]
+    discovered = DiscoveredEvent("Errol Spence vs Tim Tszyu", date(2026, 7, 25), "https://example.com/schedule")
     changes = update_existing(event, discovered, "2026-07-21T21:00:00+10:00")
-    assert changes
+    assert changes == ["Added Official source schedule source"]
     assert event["uid"] == "stable-id@example.com"
     assert event["sequence"] == 4
-    assert event["main_card_start"]["value"].startswith("2026-08-02")
+    assert event["main_card_start"]["value"] == original_start
+    assert event["end"]["value"] == original_end
+    assert event["ring_walk"]["value"] == original_ring_walk
 
 
 def test_matchroom_source_is_identified():
