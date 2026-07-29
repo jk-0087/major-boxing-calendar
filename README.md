@@ -23,6 +23,8 @@ Every source is isolated: HTTP errors, timeouts, blocking, or suspicious parser 
 - strongly matches official listings to existing fights
 - preserves every existing UID
 - uses `main_card_start` as the calendar event start (`DTSTART`); ring-walk estimates remain description-only
+- publishes `DTSTART` as a fixed UTC instant so calendar apps reliably display it in the subscriber's timezone
+- records a named IANA timezone for each known venue and includes both Sydney and venue-local start times in event details
 - treats source dates as venue-local references and never rewrites an Australian broadcast datetime from date-only discovery
 - increments `SEQUENCE` only when a meaningful field changes
 - regenerates `major-boxing-calendar.ics` and `index.html` after safe matched updates; the build workflow also keeps both generated files current after relevant pushes

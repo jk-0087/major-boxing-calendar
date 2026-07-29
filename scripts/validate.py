@@ -2,6 +2,7 @@
 import json
 from datetime import datetime
 from pathlib import Path
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 ROOT = Path(__file__).resolve().parents[1]
 events = json.loads((ROOT / "data/events.json").read_text(encoding="utf-8"))
@@ -23,6 +24,15 @@ for index, event in enumerate(events, start=1):
     if "main_card_start" not in event:
         errors.append(f"{prefix}: missing main_card_start")
         continue
+
+    venue_timezone = event["venue"].get("timezone")
+    if venue_timezone:
+        try:
+            ZoneInfo(venue_timezone)
+        except ZoneInfoNotFoundError:
+            errors.append(f"{prefix}: invalid venue timezone {venue_timezone}")
+    elif event["venue"]["city"] != "TBA":
+        errors.append(f"{prefix}: known venue city requires a venue timezone")
 
     for field in ("main_card_start", "end", "ring_walk"):
         value = event[field]["value"]

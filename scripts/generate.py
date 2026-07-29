@@ -6,6 +6,7 @@ import json
 import os
 from datetime import datetime, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parents[1]
 events = json.loads((ROOT / "data/events.json").read_text(encoding="utf-8"))
@@ -24,10 +25,21 @@ def escape_ics(value: str) -> str:
         .replace(";", "\\;")
     )
 
-def friendly(value: str | None, confidence: str) -> str:
+SYDNEY = ZoneInfo("Australia/Sydney")
+
+
+def friendly(
+    value: str | None,
+    confidence: str,
+    timezone_name: str = "Australia/Sydney",
+) -> str:
     if not value:
         return "TBA"
-    rendered = parse_dt(value).strftime("%-I:%M %p, %a %-d %b %Y")
+    rendered = (
+        parse_dt(value)
+        .astimezone(ZoneInfo(timezone_name))
+        .strftime("%-I:%M %p %Z, %a %-d %b %Y")
+    )
     return f"{rendered} ({confidence.title()})"
 
 def current_time() -> datetime:
@@ -59,6 +71,16 @@ for event in events:
     checked_at = max(source["checked_at"] for source in event["sources"])
     checked_dt = parse_dt(checked_at)
     source_url = event["sources"][0]["url"]
+    venue_timezone = event["venue"]["timezone"]
+    venue_local_start = (
+        friendly(
+            event["main_card_start"]["value"],
+            event["main_card_start"]["confidence"],
+            venue_timezone,
+        )
+        if venue_timezone
+        else "TBA (venue timezone not yet confirmed)"
+    )
 
     description = (
         f"Status\n{event['status']}\n\n"
@@ -67,7 +89,8 @@ for event in events:
         f"Country\n{event['venue']['country']}\n\n"
         f"Titles\n" + "\n".join(event["titles"]) + "\n\n"
         f"Australia\n{event['broadcast']['australia']}\n\n"
-        f"Main Card Start\n{friendly(event['main_card_start']['value'], event['main_card_start']['confidence'])}\n\n"
+        f"Main Card Start (Sydney)\n{friendly(event['main_card_start']['value'], event['main_card_start']['confidence'])}\n\n"
+        f"Venue Local Start\n{venue_local_start}\n\n"
         f"Estimated Finish\n{friendly(event['end']['value'], event['end']['confidence'])}\n\n"
         f"Ring Walk\n{friendly(event['ring_walk']['value'], event['ring_walk']['confidence'])}\n\n"
         f"Main Card Bouts\n" + "\n".join(event["main_card"]) + "\n\n"
@@ -96,7 +119,11 @@ for event in events:
     # Keep completed cards in the source data and subscription feed, but remove
     # them from the public upcoming-events page after their estimated finish.
     if parse_dt(event["end"]["value"]) > now:
-        date_label = parse_dt(event["main_card_start"]["value"]).strftime("%-d %b")
+        date_label = (
+            parse_dt(event["main_card_start"]["value"])
+            .astimezone(SYDNEY)
+            .strftime("%-d %b")
+        )
         cards.append(
             '<article class="event">'
             f'<div class="date">{html.escape(date_label)}</div>'

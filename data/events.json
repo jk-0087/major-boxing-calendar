@@ -1,7 +1,7 @@
 [
   {
     "uid": "mbc-2026-07-25-joshua-prenga@jk-0087.github.io",
-    "sequence": 4,
+    "sequence": 5,
     "status": "Official",
     "title": "Anthony Joshua vs Kristian Prenga",
     "fighters": {
@@ -19,7 +19,8 @@
     "venue": {
       "name": "Jeddah Superdome",
       "city": "Jeddah",
-      "country": "Saudi Arabia"
+      "country": "Saudi Arabia",
+      "timezone": "Asia/Riyadh"
     },
     "promotion": [
       "Riyadh Season / Matchroom Boxing"
@@ -78,7 +79,7 @@
   },
   {
     "uid": "mbc-2026-07-25-spence-tszyu@jk-0087.github.io",
-    "sequence": 4,
+    "sequence": 5,
     "status": "Official",
     "title": "Errol Spence Jr vs Tim Tszyu",
     "fighters": {
@@ -96,7 +97,8 @@
     "venue": {
       "name": "Venue TBA",
       "city": "TBA",
-      "country": "USA"
+      "country": "USA",
+      "timezone": null
     },
     "promotion": [
       "Premier Boxing Champions"
@@ -154,7 +156,7 @@
   },
   {
     "uid": "mbc-2026-07-26-berlanga-butler@jk-0087.github.io",
-    "sequence": 4,
+    "sequence": 5,
     "status": "Official",
     "title": "Edgar Berlanga vs Steven Butler",
     "fighters": {
@@ -172,7 +174,8 @@
     "venue": {
       "name": "Infosys Theater at Madison Square Garden",
       "city": "New York City, New York",
-      "country": "USA"
+      "country": "USA",
+      "timezone": "America/New_York"
     },
     "promotion": [
       "Zuffa Boxing"
@@ -248,7 +251,8 @@
     "venue": {
       "name": "3Arena",
       "city": "Dublin",
-      "country": "Ireland"
+      "country": "Ireland",
+      "timezone": "Europe/Dublin"
     },
     "promotion": [
       "Queensberry Promotions"
@@ -356,7 +360,8 @@
     "venue": {
       "name": "The Theater at Virgin Hotels",
       "city": "Las Vegas, Nevada",
-      "country": "USA"
+      "country": "USA",
+      "timezone": "America/Los_Angeles"
     },
     "promotion": [
       "Golden Boy Promotions"
@@ -464,7 +469,8 @@
     "venue": {
       "name": "Venue TBA",
       "city": "TBA",
-      "country": "USA"
+      "country": "USA",
+      "timezone": null
     },
     "promotion": [
       "Salita Promotions"
@@ -534,7 +540,7 @@
   },
   {
     "uid": "mbc-2026-08-22-romero-lopez@jk-0087.github.io",
-    "sequence": 6,
+    "sequence": 7,
     "status": "Official",
     "title": "Rolly Romero vs Teofimo Lopez",
     "fighters": {
@@ -552,7 +558,8 @@
     "venue": {
       "name": "Venue TBA",
       "city": "Las Vegas, Nevada",
-      "country": "USA"
+      "country": "USA",
+      "timezone": "America/Los_Angeles"
     },
     "promotion": [
       "Premier Boxing Champions"
@@ -648,7 +655,8 @@
     "venue": {
       "name": "The O2",
       "city": "London",
-      "country": "England"
+      "country": "England",
+      "timezone": "Europe/London"
     },
     "promotion": [
       "Queensberry Promotions"
@@ -738,7 +746,7 @@
   },
   {
     "uid": "mbc-2026-09-05-taylor-pili@jk-0087.github.io",
-    "sequence": 6,
+    "sequence": 7,
     "status": "Official",
     "title": "Katie Taylor vs Flora Pili",
     "fighters": {
@@ -756,7 +764,8 @@
     "venue": {
       "name": "Venue TBA",
       "city": "TBA",
-      "country": "TBA"
+      "country": "TBA",
+      "timezone": null
     },
     "promotion": [
       "Matchroom Boxing"
@@ -852,7 +861,8 @@
     "venue": {
       "name": "Venue TBA",
       "city": "Riyadh",
-      "country": "Saudi Arabia"
+      "country": "Saudi Arabia",
+      "timezone": "Asia/Riyadh"
     },
     "promotion": [
       "Riyadh Season"
@@ -935,7 +945,7 @@
   },
   {
     "uid": "mbc-2026-08-08-johnson-thorslund@jk-0087.github.io",
-    "sequence": 3,
+    "sequence": 4,
     "status": "Official",
     "title": "Cherneka Johnson vs Dina Thorslund",
     "fighters": {
@@ -953,7 +963,8 @@
     "venue": {
       "name": "Caribe Royale",
       "city": "Orlando, Florida",
-      "country": "USA"
+      "country": "USA",
+      "timezone": "America/New_York"
     },
     "promotion": [
       "Most Valuable Promotions"
@@ -1009,7 +1020,7 @@
   },
   {
     "uid": "mbc-2026-08-21-serrano-manzur@jk-0087.github.io",
-    "sequence": 3,
+    "sequence": 4,
     "status": "Official",
     "title": "Amanda Serrano vs Lucrecia Manzur",
     "fighters": {
@@ -1027,7 +1038,8 @@
     "venue": {
       "name": "Pechanga Resort Casino",
       "city": "Temecula, California",
-      "country": "USA"
+      "country": "USA",
+      "timezone": "America/Los_Angeles"
     },
     "promotion": [
       "Most Valuable Promotions"
@@ -1084,7 +1096,7 @@
   },
   {
     "uid": "mbc-2026-08-29-mayer-cameron@jk-0087.github.io",
-    "sequence": 3,
+    "sequence": 4,
     "status": "Official",
     "title": "Mikaela Mayer vs Chantelle Cameron",
     "fighters": {
@@ -1102,7 +1114,8 @@
     "venue": {
       "name": "bp pulse LIVE",
       "city": "Birmingham",
-      "country": "United Kingdom"
+      "country": "United Kingdom",
+      "timezone": "Europe/London"
     },
     "promotion": [
       "Most Valuable Promotions"
@@ -1175,7 +1188,8 @@
     "venue": {
       "name": "T-Mobile Arena",
       "city": "Las Vegas, Nevada",
-      "country": "USA"
+      "country": "USA",
+      "timezone": "America/Los_Angeles"
     },
     "promotion": [
       "Zuffa Boxing"
@@ -1246,7 +1260,7 @@
   },
   {
     "uid": "mbc-2026-09-04-ruiz-knyba@jk-0087.github.io",
-    "sequence": 1,
+    "sequence": 2,
     "status": "Official",
     "title": "Andy Ruiz Jr. vs Damian Knyba",
     "fighters": {
@@ -1264,7 +1278,8 @@
     "venue": {
       "name": "Prudential Center",
       "city": "Newark, New Jersey",
-      "country": "USA"
+      "country": "USA",
+      "timezone": "America/New_York"
     },
     "promotion": [
       "Matchroom Boxing"
@@ -1306,7 +1321,7 @@
   },
   {
     "uid": "mbc-2026-10-03-whittaker-wallace@jk-0087.github.io",
-    "sequence": 1,
+    "sequence": 2,
     "status": "Official",
     "title": "Ben Whittaker vs Conor Wallace",
     "fighters": {
@@ -1324,7 +1339,8 @@
     "venue": {
       "name": "Utilita Arena Birmingham",
       "city": "Birmingham",
-      "country": "United Kingdom"
+      "country": "United Kingdom",
+      "timezone": "Europe/London"
     },
     "promotion": [
       "Matchroom Boxing"
@@ -1363,7 +1379,7 @@
   },
   {
     "uid": "mbc-2026-10-24-smith-puello@jk-0087.github.io",
-    "sequence": 1,
+    "sequence": 2,
     "status": "Official",
     "title": "Dalton Smith vs Alberto Puello",
     "fighters": {
@@ -1381,7 +1397,8 @@
     "venue": {
       "name": "Utilita Arena Sheffield",
       "city": "Sheffield",
-      "country": "United Kingdom"
+      "country": "United Kingdom",
+      "timezone": "Europe/London"
     },
     "promotion": [
       "Matchroom Boxing"
