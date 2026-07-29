@@ -15,6 +15,11 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from scripts.models import DiscoveredEvent
+from scripts.sources.box_live import (
+    BOX_LIVE_FEED_URL,
+    BoxLiveSourceError,
+    fetch_box_live_events,
+)
 from scripts.sources.matchroom import (
     MATCHROOM_EVENTS_URL,
     MatchroomSourceError,
@@ -31,14 +36,26 @@ EVENTS_PATH = ROOT / "data/events.json"
 PROPOSALS_PATH = ROOT / "data/proposed-events.json"
 SYDNEY = ZoneInfo("Australia/Sydney")
 
-ALIASES = {"jr": "", "junior": "", "ii": "", "iii": "", "2": ""}
+ALIASES = {
+    "jr": "",
+    "junior": "",
+    "ii": "",
+    "iii": "",
+    "2": "",
+    "canelo": "alvarez",
+    "o'leary": "leary",
+}
 
 
 def normalise_name(value: str) -> str:
     value = value.casefold().replace("’", "'")
     value = re.sub(r"[^a-z0-9' ]+", " ", value)
     words = [ALIASES.get(word, word) for word in value.split()]
-    return " ".join(word for word in words if word)
+    deduped = []
+    for word in words:
+        if word and (not deduped or deduped[-1] != word):
+            deduped.append(word)
+    return " ".join(deduped)
 
 
 def fighter_pair(title: str) -> tuple[str, str]:
@@ -86,6 +103,8 @@ def source_publisher(url: str) -> str:
         return "Matchroom"
     if "mostvaluablepromotions.com" in url:
         return "Most Valuable Promotions"
+    if "box.live" in url:
+        return "Box.Live"
     for spec in OFFICIAL_SOURCES:
         if spec.url.split("/")[2] in url:
             return spec.name
@@ -140,6 +159,14 @@ def discover_all() -> tuple[list[DiscoveredEvent], list[dict]]:
     except MvpSourceError as exc:
         statuses.append({"source": "Most Valuable Promotions", "url": MVP_EVENTS_URL, "status": "skipped", "error": str(exc)})
         print(f"Optional MVP source skipped: {exc}", file=sys.stderr)
+
+    try:
+        items = fetch_box_live_events()
+        discovered.extend(items)
+        statuses.append({"source": "Box.Live", "url": BOX_LIVE_FEED_URL, "status": "ok", "events": len(items)})
+    except BoxLiveSourceError as exc:
+        statuses.append({"source": "Box.Live", "url": BOX_LIVE_FEED_URL, "status": "skipped", "error": str(exc)})
+        print(f"Optional Box.Live source skipped: {exc}", file=sys.stderr)
 
     for spec in OFFICIAL_SOURCES:
         try:

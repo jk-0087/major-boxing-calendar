@@ -2,6 +2,7 @@ from datetime import date
 from unittest.mock import patch
 from scripts.discover import discover_all, pair_score, best_match, update_existing
 from scripts.models import DiscoveredEvent
+from scripts.sources.box_live import BoxLiveSourceError
 from scripts.sources.matchroom import MatchroomSourceError
 from scripts.sources.mvp import MvpSourceError
 from scripts.sources.official import OFFICIAL_SOURCES, OfficialSourceError
@@ -35,6 +36,17 @@ def test_name_matching_handles_surname_only_schedule_titles():
     ) == 1.0
 
 
+def test_name_matching_handles_box_live_aliases():
+    assert pair_score(
+        "Pierce O'Leary vs Mark Chamberlain",
+        "Leary vs Chamberlain",
+    ) == 1.0
+    assert pair_score(
+        "Canelo Alvarez vs Christian Mbilli",
+        "Canelo vs Mbilli",
+    ) == 1.0
+
+
 def test_venue_date_does_not_rewrite_sydney_broadcast_date():
     event = sample_event()
     original_start = event["main_card_start"]["value"]
@@ -62,6 +74,7 @@ def test_matchroom_source_is_identified():
     assert event["sources"][0]["publisher"] == "Matchroom"
 
 
+@patch("scripts.discover.fetch_box_live_events", side_effect=BoxLiveSourceError("Box.Live unavailable"))
 @patch("scripts.discover.fetch_mvp_events", side_effect=MvpSourceError("MVP unavailable"))
 @patch(
     "scripts.discover.fetch_official_events",
@@ -73,10 +86,16 @@ def test_matchroom_source_is_identified():
         "Safety stop: expected at least 2 Matchroom schedule entries, parsed 0"
     ),
 )
-def test_all_source_failures_are_safe_no_change(mock_matchroom, mock_official, mock_mvp):
+def test_all_source_failures_are_safe_no_change(
+    mock_matchroom,
+    mock_official,
+    mock_mvp,
+    mock_box_live,
+):
     events, statuses = discover_all()
     assert events == []
     assert all(item["status"] == "skipped" for item in statuses)
-    assert len(statuses) == 2 + len(OFFICIAL_SOURCES)
+    assert len(statuses) == 3 + len(OFFICIAL_SOURCES)
     assert "parsed 0" in statuses[0]["error"]
     assert "MVP unavailable" in statuses[1]["error"]
+    assert "Box.Live unavailable" in statuses[2]["error"]

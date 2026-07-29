@@ -1,6 +1,6 @@
 # Major Boxing Calendar
 
-The live source of truth is `data/events.json`. Every six hours, GitHub Actions checks official boxing schedules.
+The live source of truth is `data/events.json`. Every six hours, GitHub Actions checks trusted boxing schedules.
 
 ## Sources
 
@@ -14,6 +14,7 @@ The live source of truth is `data/events.json`. Every six hours, GitHub Actions 
 - **Most Valuable Promotions (MVP)**
 - **No Limit Boxing**
 - **Zuffa Boxing**
+- **Box.Live**
 
 Every source is isolated: HTTP errors, timeouts, blocking, or suspicious parser results are logged and skipped without failing the workflow. A failed source never causes existing calendar events to be deleted or cleared.
 
@@ -22,7 +23,7 @@ Every source is isolated: HTTP errors, timeouts, blocking, or suspicious parser 
 - strongly matches official listings to existing fights
 - preserves every existing UID
 - uses `main_card_start` as the calendar event start (`DTSTART`); ring-walk estimates remain description-only
-- updates a matched event date and shifts its stored main-card start, finish, and ring-walk times by the same number of days
+- treats source dates as venue-local references and never rewrites an Australian broadcast datetime from date-only discovery
 - increments `SEQUENCE` only when a meaningful field changes
 - regenerates `major-boxing-calendar.ics` and `index.html` after safe matched updates; the build workflow also keeps both generated files current after relevant pushes
 - never deletes events because a source item disappears
