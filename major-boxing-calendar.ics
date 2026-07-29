@@ -163,6 +163,20 @@ STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:mbc-2026-09-04-ruiz-knyba@jk-0087.github.io
+DTSTAMP:20260729T070315Z
+LAST-MODIFIED:20260729T070315Z
+SEQUENCE:1
+DTSTART:20260905T000000Z
+DTEND:20260905T050000Z
+SUMMARY:Andy Ruiz Jr. vs Damian Knyba
+LOCATION:Prudential Center
+DESCRIPTION:Status\nOfficial\n\nPromotion\nMatchroom Boxing\n\nCity\nNewark\, New Jersey\n\nCountry\nUSA\n\nTitles\nMajor heavyweight bout\n\nAustralia\nDAZN\n\nMain Card Start\n10:00 AM\, Sat 5 Sep 2026 (Estimated)\n\nEstimated Finish\n3:00 PM\, Sat 5 Sep 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nAndy Ruiz Jr. vs Damian Knyba\nVito Mielnicki Jr. vs Austin Williams\nAlan Chaves vs Eridson Garcia\nZaquin Moses vs TBA\nDennis Thompson vs TBA\n\nOfficial / Schedule Source\nhttps://www.matchroomboxing.com/events/ruiz-vs-knyba/\n\nVerified\n29 Jul 2026\, 5:03 PM
+URL:https://www.matchroomboxing.com/events/ruiz-vs-knyba/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:mbc-2026-09-05-taylor-pili@jk-0087.github.io
 DTSTAMP:20260728T101328Z
 LAST-MODIFIED:20260728T101328Z
@@ -187,6 +201,34 @@ SUMMARY:Ryan Garcia vs Conor Benn
 LOCATION:T-Mobile Arena
 DESCRIPTION:Status\nOfficial\n\nPromotion\nZuffa Boxing\n\nCity\nLas Vegas\, Nevada\n\nCountry\nUSA\n\nTitles\nWBC welterweight world championship\n\nAustralia\nParamount+\n\nMain Card Start\n10:00 AM\, Sun 13 Sep 2026 (Estimated)\n\nEstimated Finish\n3:00 PM\, Sun 13 Sep 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nRyan Garcia vs Conor Benn\nUndercard TBA\n\nOfficial / Schedule Source\nhttps://www.ufc.com/news/dana-white-makes-it-official-ryan-garcia-vs-conor-benn-sept-12\n\nVerified\n28 Jul 2026\, 8:13 PM
 URL:https://www.ufc.com/news/dana-white-makes-it-official-ryan-garcia-vs-conor-benn-sept-12
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:mbc-2026-10-03-whittaker-wallace@jk-0087.github.io
+DTSTAMP:20260729T070315Z
+LAST-MODIFIED:20260729T070315Z
+SEQUENCE:1
+DTSTART:20261003T180000Z
+DTEND:20261003T230000Z
+SUMMARY:Ben Whittaker vs Conor Wallace
+LOCATION:Utilita Arena Birmingham
+DESCRIPTION:Status\nOfficial\n\nPromotion\nMatchroom Boxing\n\nCity\nBirmingham\n\nCountry\nUnited Kingdom\n\nTitles\nIBF light heavyweight world title final eliminator\n\nAustralia\nDAZN\n\nMain Card Start\n5:00 AM\, Sun 4 Oct 2026 (Estimated)\n\nEstimated Finish\n10:00 AM\, Sun 4 Oct 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nBen Whittaker vs Conor Wallace\nUndercard TBA\n\nOfficial / Schedule Source\nhttps://www.matchroomboxing.com/events/whittaker-vs-wallace/\n\nVerified\n29 Jul 2026\, 5:03 PM
+URL:https://www.matchroomboxing.com/events/whittaker-vs-wallace/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:mbc-2026-10-24-smith-puello@jk-0087.github.io
+DTSTAMP:20260729T070315Z
+LAST-MODIFIED:20260729T070315Z
+SEQUENCE:1
+DTSTART:20261024T180000Z
+DTEND:20261024T230000Z
+SUMMARY:Dalton Smith vs Alberto Puello
+LOCATION:Utilita Arena Sheffield
+DESCRIPTION:Status\nOfficial\n\nPromotion\nMatchroom Boxing\n\nCity\nSheffield\n\nCountry\nUnited Kingdom\n\nTitles\nWBC super lightweight world championship\n\nAustralia\nDAZN\n\nMain Card Start\n5:00 AM\, Sun 25 Oct 2026 (Estimated)\n\nEstimated Finish\n10:00 AM\, Sun 25 Oct 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nDalton Smith vs Alberto Puello\nUndercard TBA\n\nOfficial / Schedule Source\nhttps://www.matchroomboxing.com/events/smith-vs-puello/\n\nVerified\n29 Jul 2026\, 5:03 PM
+URL:https://www.matchroomboxing.com/events/smith-vs-puello/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT

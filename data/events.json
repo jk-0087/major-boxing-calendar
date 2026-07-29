@@ -1171,5 +1171,179 @@
       "value": "2026-09-13T10:00:00+10:00",
       "confidence": "estimated"
     }
+  },
+  {
+    "uid": "mbc-2026-09-04-ruiz-knyba@jk-0087.github.io",
+    "sequence": 1,
+    "status": "Official",
+    "title": "Andy Ruiz Jr. vs Damian Knyba",
+    "fighters": {
+      "red": "Andy Ruiz Jr.",
+      "blue": "Damian Knyba"
+    },
+    "end": {
+      "value": "2026-09-05T15:00:00+10:00",
+      "confidence": "estimated"
+    },
+    "ring_walk": {
+      "value": null,
+      "confidence": "tba"
+    },
+    "venue": {
+      "name": "Prudential Center",
+      "city": "Newark, New Jersey",
+      "country": "USA"
+    },
+    "promotion": [
+      "Matchroom Boxing"
+    ],
+    "titles": [
+      "Major heavyweight bout"
+    ],
+    "broadcast": {
+      "australia": "DAZN"
+    },
+    "main_card": [
+      "Andy Ruiz Jr. vs Damian Knyba",
+      "Vito Mielnicki Jr. vs Austin Williams",
+      "Alan Chaves vs Eridson Garcia",
+      "Zaquin Moses vs TBA",
+      "Dennis Thompson vs TBA"
+    ],
+    "sources": [
+      {
+        "url": "https://www.matchroomboxing.com/events/ruiz-vs-knyba/",
+        "publisher": "Matchroom",
+        "checked_at": "2026-07-29T17:03:15+10:00"
+      }
+    ],
+    "history": [
+      {
+        "version": 1,
+        "date": "2026-07-29",
+        "changes": [
+          "Approved from Matchroom staged events",
+          "Main-card start estimated pending official broadcast time"
+        ]
+      }
+    ],
+    "main_card_start": {
+      "value": "2026-09-05T10:00:00+10:00",
+      "confidence": "estimated"
+    }
+  },
+  {
+    "uid": "mbc-2026-10-03-whittaker-wallace@jk-0087.github.io",
+    "sequence": 1,
+    "status": "Official",
+    "title": "Ben Whittaker vs Conor Wallace",
+    "fighters": {
+      "red": "Ben Whittaker",
+      "blue": "Conor Wallace"
+    },
+    "end": {
+      "value": "2026-10-04T10:00:00+11:00",
+      "confidence": "estimated"
+    },
+    "ring_walk": {
+      "value": null,
+      "confidence": "tba"
+    },
+    "venue": {
+      "name": "Utilita Arena Birmingham",
+      "city": "Birmingham",
+      "country": "United Kingdom"
+    },
+    "promotion": [
+      "Matchroom Boxing"
+    ],
+    "titles": [
+      "IBF light heavyweight world title final eliminator"
+    ],
+    "broadcast": {
+      "australia": "DAZN"
+    },
+    "main_card": [
+      "Ben Whittaker vs Conor Wallace",
+      "Undercard TBA"
+    ],
+    "sources": [
+      {
+        "url": "https://www.matchroomboxing.com/events/whittaker-vs-wallace/",
+        "publisher": "Matchroom",
+        "checked_at": "2026-07-29T17:03:15+10:00"
+      }
+    ],
+    "history": [
+      {
+        "version": 1,
+        "date": "2026-07-29",
+        "changes": [
+          "Approved from Matchroom staged events",
+          "Main-card start estimated pending official broadcast time"
+        ]
+      }
+    ],
+    "main_card_start": {
+      "value": "2026-10-04T05:00:00+11:00",
+      "confidence": "estimated"
+    }
+  },
+  {
+    "uid": "mbc-2026-10-24-smith-puello@jk-0087.github.io",
+    "sequence": 1,
+    "status": "Official",
+    "title": "Dalton Smith vs Alberto Puello",
+    "fighters": {
+      "red": "Dalton Smith",
+      "blue": "Alberto Puello"
+    },
+    "end": {
+      "value": "2026-10-25T10:00:00+11:00",
+      "confidence": "estimated"
+    },
+    "ring_walk": {
+      "value": null,
+      "confidence": "tba"
+    },
+    "venue": {
+      "name": "Utilita Arena Sheffield",
+      "city": "Sheffield",
+      "country": "United Kingdom"
+    },
+    "promotion": [
+      "Matchroom Boxing"
+    ],
+    "titles": [
+      "WBC super lightweight world championship"
+    ],
+    "broadcast": {
+      "australia": "DAZN"
+    },
+    "main_card": [
+      "Dalton Smith vs Alberto Puello",
+      "Undercard TBA"
+    ],
+    "sources": [
+      {
+        "url": "https://www.matchroomboxing.com/events/smith-vs-puello/",
+        "publisher": "Matchroom",
+        "checked_at": "2026-07-29T17:03:15+10:00"
+      }
+    ],
+    "history": [
+      {
+        "version": 1,
+        "date": "2026-07-29",
+        "changes": [
+          "Approved from Matchroom staged events",
+          "Main-card start estimated pending official broadcast time"
+        ]
+      }
+    ],
+    "main_card_start": {
+      "value": "2026-10-25T05:00:00+11:00",
+      "confidence": "estimated"
+    }
   }
 ]
