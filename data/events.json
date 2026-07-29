@@ -230,7 +230,7 @@
   },
   {
     "uid": "mbc-2026-08-01-oleary-chamberlain@jk-0087.github.io",
-    "sequence": 6,
+    "sequence": 7,
     "status": "Official",
     "title": "Pierce O'Leary vs Mark Chamberlain",
     "fighters": {
@@ -272,6 +272,11 @@
         "url": "https://queensberry.co.uk/pages/pierce-oleary-vs-mark-chamberlain-no-turning-back",
         "publisher": "Queensberry",
         "checked_at": "2026-07-28T20:13:28+10:00"
+      },
+      {
+        "url": "https://box.live/external-feeds/28633-2/",
+        "publisher": "Box.Live",
+        "checked_at": "2026-07-29T20:16:51+10:00"
       }
     ],
     "history": [
@@ -317,6 +322,13 @@
         "changes": [
           "Restored Australian broadcast date after correcting venue-date timezone handling"
         ]
+      },
+      {
+        "version": 7,
+        "date": "2026-07-29",
+        "changes": [
+          "Added Box.Live schedule source"
+        ]
       }
     ],
     "main_card_start": {
@@ -326,7 +338,7 @@
   },
   {
     "uid": "mbc-2026-08-01-roach-zepeda@jk-0087.github.io",
-    "sequence": 6,
+    "sequence": 7,
     "status": "Official",
     "title": "Lamont Roach Jr vs William Zepeda",
     "fighters": {
@@ -368,6 +380,11 @@
         "url": "https://www.ringmagazine.com/events/roach-vs-zepeda-3hcJWSEtqlHoB5VNF9B6kx",
         "publisher": "The Ring / Riyadh Season",
         "checked_at": "2026-07-28T20:13:28+10:00"
+      },
+      {
+        "url": "https://box.live/external-feeds/28633-2/",
+        "publisher": "Box.Live",
+        "checked_at": "2026-07-29T20:16:51+10:00"
       }
     ],
     "history": [
@@ -413,6 +430,13 @@
         "changes": [
           "Restored Australian broadcast date after correcting venue-date timezone handling"
         ]
+      },
+      {
+        "version": 7,
+        "date": "2026-07-29",
+        "changes": [
+          "Added Box.Live schedule source"
+        ]
       }
     ],
     "main_card_start": {
@@ -422,7 +446,7 @@
   },
   {
     "uid": "mbc-2026-08-15-shields-scott@jk-0087.github.io",
-    "sequence": 4,
+    "sequence": 5,
     "status": "Official",
     "title": "Claressa Shields vs Kaye Scott",
     "fighters": {
@@ -459,6 +483,11 @@
         "url": "https://www.dazn.com/en-US/news/boxing/dazn-boxing-schedule-2026-fight-dates-and-live-stream-for-confirmed-cards/ehgk0syi2n4a13u2yglrd8h84",
         "publisher": "Schedule source",
         "checked_at": "2026-07-21T20:00:00+10:00"
+      },
+      {
+        "url": "https://box.live/external-feeds/28633-2/",
+        "publisher": "Box.Live",
+        "checked_at": "2026-07-29T20:16:51+10:00"
       }
     ],
     "history": [
@@ -488,6 +517,13 @@
         "date": "2026-07-23",
         "changes": [
           "Defined calendar DTSTART explicitly as the main-card broadcast start"
+        ]
+      },
+      {
+        "version": 5,
+        "date": "2026-07-29",
+        "changes": [
+          "Added Box.Live schedule source"
         ]
       }
     ],
@@ -539,7 +575,7 @@
       {
         "url": "https://www.premierboxingchampions.com/fight-night-august-22-2026",
         "publisher": "Premier Boxing Champions",
-        "checked_at": "2026-07-28T20:13:28+10:00"
+        "checked_at": "2026-07-29T20:16:51+10:00"
       }
     ],
     "history": [
@@ -594,7 +630,7 @@
   },
   {
     "uid": "mbc-2026-08-29-itauma-hrgovic@jk-0087.github.io",
-    "sequence": 6,
+    "sequence": 7,
     "status": "Official",
     "title": "Moses Itauma vs Filip Hrgovic",
     "fighters": {
@@ -636,6 +672,11 @@
         "url": "https://queensberry.co.uk/pages/moses-itauma-vs-filip-hrgovic-natural-born-thriller",
         "publisher": "Queensberry",
         "checked_at": "2026-07-28T20:13:28+10:00"
+      },
+      {
+        "url": "https://box.live/external-feeds/28633-2/",
+        "publisher": "Box.Live",
+        "checked_at": "2026-07-29T20:16:51+10:00"
       }
     ],
     "history": [
@@ -680,6 +721,13 @@
         "date": "2026-07-29",
         "changes": [
           "Restored Australian broadcast date after correcting venue-date timezone handling"
+        ]
+      },
+      {
+        "version": 7,
+        "date": "2026-07-29",
+        "changes": [
+          "Added Box.Live schedule source"
         ]
       }
     ],
@@ -731,7 +779,7 @@
       {
         "url": "https://www.matchroomboxing.com/events/taylor-vs-pili/",
         "publisher": "Matchroom",
-        "checked_at": "2026-07-28T20:13:28+10:00"
+        "checked_at": "2026-07-29T20:16:51+10:00"
       }
     ],
     "history": [
@@ -786,7 +834,7 @@
   },
   {
     "uid": "mbc-2026-09-12-canelo-mbilli@jk-0087.github.io",
-    "sequence": 5,
+    "sequence": 6,
     "status": "Official",
     "title": "Canelo Alvarez vs Christian Mbilli",
     "fighters": {
@@ -828,6 +876,11 @@
         "url": "https://www.dazn.com/en-US/news/boxing/dazn-boxing-schedule-2026-fight-dates-and-live-stream-for-confirmed-cards/ehgk0syi2n4a13u2yglrd8h84",
         "publisher": "Schedule source",
         "checked_at": "2026-07-21T20:00:00+10:00"
+      },
+      {
+        "url": "https://box.live/external-feeds/28633-2/",
+        "publisher": "Box.Live",
+        "checked_at": "2026-07-29T20:16:51+10:00"
       }
     ],
     "history": [
@@ -865,6 +918,13 @@
         "changes": [
           "Moved event from 12 September to 31 October 2026 after Canelo confirmed the new date",
           "Changed main-card start confidence to estimated pending an official broadcast time"
+        ]
+      },
+      {
+        "version": 6,
+        "date": "2026-07-29",
+        "changes": [
+          "Added Box.Live schedule source"
         ]
       }
     ],
@@ -915,7 +975,7 @@
       {
         "url": "https://www.mostvaluablepromotions.com/events/",
         "publisher": "Most Valuable Promotions",
-        "checked_at": "2026-07-28T20:13:28+10:00"
+        "checked_at": "2026-07-29T20:16:51+10:00"
       }
     ],
     "history": [
@@ -990,7 +1050,7 @@
       {
         "url": "https://www.mostvaluablepromotions.com/events/",
         "publisher": "Most Valuable Promotions",
-        "checked_at": "2026-07-28T20:13:28+10:00"
+        "checked_at": "2026-07-29T20:16:51+10:00"
       }
     ],
     "history": [
@@ -1063,7 +1123,7 @@
       {
         "url": "https://www.mostvaluablepromotions.com/events/",
         "publisher": "Most Valuable Promotions",
-        "checked_at": "2026-07-28T20:13:28+10:00"
+        "checked_at": "2026-07-29T20:16:51+10:00"
       }
     ],
     "history": [
@@ -1097,7 +1157,7 @@
   },
   {
     "uid": "mbc-2026-09-12-garcia-benn@jk-0087.github.io",
-    "sequence": 3,
+    "sequence": 4,
     "status": "Official",
     "title": "Ryan Garcia vs Conor Benn",
     "fighters": {
@@ -1140,6 +1200,11 @@
         "url": "https://www.axs.com/events/1518705/garcia-vs-benn-tickets?skin=tmobile",
         "publisher": "Official source",
         "checked_at": "2026-07-28T20:13:28+10:00"
+      },
+      {
+        "url": "https://box.live/external-feeds/28633-2/",
+        "publisher": "Box.Live",
+        "checked_at": "2026-07-29T20:16:51+10:00"
       }
     ],
     "history": [
@@ -1164,6 +1229,13 @@
         "date": "2026-07-29",
         "changes": [
           "Restored Australian broadcast date after correcting venue-date timezone handling"
+        ]
+      },
+      {
+        "version": 4,
+        "date": "2026-07-29",
+        "changes": [
+          "Added Box.Live schedule source"
         ]
       }
     ],
@@ -1214,7 +1286,7 @@
       {
         "url": "https://www.matchroomboxing.com/events/ruiz-vs-knyba/",
         "publisher": "Matchroom",
-        "checked_at": "2026-07-29T17:03:15+10:00"
+        "checked_at": "2026-07-29T20:16:51+10:00"
       }
     ],
     "history": [
@@ -1271,7 +1343,7 @@
       {
         "url": "https://www.matchroomboxing.com/events/whittaker-vs-wallace/",
         "publisher": "Matchroom",
-        "checked_at": "2026-07-29T17:03:15+10:00"
+        "checked_at": "2026-07-29T20:16:51+10:00"
       }
     ],
     "history": [
@@ -1328,7 +1400,7 @@
       {
         "url": "https://www.matchroomboxing.com/events/smith-vs-puello/",
         "publisher": "Matchroom",
-        "checked_at": "2026-07-29T17:03:15+10:00"
+        "checked_at": "2026-07-29T20:16:51+10:00"
       }
     ],
     "history": [
