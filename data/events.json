@@ -280,7 +280,7 @@
       {
         "url": "https://box.live/external-feeds/28633-2/",
         "publisher": "Box.Live",
-        "checked_at": "2026-07-29T20:16:51+10:00"
+        "checked_at": "2026-07-31T20:11:08+10:00"
       }
     ],
     "history": [
@@ -389,7 +389,7 @@
       {
         "url": "https://box.live/external-feeds/28633-2/",
         "publisher": "Box.Live",
-        "checked_at": "2026-07-29T20:16:51+10:00"
+        "checked_at": "2026-07-31T20:11:08+10:00"
       }
     ],
     "history": [
@@ -493,7 +493,7 @@
       {
         "url": "https://box.live/external-feeds/28633-2/",
         "publisher": "Box.Live",
-        "checked_at": "2026-07-29T20:16:51+10:00"
+        "checked_at": "2026-07-31T20:11:08+10:00"
       }
     ],
     "history": [
@@ -582,7 +582,7 @@
       {
         "url": "https://www.premierboxingchampions.com/fight-night-august-22-2026",
         "publisher": "Premier Boxing Champions",
-        "checked_at": "2026-07-29T20:16:51+10:00"
+        "checked_at": "2026-07-31T20:11:08+10:00"
       }
     ],
     "history": [
@@ -684,7 +684,7 @@
       {
         "url": "https://box.live/external-feeds/28633-2/",
         "publisher": "Box.Live",
-        "checked_at": "2026-07-29T20:16:51+10:00"
+        "checked_at": "2026-07-31T20:11:08+10:00"
       }
     ],
     "history": [
@@ -746,7 +746,7 @@
   },
   {
     "uid": "mbc-2026-09-05-taylor-pili@jk-0087.github.io",
-    "sequence": 7,
+    "sequence": 8,
     "status": "Official",
     "title": "Katie Taylor vs Flora Pili",
     "fighters": {
@@ -789,6 +789,11 @@
         "url": "https://www.matchroomboxing.com/events/taylor-vs-pili/",
         "publisher": "Matchroom",
         "checked_at": "2026-07-29T20:16:51+10:00"
+      },
+      {
+        "url": "https://box.live/external-feeds/28633-2/",
+        "publisher": "Box.Live",
+        "checked_at": "2026-07-31T20:11:08+10:00"
       }
     ],
     "history": [
@@ -833,6 +838,13 @@
         "date": "2026-07-29",
         "changes": [
           "Restored Australian broadcast date after correcting venue-date timezone handling"
+        ]
+      },
+      {
+        "version": 7,
+        "date": "2026-07-31",
+        "changes": [
+          "Added Box.Live schedule source"
         ]
       }
     ],
@@ -890,7 +902,7 @@
       {
         "url": "https://box.live/external-feeds/28633-2/",
         "publisher": "Box.Live",
-        "checked_at": "2026-07-29T20:16:51+10:00"
+        "checked_at": "2026-07-31T20:11:08+10:00"
       }
     ],
     "history": [
@@ -986,7 +998,7 @@
       {
         "url": "https://www.mostvaluablepromotions.com/events/",
         "publisher": "Most Valuable Promotions",
-        "checked_at": "2026-07-29T20:16:51+10:00"
+        "checked_at": "2026-07-31T20:11:08+10:00"
       }
     ],
     "history": [
@@ -1062,7 +1074,7 @@
       {
         "url": "https://www.mostvaluablepromotions.com/events/",
         "publisher": "Most Valuable Promotions",
-        "checked_at": "2026-07-29T20:16:51+10:00"
+        "checked_at": "2026-07-31T20:11:08+10:00"
       }
     ],
     "history": [
@@ -1136,7 +1148,7 @@
       {
         "url": "https://www.mostvaluablepromotions.com/events/",
         "publisher": "Most Valuable Promotions",
-        "checked_at": "2026-07-29T20:16:51+10:00"
+        "checked_at": "2026-07-31T20:11:08+10:00"
       }
     ],
     "history": [
@@ -1218,7 +1230,7 @@
       {
         "url": "https://box.live/external-feeds/28633-2/",
         "publisher": "Box.Live",
-        "checked_at": "2026-07-29T20:16:51+10:00"
+        "checked_at": "2026-07-31T20:11:08+10:00"
       }
     ],
     "history": [
@@ -1260,7 +1272,7 @@
   },
   {
     "uid": "mbc-2026-09-04-ruiz-knyba@jk-0087.github.io",
-    "sequence": 2,
+    "sequence": 3,
     "status": "Official",
     "title": "Andy Ruiz Jr. vs Damian Knyba",
     "fighters": {
@@ -1302,6 +1314,11 @@
         "url": "https://www.matchroomboxing.com/events/ruiz-vs-knyba/",
         "publisher": "Matchroom",
         "checked_at": "2026-07-29T20:16:51+10:00"
+      },
+      {
+        "url": "https://box.live/external-feeds/28633-2/",
+        "publisher": "Box.Live",
+        "checked_at": "2026-07-31T20:11:08+10:00"
       }
     ],
     "history": [
@@ -1312,6 +1329,13 @@
           "Approved from Matchroom staged events",
           "Main-card start estimated pending official broadcast time"
         ]
+      },
+      {
+        "version": 2,
+        "date": "2026-07-31",
+        "changes": [
+          "Added Box.Live schedule source"
+        ]
       }
     ],
     "main_card_start": {
@@ -1321,7 +1345,7 @@
   },
   {
     "uid": "mbc-2026-10-03-whittaker-wallace@jk-0087.github.io",
-    "sequence": 2,
+    "sequence": 3,
     "status": "Official",
     "title": "Ben Whittaker vs Conor Wallace",
     "fighters": {
@@ -1360,6 +1384,11 @@
         "url": "https://www.matchroomboxing.com/events/whittaker-vs-wallace/",
         "publisher": "Matchroom",
         "checked_at": "2026-07-29T20:16:51+10:00"
+      },
+      {
+        "url": "https://box.live/external-feeds/28633-2/",
+        "publisher": "Box.Live",
+        "checked_at": "2026-07-31T20:11:08+10:00"
       }
     ],
     "history": [
@@ -1370,6 +1399,13 @@
           "Approved from Matchroom staged events",
           "Main-card start estimated pending official broadcast time"
         ]
+      },
+      {
+        "version": 2,
+        "date": "2026-07-31",
+        "changes": [
+          "Added Box.Live schedule source"
+        ]
       }
     ],
     "main_card_start": {
@@ -1379,7 +1415,7 @@
   },
   {
     "uid": "mbc-2026-10-24-smith-puello@jk-0087.github.io",
-    "sequence": 2,
+    "sequence": 3,
     "status": "Official",
     "title": "Dalton Smith vs Alberto Puello",
     "fighters": {
@@ -1418,6 +1454,11 @@
         "url": "https://www.matchroomboxing.com/events/smith-vs-puello/",
         "publisher": "Matchroom",
         "checked_at": "2026-07-29T20:16:51+10:00"
+      },
+      {
+        "url": "https://box.live/external-feeds/28633-2/",
+        "publisher": "Box.Live",
+        "checked_at": "2026-07-31T20:11:08+10:00"
       }
     ],
     "history": [
@@ -1427,6 +1468,13 @@
         "changes": [
           "Approved from Matchroom staged events",
           "Main-card start estimated pending official broadcast time"
+        ]
+      },
+      {
+        "version": 2,
+        "date": "2026-07-31",
+        "changes": [
+          "Added Box.Live schedule source"
         ]
       }
     ],
