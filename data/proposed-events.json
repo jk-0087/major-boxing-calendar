@@ -1,5 +1,23 @@
 [
   {
+    "title": "McKenna vs Oliha",
+    "date": "2026-08-08",
+    "source": "https://box.live/external-feeds/28633-2/",
+    "score": 0.279
+  },
+  {
+    "title": "Nyika vs Masson",
+    "date": "2026-08-08",
+    "source": "https://box.live/external-feeds/28633-2/",
+    "score": 0.287
+  },
+  {
+    "title": "Williamson vs Simpson",
+    "date": "2026-08-08",
+    "source": "https://box.live/external-feeds/28633-2/",
+    "score": 0.45
+  },
+  {
     "title": "Teremoana vs Savage",
     "date": "2026-08-12",
     "source": "https://www.matchroomboxing.com/events/teremoana-vs-savage/",
@@ -16,6 +34,12 @@
     "date": "2026-08-22",
     "source": "https://www.matchroomboxing.com/events/liddard-vs-morello/",
     "score": 0.317
+  },
+  {
+    "title": "Romero vs Lopez",
+    "date": "2026-08-22",
+    "source": "https://box.live/external-feeds/28633-2/",
+    "score": 1.0
   },
   {
     "title": "Victor Santillan vs Antonio Russell",
@@ -36,6 +60,12 @@
     "score": 0.346
   },
   {
+    "title": "Tszyu vs Mahoney",
+    "date": "2026-08-26",
+    "source": "https://box.live/external-feeds/28633-2/",
+    "score": 0.301
+  },
+  {
     "title": "Marksman vs Barreto",
     "date": "2026-08-28",
     "source": "https://www.matchroomboxing.com/events/marksman-vs-barreto/",
@@ -48,9 +78,81 @@
     "score": 0.343
   },
   {
+    "title": "Martinez vs Plantic",
+    "date": "2026-08-29",
+    "source": "https://box.live/external-feeds/28633-2/",
+    "score": 0.376
+  },
+  {
+    "title": "Moses itauma vs Filip Hrgovic",
+    "date": "2026-08-29",
+    "source": "https://queensberry.co.uk/pages/moses-itauma-vs-filip-hrgovic-natural-born-thriller",
+    "score": 1.0
+  },
+  {
+    "title": "Kira vs Canizales",
+    "date": "2026-09-02",
+    "source": "https://box.live/external-feeds/28633-2/",
+    "score": 0.31
+  },
+  {
+    "title": "Perez vs Mchunu",
+    "date": "2026-09-03",
+    "source": "https://box.live/external-feeds/28633-2/",
+    "score": 0.254
+  },
+  {
+    "title": "Santillan vs Baraou",
+    "date": "2026-09-11",
+    "source": "https://box.live/external-feeds/28633-2/",
+    "score": 0.374
+  },
+  {
+    "title": "Daord vs Phiri",
+    "date": "2026-09-12",
+    "source": "https://box.live/external-feeds/28633-2/",
+    "score": 0.31
+  },
+  {
+    "title": "Suganob vs Nontshinga",
+    "date": "2026-09-12",
+    "source": "https://box.live/external-feeds/28633-2/",
+    "score": 0.319
+  },
+  {
+    "title": "Cruz vs Bravo",
+    "date": "2026-09-19",
+    "source": "https://box.live/external-feeds/28633-2/",
+    "score": 0.29
+  },
+  {
     "title": "Hedges vs Brown",
     "date": "2026-09-19",
     "source": "https://www.matchroomboxing.com/events/hedges-vs-brown/",
     "score": 0.192
+  },
+  {
+    "title": "Kameda vs Hernandez",
+    "date": "2026-09-23",
+    "source": "https://box.live/external-feeds/28633-2/",
+    "score": 0.242
+  },
+  {
+    "title": "Simsri vs Vicelles",
+    "date": "2026-09-26",
+    "source": "https://box.live/external-feeds/28633-2/",
+    "score": 0.296
+  },
+  {
+    "title": "Inoue vs Nasukawa",
+    "date": "2026-09-27",
+    "source": "https://box.live/external-feeds/28633-2/",
+    "score": 0.358
+  },
+  {
+    "title": "Fundora vs Hadribeaj",
+    "date": "2026-10-17",
+    "source": "https://box.live/external-feeds/28633-2/",
+    "score": 0.336
   }
 ]
