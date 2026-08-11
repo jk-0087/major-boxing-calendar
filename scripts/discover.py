@@ -15,11 +15,6 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from scripts.models import DiscoveredEvent
-from scripts.sources.box_live import (
-    BOX_LIVE_FEED_URL,
-    BoxLiveSourceError,
-    fetch_box_live_events,
-)
 from scripts.sources.matchroom import (
     MATCHROOM_EVENTS_URL,
     MatchroomSourceError,
@@ -103,8 +98,6 @@ def source_publisher(url: str) -> str:
         return "Matchroom"
     if "mostvaluablepromotions.com" in url:
         return "Most Valuable Promotions"
-    if "box.live" in url:
-        return "Box.Live"
     for spec in OFFICIAL_SOURCES:
         if spec.url.split("/")[2] in url:
             return spec.name
@@ -160,14 +153,6 @@ def discover_all() -> tuple[list[DiscoveredEvent], list[dict]]:
         statuses.append({"source": "Most Valuable Promotions", "url": MVP_EVENTS_URL, "status": "skipped", "error": str(exc)})
         print(f"Optional MVP source skipped: {exc}", file=sys.stderr)
 
-    try:
-        items = fetch_box_live_events()
-        discovered.extend(items)
-        statuses.append({"source": "Box.Live", "url": BOX_LIVE_FEED_URL, "status": "ok", "events": len(items)})
-    except BoxLiveSourceError as exc:
-        statuses.append({"source": "Box.Live", "url": BOX_LIVE_FEED_URL, "status": "skipped", "error": str(exc)})
-        print(f"Optional Box.Live source skipped: {exc}", file=sys.stderr)
-
     for spec in OFFICIAL_SOURCES:
         try:
             items = fetch_official_events(spec)
@@ -192,15 +177,32 @@ def run(apply: bool) -> int:
     report = {"checked_at": checked_at, "sources": statuses, "changes": [], "unmatched": []}
 
     matched_uids: set[str] = set()
+    approved_card_sources = {
+        source["url"]
+        for event in updated
+        for source in event.get("sources", [])
+    }
     for item in discovered:
+        if item.card_role != "main_event":
+            continue
         match, score = best_match(updated, item)
-        if match is not None and score >= 0.90 and match["uid"] not in matched_uids:
-            matched_uids.add(match["uid"])
-            changes = update_existing(match, item, checked_at)
-            if changes:
-                report["changes"].append({"uid": match["uid"], "title": match["title"], "score": round(score, 3), "changes": changes})
-        elif item.event_date >= datetime.now(SYDNEY).date():
-            report["unmatched"].append({"title": item.title, "date": item.event_date.isoformat(), "source": item.source_url, "score": round(score, 3)})
+        if match is not None and score >= 0.90:
+            if match["uid"] not in matched_uids:
+                matched_uids.add(match["uid"])
+                changes = update_existing(match, item, checked_at)
+                if changes:
+                    report["changes"].append({"uid": match["uid"], "title": match["title"], "score": round(score, 3), "changes": changes})
+        elif (
+            item.event_date >= datetime.now(SYDNEY).date()
+            and item.source_url not in approved_card_sources
+        ):
+            report["unmatched"].append({
+                "title": item.title,
+                "date": item.event_date.isoformat(),
+                "source": item.source_url,
+                "card_role": item.card_role,
+                "score": round(score, 3),
+            })
 
     PROPOSALS_PATH.write_text(json.dumps(report["unmatched"], indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     if report["changes"] and apply:

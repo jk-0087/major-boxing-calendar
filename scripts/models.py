@@ -8,6 +8,7 @@ class DiscoveredEvent:
     title: str
     event_date: date
     source_url: str
+    card_role: str = "main_event"
 
     @property
     def fighters(self) -> tuple[str, str]:

@@ -1,8 +1,8 @@
+import json
 from datetime import date
 from unittest.mock import patch
-from scripts.discover import discover_all, pair_score, best_match, update_existing
+from scripts.discover import discover_all, pair_score, best_match, run, update_existing
 from scripts.models import DiscoveredEvent
-from scripts.sources.box_live import BoxLiveSourceError
 from scripts.sources.matchroom import MatchroomSourceError
 from scripts.sources.mvp import MvpSourceError
 from scripts.sources.official import OFFICIAL_SOURCES, OfficialSourceError
@@ -36,7 +36,7 @@ def test_name_matching_handles_surname_only_schedule_titles():
     ) == 1.0
 
 
-def test_name_matching_handles_box_live_aliases():
+def test_name_matching_handles_schedule_aliases():
     assert pair_score(
         "Pierce O'Leary vs Mark Chamberlain",
         "Leary vs Chamberlain",
@@ -74,7 +74,102 @@ def test_matchroom_source_is_identified():
     assert event["sources"][0]["publisher"] == "Matchroom"
 
 
-@patch("scripts.discover.fetch_box_live_events", side_effect=BoxLiveSourceError("Box.Live unavailable"))
+@patch("scripts.discover.PROPOSALS_PATH")
+@patch("scripts.discover.EVENTS_PATH")
+@patch("scripts.discover.discover_all")
+def test_duplicate_source_match_is_not_staged(
+    mock_discover_all,
+    mock_events_path,
+    mock_proposals_path,
+):
+    event = sample_event()
+    mock_events_path.read_text.return_value = json.dumps([event])
+    mock_discover_all.return_value = (
+        [
+            DiscoveredEvent(
+                "Errol Spence vs Tim Tszyu",
+                date(2026, 7, 26),
+                "https://example.com/first",
+            ),
+            DiscoveredEvent(
+                "Spence vs Tszyu",
+                date(2026, 7, 26),
+                "https://example.org/second",
+            ),
+        ],
+        [],
+    )
+
+    assert run(apply=False) == 0
+    mock_proposals_path.write_text.assert_called_once_with(
+        "[]\n",
+        encoding="utf-8",
+    )
+
+
+@patch("scripts.discover.PROPOSALS_PATH")
+@patch("scripts.discover.EVENTS_PATH")
+@patch("scripts.discover.discover_all")
+def test_undercard_discovery_is_not_staged(
+    mock_discover_all,
+    mock_events_path,
+    mock_proposals_path,
+):
+    mock_events_path.read_text.return_value = "[]"
+    mock_discover_all.return_value = (
+        [
+            DiscoveredEvent(
+                "Undercard Fighter vs Another Fighter",
+                date(2099, 8, 12),
+                "https://example.com/card",
+                card_role="undercard",
+            )
+        ],
+        [],
+    )
+
+    assert run(apply=False) == 0
+    mock_proposals_path.write_text.assert_called_once_with(
+        "[]\n",
+        encoding="utf-8",
+    )
+
+
+@patch("scripts.discover.PROPOSALS_PATH")
+@patch("scripts.discover.EVENTS_PATH")
+@patch("scripts.discover.discover_all")
+def test_bout_from_approved_card_source_is_not_staged(
+    mock_discover_all,
+    mock_events_path,
+    mock_proposals_path,
+):
+    event = sample_event()
+    event["sources"] = [
+        {
+            "url": "https://example.com/approved-card",
+            "publisher": "Official source",
+            "checked_at": "2026-07-21T21:00:00+10:00",
+        }
+    ]
+    mock_events_path.read_text.return_value = json.dumps([event])
+    mock_discover_all.return_value = (
+        [
+            DiscoveredEvent(
+                "Undercard Fighter vs Another Fighter",
+                date(2099, 8, 12),
+                "https://example.com/approved-card",
+            )
+        ],
+        [],
+    )
+
+    assert run(apply=False) == 0
+    mock_proposals_path.write_text.assert_called_once_with(
+        "[]\n",
+        encoding="utf-8",
+    )
+
+
 @patch("scripts.discover.fetch_mvp_events", side_effect=MvpSourceError("MVP unavailable"))
 @patch(
     "scripts.discover.fetch_official_events",
@@ -90,12 +185,10 @@ def test_all_source_failures_are_safe_no_change(
     mock_matchroom,
     mock_official,
     mock_mvp,
-    mock_box_live,
 ):
     events, statuses = discover_all()
     assert events == []
     assert all(item["status"] == "skipped" for item in statuses)
-    assert len(statuses) == 3 + len(OFFICIAL_SOURCES)
+    assert len(statuses) == 2 + len(OFFICIAL_SOURCES)
     assert "parsed 0" in statuses[0]["error"]
     assert "MVP unavailable" in statuses[1]["error"]
-    assert "Box.Live unavailable" in statuses[2]["error"]

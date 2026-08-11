@@ -52,28 +52,28 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:mbc-2026-08-01-oleary-chamberlain@jk-0087.github.io
-DTSTAMP:20260731T101108Z
-LAST-MODIFIED:20260731T101108Z
-SEQUENCE:7
+DTSTAMP:20260728T101328Z
+LAST-MODIFIED:20260728T101328Z
+SEQUENCE:8
 DTSTART:20260801T180000Z
 DTEND:20260801T230000Z
 SUMMARY:Pierce O'Leary vs Mark Chamberlain
 LOCATION:3Arena
-DESCRIPTION:Status\nOfficial\n\nPromotion\nQueensberry Promotions\n\nCity\nDublin\n\nCountry\nIreland\n\nTitles\nTBA\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n4:00 AM AEST\, Sun 2 Aug 2026 (Confirmed)\n\nVenue Local Start\n7:00 PM IST\, Sat 1 Aug 2026 (Confirmed)\n\nEstimated Finish\n9:00 AM AEST\, Sun 2 Aug 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\n4:00 am AEST\n\nOfficial / Schedule Source\nhttps://www.dazn.com/en-US/news/boxing/dazn-boxing-schedule-2026-fight-dates-and-live-stream-for-confirmed-cards/ehgk0syi2n4a13u2yglrd8h84\n\nVerified\n31 Jul 2026\, 8:11 PM
+DESCRIPTION:Status\nOfficial\n\nPromotion\nQueensberry Promotions\n\nCity\nDublin\n\nCountry\nIreland\n\nTitles\nTBA\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n4:00 AM AEST\, Sun 2 Aug 2026 (Confirmed)\n\nVenue Local Start\n7:00 PM IST\, Sat 1 Aug 2026 (Confirmed)\n\nEstimated Finish\n9:00 AM AEST\, Sun 2 Aug 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\n4:00 am AEST\n\nOfficial / Schedule Source\nhttps://www.dazn.com/en-US/news/boxing/dazn-boxing-schedule-2026-fight-dates-and-live-stream-for-confirmed-cards/ehgk0syi2n4a13u2yglrd8h84\n\nVerified\n28 Jul 2026\, 8:13 PM
 URL:https://www.dazn.com/en-US/news/boxing/dazn-boxing-schedule-2026-fight-dates-and-live-stream-for-confirmed-cards/ehgk0syi2n4a13u2yglrd8h84
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:mbc-2026-08-01-roach-zepeda@jk-0087.github.io
-DTSTAMP:20260731T101108Z
-LAST-MODIFIED:20260731T101108Z
-SEQUENCE:7
+DTSTAMP:20260728T101328Z
+LAST-MODIFIED:20260728T101328Z
+SEQUENCE:8
 DTSTART:20260802T000000Z
 DTEND:20260802T050000Z
 SUMMARY:Lamont Roach Jr vs William Zepeda
 LOCATION:The Theater at Virgin Hotels
-DESCRIPTION:Status\nOfficial\n\nPromotion\nGolden Boy Promotions\n\nCity\nLas Vegas\, Nevada\n\nCountry\nUSA\n\nTitles\nTBA\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n10:00 AM AEST\, Sun 2 Aug 2026 (Confirmed)\n\nVenue Local Start\n5:00 PM PDT\, Sat 1 Aug 2026 (Confirmed)\n\nEstimated Finish\n3:00 PM AEST\, Sun 2 Aug 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\n10:00 am AEST\n\nOfficial / Schedule Source\nhttps://www.dazn.com/en-US/news/boxing/dazn-boxing-schedule-2026-fight-dates-and-live-stream-for-confirmed-cards/ehgk0syi2n4a13u2yglrd8h84\n\nVerified\n31 Jul 2026\, 8:11 PM
+DESCRIPTION:Status\nOfficial\n\nPromotion\nGolden Boy Promotions\n\nCity\nLas Vegas\, Nevada\n\nCountry\nUSA\n\nTitles\nTBA\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n10:00 AM AEST\, Sun 2 Aug 2026 (Confirmed)\n\nVenue Local Start\n5:00 PM PDT\, Sat 1 Aug 2026 (Confirmed)\n\nEstimated Finish\n3:00 PM AEST\, Sun 2 Aug 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\n10:00 am AEST\n\nOfficial / Schedule Source\nhttps://www.dazn.com/en-US/news/boxing/dazn-boxing-schedule-2026-fight-dates-and-live-stream-for-confirmed-cards/ehgk0syi2n4a13u2yglrd8h84\n\nVerified\n28 Jul 2026\, 8:13 PM
 URL:https://www.dazn.com/en-US/news/boxing/dazn-boxing-schedule-2026-fight-dates-and-live-stream-for-confirmed-cards/ehgk0syi2n4a13u2yglrd8h84
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
@@ -94,14 +94,14 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:mbc-2026-08-15-shields-scott@jk-0087.github.io
-DTSTAMP:20260731T101108Z
-LAST-MODIFIED:20260731T101108Z
-SEQUENCE:5
+DTSTAMP:20260721T100000Z
+LAST-MODIFIED:20260721T100000Z
+SEQUENCE:6
 DTSTART:20260816T000000Z
 DTEND:20260816T050000Z
 SUMMARY:Claressa Shields vs Kaye Scott
 LOCATION:Venue TBA
-DESCRIPTION:Status\nOfficial\n\nPromotion\nSalita Promotions\n\nCity\nTBA\n\nCountry\nUSA\n\nTitles\nMajor women's world championship bout\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n10:00 AM AEST\, Sun 16 Aug 2026 (Confirmed)\n\nVenue Local Start\nTBA (venue timezone not yet confirmed)\n\nEstimated Finish\n3:00 PM AEST\, Sun 16 Aug 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\n10:00 am AEST\n\nOfficial / Schedule Source\nhttps://www.dazn.com/en-US/news/boxing/dazn-boxing-schedule-2026-fight-dates-and-live-stream-for-confirmed-cards/ehgk0syi2n4a13u2yglrd8h84\n\nVerified\n31 Jul 2026\, 8:11 PM
+DESCRIPTION:Status\nOfficial\n\nPromotion\nSalita Promotions\n\nCity\nTBA\n\nCountry\nUSA\n\nTitles\nMajor women's world championship bout\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n10:00 AM AEST\, Sun 16 Aug 2026 (Confirmed)\n\nVenue Local Start\nTBA (venue timezone not yet confirmed)\n\nEstimated Finish\n3:00 PM AEST\, Sun 16 Aug 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\n10:00 am AEST\n\nOfficial / Schedule Source\nhttps://www.dazn.com/en-US/news/boxing/dazn-boxing-schedule-2026-fight-dates-and-live-stream-for-confirmed-cards/ehgk0syi2n4a13u2yglrd8h84\n\nVerified\n21 Jul 2026\, 8:00 PM
 URL:https://www.dazn.com/en-US/news/boxing/dazn-boxing-schedule-2026-fight-dates-and-live-stream-for-confirmed-cards/ehgk0syi2n4a13u2yglrd8h84
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
@@ -136,14 +136,14 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:mbc-2026-08-29-itauma-hrgovic@jk-0087.github.io
-DTSTAMP:20260731T101108Z
-LAST-MODIFIED:20260731T101108Z
-SEQUENCE:7
+DTSTAMP:20260728T101328Z
+LAST-MODIFIED:20260728T101328Z
+SEQUENCE:8
 DTSTART:20260829T160000Z
 DTEND:20260829T210000Z
 SUMMARY:Moses Itauma vs Filip Hrgovic
 LOCATION:The O2
-DESCRIPTION:Status\nOfficial\n\nPromotion\nQueensberry Promotions\n\nCity\nLondon\n\nCountry\nEngland\n\nTitles\nHeavyweight feature bout\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n2:00 AM AEST\, Sun 30 Aug 2026 (Confirmed)\n\nVenue Local Start\n5:00 PM BST\, Sat 29 Aug 2026 (Confirmed)\n\nEstimated Finish\n7:00 AM AEST\, Sun 30 Aug 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\n2:00 am AEST\n\nOfficial / Schedule Source\nhttps://www.dazn.com/en-US/news/boxing/moses-itauma-vs-filip-hrgovic-announced-august-29-london-o2-arena/17cqc3q02l6391h6331qplor4b\n\nVerified\n31 Jul 2026\, 8:11 PM
+DESCRIPTION:Status\nOfficial\n\nPromotion\nQueensberry Promotions\n\nCity\nLondon\n\nCountry\nEngland\n\nTitles\nHeavyweight feature bout\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n2:00 AM AEST\, Sun 30 Aug 2026 (Confirmed)\n\nVenue Local Start\n5:00 PM BST\, Sat 29 Aug 2026 (Confirmed)\n\nEstimated Finish\n7:00 AM AEST\, Sun 30 Aug 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\n2:00 am AEST\n\nOfficial / Schedule Source\nhttps://www.dazn.com/en-US/news/boxing/moses-itauma-vs-filip-hrgovic-announced-august-29-london-o2-arena/17cqc3q02l6391h6331qplor4b\n\nVerified\n28 Jul 2026\, 8:13 PM
 URL:https://www.dazn.com/en-US/news/boxing/moses-itauma-vs-filip-hrgovic-announced-august-29-london-o2-arena/17cqc3q02l6391h6331qplor4b
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
@@ -164,84 +164,84 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:mbc-2026-09-04-ruiz-knyba@jk-0087.github.io
-DTSTAMP:20260731T101108Z
-LAST-MODIFIED:20260731T101108Z
-SEQUENCE:3
+DTSTAMP:20260729T101651Z
+LAST-MODIFIED:20260729T101651Z
+SEQUENCE:4
 DTSTART:20260905T000000Z
 DTEND:20260905T050000Z
 SUMMARY:Andy Ruiz Jr. vs Damian Knyba
 LOCATION:Prudential Center
-DESCRIPTION:Status\nOfficial\n\nPromotion\nMatchroom Boxing\n\nCity\nNewark\, New Jersey\n\nCountry\nUSA\n\nTitles\nMajor heavyweight bout\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n10:00 AM AEST\, Sat 5 Sep 2026 (Estimated)\n\nVenue Local Start\n8:00 PM EDT\, Fri 4 Sep 2026 (Estimated)\n\nEstimated Finish\n3:00 PM AEST\, Sat 5 Sep 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nAndy Ruiz Jr. vs Damian Knyba\nVito Mielnicki Jr. vs Austin Williams\nAlan Chaves vs Eridson Garcia\nZaquin Moses vs TBA\nDennis Thompson vs TBA\n\nOfficial / Schedule Source\nhttps://www.matchroomboxing.com/events/ruiz-vs-knyba/\n\nVerified\n31 Jul 2026\, 8:11 PM
+DESCRIPTION:Status\nOfficial\n\nPromotion\nMatchroom Boxing\n\nCity\nNewark\, New Jersey\n\nCountry\nUSA\n\nTitles\nMajor heavyweight bout\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n10:00 AM AEST\, Sat 5 Sep 2026 (Estimated)\n\nVenue Local Start\n8:00 PM EDT\, Fri 4 Sep 2026 (Estimated)\n\nEstimated Finish\n3:00 PM AEST\, Sat 5 Sep 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nAndy Ruiz Jr. vs Damian Knyba\nVito Mielnicki Jr. vs Austin Williams\nAlan Chaves vs Eridson Garcia\nZaquin Moses vs TBA\nDennis Thompson vs TBA\n\nOfficial / Schedule Source\nhttps://www.matchroomboxing.com/events/ruiz-vs-knyba/\n\nVerified\n29 Jul 2026\, 8:16 PM
 URL:https://www.matchroomboxing.com/events/ruiz-vs-knyba/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:mbc-2026-09-05-taylor-pili@jk-0087.github.io
-DTSTAMP:20260731T101108Z
-LAST-MODIFIED:20260731T101108Z
-SEQUENCE:8
+DTSTAMP:20260729T101651Z
+LAST-MODIFIED:20260729T101651Z
+SEQUENCE:9
 DTSTART:20260905T180000Z
 DTEND:20260905T230000Z
 SUMMARY:Katie Taylor vs Flora Pili
 LOCATION:Venue TBA
-DESCRIPTION:Status\nOfficial\n\nPromotion\nMatchroom Boxing\n\nCity\nTBA\n\nCountry\nTBA\n\nTitles\nMajor women's world championship bout\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n4:00 AM AEST\, Sun 6 Sep 2026 (Confirmed)\n\nVenue Local Start\nTBA (venue timezone not yet confirmed)\n\nEstimated Finish\n9:00 AM AEST\, Sun 6 Sep 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\n4:00 am AEST\n\nOfficial / Schedule Source\nhttps://www.dazn.com/en-US/news/boxing/dazn-boxing-schedule-2026-fight-dates-and-live-stream-for-confirmed-cards/ehgk0syi2n4a13u2yglrd8h84\n\nVerified\n31 Jul 2026\, 8:11 PM
+DESCRIPTION:Status\nOfficial\n\nPromotion\nMatchroom Boxing\n\nCity\nTBA\n\nCountry\nTBA\n\nTitles\nMajor women's world championship bout\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n4:00 AM AEST\, Sun 6 Sep 2026 (Confirmed)\n\nVenue Local Start\nTBA (venue timezone not yet confirmed)\n\nEstimated Finish\n9:00 AM AEST\, Sun 6 Sep 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\n4:00 am AEST\n\nOfficial / Schedule Source\nhttps://www.dazn.com/en-US/news/boxing/dazn-boxing-schedule-2026-fight-dates-and-live-stream-for-confirmed-cards/ehgk0syi2n4a13u2yglrd8h84\n\nVerified\n29 Jul 2026\, 8:16 PM
 URL:https://www.dazn.com/en-US/news/boxing/dazn-boxing-schedule-2026-fight-dates-and-live-stream-for-confirmed-cards/ehgk0syi2n4a13u2yglrd8h84
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:mbc-2026-09-12-garcia-benn@jk-0087.github.io
-DTSTAMP:20260731T101108Z
-LAST-MODIFIED:20260731T101108Z
-SEQUENCE:4
+DTSTAMP:20260728T101328Z
+LAST-MODIFIED:20260728T101328Z
+SEQUENCE:5
 DTSTART:20260913T000000Z
 DTEND:20260913T050000Z
 SUMMARY:Ryan Garcia vs Conor Benn
 LOCATION:T-Mobile Arena
-DESCRIPTION:Status\nOfficial\n\nPromotion\nZuffa Boxing\n\nCity\nLas Vegas\, Nevada\n\nCountry\nUSA\n\nTitles\nWBC welterweight world championship\n\nAustralia\nParamount+\n\nMain Card Start (Sydney)\n10:00 AM AEST\, Sun 13 Sep 2026 (Estimated)\n\nVenue Local Start\n5:00 PM PDT\, Sat 12 Sep 2026 (Estimated)\n\nEstimated Finish\n3:00 PM AEST\, Sun 13 Sep 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nRyan Garcia vs Conor Benn\nUndercard TBA\n\nOfficial / Schedule Source\nhttps://www.ufc.com/news/dana-white-makes-it-official-ryan-garcia-vs-conor-benn-sept-12\n\nVerified\n31 Jul 2026\, 8:11 PM
+DESCRIPTION:Status\nOfficial\n\nPromotion\nZuffa Boxing\n\nCity\nLas Vegas\, Nevada\n\nCountry\nUSA\n\nTitles\nWBC welterweight world championship\n\nAustralia\nParamount+\n\nMain Card Start (Sydney)\n10:00 AM AEST\, Sun 13 Sep 2026 (Estimated)\n\nVenue Local Start\n5:00 PM PDT\, Sat 12 Sep 2026 (Estimated)\n\nEstimated Finish\n3:00 PM AEST\, Sun 13 Sep 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nRyan Garcia vs Conor Benn\nUndercard TBA\n\nOfficial / Schedule Source\nhttps://www.ufc.com/news/dana-white-makes-it-official-ryan-garcia-vs-conor-benn-sept-12\n\nVerified\n28 Jul 2026\, 8:13 PM
 URL:https://www.ufc.com/news/dana-white-makes-it-official-ryan-garcia-vs-conor-benn-sept-12
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:mbc-2026-10-03-whittaker-wallace@jk-0087.github.io
-DTSTAMP:20260731T101108Z
-LAST-MODIFIED:20260731T101108Z
-SEQUENCE:3
+DTSTAMP:20260729T101651Z
+LAST-MODIFIED:20260729T101651Z
+SEQUENCE:4
 DTSTART:20261003T180000Z
 DTEND:20261003T230000Z
 SUMMARY:Ben Whittaker vs Conor Wallace
 LOCATION:Utilita Arena Birmingham
-DESCRIPTION:Status\nOfficial\n\nPromotion\nMatchroom Boxing\n\nCity\nBirmingham\n\nCountry\nUnited Kingdom\n\nTitles\nIBF light heavyweight world title final eliminator\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n5:00 AM AEDT\, Sun 4 Oct 2026 (Estimated)\n\nVenue Local Start\n7:00 PM BST\, Sat 3 Oct 2026 (Estimated)\n\nEstimated Finish\n10:00 AM AEDT\, Sun 4 Oct 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nBen Whittaker vs Conor Wallace\nUndercard TBA\n\nOfficial / Schedule Source\nhttps://www.matchroomboxing.com/events/whittaker-vs-wallace/\n\nVerified\n31 Jul 2026\, 8:11 PM
+DESCRIPTION:Status\nOfficial\n\nPromotion\nMatchroom Boxing\n\nCity\nBirmingham\n\nCountry\nUnited Kingdom\n\nTitles\nIBF light heavyweight world title final eliminator\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n5:00 AM AEDT\, Sun 4 Oct 2026 (Estimated)\n\nVenue Local Start\n7:00 PM BST\, Sat 3 Oct 2026 (Estimated)\n\nEstimated Finish\n10:00 AM AEDT\, Sun 4 Oct 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nBen Whittaker vs Conor Wallace\nUndercard TBA\n\nOfficial / Schedule Source\nhttps://www.matchroomboxing.com/events/whittaker-vs-wallace/\n\nVerified\n29 Jul 2026\, 8:16 PM
 URL:https://www.matchroomboxing.com/events/whittaker-vs-wallace/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:mbc-2026-10-24-smith-puello@jk-0087.github.io
-DTSTAMP:20260731T101108Z
-LAST-MODIFIED:20260731T101108Z
-SEQUENCE:3
+DTSTAMP:20260729T101651Z
+LAST-MODIFIED:20260729T101651Z
+SEQUENCE:4
 DTSTART:20261024T180000Z
 DTEND:20261024T230000Z
 SUMMARY:Dalton Smith vs Alberto Puello
 LOCATION:Utilita Arena Sheffield
-DESCRIPTION:Status\nOfficial\n\nPromotion\nMatchroom Boxing\n\nCity\nSheffield\n\nCountry\nUnited Kingdom\n\nTitles\nWBC super lightweight world championship\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n5:00 AM AEDT\, Sun 25 Oct 2026 (Estimated)\n\nVenue Local Start\n7:00 PM BST\, Sat 24 Oct 2026 (Estimated)\n\nEstimated Finish\n10:00 AM AEDT\, Sun 25 Oct 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nDalton Smith vs Alberto Puello\nUndercard TBA\n\nOfficial / Schedule Source\nhttps://www.matchroomboxing.com/events/smith-vs-puello/\n\nVerified\n31 Jul 2026\, 8:11 PM
+DESCRIPTION:Status\nOfficial\n\nPromotion\nMatchroom Boxing\n\nCity\nSheffield\n\nCountry\nUnited Kingdom\n\nTitles\nWBC super lightweight world championship\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n5:00 AM AEDT\, Sun 25 Oct 2026 (Estimated)\n\nVenue Local Start\n7:00 PM BST\, Sat 24 Oct 2026 (Estimated)\n\nEstimated Finish\n10:00 AM AEDT\, Sun 25 Oct 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nDalton Smith vs Alberto Puello\nUndercard TBA\n\nOfficial / Schedule Source\nhttps://www.matchroomboxing.com/events/smith-vs-puello/\n\nVerified\n29 Jul 2026\, 8:16 PM
 URL:https://www.matchroomboxing.com/events/smith-vs-puello/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:mbc-2026-09-12-canelo-mbilli@jk-0087.github.io
-DTSTAMP:20260731T101108Z
-LAST-MODIFIED:20260731T101108Z
-SEQUENCE:6
+DTSTAMP:20260728T120946Z
+LAST-MODIFIED:20260728T120946Z
+SEQUENCE:7
 DTSTART:20261031T150000Z
 DTEND:20261031T200000Z
 SUMMARY:Canelo Alvarez vs Christian Mbilli
 LOCATION:Venue TBA
-DESCRIPTION:Status\nOfficial\n\nPromotion\nRiyadh Season\n\nCity\nRiyadh\n\nCountry\nSaudi Arabia\n\nTitles\nWBC super middleweight world title\n\nAustralia\nDAZN / DAZN PPV status TBA\n\nMain Card Start (Sydney)\n2:00 AM AEDT\, Sun 1 Nov 2026 (Estimated)\n\nVenue Local Start\n6:00 PM +03\, Sat 31 Oct 2026 (Estimated)\n\nEstimated Finish\n7:00 AM AEDT\, Sun 1 Nov 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nUndercard TBA\n\nOfficial / Schedule Source\nhttps://boxingnewsonline.net/news/canelo-announces-new-date-for-mbilli/\n\nVerified\n31 Jul 2026\, 8:11 PM
+DESCRIPTION:Status\nOfficial\n\nPromotion\nRiyadh Season\n\nCity\nRiyadh\n\nCountry\nSaudi Arabia\n\nTitles\nWBC super middleweight world title\n\nAustralia\nDAZN / DAZN PPV status TBA\n\nMain Card Start (Sydney)\n2:00 AM AEDT\, Sun 1 Nov 2026 (Estimated)\n\nVenue Local Start\n6:00 PM +03\, Sat 31 Oct 2026 (Estimated)\n\nEstimated Finish\n7:00 AM AEDT\, Sun 1 Nov 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nUndercard TBA\n\nOfficial / Schedule Source\nhttps://boxingnewsonline.net/news/canelo-announces-new-date-for-mbilli/\n\nVerified\n28 Jul 2026\, 10:09 PM
 URL:https://boxingnewsonline.net/news/canelo-announces-new-date-for-mbilli/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT

@@ -14,7 +14,6 @@ The live source of truth is `data/events.json`. Every six hours, GitHub Actions 
 - **Most Valuable Promotions (MVP)**
 - **No Limit Boxing**
 - **Zuffa Boxing**
-- **Box.Live**
 
 Every source is isolated: HTTP errors, timeouts, blocking, or suspicious parser results are logged and skipped without failing the workflow. A failed source never causes existing calendar events to be deleted or cleared.
 
@@ -29,7 +28,7 @@ Every source is isolated: HTTP errors, timeouts, blocking, or suspicious parser 
 - increments `SEQUENCE` only when a meaningful field changes
 - regenerates `major-boxing-calendar.ics` and `index.html` after safe matched updates; the build workflow also keeps both generated files current after relevant pushes
 - never deletes events because a source item disappears
-- stages unmatched fights in `data/proposed-events.json` instead of publishing them automatically
+- stages unmatched main events in `data/proposed-events.json` instead of publishing them automatically; undercard bouts are rejected
 
 ## Workflow
 
