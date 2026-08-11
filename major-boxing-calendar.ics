@@ -93,6 +93,20 @@ STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:mbc-2026-08-12-teremoana-savage@jk-0087.github.io
+DTSTAMP:20260811T103933Z
+LAST-MODIFIED:20260811T103933Z
+SEQUENCE:1
+DTSTART:20260812T090000Z
+DTEND:20260812T140000Z
+SUMMARY:Teremoana Teremoana vs DeAndre Savage
+LOCATION:The Star Gold Coast
+DESCRIPTION:Status\nOfficial\n\nPromotion\nMatchroom Boxing\n\nCity\nBroadbeach\, Queensland\n\nCountry\nAustralia\n\nTitles\nMajor heavyweight bout\n\nAustralia\nFox Sports / Kayo Sports\n\nMain Card Start (Sydney)\n7:00 PM AEST\, Wed 12 Aug 2026 (Confirmed)\n\nVenue Local Start\n7:00 PM AEST\, Wed 12 Aug 2026 (Confirmed)\n\nEstimated Finish\n12:00 AM AEST\, Thu 13 Aug 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nTeremoana Teremoana vs DeAndre Savage\nMichael Zerafa vs Alejandro Ortiz\nJack Bowen vs Mielifeier Dalielibieke\nJasmine Parr vs Jemma Peart\nLekaysha Woodbridge vs Sothita Sitthichai\n\nOfficial / Schedule Source\nhttps://www.matchroomboxing.com/events/teremoana-vs-savage/\n\nVerified\n11 Aug 2026\, 8:39 PM
+URL:https://www.matchroomboxing.com/events/teremoana-vs-savage/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:mbc-2026-08-15-shields-scott@jk-0087.github.io
 DTSTAMP:20260721T100000Z
 LAST-MODIFIED:20260721T100000Z
@@ -201,6 +215,20 @@ SUMMARY:Ryan Garcia vs Conor Benn
 LOCATION:T-Mobile Arena
 DESCRIPTION:Status\nOfficial\n\nPromotion\nZuffa Boxing\n\nCity\nLas Vegas\, Nevada\n\nCountry\nUSA\n\nTitles\nWBC welterweight world championship\n\nAustralia\nParamount+\n\nMain Card Start (Sydney)\n10:00 AM AEST\, Sun 13 Sep 2026 (Estimated)\n\nVenue Local Start\n5:00 PM PDT\, Sat 12 Sep 2026 (Estimated)\n\nEstimated Finish\n3:00 PM AEST\, Sun 13 Sep 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nRyan Garcia vs Conor Benn\nUndercard TBA\n\nOfficial / Schedule Source\nhttps://www.ufc.com/news/dana-white-makes-it-official-ryan-garcia-vs-conor-benn-sept-12\n\nVerified\n28 Jul 2026\, 8:13 PM
 URL:https://www.ufc.com/news/dana-white-makes-it-official-ryan-garcia-vs-conor-benn-sept-12
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:mbc-2026-09-19-cruz-bravo@jk-0087.github.io
+DTSTAMP:20260811T103933Z
+LAST-MODIFIED:20260811T103933Z
+SEQUENCE:1
+DTSTART:20260920T000000Z
+DTEND:20260920T050000Z
+SUMMARY:Isaac Cruz vs Nestor Bravo
+LOCATION:Pechanga Arena
+DESCRIPTION:Status\nOfficial\n\nPromotion\nPremier Boxing Champions\n\nCity\nSan Diego\, California\n\nCountry\nUSA\n\nTitles\nInterim WBC super lightweight world championship\nInterim WBC middleweight world championship: Jesus Ramos vs Meiirim Nursultanov\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n10:00 AM AEST\, Sun 20 Sep 2026 (Confirmed)\n\nVenue Local Start\n5:00 PM PDT\, Sat 19 Sep 2026 (Confirmed)\n\nEstimated Finish\n3:00 PM AEST\, Sun 20 Sep 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nIsaac Cruz vs Nestor Bravo\nJesus Ramos vs Meiirim Nursultanov\n\nOfficial / Schedule Source\nhttps://www.premierboxingchampions.com/fight-night-september-19-2026\n\nVerified\n11 Aug 2026\, 8:39 PM
+URL:https://www.premierboxingchampions.com/fight-night-september-19-2026
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT

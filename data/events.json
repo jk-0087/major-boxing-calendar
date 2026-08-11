@@ -1432,5 +1432,130 @@
       "value": "2026-10-25T05:00:00+11:00",
       "confidence": "estimated"
     }
+  },
+  {
+    "uid": "mbc-2026-08-12-teremoana-savage@jk-0087.github.io",
+    "sequence": 1,
+    "status": "Official",
+    "title": "Teremoana Teremoana vs DeAndre Savage",
+    "fighters": {
+      "red": "Teremoana Teremoana",
+      "blue": "DeAndre Savage"
+    },
+    "end": {
+      "value": "2026-08-13T00:00:00+10:00",
+      "confidence": "estimated"
+    },
+    "ring_walk": {
+      "value": null,
+      "confidence": "tba"
+    },
+    "venue": {
+      "name": "The Star Gold Coast",
+      "city": "Broadbeach, Queensland",
+      "country": "Australia",
+      "timezone": "Australia/Brisbane"
+    },
+    "promotion": [
+      "Matchroom Boxing"
+    ],
+    "titles": [
+      "Major heavyweight bout"
+    ],
+    "broadcast": {
+      "australia": "Fox Sports / Kayo Sports"
+    },
+    "main_card": [
+      "Teremoana Teremoana vs DeAndre Savage",
+      "Michael Zerafa vs Alejandro Ortiz",
+      "Jack Bowen vs Mielifeier Dalielibieke",
+      "Jasmine Parr vs Jemma Peart",
+      "Lekaysha Woodbridge vs Sothita Sitthichai"
+    ],
+    "sources": [
+      {
+        "url": "https://www.matchroomboxing.com/events/teremoana-vs-savage/",
+        "publisher": "Matchroom Boxing",
+        "checked_at": "2026-08-11T20:39:33+10:00"
+      },
+      {
+        "url": "https://premier.ticketek.com.au/shows/show.aspx?sh=MATCHBOX26",
+        "publisher": "Ticketek Australia",
+        "checked_at": "2026-08-11T20:39:33+10:00"
+      }
+    ],
+    "history": [
+      {
+        "version": 1,
+        "date": "2026-08-11",
+        "changes": [
+          "Approved from Matchroom staged events",
+          "Confirmed event start from the official ticket listing"
+        ]
+      }
+    ],
+    "main_card_start": {
+      "value": "2026-08-12T19:00:00+10:00",
+      "confidence": "confirmed"
+    }
+  },
+  {
+    "uid": "mbc-2026-09-19-cruz-bravo@jk-0087.github.io",
+    "sequence": 1,
+    "status": "Official",
+    "title": "Isaac Cruz vs Nestor Bravo",
+    "fighters": {
+      "red": "Isaac Cruz",
+      "blue": "Nestor Bravo"
+    },
+    "end": {
+      "value": "2026-09-19T22:00:00-07:00",
+      "confidence": "estimated"
+    },
+    "ring_walk": {
+      "value": null,
+      "confidence": "tba"
+    },
+    "venue": {
+      "name": "Pechanga Arena",
+      "city": "San Diego, California",
+      "country": "USA",
+      "timezone": "America/Los_Angeles"
+    },
+    "promotion": [
+      "Premier Boxing Champions"
+    ],
+    "titles": [
+      "Interim WBC super lightweight world championship",
+      "Interim WBC middleweight world championship: Jesus Ramos vs Meiirim Nursultanov"
+    ],
+    "broadcast": {
+      "australia": "DAZN"
+    },
+    "main_card": [
+      "Isaac Cruz vs Nestor Bravo",
+      "Jesus Ramos vs Meiirim Nursultanov"
+    ],
+    "sources": [
+      {
+        "url": "https://www.premierboxingchampions.com/fight-night-september-19-2026",
+        "publisher": "Premier Boxing Champions",
+        "checked_at": "2026-08-11T20:39:33+10:00"
+      }
+    ],
+    "history": [
+      {
+        "version": 1,
+        "date": "2026-08-11",
+        "changes": [
+          "Approved from Premier Boxing Champions staged events",
+          "Confirmed main-card start from the official PBC listing"
+        ]
+      }
+    ],
+    "main_card_start": {
+      "value": "2026-09-19T17:00:00-07:00",
+      "confidence": "confirmed"
+    }
   }
 ]

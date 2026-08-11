@@ -1,12 +1,5 @@
 [
   {
-    "title": "Teremoana vs Savage",
-    "date": "2026-08-12",
-    "source": "https://www.matchroomboxing.com/events/teremoana-vs-savage/",
-    "card_role": "main_event",
-    "score": 0.358
-  },
-  {
     "title": "Liddard vs Morello",
     "date": "2026-08-22",
     "source": "https://www.matchroomboxing.com/events/liddard-vs-morello/",
@@ -40,13 +33,6 @@
     "source": "https://www.matchroomboxing.com/events/hedges-vs-brown/",
     "card_role": "main_event",
     "score": 0.192
-  },
-  {
-    "title": "Isaac Cruz vs Nestor Bravo",
-    "date": "2026-09-19",
-    "source": "https://www.premierboxingchampions.com/fight-night-september-19-2026",
-    "card_role": "main_event",
-    "score": 0.305
   },
   {
     "title": "Liam Davies vs Nathaniel Collins",
