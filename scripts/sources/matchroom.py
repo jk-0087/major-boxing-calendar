@@ -68,7 +68,9 @@ def _extract_from_block(text: str, href: str, today: date) -> DiscoveredEvent | 
     right = _clean(fight.group("b"))
     if not left or not right or len(left.split()) > 7 or len(right.split()) > 7:
         return None
-    return DiscoveredEvent(f"{left} vs {right}", event_date, href)
+    return DiscoveredEvent(
+        f"{left} vs {right}", event_date, href, card_role="main_event"
+    )
 
 
 def fetch_matchroom_events(today: date | None = None) -> list[DiscoveredEvent]:
@@ -122,7 +124,12 @@ def fetch_matchroom_events(today: date | None = None) -> list[DiscoveredEvent]:
                         continue
                     left, right = _clean(fight.group("a")), _clean(fight.group("b"))
                     if left and right and len(left.split()) <= 7 and len(right.split()) <= 7:
-                        event = DiscoveredEvent(f"{left} vs {right}", event_date, href)
+                        event = DiscoveredEvent(
+                            f"{left} vs {right}",
+                            event_date,
+                            href,
+                            card_role="main_event",
+                        )
                         break
                 if event:
                     break
@@ -146,7 +153,10 @@ def fetch_matchroom_events(today: date | None = None) -> list[DiscoveredEvent]:
                 if left and right and len(left.split()) <= 7 and len(right.split()) <= 7:
                     title = f"{left} vs {right}"
                     found[(title.casefold(), current_date)] = DiscoveredEvent(
-                        title, current_date, MATCHROOM_EVENTS_URL
+                        title,
+                        current_date,
+                        MATCHROOM_EVENTS_URL,
+                        card_role="main_event",
                     )
 
     events = sorted(found.values(), key=lambda event: (event.event_date, event.title))

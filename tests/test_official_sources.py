@@ -1,12 +1,14 @@
 from datetime import date
 from unittest.mock import Mock, patch
 
+from scripts.models import DiscoveredEvent
 from scripts.sources.official import (
     OFFICIAL_SOURCES,
     SourceSpec,
     fetch_official_events,
     parse_no_limit_event_detail,
     parse_official_schedule,
+    select_main_events,
 )
 
 
@@ -77,6 +79,84 @@ def test_registered_source_parser_handles_split_names_and_numeric_date():
     assert ("Moses Itauma vs Filip Hrgovic", "2026-08-29") in [
         (event.title, event.event_date.isoformat()) for event in events
     ]
+
+
+def test_ring_event_page_keeps_headline_and_rejects_undercards():
+    spec = next(source for source in OFFICIAL_SOURCES if source.name == "The Ring / Riyadh Season")
+    source_url = "https://www.ringmagazine.com/events/roach-vs-zepeda-card"
+    event_date = date(2026, 8, 1)
+    selected = select_main_events(
+        [
+            DiscoveredEvent(
+                "Curiel vs Randall",
+                event_date,
+                source_url,
+                card_role="main_event",
+            ),
+            DiscoveredEvent(
+                "Lamont Roach Jr vs William Zepeda",
+                event_date,
+                source_url,
+                card_role="main_event",
+            ),
+            DiscoveredEvent(
+                "Muratalla vs Conceicao",
+                event_date,
+                source_url,
+                card_role="main_event",
+            ),
+        ],
+        spec,
+    )
+    assert [event.title for event in selected] == [
+        "Lamont Roach Jr vs William Zepeda"
+    ]
+
+
+def test_pbc_prefers_card_level_fight_night_page():
+    spec = next(source for source in OFFICIAL_SOURCES if source.name == "Premier Boxing Champions")
+    event_date = date(2026, 9, 19)
+    selected = select_main_events(
+        [
+            DiscoveredEvent(
+                "Jesus Ramos vs Meiirim Nursultanov",
+                event_date,
+                "https://www.premierboxingchampions.com/jesus-ramos-vs-meiirim-nursultanov",
+                card_role="main_event",
+            ),
+            DiscoveredEvent(
+                "Isaac Cruz vs Nestor Bravo",
+                event_date,
+                "https://www.premierboxingchampions.com/fight-night-september-19-2026",
+                card_role="main_event",
+            ),
+        ],
+        spec,
+    )
+    assert [event.title for event in selected] == ["Isaac Cruz vs Nestor Bravo"]
+
+
+def test_pbc_rejects_ambiguous_bout_pages_without_card_headline():
+    spec = next(source for source in OFFICIAL_SOURCES if source.name == "Premier Boxing Champions")
+    event_date = date(2026, 9, 19)
+    selected = select_main_events(
+        [
+            DiscoveredEvent(
+                "First Fighter vs First Challenger",
+                event_date,
+                "https://www.premierboxingchampions.com/first-fighter-vs-first-challenger",
+                card_role="main_event",
+            ),
+            DiscoveredEvent(
+                "Second Fighter vs Second Challenger",
+                event_date,
+                "https://www.premierboxingchampions.com/second-fighter-vs-second-challenger",
+                card_role="main_event",
+            ),
+        ],
+        spec,
+    )
+    assert selected == []
 
 
 NO_LIMIT_DETAIL_HTML = """

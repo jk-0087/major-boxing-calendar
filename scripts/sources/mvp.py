@@ -64,6 +64,7 @@ def parse_mvp_schedule(html: str, today: date) -> list[DiscoveredEvent]:
                     pending_title,
                     event_date,
                     MVP_EVENTS_URL,
+                    card_role="main_event",
                 )
             pending_title = None
 

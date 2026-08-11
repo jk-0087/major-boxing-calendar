@@ -1,7 +1,14 @@
 import json
 from datetime import date
 from unittest.mock import patch
-from scripts.discover import discover_all, pair_score, best_match, run, update_existing
+from scripts.discover import (
+    best_match,
+    discover_all,
+    merge_staged_events,
+    pair_score,
+    run,
+    update_existing,
+)
 from scripts.models import DiscoveredEvent
 from scripts.sources.matchroom import MatchroomSourceError
 from scripts.sources.mvp import MvpSourceError
@@ -52,7 +59,12 @@ def test_venue_date_does_not_rewrite_sydney_broadcast_date():
     original_start = event["main_card_start"]["value"]
     original_end = event["end"]["value"]
     original_ring_walk = event["ring_walk"]["value"]
-    discovered = DiscoveredEvent("Errol Spence vs Tim Tszyu", date(2026, 7, 25), "https://example.com/schedule")
+    discovered = DiscoveredEvent(
+        "Errol Spence vs Tim Tszyu",
+        date(2026, 7, 25),
+        "https://example.com/schedule",
+        card_role="main_event",
+    )
     changes = update_existing(event, discovered, "2026-07-21T21:00:00+10:00")
     assert changes == ["Added Official source schedule source"]
     assert event["uid"] == "stable-id@example.com"
@@ -68,10 +80,110 @@ def test_matchroom_source_is_identified():
         "Errol Spence vs Tim Tszyu",
         date(2026, 7, 26),
         "https://www.matchroomboxing.com/events/spence-vs-tszyu/",
+        card_role="main_event",
     )
     changes = update_existing(event, discovered, "2026-07-21T21:00:00+10:00")
     assert "Added Matchroom schedule source" in changes
     assert event["sources"][0]["publisher"] == "Matchroom"
+
+
+def test_unchanged_source_does_not_rewrite_event_verification_time():
+    event = sample_event()
+    event["sources"] = [
+        {
+            "url": "https://example.com/schedule",
+            "publisher": "Official source",
+            "checked_at": "2026-07-21T21:00:00+10:00",
+        }
+    ]
+    discovered = DiscoveredEvent(
+        event["title"],
+        date(2026, 7, 26),
+        "https://example.com/schedule",
+        card_role="main_event",
+    )
+    assert update_existing(event, discovered, "2026-08-11T12:00:00+10:00") == []
+    assert event["sources"][0]["checked_at"] == "2026-07-21T21:00:00+10:00"
+
+
+def test_failed_source_proposals_are_preserved():
+    proposal = {
+        "title": "Future Fighter vs Future Challenger",
+        "date": "2099-08-22",
+        "source": "https://www.matchroomboxing.com/events/future-card/",
+        "card_role": "main_event",
+        "score": 0.2,
+    }
+    statuses = [
+        {
+            "source": "Matchroom",
+            "url": "https://www.matchroomboxing.com/events/",
+            "status": "skipped",
+            "error": "timeout",
+        }
+    ]
+    assert merge_staged_events([proposal], [], statuses, date(2026, 8, 11)) == [
+        proposal
+    ]
+
+
+def test_healthy_source_replaces_its_previous_proposals():
+    old = {
+        "title": "Old Fighter vs Old Challenger",
+        "date": "2099-08-22",
+        "source": "https://www.matchroomboxing.com/events/old-card/",
+        "card_role": "main_event",
+        "score": 0.2,
+    }
+    new = {
+        "title": "New Fighter vs New Challenger",
+        "date": "2099-08-29",
+        "source": "https://www.matchroomboxing.com/events/new-card/",
+        "card_role": "main_event",
+        "score": 0.3,
+    }
+    statuses = [
+        {
+            "source": "Matchroom",
+            "url": "https://www.matchroomboxing.com/events/",
+            "status": "ok",
+            "events": 2,
+        }
+    ]
+    assert merge_staged_events([old], [new], statuses, date(2026, 8, 11)) == [new]
+
+
+def test_suspiciously_low_source_result_preserves_previous_proposals():
+    previous = [
+        {
+            "title": f"Fighter {index} vs Challenger {index}",
+            "date": f"2099-08-{20 + index:02d}",
+            "source": f"https://example.com/card-{index}",
+            "card_role": "main_event",
+            "score": 0.2,
+        }
+        for index in range(4)
+    ]
+    current = [
+        {
+            "title": "Fighter 0 vs Challenger 0",
+            "date": "2099-08-20",
+            "source": "https://example.com/card-0",
+            "card_role": "main_event",
+            "score": 0.2,
+        }
+    ]
+    statuses = [
+        {
+            "source": "Example",
+            "url": "https://example.com/events",
+            "status": "ok",
+            "events": 1,
+        }
+    ]
+    merged = merge_staged_events(previous, current, statuses, date(2026, 8, 11))
+    assert merged == previous
+    assert statuses[0]["proposal_policy"] == "preserved_previous_low_result"
 
 
 @patch("scripts.discover.PROPOSALS_PATH")
@@ -84,17 +196,20 @@ def test_duplicate_source_match_is_not_staged(
 ):
     event = sample_event()
     mock_events_path.read_text.return_value = json.dumps([event])
+    mock_proposals_path.read_text.return_value = "[]"
     mock_discover_all.return_value = (
         [
             DiscoveredEvent(
                 "Errol Spence vs Tim Tszyu",
                 date(2026, 7, 26),
                 "https://example.com/first",
+                card_role="main_event",
             ),
             DiscoveredEvent(
                 "Spence vs Tszyu",
                 date(2026, 7, 26),
                 "https://example.org/second",
+                card_role="main_event",
             ),
         ],
         [],
@@ -116,6 +231,7 @@ def test_undercard_discovery_is_not_staged(
     mock_proposals_path,
 ):
     mock_events_path.read_text.return_value = "[]"
+    mock_proposals_path.read_text.return_value = "[]"
     mock_discover_all.return_value = (
         [
             DiscoveredEvent(
@@ -152,12 +268,14 @@ def test_bout_from_approved_card_source_is_not_staged(
         }
     ]
     mock_events_path.read_text.return_value = json.dumps([event])
+    mock_proposals_path.read_text.return_value = "[]"
     mock_discover_all.return_value = (
         [
             DiscoveredEvent(
                 "Undercard Fighter vs Another Fighter",
                 date(2099, 8, 12),
                 "https://example.com/approved-card",
+                card_role="main_event",
             )
         ],
         [],

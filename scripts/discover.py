@@ -5,10 +5,12 @@ import argparse
 import json
 import re
 import sys
+from concurrent.futures import ThreadPoolExecutor
 from copy import deepcopy
-from datetime import datetime
+from datetime import date, datetime
 from difflib import SequenceMatcher
 from pathlib import Path
+from urllib.parse import urlsplit
 from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -104,6 +106,10 @@ def source_publisher(url: str) -> str:
     return "Official source"
 
 
+def source_domain(url: str) -> str:
+    return urlsplit(url).netloc.casefold().removeprefix("www.")
+
+
 def update_existing(event: dict, discovered: DiscoveredEvent, checked_at: str) -> list[str]:
     changes: list[str] = []
     publisher = source_publisher(discovered.source_url)
@@ -113,10 +119,10 @@ def update_existing(event: dict, discovered: DiscoveredEvent, checked_at: str) -
         event["sources"].append({"url": discovered.source_url, "publisher": publisher, "checked_at": checked_at})
         changes.append(f"Added {publisher} schedule source")
     else:
-        source["checked_at"] = checked_at
         if source.get("url") != discovered.source_url:
             source["url"] = discovered.source_url
             source["publisher"] = publisher
+            source["checked_at"] = checked_at
             changes.append(f"Updated {publisher} schedule source")
 
     # Schedule adapters expose the advertised date at the venue, while stored
@@ -135,32 +141,52 @@ def discover_all() -> tuple[list[DiscoveredEvent], list[dict]]:
     discovered: list[DiscoveredEvent] = []
     statuses: list[dict] = []
 
-    # Matchroom is the primary source. Source failures are recorded but never
-    # allowed to modify or empty the existing calendar.
-    try:
-        items = fetch_matchroom_events()
-        discovered.extend(items)
-        statuses.append({"source": "Matchroom", "url": MATCHROOM_EVENTS_URL, "status": "ok", "events": len(items)})
-    except MatchroomSourceError as exc:
-        statuses.append({"source": "Matchroom", "url": MATCHROOM_EVENTS_URL, "status": "skipped", "error": str(exc)})
-        print(f"Primary Matchroom source skipped safely: {exc}", file=sys.stderr)
+    # Sources are independent and network-bound, so fetch them concurrently.
+    # Results are still processed in a fixed order to keep matching and output
+    # deterministic. Only each adapter's expected source exception is skipped;
+    # programming errors continue to fail the workflow.
+    jobs = [
+        (
+            "Matchroom",
+            MATCHROOM_EVENTS_URL,
+            fetch_matchroom_events,
+            MatchroomSourceError,
+            "Primary Matchroom source skipped safely",
+        ),
+        (
+            "Most Valuable Promotions",
+            MVP_EVENTS_URL,
+            fetch_mvp_events,
+            MvpSourceError,
+            "Optional MVP source skipped",
+        ),
+    ]
+    jobs.extend(
+        (
+            spec.name,
+            spec.url,
+            lambda spec=spec: fetch_official_events(spec),
+            OfficialSourceError,
+            f"Optional {spec.name} source skipped",
+        )
+        for spec in OFFICIAL_SOURCES
+    )
 
-    try:
-        items = fetch_mvp_events()
-        discovered.extend(items)
-        statuses.append({"source": "Most Valuable Promotions", "url": MVP_EVENTS_URL, "status": "ok", "events": len(items)})
-    except MvpSourceError as exc:
-        statuses.append({"source": "Most Valuable Promotions", "url": MVP_EVENTS_URL, "status": "skipped", "error": str(exc)})
-        print(f"Optional MVP source skipped: {exc}", file=sys.stderr)
-
-    for spec in OFFICIAL_SOURCES:
-        try:
-            items = fetch_official_events(spec)
+    with ThreadPoolExecutor(max_workers=min(6, len(jobs))) as executor:
+        futures = [executor.submit(fetch) for _, _, fetch, _, _ in jobs]
+        for (name, url, _, error_type, error_label), future in zip(jobs, futures):
+            try:
+                items = future.result()
+            except error_type as exc:
+                statuses.append(
+                    {"source": name, "url": url, "status": "skipped", "error": str(exc)}
+                )
+                print(f"{error_label}: {exc}", file=sys.stderr)
+                continue
             discovered.extend(items)
-            statuses.append({"source": spec.name, "url": spec.url, "status": "ok", "events": len(items)})
-        except OfficialSourceError as exc:
-            statuses.append({"source": spec.name, "url": spec.url, "status": "skipped", "error": str(exc)})
-            print(f"Optional {spec.name} source skipped: {exc}", file=sys.stderr)
+            statuses.append(
+                {"source": name, "url": url, "status": "ok", "events": len(items)}
+            )
 
     deduped: dict[tuple[str, object], DiscoveredEvent] = {}
     for item in discovered:
@@ -168,13 +194,70 @@ def discover_all() -> tuple[list[DiscoveredEvent], list[dict]]:
     return sorted(deduped.values(), key=lambda x: (x.event_date, x.title)), statuses
 
 
-def run(apply: bool) -> int:
+def merge_staged_events(
+    existing_proposals: list[dict],
+    current_proposals: list[dict],
+    statuses: list[dict],
+    today: date,
+) -> list[dict]:
+    """Replace proposals only for healthy sources and preserve failed sources."""
+    status_by_domain = {source_domain(item["url"]): item for item in statuses}
+    previous_counts: dict[str, int] = {}
+    for proposal in existing_proposals:
+        domain = source_domain(proposal.get("source", ""))
+        previous_counts[domain] = previous_counts.get(domain, 0) + 1
+
+    healthy_domains = set()
+    for domain, status in status_by_domain.items():
+        if status["status"] != "ok":
+            continue
+        previous_count = previous_counts.get(domain, 0)
+        current_count = int(status.get("events", 0))
+        suspiciously_low = (
+            previous_count >= 4
+            and current_count < max(1, (previous_count + 1) // 2)
+        )
+        if suspiciously_low:
+            status["proposal_policy"] = "preserved_previous_low_result"
+            continue
+        healthy_domains.add(domain)
+    configured_domains = set(status_by_domain)
+
+    candidates = []
+    for proposal in existing_proposals:
+        try:
+            event_date = date.fromisoformat(proposal["date"])
+            domain = source_domain(proposal["source"])
+        except (KeyError, TypeError, ValueError):
+            continue
+        if event_date < today or domain not in configured_domains:
+            continue
+        if domain not in healthy_domains:
+            candidates.append(proposal)
+
+    candidates.extend(current_proposals)
+    deduped: dict[tuple[str, str], dict] = {}
+    for proposal in sorted(candidates, key=lambda item: (item["date"], item["title"])):
+        key = (normalise_name(proposal["title"]), proposal["date"])
+        deduped.setdefault(key, proposal)
+    return list(deduped.values())
+
+
+def run(apply: bool, report_path: str | None = None) -> int:
     existing = json.loads(EVENTS_PATH.read_text(encoding="utf-8"))
+    existing_proposals = json.loads(PROPOSALS_PATH.read_text(encoding="utf-8"))
     discovered, statuses = discover_all()
 
     checked_at = datetime.now(SYDNEY).replace(microsecond=0).isoformat()
+    today = datetime.now(SYDNEY).date()
     updated = deepcopy(existing)
-    report = {"checked_at": checked_at, "sources": statuses, "changes": [], "unmatched": []}
+    report = {
+        "checked_at": checked_at,
+        "sources": statuses,
+        "changes": [],
+        "current_unmatched": [],
+        "staged": [],
+    }
 
     matched_uids: set[str] = set()
     approved_card_sources = {
@@ -193,10 +276,10 @@ def run(apply: bool) -> int:
                 if changes:
                     report["changes"].append({"uid": match["uid"], "title": match["title"], "score": round(score, 3), "changes": changes})
         elif (
-            item.event_date >= datetime.now(SYDNEY).date()
+            item.event_date >= today
             and item.source_url not in approved_card_sources
         ):
-            report["unmatched"].append({
+            report["current_unmatched"].append({
                 "title": item.title,
                 "date": item.event_date.isoformat(),
                 "source": item.source_url,
@@ -204,18 +287,33 @@ def run(apply: bool) -> int:
                 "score": round(score, 3),
             })
 
-    PROPOSALS_PATH.write_text(json.dumps(report["unmatched"], indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    report["staged"] = merge_staged_events(
+        existing_proposals,
+        report["current_unmatched"],
+        statuses,
+        today,
+    )
+    PROPOSALS_PATH.write_text(
+        json.dumps(report["staged"], indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+    if report_path:
+        Path(report_path).write_text(
+            json.dumps(report, indent=2, ensure_ascii=False) + "\n",
+            encoding="utf-8",
+        )
     if report["changes"] and apply:
         EVENTS_PATH.write_text(json.dumps(updated, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         print(f"Applied {len(report['changes'])} matched event update(s).")
         return 10
     print("No safe existing-event changes detected." if not report["changes"] else f"Dry run found {len(report['changes'])} matched event update(s).")
-    print(f"Staged {len(report['unmatched'])} unmatched future fight(s) for inspection.")
+    print(f"Staged {len(report['staged'])} unmatched future fight(s) for inspection.")
     return 0
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--apply", action="store_true", help="Write safe matched changes to events.json")
+    parser.add_argument("--report", help="Write a full source-health report to this path")
     args = parser.parse_args()
-    raise SystemExit(run(args.apply))
+    raise SystemExit(run(args.apply, args.report))

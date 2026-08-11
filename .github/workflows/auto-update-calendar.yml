@@ -9,34 +9,43 @@ permissions:
   contents: write
 
 concurrency:
-  group: boxing-calendar-auto-update
+  group: boxing-calendar-main-writer
   cancel-in-progress: false
+  queue: max
 
 jobs:
   update:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-          cache: pip
-      - run: python -m pip install -r requirements.txt -r requirements-dev.txt
+      - uses: ./.github/actions/setup-calendar
       - name: Check official boxing sources and apply safe updates
         id: discover
         shell: bash
         run: |
           set +e
-          python scripts/discover.py --apply
+          python scripts/discover.py --apply --report "$RUNNER_TEMP/discovery-report.json"
           code=$?
           echo "exit_code=$code" >> "$GITHUB_OUTPUT"
           if [ "$code" -ne 0 ] && [ "$code" -ne 10 ]; then
             exit "$code"
           fi
-      - run: python scripts/validate.py
-      - run: python -m pytest -q
+      - run: python scripts/validate.py --previous-ref HEAD
       - name: Regenerate calendar and website
         run: python scripts/generate.py
+      - run: python -m pytest -q
+      - name: Add source health to workflow summary
+        if: always()
+        run: python scripts/summarize_discovery.py "$RUNNER_TEMP/discovery-report.json" >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload discovery report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: boxing-discovery-report-${{ github.run_id }}
+          path: ${{ runner.temp }}/discovery-report.json
+          if-no-files-found: ignore
+          retention-days: 14
       - name: Commit discovery results
         run: |
           git config user.name "github-actions[bot]"

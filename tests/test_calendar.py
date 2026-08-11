@@ -1,8 +1,5 @@
 import html
 import json
-import os
-import subprocess
-import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -14,16 +11,8 @@ def utc_stamp(value: str) -> str:
     return datetime.fromisoformat(value).astimezone(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
 
 
-def test_validation_and_generation():
-    subprocess.run([sys.executable, str(ROOT / "scripts/validate.py")], check=True)
-    website_now = datetime.fromisoformat("2026-08-09T00:00:00+10:00")
-    env = {**os.environ, "MBC_NOW": website_now.isoformat()}
-    subprocess.run(
-        [sys.executable, str(ROOT / "scripts/generate.py")],
-        check=True,
-        env=env,
-    )
-
+def test_generated_calendar_and_website_are_current():
+    website_now = datetime.now(timezone.utc)
     events = json.loads((ROOT / "data/events.json").read_text(encoding="utf-8"))
     calendar = (ROOT / "major-boxing-calendar.ics").read_text(encoding="utf-8")
     website = (ROOT / "index.html").read_text(encoding="utf-8")

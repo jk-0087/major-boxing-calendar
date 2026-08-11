@@ -4,7 +4,7 @@ import re
 import json
 from dataclasses import dataclass
 from datetime import date
-from urllib.parse import urljoin
+from urllib.parse import unquote, urljoin, urlsplit
 
 import requests
 from bs4 import BeautifulSoup
@@ -95,6 +95,70 @@ def looks_like_fight(left: str, right: str) -> bool:
     )
 
 
+def _event_url_score(event: DiscoveredEvent) -> tuple[int, int]:
+    slug = unquote(urlsplit(event.source_url).path).casefold()
+    left, right = event.fighters
+    surnames = [
+        re.sub(r"[^a-z0-9]", "", fighter.casefold().rsplit(" ", 1)[-1])
+        for fighter in (left, right)
+    ]
+    slug_compact = re.sub(r"[^a-z0-9]", "", slug)
+    surname_matches = sum(bool(name and name in slug_compact) for name in surnames)
+    return (1 if "fight-night" in slug else 0, surname_matches)
+
+
+def select_main_events(
+    events: list[DiscoveredEvent],
+    spec: SourceSpec,
+) -> list[DiscoveredEvent]:
+    """Keep one headline for each event page, preferring URL-backed names."""
+    grouped_cards: dict[tuple[str, date], list[DiscoveredEvent]] = {}
+    listing_url = spec.url.rstrip("/")
+    for event in events:
+        # Structured schedule entries that only reference the listing URL can
+        # represent distinct cards, so retain their title in the grouping key.
+        source_key = event.source_url.rstrip("/")
+        if source_key == listing_url:
+            source_key = f"{source_key}#{event.title.casefold()}"
+        key = (source_key, event.event_date)
+        grouped_cards.setdefault(key, []).append(event)
+
+    selected = []
+    for candidates in grouped_cards.values():
+        if len(candidates) == 1:
+            selected.append(candidates[0])
+            continue
+        best_score = max(_event_url_score(event) for event in candidates)
+        best = [
+            event for event in candidates if _event_url_score(event) == best_score
+        ]
+        # Ambiguous multi-bout pages are safer to skip than to stage an
+        # arbitrary undercard. A unique URL-backed fighter match is required.
+        if len(best) == 1 and best_score > (0, 0):
+            selected.append(best[0])
+
+    if spec.name == "Premier Boxing Champions":
+        # PBC exposes separate pages for every undercard bout alongside one
+        # fight-night page. Prefer that card-level page for each advertised date.
+        by_date: dict[date, list[DiscoveredEvent]] = {}
+        for event in selected:
+            by_date.setdefault(event.event_date, []).append(event)
+        selected = []
+        for candidates in by_date.values():
+            if len(candidates) == 1:
+                selected.append(candidates[0])
+                continue
+            fight_nights = [
+                event
+                for event in candidates
+                if "fight-night" in urlsplit(event.source_url).path.casefold()
+            ]
+            if len(fight_nights) == 1:
+                selected.append(fight_nights[0])
+
+    return sorted(selected, key=lambda event: (event.event_date, event.title))
+
+
 def _parse_date(value: str, today: date) -> date | None:
     numeric = NUMERIC_DATE_RE.search(value)
     if numeric:
@@ -154,7 +218,12 @@ def parse_official_schedule(html: str, spec: SourceSpec, today: date) -> list[Di
             left, right = _clean_fighter(fight.group("a")), _clean_fighter(fight.group("b"))
             if looks_like_fight(left, right):
                 title = f"{left} vs {right}"
-                found[(title.casefold(), event_date)] = DiscoveredEvent(title, event_date, spec.url)
+                found[(title.casefold(), event_date)] = DiscoveredEvent(
+                    title,
+                    event_date,
+                    spec.url,
+                    card_role="main_event",
+                )
 
     # Event-card links are more reliable than unrestricted page text on sites
     # that mix schedules with news, merchandise, and historical content.
@@ -194,7 +263,10 @@ def parse_official_schedule(html: str, spec: SourceSpec, today: date) -> list[Di
                     if looks_like_fight(left, right):
                         title = f"{left} vs {right}"
                         found[(title.casefold(), event_date)] = DiscoveredEvent(
-                            title, event_date, href
+                            title,
+                            event_date,
+                            href,
+                            card_role="main_event",
                         )
                         break
                 break
@@ -203,7 +275,7 @@ def parse_official_schedule(html: str, spec: SourceSpec, today: date) -> list[Di
                 break
 
     if spec in OFFICIAL_SOURCES:
-        return sorted(found.values(), key=lambda event: (event.event_date, event.title))
+        return select_main_events(list(found.values()), spec)
 
     for index, line in enumerate(lines):
         parsed = _parse_date(line, today)
@@ -228,7 +300,12 @@ def parse_official_schedule(html: str, spec: SourceSpec, today: date) -> list[Di
         if _parse_date(left, today) or _parse_date(right, today):
             continue
         title = f"{left} vs {right}"
-        found[(title.casefold(), current_date)] = DiscoveredEvent(title, current_date, spec.url)
+        found[(title.casefold(), current_date)] = DiscoveredEvent(
+            title,
+            current_date,
+            spec.url,
+            card_role="main_event",
+        )
 
     return sorted(found.values(), key=lambda event: (event.event_date, event.title))
 
@@ -266,7 +343,12 @@ def parse_no_limit_event_detail(
         left = _clean_fighter(fight.group("a"))
         right = _clean_fighter(fight.group("b"))
         if looks_like_fight(left, right):
-            return DiscoveredEvent(f"{left} vs {right}", event_date, source_url)
+            return DiscoveredEvent(
+                f"{left} vs {right}",
+                event_date,
+                source_url,
+                card_role="main_event",
+            )
     return None
 
 

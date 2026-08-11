@@ -1,4 +1,6 @@
-from scripts.validate import validate_staged_events
+from copy import deepcopy
+
+from scripts.validate import validate_revision, validate_staged_events
 
 
 def approved_event():
@@ -49,3 +51,41 @@ def test_bout_from_approved_card_source_is_rejected():
         [staged_event(source="https://example.com/approved-card")],
     )
     assert any("already approved card" in error for error in errors)
+
+
+def revision_event():
+    return {
+        "uid": "stable-event@example.com",
+        "sequence": 3,
+        "title": "Main Fighter vs Challenger",
+        "status": "Official",
+    }
+
+
+def test_revision_rejects_event_deletion_or_uid_change():
+    errors = validate_revision([revision_event()], [])
+    assert any("removed or UID changed" in error for error in errors)
+
+
+def test_revision_requires_sequence_increment_for_event_change():
+    previous = revision_event()
+    current = deepcopy(previous)
+    current["status"] = "Cancelled"
+    errors = validate_revision([previous], [current])
+    assert any("without incrementing SEQUENCE" in error for error in errors)
+
+
+def test_revision_accepts_changed_event_with_incremented_sequence():
+    previous = revision_event()
+    current = deepcopy(previous)
+    current["status"] = "Cancelled"
+    current["sequence"] += 1
+    assert validate_revision([previous], [current]) == []
+
+
+def test_revision_rejects_sequence_only_increment():
+    previous = revision_event()
+    current = deepcopy(previous)
+    current["sequence"] += 1
+    errors = validate_revision([previous], [current])
+    assert any("without an event change" in error for error in errors)
