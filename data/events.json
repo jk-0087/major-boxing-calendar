@@ -79,7 +79,7 @@
   },
   {
     "uid": "mbc-2026-07-25-spence-tszyu@jk-0087.github.io",
-    "sequence": 5,
+    "sequence": 6,
     "status": "Official",
     "title": "Errol Spence Jr vs Tim Tszyu",
     "fighters": {
@@ -95,10 +95,10 @@
       "confidence": "estimated"
     },
     "venue": {
-      "name": "Venue TBA",
-      "city": "TBA",
-      "country": "USA",
-      "timezone": null
+      "name": "Afterpay Arena",
+      "city": "Sydney, New South Wales",
+      "country": "Australia",
+      "timezone": "Australia/Sydney"
     },
     "promotion": [
       "Premier Boxing Champions"
@@ -117,6 +117,11 @@
         "url": "https://www.dazn.com/en-US/news/boxing/dazn-boxing-schedule-2026-fight-dates-and-live-stream-for-confirmed-cards/ehgk0syi2n4a13u2yglrd8h84",
         "publisher": "Schedule source",
         "checked_at": "2026-07-21T20:00:00+10:00"
+      },
+      {
+        "url": "https://www.sydneyolympicpark.nsw.gov.au/things-to-see-and-do/spence-jr-vs-tszyu",
+        "publisher": "Sydney Olympic Park",
+        "checked_at": "2026-08-12T20:49:07+10:00"
       }
     ],
     "history": [
@@ -146,6 +151,13 @@
         "date": "2026-07-23",
         "changes": [
           "Defined calendar DTSTART explicitly as the main-card broadcast start"
+        ]
+      },
+      {
+        "version": 5,
+        "date": "2026-08-12",
+        "changes": [
+          "Confirmed Afterpay Arena in Sydney as the venue"
         ]
       }
     ],
@@ -441,7 +453,7 @@
   },
   {
     "uid": "mbc-2026-08-15-shields-scott@jk-0087.github.io",
-    "sequence": 6,
+    "sequence": 7,
     "status": "Official",
     "title": "Claressa Shields vs Kaye Scott",
     "fighters": {
@@ -457,10 +469,10 @@
       "confidence": "estimated"
     },
     "venue": {
-      "name": "Venue TBA",
-      "city": "TBA",
+      "name": "State Farm Arena",
+      "city": "Atlanta, Georgia",
       "country": "USA",
-      "timezone": null
+      "timezone": "America/New_York"
     },
     "promotion": [
       "Salita Promotions"
@@ -479,6 +491,11 @@
         "url": "https://www.dazn.com/en-US/news/boxing/dazn-boxing-schedule-2026-fight-dates-and-live-stream-for-confirmed-cards/ehgk0syi2n4a13u2yglrd8h84",
         "publisher": "Schedule source",
         "checked_at": "2026-07-21T20:00:00+10:00"
+      },
+      {
+        "url": "https://www.statefarmarena.com/events/detail/shields-vs-scott-wbc-wba-unified-middleweight-world-championship-atlanta-georgia-tickets-2026-08-15",
+        "publisher": "State Farm Arena",
+        "checked_at": "2026-08-12T20:49:07+10:00"
       }
     ],
     "history": [
@@ -516,6 +533,13 @@
         "changes": [
           "Added Box.Live schedule source"
         ]
+      },
+      {
+        "version": 6,
+        "date": "2026-08-12",
+        "changes": [
+          "Confirmed State Farm Arena in Atlanta as the venue"
+        ]
       }
     ],
     "main_card_start": {
@@ -525,7 +549,7 @@
   },
   {
     "uid": "mbc-2026-08-22-romero-lopez@jk-0087.github.io",
-    "sequence": 7,
+    "sequence": 8,
     "status": "Official",
     "title": "Rolly Romero vs Teofimo Lopez",
     "fighters": {
@@ -541,7 +565,7 @@
       "confidence": "estimated"
     },
     "venue": {
-      "name": "Venue TBA",
+      "name": "T-Mobile Arena",
       "city": "Las Vegas, Nevada",
       "country": "USA",
       "timezone": "America/Los_Angeles"
@@ -567,7 +591,7 @@
       {
         "url": "https://www.premierboxingchampions.com/fight-night-august-22-2026",
         "publisher": "Premier Boxing Champions",
-        "checked_at": "2026-07-31T20:11:08+10:00"
+        "checked_at": "2026-08-12T20:49:07+10:00"
       }
     ],
     "history": [
@@ -612,6 +636,13 @@
         "date": "2026-07-29",
         "changes": [
           "Restored Australian broadcast date after correcting venue-date timezone handling"
+        ]
+      },
+      {
+        "version": 7,
+        "date": "2026-08-12",
+        "changes": [
+          "Confirmed T-Mobile Arena in Las Vegas as the venue"
         ]
       }
     ],
@@ -726,7 +757,7 @@
   },
   {
     "uid": "mbc-2026-09-05-taylor-pili@jk-0087.github.io",
-    "sequence": 9,
+    "sequence": 10,
     "status": "Official",
     "title": "Katie Taylor vs Flora Pili",
     "fighters": {
@@ -742,10 +773,10 @@
       "confidence": "estimated"
     },
     "venue": {
-      "name": "Venue TBA",
-      "city": "TBA",
-      "country": "TBA",
-      "timezone": null
+      "name": "Croke Park",
+      "city": "Dublin",
+      "country": "Ireland",
+      "timezone": "Europe/Dublin"
     },
     "promotion": [
       "Matchroom Boxing"
@@ -769,6 +800,11 @@
         "url": "https://www.matchroomboxing.com/events/taylor-vs-pili/",
         "publisher": "Matchroom",
         "checked_at": "2026-07-29T20:16:51+10:00"
+      },
+      {
+        "url": "https://crokepark.ie/news-and-events/katie-taylor-v-flora-pili-at-croke-park",
+        "publisher": "Croke Park",
+        "checked_at": "2026-08-12T20:49:07+10:00"
       }
     ],
     "history": [
@@ -820,6 +856,13 @@
         "date": "2026-07-31",
         "changes": [
           "Added Box.Live schedule source"
+        ]
+      },
+      {
+        "version": 8,
+        "date": "2026-08-12",
+        "changes": [
+          "Confirmed Croke Park in Dublin as the venue"
         ]
       }
     ],
