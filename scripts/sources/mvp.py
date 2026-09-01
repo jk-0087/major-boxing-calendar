@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import re
 from datetime import date
+from urllib.parse import urljoin
 
 import requests
 from bs4 import BeautifulSoup
@@ -51,6 +52,38 @@ def parse_mvp_schedule(html: str, today: date) -> list[DiscoveredEvent]:
     pending_title: str | None = None
     found: dict[tuple[str, date], DiscoveredEvent] = {}
 
+    # Current MVP listings wrap each card in an event-card container and link
+    # to an event-specific page. Retaining that URL prevents a new card from
+    # looking like a duplicate of older cards that used the shared listing URL.
+    for card in soup.select(".event-card"):
+        card_lines = [
+            _clean(line)
+            for line in card.get_text("\n").splitlines()
+            if _clean(line)
+        ]
+        title = next(
+            (parsed for line in card_lines if (parsed := _fight_title(line))),
+            None,
+        )
+        event_date = next(
+            (parsed for line in card_lines if (parsed := _mvp_date(line))),
+            None,
+        )
+        event_link = next(
+            (
+                urljoin(MVP_EVENTS_URL, anchor.get("href", ""))
+                for anchor in card.select('a[href*="/event/"]')
+            ),
+            MVP_EVENTS_URL,
+        )
+        if title and event_date and event_date >= today:
+            found[(title.casefold(), event_date)] = DiscoveredEvent(
+                title,
+                event_date,
+                event_link,
+                card_role="main_event",
+            )
+
     for line in lines:
         title = _fight_title(line)
         if title:
@@ -60,11 +93,14 @@ def parse_mvp_schedule(html: str, today: date) -> list[DiscoveredEvent]:
         event_date = _mvp_date(line)
         if pending_title and event_date:
             if event_date >= today:
-                found[(pending_title.casefold(), event_date)] = DiscoveredEvent(
-                    pending_title,
-                    event_date,
-                    MVP_EVENTS_URL,
-                    card_role="main_event",
+                found.setdefault(
+                    (pending_title.casefold(), event_date),
+                    DiscoveredEvent(
+                        pending_title,
+                        event_date,
+                        MVP_EVENTS_URL,
+                        card_role="main_event",
+                    ),
                 )
             pending_title = None
 
