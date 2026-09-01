@@ -178,28 +178,28 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:mbc-2026-09-04-ruiz-knyba@jk-0087.github.io
-DTSTAMP:20260729T101651Z
-LAST-MODIFIED:20260729T101651Z
-SEQUENCE:4
-DTSTART:20260905T000000Z
-DTEND:20260905T050000Z
+DTSTAMP:20260901T012645Z
+LAST-MODIFIED:20260901T012645Z
+SEQUENCE:5
+DTSTART:20260904T210000Z
+DTEND:20260905T020000Z
 SUMMARY:Andy Ruiz Jr. vs Damian Knyba
 LOCATION:Prudential Center
-DESCRIPTION:Status\nOfficial\n\nPromotion\nMatchroom Boxing\n\nCity\nNewark\, New Jersey\n\nCountry\nUSA\n\nTitles\nMajor heavyweight bout\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n10:00 AM AEST\, Sat 5 Sep 2026 (Estimated)\n\nVenue Local Start\n8:00 PM EDT\, Fri 4 Sep 2026 (Estimated)\n\nEstimated Finish\n3:00 PM AEST\, Sat 5 Sep 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nAndy Ruiz Jr. vs Damian Knyba\nVito Mielnicki Jr. vs Austin Williams\nAlan Chaves vs Eridson Garcia\nZaquin Moses vs TBA\nDennis Thompson vs TBA\n\nOfficial / Schedule Source\nhttps://www.matchroomboxing.com/events/ruiz-vs-knyba/\n\nVerified\n29 Jul 2026\, 8:16 PM
+DESCRIPTION:Status\nOfficial\n\nPromotion\nMatchroom Boxing\n\nCity\nNewark\, New Jersey\n\nCountry\nUSA\n\nTitles\nMajor heavyweight bout\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n7:00 AM AEST\, Sat 5 Sep 2026 (Confirmed)\n\nVenue Local Start\n5:00 PM EDT\, Fri 4 Sep 2026 (Confirmed)\n\nEstimated Finish\n12:00 PM AEST\, Sat 5 Sep 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nAndy Ruiz Jr. vs Damian Knyba\nVito Mielnicki Jr. vs Austin Williams\nAlan Chaves vs Eridson Garcia\nZaquin Moses vs Angel Antonio Contreras\nDennis Thompson vs Jose Casillas\nKashad Elliott vs Jean Pierre Valencia\nBrooke Mullen vs Bria Miller\nJordan Simpson vs Michael McDonald\n\nOfficial / Schedule Source\nhttps://www.matchroomboxing.com/events/ruiz-vs-knyba/\n\nVerified\n01 Sep 2026\, 11:26 AM
 URL:https://www.matchroomboxing.com/events/ruiz-vs-knyba/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:mbc-2026-09-05-taylor-pili@jk-0087.github.io
-DTSTAMP:20260812T104907Z
-LAST-MODIFIED:20260812T104907Z
-SEQUENCE:10
+DTSTAMP:20260901T012645Z
+LAST-MODIFIED:20260901T012645Z
+SEQUENCE:11
 DTSTART:20260905T180000Z
 DTEND:20260905T230000Z
 SUMMARY:Katie Taylor vs Flora Pili
 LOCATION:Croke Park
-DESCRIPTION:Status\nOfficial\n\nPromotion\nMatchroom Boxing\n\nCity\nDublin\n\nCountry\nIreland\n\nTitles\nMajor women's world championship bout\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n4:00 AM AEST\, Sun 6 Sep 2026 (Confirmed)\n\nVenue Local Start\n7:00 PM IST\, Sat 5 Sep 2026 (Confirmed)\n\nEstimated Finish\n9:00 AM AEST\, Sun 6 Sep 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\n4:00 am AEST\n\nOfficial / Schedule Source\nhttps://www.dazn.com/en-US/news/boxing/dazn-boxing-schedule-2026-fight-dates-and-live-stream-for-confirmed-cards/ehgk0syi2n4a13u2yglrd8h84\n\nVerified\n12 Aug 2026\, 8:49 PM
+DESCRIPTION:Status\nOfficial\n\nPromotion\nMatchroom Boxing\n\nCity\nDublin\n\nCountry\nIreland\n\nTitles\nUndisputed super lightweight world championship\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n4:00 AM AEST\, Sun 6 Sep 2026 (Confirmed)\n\nVenue Local Start\n7:00 PM IST\, Sat 5 Sep 2026 (Confirmed)\n\nEstimated Finish\n9:00 AM AEST\, Sun 6 Sep 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nKatie Taylor vs Flora Pili\nDave Allen vs Thomas Carty\nPaddy Donovan vs Tyrone McKenna\nTaylor Bevan vs Emmet Brennan\nJoe McGrail vs Matthew Boreland\nAdam Olaniyan vs TBA\nMolly McCann vs Sylwia Doligala\nPaul Ryan vs Paddy Gallagher\nBobbi Flood vs TBA\n\nOfficial / Schedule Source\nhttps://www.dazn.com/en-US/news/boxing/dazn-boxing-schedule-2026-fight-dates-and-live-stream-for-confirmed-cards/ehgk0syi2n4a13u2yglrd8h84\n\nVerified\n01 Sep 2026\, 11:26 AM
 URL:https://www.dazn.com/en-US/news/boxing/dazn-boxing-schedule-2026-fight-dates-and-live-stream-for-confirmed-cards/ehgk0syi2n4a13u2yglrd8h84
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
@@ -234,14 +234,14 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:mbc-2026-10-03-whittaker-wallace@jk-0087.github.io
-DTSTAMP:20260729T101651Z
-LAST-MODIFIED:20260729T101651Z
-SEQUENCE:4
+DTSTAMP:20260901T012645Z
+LAST-MODIFIED:20260901T012645Z
+SEQUENCE:5
 DTSTART:20261003T180000Z
 DTEND:20261003T230000Z
 SUMMARY:Ben Whittaker vs Conor Wallace
 LOCATION:Utilita Arena Birmingham
-DESCRIPTION:Status\nOfficial\n\nPromotion\nMatchroom Boxing\n\nCity\nBirmingham\n\nCountry\nUnited Kingdom\n\nTitles\nIBF light heavyweight world title final eliminator\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n5:00 AM AEDT\, Sun 4 Oct 2026 (Estimated)\n\nVenue Local Start\n7:00 PM BST\, Sat 3 Oct 2026 (Estimated)\n\nEstimated Finish\n10:00 AM AEDT\, Sun 4 Oct 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nBen Whittaker vs Conor Wallace\nUndercard TBA\n\nOfficial / Schedule Source\nhttps://www.matchroomboxing.com/events/whittaker-vs-wallace/\n\nVerified\n29 Jul 2026\, 8:16 PM
+DESCRIPTION:Status\nOfficial\n\nPromotion\nMatchroom Boxing\n\nCity\nBirmingham\n\nCountry\nUnited Kingdom\n\nTitles\nIBF light heavyweight world title final eliminator\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n5:00 AM AEDT\, Sun 4 Oct 2026 (Estimated)\n\nVenue Local Start\n7:00 PM BST\, Sat 3 Oct 2026 (Estimated)\n\nEstimated Finish\n10:00 AM AEDT\, Sun 4 Oct 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nBen Whittaker vs Conor Wallace\nBilal Fawaz vs Eithan James\nSean Bruce vs Hamza Uddin\nIbraheem Sulaimaan vs Sonny Hardy\nOdel Kamara vs TBA\nAaron Bowen vs Klint Baptiste\nAdam Maca vs TBA\nHarley Burrows vs TBC\n\nOfficial / Schedule Source\nhttps://www.matchroomboxing.com/events/whittaker-vs-wallace/\n\nVerified\n01 Sep 2026\, 11:26 AM
 URL:https://www.matchroomboxing.com/events/whittaker-vs-wallace/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
@@ -276,14 +276,14 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:mbc-2026-10-24-smith-puello@jk-0087.github.io
-DTSTAMP:20260729T101651Z
-LAST-MODIFIED:20260729T101651Z
-SEQUENCE:4
+DTSTAMP:20260901T012645Z
+LAST-MODIFIED:20260901T012645Z
+SEQUENCE:5
 DTSTART:20261024T180000Z
 DTEND:20261024T230000Z
 SUMMARY:Dalton Smith vs Alberto Puello
 LOCATION:Utilita Arena Sheffield
-DESCRIPTION:Status\nOfficial\n\nPromotion\nMatchroom Boxing\n\nCity\nSheffield\n\nCountry\nUnited Kingdom\n\nTitles\nWBC super lightweight world championship\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n5:00 AM AEDT\, Sun 25 Oct 2026 (Estimated)\n\nVenue Local Start\n7:00 PM BST\, Sat 24 Oct 2026 (Estimated)\n\nEstimated Finish\n10:00 AM AEDT\, Sun 25 Oct 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nDalton Smith vs Alberto Puello\nUndercard TBA\n\nOfficial / Schedule Source\nhttps://www.matchroomboxing.com/events/smith-vs-puello/\n\nVerified\n29 Jul 2026\, 8:16 PM
+DESCRIPTION:Status\nOfficial\n\nPromotion\nMatchroom Boxing\n\nCity\nSheffield\n\nCountry\nUnited Kingdom\n\nTitles\nWBC super lightweight world championship\nWBC International Silver lightweight title: Giorgio Visioli vs Maxi Hughes\nBritish\, Commonwealth and IBF Intercontinental super flyweight titles: Shannon Ryan vs Emma Dolan\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n5:00 AM AEDT\, Sun 25 Oct 2026 (Estimated)\n\nVenue Local Start\n7:00 PM BST\, Sat 24 Oct 2026 (Estimated)\n\nEstimated Finish\n10:00 AM AEDT\, Sun 25 Oct 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nDalton Smith vs Alberto Puello\nGiorgio Visioli vs Maxi Hughes\nLeo Atang vs TBA\nAqib Fiaz vs Jordan Flynn\nShannon Ryan vs Emma Dolan\nJoe Hayden vs Will Harrison\n\nOfficial / Schedule Source\nhttps://www.matchroomboxing.com/events/smith-vs-puello/\n\nVerified\n01 Sep 2026\, 11:26 AM
 URL:https://www.matchroomboxing.com/events/smith-vs-puello/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
@@ -304,14 +304,14 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:mbc-2026-11-08-turhan-baumgardner@jk-0087.github.io
-DTSTAMP:20260901T011106Z
-LAST-MODIFIED:20260901T011106Z
-SEQUENCE:1
-DTSTART:20261109T000000Z
-DTEND:20261109T050000Z
+DTSTAMP:20260901T012645Z
+LAST-MODIFIED:20260901T012645Z
+SEQUENCE:2
+DTSTART:20261108T230000Z
+DTEND:20261109T040000Z
 SUMMARY:Elif Nur Turhan vs Alycia Baumgardner
 LOCATION:College Park Center
-DESCRIPTION:Status\nOfficial\n\nPromotion\nMost Valuable Promotions\n\nCity\nArlington\, Texas\n\nCountry\nUSA\n\nTitles\nIBF lightweight world championship\nWBC featherweight world championship: Tiara Brown vs Ellie Scotney\nWBC super bantamweight world championship: Skye Nicolson vs Miyo Yoshida\nVacant WBO and IBF super bantamweight world championships: Ramla Ali vs Mikiah Kreps\n\nAustralia\nESPN / ESPN App (availability varies)\n\nMain Card Start (Sydney)\n11:00 AM AEDT\, Mon 9 Nov 2026 (Confirmed)\n\nVenue Local Start\n6:00 PM CST\, Sun 8 Nov 2026 (Confirmed)\n\nEstimated Finish\n4:00 PM AEDT\, Mon 9 Nov 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nElif Nur Turhan vs Alycia Baumgardner\nTiara Brown vs Ellie Scotney\nSkye Nicolson vs Miyo Yoshida\nRamla Ali vs Mikiah Kreps\n\nOfficial / Schedule Source\nhttps://www.mostvaluablepromotions.com/event/mvpw-07-turhan-vs-baumgardner/\n\nVerified\n01 Sep 2026\, 11:11 AM
+DESCRIPTION:Status\nOfficial\n\nPromotion\nMost Valuable Promotions\n\nCity\nArlington\, Texas\n\nCountry\nUSA\n\nTitles\nIBF lightweight world championship\nWBC featherweight world championship: Tiara Brown vs Ellie Scotney\nWBC super bantamweight world championship: Skye Nicolson vs Miyo Yoshida\nVacant WBO and IBF super bantamweight world championships: Ramla Ali vs Mikiah Kreps\n\nAustralia\nESPN / ESPN App (availability varies)\n\nMain Card Start (Sydney)\n10:00 AM AEDT\, Mon 9 Nov 2026 (Confirmed)\n\nVenue Local Start\n5:00 PM CST\, Sun 8 Nov 2026 (Confirmed)\n\nEstimated Finish\n3:00 PM AEDT\, Mon 9 Nov 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nElif Nur Turhan vs Alycia Baumgardner\nTiara Brown vs Ellie Scotney\nSkye Nicolson vs Miyo Yoshida\nRamla Ali vs Mikiah Kreps\n\nOfficial / Schedule Source\nhttps://www.mostvaluablepromotions.com/event/mvpw-07-turhan-vs-baumgardner/\n\nVerified\n01 Sep 2026\, 11:26 AM
 URL:https://www.mostvaluablepromotions.com/event/mvpw-07-turhan-vs-baumgardner/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
