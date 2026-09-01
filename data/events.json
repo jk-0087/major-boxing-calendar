@@ -1660,5 +1660,137 @@
       "value": "2026-10-17T17:00:00-07:00",
       "confidence": "confirmed"
     }
+  },
+  {
+    "uid": "mbc-2026-10-10-schofield-bahdi@jk-0087.github.io",
+    "sequence": 1,
+    "status": "Official",
+    "title": "Floyd Schofield vs Lucas Bahdi",
+    "fighters": {
+      "red": "Floyd Schofield",
+      "blue": "Lucas Bahdi"
+    },
+    "end": {
+      "value": "2026-10-10T23:00:00-05:00",
+      "confidence": "estimated"
+    },
+    "ring_walk": {
+      "value": null,
+      "confidence": "tba"
+    },
+    "venue": {
+      "name": "Wintrust Arena",
+      "city": "Chicago, Illinois",
+      "country": "USA",
+      "timezone": "America/Chicago"
+    },
+    "promotion": [
+      "Golden Boy Promotions / Most Valuable Promotions"
+    ],
+    "titles": [
+      "Vacant WBA lightweight world championship",
+      "WBC and WBA flyweight world championships: Oscar Collazo vs Ricardo Sandoval"
+    ],
+    "broadcast": {
+      "australia": "DAZN"
+    },
+    "main_card": [
+      "Floyd Schofield vs Lucas Bahdi",
+      "Oscar Collazo vs Ricardo Sandoval"
+    ],
+    "sources": [
+      {
+        "url": "https://www.goldenboy.com/the-event/schofield-vs-bahdi/",
+        "publisher": "Golden Boy Promotions",
+        "checked_at": "2026-09-01T11:11:06+10:00"
+      },
+      {
+        "url": "https://www.wintrustarena.com/events/detail/golden-boy",
+        "publisher": "Wintrust Arena",
+        "checked_at": "2026-09-01T11:11:06+10:00"
+      }
+    ],
+    "history": [
+      {
+        "version": 1,
+        "date": "2026-09-01",
+        "changes": [
+          "Approved from Golden Boy staged events",
+          "Main-card start estimated pending an official DAZN broadcast time"
+        ]
+      }
+    ],
+    "main_card_start": {
+      "value": "2026-10-10T18:00:00-05:00",
+      "confidence": "estimated"
+    }
+  },
+  {
+    "uid": "mbc-2026-11-08-turhan-baumgardner@jk-0087.github.io",
+    "sequence": 1,
+    "status": "Official",
+    "title": "Elif Nur Turhan vs Alycia Baumgardner",
+    "fighters": {
+      "red": "Elif Nur Turhan",
+      "blue": "Alycia Baumgardner"
+    },
+    "end": {
+      "value": "2026-11-08T23:00:00-06:00",
+      "confidence": "estimated"
+    },
+    "ring_walk": {
+      "value": null,
+      "confidence": "tba"
+    },
+    "venue": {
+      "name": "College Park Center",
+      "city": "Arlington, Texas",
+      "country": "USA",
+      "timezone": "America/Chicago"
+    },
+    "promotion": [
+      "Most Valuable Promotions"
+    ],
+    "titles": [
+      "IBF lightweight world championship",
+      "WBC featherweight world championship: Tiara Brown vs Ellie Scotney",
+      "WBC super bantamweight world championship: Skye Nicolson vs Miyo Yoshida",
+      "Vacant WBO and IBF super bantamweight world championships: Ramla Ali vs Mikiah Kreps"
+    ],
+    "broadcast": {
+      "australia": "ESPN / ESPN App (availability varies)"
+    },
+    "main_card": [
+      "Elif Nur Turhan vs Alycia Baumgardner",
+      "Tiara Brown vs Ellie Scotney",
+      "Skye Nicolson vs Miyo Yoshida",
+      "Ramla Ali vs Mikiah Kreps"
+    ],
+    "sources": [
+      {
+        "url": "https://www.mostvaluablepromotions.com/event/mvpw-07-turhan-vs-baumgardner/",
+        "publisher": "Most Valuable Promotions",
+        "checked_at": "2026-09-01T11:11:06+10:00"
+      },
+      {
+        "url": "https://www.mostvaluablepromotions.com/mvpw-07-four-world-title-fights-set-for-arlington-on-nov-8/",
+        "publisher": "Most Valuable Promotions",
+        "checked_at": "2026-09-01T11:11:06+10:00"
+      }
+    ],
+    "history": [
+      {
+        "version": 1,
+        "date": "2026-09-01",
+        "changes": [
+          "Approved from Most Valuable Promotions staged events",
+          "Confirmed main-card start from the official MVP events listing"
+        ]
+      }
+    ],
+    "main_card_start": {
+      "value": "2026-11-08T18:00:00-06:00",
+      "confidence": "confirmed"
+    }
   }
 ]

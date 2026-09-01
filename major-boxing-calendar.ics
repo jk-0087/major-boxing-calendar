@@ -247,6 +247,20 @@ STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:mbc-2026-10-10-schofield-bahdi@jk-0087.github.io
+DTSTAMP:20260901T011106Z
+LAST-MODIFIED:20260901T011106Z
+SEQUENCE:1
+DTSTART:20261010T230000Z
+DTEND:20261011T040000Z
+SUMMARY:Floyd Schofield vs Lucas Bahdi
+LOCATION:Wintrust Arena
+DESCRIPTION:Status\nOfficial\n\nPromotion\nGolden Boy Promotions / Most Valuable Promotions\n\nCity\nChicago\, Illinois\n\nCountry\nUSA\n\nTitles\nVacant WBA lightweight world championship\nWBC and WBA flyweight world championships: Oscar Collazo vs Ricardo Sandoval\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n10:00 AM AEDT\, Sun 11 Oct 2026 (Estimated)\n\nVenue Local Start\n6:00 PM CDT\, Sat 10 Oct 2026 (Estimated)\n\nEstimated Finish\n3:00 PM AEDT\, Sun 11 Oct 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nFloyd Schofield vs Lucas Bahdi\nOscar Collazo vs Ricardo Sandoval\n\nOfficial / Schedule Source\nhttps://www.goldenboy.com/the-event/schofield-vs-bahdi/\n\nVerified\n01 Sep 2026\, 11:11 AM
+URL:https://www.goldenboy.com/the-event/schofield-vs-bahdi/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:mbc-2026-10-17-fundora-hadribeaj@jk-0087.github.io
 DTSTAMP:20260901T005128Z
 LAST-MODIFIED:20260901T005128Z
@@ -285,6 +299,20 @@ SUMMARY:Canelo Alvarez vs Christian Mbilli
 LOCATION:Venue TBA
 DESCRIPTION:Status\nOfficial\n\nPromotion\nRiyadh Season\n\nCity\nRiyadh\n\nCountry\nSaudi Arabia\n\nTitles\nWBC super middleweight world title\n\nAustralia\nDAZN / DAZN PPV status TBA\n\nMain Card Start (Sydney)\n2:00 AM AEDT\, Sun 1 Nov 2026 (Estimated)\n\nVenue Local Start\n6:00 PM +03\, Sat 31 Oct 2026 (Estimated)\n\nEstimated Finish\n7:00 AM AEDT\, Sun 1 Nov 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nUndercard TBA\n\nOfficial / Schedule Source\nhttps://boxingnewsonline.net/news/canelo-announces-new-date-for-mbilli/\n\nVerified\n28 Jul 2026\, 10:09 PM
 URL:https://boxingnewsonline.net/news/canelo-announces-new-date-for-mbilli/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:mbc-2026-11-08-turhan-baumgardner@jk-0087.github.io
+DTSTAMP:20260901T011106Z
+LAST-MODIFIED:20260901T011106Z
+SEQUENCE:1
+DTSTART:20261109T000000Z
+DTEND:20261109T050000Z
+SUMMARY:Elif Nur Turhan vs Alycia Baumgardner
+LOCATION:College Park Center
+DESCRIPTION:Status\nOfficial\n\nPromotion\nMost Valuable Promotions\n\nCity\nArlington\, Texas\n\nCountry\nUSA\n\nTitles\nIBF lightweight world championship\nWBC featherweight world championship: Tiara Brown vs Ellie Scotney\nWBC super bantamweight world championship: Skye Nicolson vs Miyo Yoshida\nVacant WBO and IBF super bantamweight world championships: Ramla Ali vs Mikiah Kreps\n\nAustralia\nESPN / ESPN App (availability varies)\n\nMain Card Start (Sydney)\n11:00 AM AEDT\, Mon 9 Nov 2026 (Confirmed)\n\nVenue Local Start\n6:00 PM CST\, Sun 8 Nov 2026 (Confirmed)\n\nEstimated Finish\n4:00 PM AEDT\, Mon 9 Nov 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nElif Nur Turhan vs Alycia Baumgardner\nTiara Brown vs Ellie Scotney\nSkye Nicolson vs Miyo Yoshida\nRamla Ali vs Mikiah Kreps\n\nOfficial / Schedule Source\nhttps://www.mostvaluablepromotions.com/event/mvpw-07-turhan-vs-baumgardner/\n\nVerified\n01 Sep 2026\, 11:11 AM
+URL:https://www.mostvaluablepromotions.com/event/mvpw-07-turhan-vs-baumgardner/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
