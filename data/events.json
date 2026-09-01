@@ -1600,5 +1600,65 @@
       "value": "2026-09-19T17:00:00-07:00",
       "confidence": "confirmed"
     }
+  },
+  {
+    "uid": "mbc-2026-10-17-fundora-hadribeaj@jk-0087.github.io",
+    "sequence": 1,
+    "status": "Official",
+    "title": "Sebastian Fundora vs Ermal Hadribeaj",
+    "fighters": {
+      "red": "Sebastian Fundora",
+      "blue": "Ermal Hadribeaj"
+    },
+    "end": {
+      "value": "2026-10-17T22:00:00-07:00",
+      "confidence": "estimated"
+    },
+    "ring_walk": {
+      "value": null,
+      "confidence": "tba"
+    },
+    "venue": {
+      "name": "The Chelsea at The Cosmopolitan of Las Vegas",
+      "city": "Las Vegas, Nevada",
+      "country": "USA",
+      "timezone": "America/Los_Angeles"
+    },
+    "promotion": [
+      "Premier Boxing Champions"
+    ],
+    "titles": [
+      "WBC super welterweight world championship",
+      "WBA featherweight world championship: Brandon Figueroa vs Tomoki Kameda"
+    ],
+    "broadcast": {
+      "australia": "DAZN"
+    },
+    "main_card": [
+      "Sebastian Fundora vs Ermal Hadribeaj",
+      "Brandon Figueroa vs Tomoki Kameda",
+      "Jermall Charlo vs Koen Mazoudier"
+    ],
+    "sources": [
+      {
+        "url": "https://www.premierboxingchampions.com/fight-night-october-17-2026",
+        "publisher": "Premier Boxing Champions",
+        "checked_at": "2026-09-01T10:51:28+10:00"
+      }
+    ],
+    "history": [
+      {
+        "version": 1,
+        "date": "2026-09-01",
+        "changes": [
+          "Approved from Premier Boxing Champions staged events",
+          "Confirmed main-card start from the official PBC listing"
+        ]
+      }
+    ],
+    "main_card_start": {
+      "value": "2026-10-17T17:00:00-07:00",
+      "confidence": "confirmed"
+    }
   }
 ]

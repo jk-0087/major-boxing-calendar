@@ -247,6 +247,20 @@ STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:mbc-2026-10-17-fundora-hadribeaj@jk-0087.github.io
+DTSTAMP:20260901T005128Z
+LAST-MODIFIED:20260901T005128Z
+SEQUENCE:1
+DTSTART:20261018T000000Z
+DTEND:20261018T050000Z
+SUMMARY:Sebastian Fundora vs Ermal Hadribeaj
+LOCATION:The Chelsea at The Cosmopolitan of Las Vegas
+DESCRIPTION:Status\nOfficial\n\nPromotion\nPremier Boxing Champions\n\nCity\nLas Vegas\, Nevada\n\nCountry\nUSA\n\nTitles\nWBC super welterweight world championship\nWBA featherweight world championship: Brandon Figueroa vs Tomoki Kameda\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n11:00 AM AEDT\, Sun 18 Oct 2026 (Confirmed)\n\nVenue Local Start\n5:00 PM PDT\, Sat 17 Oct 2026 (Confirmed)\n\nEstimated Finish\n4:00 PM AEDT\, Sun 18 Oct 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nSebastian Fundora vs Ermal Hadribeaj\nBrandon Figueroa vs Tomoki Kameda\nJermall Charlo vs Koen Mazoudier\n\nOfficial / Schedule Source\nhttps://www.premierboxingchampions.com/fight-night-october-17-2026\n\nVerified\n01 Sep 2026\, 10:51 AM
+URL:https://www.premierboxingchampions.com/fight-night-october-17-2026
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:mbc-2026-10-24-smith-puello@jk-0087.github.io
 DTSTAMP:20260729T101651Z
 LAST-MODIFIED:20260729T101651Z
