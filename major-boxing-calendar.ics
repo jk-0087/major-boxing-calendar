@@ -275,6 +275,34 @@ STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:mbc-2026-10-17-dubois-wardley@jk-0087.github.io
+DTSTAMP:20260903T034347Z
+LAST-MODIFIED:20260903T034347Z
+SEQUENCE:1
+DTSTART:20261017T180000Z
+DTEND:20261017T230000Z
+SUMMARY:Daniel Dubois vs Fabio Wardley
+LOCATION:The O2
+DESCRIPTION:Status\nOfficial\n\nPromotion\nQueensberry Promotions\n\nCity\nLondon\n\nCountry\nUnited Kingdom\n\nTitles\nWBO heavyweight world championship\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n5:00 AM AEDT\, Sun 18 Oct 2026 (Estimated)\n\nVenue Local Start\n7:00 PM BST\, Sat 17 Oct 2026 (Estimated)\n\nEstimated Finish\n10:00 AM AEDT\, Sun 18 Oct 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nDaniel Dubois vs Fabio Wardley\nUndercard TBA\n\nOfficial / Schedule Source\nhttps://queensberry.co.uk/pages/daniel-dubois-vs-fabio-wardley-2-run-it-back\n\nVerified\n03 Sep 2026\, 1:43 PM
+URL:https://queensberry.co.uk/pages/daniel-dubois-vs-fabio-wardley-2-run-it-back
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:mbc-2026-10-24-navarrete-foster@jk-0087.github.io
+DTSTAMP:20260903T034347Z
+LAST-MODIFIED:20260903T034347Z
+SEQUENCE:1
+DTSTART:20261025T000000Z
+DTEND:20261025T050000Z
+SUMMARY:Emanuel Navarrete vs O'Shaquie Foster
+LOCATION:Frost Bank Center
+DESCRIPTION:Status\nOfficial\n\nPromotion\nTop Rank\n\nCity\nSan Antonio\, Texas\n\nCountry\nUSA\n\nTitles\nWBO\, IBF and WBC super featherweight world championships\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n11:00 AM AEDT\, Sun 25 Oct 2026 (Confirmed)\n\nVenue Local Start\n7:00 PM CDT\, Sat 24 Oct 2026 (Confirmed)\n\nEstimated Finish\n4:00 PM AEDT\, Sun 25 Oct 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nEmanuel Navarrete vs O'Shaquie Foster\nAlbert Gonzalez vs Edward Vazquez\nFrank Martin vs TBA\n\nOfficial / Schedule Source\nhttps://toprank.com/events/navarrete-vs-foster\n\nVerified\n03 Sep 2026\, 1:43 PM
+URL:https://toprank.com/events/navarrete-vs-foster
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:mbc-2026-10-24-smith-puello@jk-0087.github.io
 DTSTAMP:20260901T012645Z
 LAST-MODIFIED:20260901T012645Z

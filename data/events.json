@@ -1853,5 +1853,122 @@
       "value": "2026-11-08T17:00:00-06:00",
       "confidence": "confirmed"
     }
+  },
+  {
+    "uid": "mbc-2026-10-17-dubois-wardley@jk-0087.github.io",
+    "sequence": 1,
+    "status": "Official",
+    "title": "Daniel Dubois vs Fabio Wardley",
+    "fighters": {
+      "red": "Daniel Dubois",
+      "blue": "Fabio Wardley"
+    },
+    "end": {
+      "value": "2026-10-18T00:00:00+01:00",
+      "confidence": "estimated"
+    },
+    "ring_walk": {
+      "value": null,
+      "confidence": "tba"
+    },
+    "venue": {
+      "name": "The O2",
+      "city": "London",
+      "country": "United Kingdom",
+      "timezone": "Europe/London"
+    },
+    "promotion": [
+      "Queensberry Promotions"
+    ],
+    "titles": [
+      "WBO heavyweight world championship"
+    ],
+    "broadcast": {
+      "australia": "DAZN"
+    },
+    "main_card": [
+      "Daniel Dubois vs Fabio Wardley",
+      "Undercard TBA"
+    ],
+    "sources": [
+      {
+        "url": "https://queensberry.co.uk/pages/daniel-dubois-vs-fabio-wardley-2-run-it-back",
+        "publisher": "Queensberry Promotions",
+        "checked_at": "2026-09-03T13:43:47+10:00"
+      }
+    ],
+    "history": [
+      {
+        "version": 1,
+        "date": "2026-09-03",
+        "changes": [
+          "Approved from Queensberry staged events",
+          "Main-card start estimated pending an official DAZN broadcast time"
+        ]
+      }
+    ],
+    "main_card_start": {
+      "value": "2026-10-17T19:00:00+01:00",
+      "confidence": "estimated"
+    }
+  },
+  {
+    "uid": "mbc-2026-10-24-navarrete-foster@jk-0087.github.io",
+    "sequence": 1,
+    "status": "Official",
+    "title": "Emanuel Navarrete vs O'Shaquie Foster",
+    "fighters": {
+      "red": "Emanuel Navarrete",
+      "blue": "O'Shaquie Foster"
+    },
+    "end": {
+      "value": "2026-10-25T00:00:00-05:00",
+      "confidence": "estimated"
+    },
+    "ring_walk": {
+      "value": null,
+      "confidence": "tba"
+    },
+    "venue": {
+      "name": "Frost Bank Center",
+      "city": "San Antonio, Texas",
+      "country": "USA",
+      "timezone": "America/Chicago"
+    },
+    "promotion": [
+      "Top Rank"
+    ],
+    "titles": [
+      "WBO, IBF and WBC super featherweight world championships"
+    ],
+    "broadcast": {
+      "australia": "DAZN"
+    },
+    "main_card": [
+      "Emanuel Navarrete vs O'Shaquie Foster",
+      "Albert Gonzalez vs Edward Vazquez",
+      "Frank Martin vs TBA"
+    ],
+    "sources": [
+      {
+        "url": "https://toprank.com/events/navarrete-vs-foster",
+        "publisher": "Top Rank",
+        "checked_at": "2026-09-03T13:43:47+10:00"
+      }
+    ],
+    "history": [
+      {
+        "version": 1,
+        "date": "2026-09-03",
+        "changes": [
+          "Approved from Top Rank staged events",
+          "Confirmed the 8:00 PM ET main-card start from Top Rank"
+        ]
+      }
+    ],
+    "main_card_start": {
+      "value": "2026-10-24T19:00:00-05:00",
+      "confidence": "confirmed"
+    }
   }
 ]
