@@ -1211,7 +1211,7 @@
   },
   {
     "uid": "mbc-2026-09-12-garcia-benn@jk-0087.github.io",
-    "sequence": 5,
+    "sequence": 6,
     "status": "Official",
     "title": "Ryan Garcia vs Conor Benn",
     "fighters": {
@@ -1247,9 +1247,9 @@
     ],
     "sources": [
       {
-        "url": "https://www.ufc.com/news/dana-white-makes-it-official-ryan-garcia-vs-conor-benn-sept-12",
-        "publisher": "Zuffa Boxing / UFC",
-        "checked_at": "2026-07-23T21:45:00+10:00"
+        "url": "https://www.ufc.com/video/159937",
+        "publisher": "Zuffa Boxing",
+        "checked_at": "2026-09-10T02:39:54+10:00"
       },
       {
         "url": "https://www.axs.com/events/1518705/garcia-vs-benn-tickets?skin=tmobile",
@@ -1286,6 +1286,13 @@
         "date": "2026-07-29",
         "changes": [
           "Added Box.Live schedule source"
+        ]
+      },
+      {
+        "version": 5,
+        "date": "2026-09-10",
+        "changes": [
+          "Updated Zuffa Boxing schedule source"
         ]
       }
     ],
