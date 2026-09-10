@@ -331,6 +331,20 @@ STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:mbc-2026-11-07-buatsi-hutchinson@jk-0087.github.io
+DTSTAMP:20260910T045843Z
+LAST-MODIFIED:20260910T045843Z
+SEQUENCE:1
+DTSTART:20261107T190000Z
+DTEND:20261108T000000Z
+SUMMARY:Joshua Buatsi vs Willy Hutchinson
+LOCATION:AO Arena
+DESCRIPTION:Status\nOfficial\n\nPromotion\nQueensberry Promotions\n\nCity\nManchester\n\nCountry\nUnited Kingdom\n\nTitles\nInterim WBC light heavyweight world championship\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n6:00 AM AEDT\, Sun 8 Nov 2026 (Estimated)\n\nVenue Local Start\n7:00 PM GMT\, Sat 7 Nov 2026 (Estimated)\n\nEstimated Finish\n11:00 AM AEDT\, Sun 8 Nov 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nJoshua Buatsi vs Willy Hutchinson\nBrad Rea vs Ezra Taylor\nZak Miller vs Gully Powar\nJack Turner vs Andres Gregorio\nJohn Joe Carrigan vs TBA\nStephen Clarke vs TBA\n\nOfficial / Schedule Source\nhttps://queensberry.co.uk/pages/joshua-buatsi-vs-willy-hutchinson-2-point-to-prove\n\nVerified\n10 Sep 2026\, 2:58 PM
+URL:https://queensberry.co.uk/pages/joshua-buatsi-vs-willy-hutchinson-2-point-to-prove
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:mbc-2026-11-08-turhan-baumgardner@jk-0087.github.io
 DTSTAMP:20260901T012645Z
 LAST-MODIFIED:20260901T012645Z
