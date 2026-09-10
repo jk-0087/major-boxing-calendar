@@ -206,14 +206,14 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:mbc-2026-09-12-garcia-benn@jk-0087.github.io
-DTSTAMP:20260909T163954Z
-LAST-MODIFIED:20260909T163954Z
-SEQUENCE:6
+DTSTAMP:20260910T205303Z
+LAST-MODIFIED:20260910T205303Z
+SEQUENCE:7
 DTSTART:20260913T000000Z
 DTEND:20260913T050000Z
 SUMMARY:Ryan Garcia vs Conor Benn
 LOCATION:T-Mobile Arena
-DESCRIPTION:Status\nOfficial\n\nPromotion\nZuffa Boxing\n\nCity\nLas Vegas\, Nevada\n\nCountry\nUSA\n\nTitles\nWBC welterweight world championship\n\nAustralia\nParamount+\n\nMain Card Start (Sydney)\n10:00 AM AEST\, Sun 13 Sep 2026 (Estimated)\n\nVenue Local Start\n5:00 PM PDT\, Sat 12 Sep 2026 (Estimated)\n\nEstimated Finish\n3:00 PM AEST\, Sun 13 Sep 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nRyan Garcia vs Conor Benn\nUndercard TBA\n\nOfficial / Schedule Source\nhttps://www.ufc.com/video/159937\n\nVerified\n10 Sep 2026\, 2:39 AM
+DESCRIPTION:Status\nOfficial\n\nPromotion\nZuffa Boxing\n\nCity\nLas Vegas\, Nevada\n\nCountry\nUSA\n\nTitles\nWBC welterweight world championship\n\nAustralia\nParamount+\n\nMain Card Start (Sydney)\n10:00 AM AEST\, Sun 13 Sep 2026 (Estimated)\n\nVenue Local Start\n5:00 PM PDT\, Sat 12 Sep 2026 (Estimated)\n\nEstimated Finish\n3:00 PM AEST\, Sun 13 Sep 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nRyan Garcia vs Conor Benn\nUndercard TBA\n\nOfficial / Schedule Source\nhttps://www.ufc.com/video/159937\n\nVerified\n11 Sep 2026\, 6:53 AM
 URL:https://www.ufc.com/video/159937
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT

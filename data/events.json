@@ -1211,7 +1211,7 @@
   },
   {
     "uid": "mbc-2026-09-12-garcia-benn@jk-0087.github.io",
-    "sequence": 6,
+    "sequence": 7,
     "status": "Official",
     "title": "Ryan Garcia vs Conor Benn",
     "fighters": {
@@ -1255,6 +1255,11 @@
         "url": "https://www.axs.com/events/1518705/garcia-vs-benn-tickets?skin=tmobile",
         "publisher": "Official source",
         "checked_at": "2026-07-28T20:13:28+10:00"
+      },
+      {
+        "url": "https://www.ringmagazine.com/events/garcia-vs-benn-7lwM37BFvTG9clZQi9f23U",
+        "publisher": "The Ring / Riyadh Season",
+        "checked_at": "2026-09-11T06:53:03+10:00"
       }
     ],
     "history": [
@@ -1293,6 +1298,13 @@
         "date": "2026-09-10",
         "changes": [
           "Updated Zuffa Boxing schedule source"
+        ]
+      },
+      {
+        "version": 6,
+        "date": "2026-09-11",
+        "changes": [
+          "Added The Ring / Riyadh Season schedule source"
         ]
       }
     ],
@@ -2005,9 +2017,15 @@
       "country": "United Kingdom",
       "timezone": "Europe/London"
     },
-    "promotion": ["Queensberry Promotions"],
-    "titles": ["Interim WBC light heavyweight world championship"],
-    "broadcast": {"australia": "DAZN"},
+    "promotion": [
+      "Queensberry Promotions"
+    ],
+    "titles": [
+      "Interim WBC light heavyweight world championship"
+    ],
+    "broadcast": {
+      "australia": "DAZN"
+    },
     "main_card": [
       "Joshua Buatsi vs Willy Hutchinson",
       "Brad Rea vs Ezra Taylor",
