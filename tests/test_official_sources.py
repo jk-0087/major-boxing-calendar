@@ -26,6 +26,27 @@ HTML = """
 """
 
 
+def test_zuffa_bout_preview_is_not_a_standalone_main_event():
+    spec = next(source for source in OFFICIAL_SOURCES if source.name == "Zuffa Boxing")
+    html = """
+    <article><time>September 12, 2026</time>
+      <a href="/news/title-fight-preview-jai-opetaia-vs-noel-mikaelian">
+        Jai Opetaia vs Noel Mikaelian
+      </a>
+    </article>
+    <article><time>September 12, 2026</time>
+      <a href="/news/ryan-garcia-vs-conor-benn-sept-12">Ryan Garcia vs Conor Benn</a>
+    </article>
+    """
+    events = parse_official_schedule(html, spec, date(2026, 9, 10))
+    assert [event.title for event in events] == ["Ryan Garcia vs Conor Benn"]
+    assert select_main_events([
+        DiscoveredEvent("Jai Opetaia vs Noel Mikaelian", date(2026, 9, 12),
+                        "https://www.ufc.com/news/title-fight-preview-jai-opetaia-vs-noel-mikaelian",
+                        card_role="main_event")
+    ], spec) == []
+
+
 def test_all_agreed_promoters_are_registered():
     names = {spec.name for spec in OFFICIAL_SOURCES}
     assert names == {

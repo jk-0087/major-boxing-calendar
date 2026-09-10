@@ -115,6 +115,9 @@ def select_main_events(
     grouped_cards: dict[tuple[str, date], list[DiscoveredEvent]] = {}
     listing_url = spec.url.rstrip("/")
     for event in events:
+        # Individual bout previews do not establish a card's headline bout.
+        if spec.name == "Zuffa Boxing" and "preview" in urlsplit(event.source_url).path.casefold():
+            continue
         # Structured schedule entries that only reference the listing URL can
         # represent distinct cards, so retain their title in the grouping key.
         source_key = event.source_url.rstrip("/")
@@ -229,6 +232,8 @@ def parse_official_schedule(html: str, spec: SourceSpec, today: date) -> list[Di
     # that mix schedules with news, merchandise, and historical content.
     for anchor in soup.select("a[href]"):
         href = urljoin(spec.url, anchor.get("href", ""))
+        if spec.name == "Zuffa Boxing" and "preview" in urlsplit(href).path.casefold():
+            continue
         anchor_text = _clean(anchor.get_text(" ", strip=True))
         if not (
             FIGHT_RE.search(anchor_text)
