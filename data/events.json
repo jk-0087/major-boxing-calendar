@@ -2063,5 +2063,42 @@
         ]
       }
     ]
+  },
+  {
+    "uid": "mbc-2026-12-11-fury-joshua@jk-0087.github.io",
+    "sequence": 1,
+    "status": "Official",
+    "title": "Tyson Fury vs Anthony Joshua",
+    "fighters": {"red": "Tyson Fury", "blue": "Anthony Joshua"},
+    "main_card_start": {"value": "2026-12-11T19:00:00+00:00", "confidence": "estimated"},
+    "end": {"value": "2026-12-12T00:00:00+00:00", "confidence": "estimated"},
+    "ring_walk": {"value": null, "confidence": "tba"},
+    "venue": {
+      "name": "Principality Stadium",
+      "city": "Cardiff",
+      "country": "United Kingdom",
+      "timezone": "Europe/London"
+    },
+    "promotion": ["The Ring / Riyadh Season", "Matchroom Boxing"],
+    "titles": ["Major heavyweight bout; titles TBA"],
+    "broadcast": {"australia": "Netflix"},
+    "main_card": ["Tyson Fury vs Anthony Joshua", "Undercard TBA"],
+    "sources": [
+      {
+        "url": "https://www.matchroomboxing.com/events/fury-vs-joshua/",
+        "publisher": "Matchroom",
+        "checked_at": "2026-10-01T16:28:34+10:00"
+      },
+      {
+        "url": "https://www.netflix.com/tudum/features/tyson-fury-anthony-joshua-live-on-netflix",
+        "publisher": "Netflix",
+        "checked_at": "2026-10-01T16:28:34+10:00"
+      }
+    ],
+    "history": [{
+      "version": 1,
+      "date": "2026-10-01",
+      "changes": ["Approved from Matchroom staging with venue and broadcaster confirmed by Netflix", "Main-card start estimated pending official broadcast time"]
+    }]
   }
 ]

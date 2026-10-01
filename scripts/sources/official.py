@@ -31,6 +31,8 @@ OFFICIAL_SOURCES = (
 )
 
 EDITORIAL_WORDS = {
+    "auction",
+    "memorabilia",
     "angle",
     "anniversary",
     "delivered",

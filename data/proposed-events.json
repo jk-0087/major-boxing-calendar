@@ -1,12 +1,5 @@
 [
   {
-    "title": "Garcia vs Benn Memorabilia Auction",
-    "date": "2026-10-01",
-    "source": "https://www.ufc.com/news/live-now-garcia-vs-benn-memorabilia-auction",
-    "card_role": "main_event",
-    "score": 0.319
-  },
-  {
     "title": "Jones vs Sanchez",
     "date": "2026-10-02",
     "source": "https://www.matchroomboxing.com/events/jones-vs-sanchez/",
@@ -19,13 +12,6 @@
     "source": "https://www.ringmagazine.com/events/iglesias-vs-zaren-7z6ZpuEOr7bgleJatbNRF2",
     "card_role": "main_event",
     "score": 0.262
-  },
-  {
-    "title": "Fury vs Joshua",
-    "date": "2026-12-11",
-    "source": "https://www.matchroomboxing.com/events/fury-vs-joshua/",
-    "card_role": "main_event",
-    "score": 0.0
   },
   {
     "title": "TBC vs TBC",

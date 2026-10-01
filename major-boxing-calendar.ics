@@ -358,4 +358,18 @@ URL:https://www.mostvaluablepromotions.com/event/mvpw-07-turhan-vs-baumgardner/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
+BEGIN:VEVENT
+UID:mbc-2026-12-11-fury-joshua@jk-0087.github.io
+DTSTAMP:20261001T062834Z
+LAST-MODIFIED:20261001T062834Z
+SEQUENCE:1
+DTSTART:20261211T190000Z
+DTEND:20261212T000000Z
+SUMMARY:Tyson Fury vs Anthony Joshua
+LOCATION:Principality Stadium
+DESCRIPTION:Status\nOfficial\n\nPromotion\nThe Ring / Riyadh Season\, Matchroom Boxing\n\nCity\nCardiff\n\nCountry\nUnited Kingdom\n\nTitles\nMajor heavyweight bout\; titles TBA\n\nAustralia\nNetflix\n\nMain Card Start (Sydney)\n6:00 AM AEDT\, Sat 12 Dec 2026 (Estimated)\n\nVenue Local Start\n7:00 PM GMT\, Fri 11 Dec 2026 (Estimated)\n\nEstimated Finish\n11:00 AM AEDT\, Sat 12 Dec 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nTyson Fury vs Anthony Joshua\nUndercard TBA\n\nOfficial / Schedule Source\nhttps://www.matchroomboxing.com/events/fury-vs-joshua/\n\nVerified\n01 Oct 2026\, 4:28 PM
+URL:https://www.matchroomboxing.com/events/fury-vs-joshua/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
 END:VCALENDAR

@@ -47,6 +47,22 @@ def test_zuffa_bout_preview_is_not_a_standalone_main_event():
     ], spec) == []
 
 
+def test_zuffa_memorabilia_auction_is_not_a_fight():
+    spec = next(source for source in OFFICIAL_SOURCES if source.name == "Zuffa Boxing")
+    html = """
+    <article><time>October 1, 2026</time>
+      <a href="/news/live-now-garcia-vs-benn-memorabilia-auction">
+        Garcia vs Benn Memorabilia Auction
+      </a>
+    </article>
+    <article><time>October 17, 2026</time>
+      <a href="/events/dubois-vs-wardley">Daniel Dubois vs Fabio Wardley</a>
+    </article>
+    """
+    events = parse_official_schedule(html, spec, date(2026, 10, 1))
+    assert [event.title for event in events] == ["Daniel Dubois vs Fabio Wardley"]
+
+
 def test_all_agreed_promoters_are_registered():
     names = {spec.name for spec in OFFICIAL_SOURCES}
     assert names == {
