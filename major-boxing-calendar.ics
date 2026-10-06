@@ -359,6 +359,34 @@ STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:mbc-2026-11-14-pacheco-fulghum@jk-0087.github.io
+DTSTAMP:20261006T052532Z
+LAST-MODIFIED:20261006T052532Z
+SEQUENCE:1
+DTSTART:20261115T010000Z
+DTEND:20261115T060000Z
+SUMMARY:Diego Pacheco vs Darius Fulghum
+LOCATION:Dignity Health Sports Park
+DESCRIPTION:Status\nOfficial\n\nPromotion\nMatchroom Boxing\, Golden Boy Promotions\n\nCity\nCarson\, California\n\nCountry\nUSA\n\nTitles\nWBO International and WBC Silver super middleweight titles\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n12:00 PM AEDT\, Sun 15 Nov 2026 (Estimated)\n\nVenue Local Start\n5:00 PM PST\, Sat 14 Nov 2026 (Estimated)\n\nEstimated Finish\n5:00 PM AEDT\, Sun 15 Nov 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nDiego Pacheco vs Darius Fulghum\nUndercard TBA\n\nOfficial / Schedule Source\nhttps://www.matchroomboxing.com/events/pacheco-vs-fulghum/\n\nVerified\n06 Oct 2026\, 4:25 PM
+URL:https://www.matchroomboxing.com/events/pacheco-vs-fulghum/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:mbc-2026-11-28-kabayel-hysa@jk-0087.github.io
+DTSTAMP:20261006T052532Z
+LAST-MODIFIED:20261006T052532Z
+SEQUENCE:1
+DTSTART:20261128T180000Z
+DTEND:20261128T230000Z
+SUMMARY:Agit Kabayel vs Nelson Hysa
+LOCATION:Merkur Spiel-Arena
+DESCRIPTION:Status\nOfficial\n\nPromotion\nQueensberry Promotions\n\nCity\nDüsseldorf\n\nCountry\nGermany\n\nTitles\nWBC heavyweight world championship\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n5:00 AM AEDT\, Sun 29 Nov 2026 (Estimated)\n\nVenue Local Start\n7:00 PM CET\, Sat 28 Nov 2026 (Estimated)\n\nEstimated Finish\n10:00 AM AEDT\, Sun 29 Nov 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nAgit Kabayel vs Nelson Hysa\nUndercard TBA\n\nOfficial / Schedule Source\nhttps://queensberry.co.uk/pages/agit-kabayel-vs-nelson-hysa-bad-blood\n\nVerified\n06 Oct 2026\, 4:25 PM
+URL:https://queensberry.co.uk/pages/agit-kabayel-vs-nelson-hysa-bad-blood
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:mbc-2026-12-11-fury-joshua@jk-0087.github.io
 DTSTAMP:20261001T062834Z
 LAST-MODIFIED:20261001T062834Z
