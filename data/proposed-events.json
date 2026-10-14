@@ -40,5 +40,19 @@
     "source": "https://www.matchroomboxing.com/events/monte-carlo-showdown-vii/",
     "card_role": "main_event",
     "score": 0.136
+  },
+  {
+    "title": "Anthony Cacace vs Nick Ball",
+    "date": "2026-12-19",
+    "source": "https://queensberry.co.uk/pages/anthony-cacace-vs-nick-ball-weight-for-it",
+    "card_role": "main_event",
+    "score": 0.427
+  },
+  {
+    "title": "Cacace vs Ball",
+    "date": "2026-12-19",
+    "source": "https://www.ticketmaster.ie/cacace-v-ball-world-championship-boxing-belfast-19-12-2026/event/3800653CC13E179D",
+    "card_role": "main_event",
+    "score": 0.1
   }
 ]
