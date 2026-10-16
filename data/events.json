@@ -2167,5 +2167,199 @@
       "date": "2026-10-06",
       "changes": ["Approved from Queensberry staging with venue, world title and broadcaster confirmed", "Main-card start estimated pending official broadcast time"]
     }]
+  },
+  {
+    "uid": "mbc-2026-11-18-teremoana-ahio@jk-0087.github.io",
+    "sequence": 1,
+    "status": "Official",
+    "title": "Teremoana Teremoana vs Hemi Ahio",
+    "fighters": {
+      "red": "Teremoana Teremoana",
+      "blue": "Hemi Ahio"
+    },
+    "main_card_start": {
+      "value": "2026-11-18T19:00:00+11:00",
+      "confidence": "estimated"
+    },
+    "end": {
+      "value": "2026-11-19T00:00:00+11:00",
+      "confidence": "estimated"
+    },
+    "ring_walk": {
+      "value": null,
+      "confidence": "tba"
+    },
+    "venue": {
+      "name": "Pullman Melbourne Albert Park",
+      "city": "Melbourne, Victoria",
+      "country": "Australia",
+      "timezone": "Australia/Melbourne"
+    },
+    "promotion": [
+      "Matchroom Boxing"
+    ],
+    "titles": [
+      "Major heavyweight bout",
+      "WBA Oceania middleweight title: Mitch Leek vs Joel Camilleri",
+      "Vacant Australian super welterweight title: Ky Hodgson vs Victor Adis-Iosifidis"
+    ],
+    "broadcast": {
+      "australia": "Fox Sports / Kayo Sports"
+    },
+    "main_card": [
+      "Teremoana Teremoana vs Hemi Ahio",
+      "Mitch Leek vs Joel Camilleri",
+      "Ky Hodgson vs Victor Adis-Iosifidis",
+      "Omar El-Abdallah vs Lilo Telepe",
+      "Further undercard TBA"
+    ],
+    "sources": [
+      {
+        "url": "https://www.matchroomboxing.com/events/teremoana-vs-ahio/",
+        "publisher": "Matchroom",
+        "checked_at": "2026-10-16T11:37:27+11:00"
+      },
+      {
+        "url": "https://www.matchroomboxing.com/news/heavyweight-superstar-teremoana-teremoana-meets-dangerous-hemi-ahio-in-melbourne-as-matchroom-boxing-returns-to-australia-on-wednesday-november-18-live-on-fox-sports/",
+        "publisher": "Matchroom",
+        "checked_at": "2026-10-16T11:37:27+11:00"
+      }
+    ],
+    "history": [
+      {
+        "version": 1,
+        "date": "2026-10-16",
+        "changes": [
+          "Approved from Matchroom staging with published venue, broadcaster and supporting title fights",
+          "Main-card start estimated pending official broadcast time"
+        ]
+      }
+    ]
+  },
+  {
+    "uid": "mbc-2026-12-12-bivol-smith@jk-0087.github.io",
+    "sequence": 1,
+    "status": "Official",
+    "title": "Dmitry Bivol vs Callum Smith",
+    "fighters": {
+      "red": "Dmitry Bivol",
+      "blue": "Callum Smith"
+    },
+    "main_card_start": {
+      "value": "2026-12-12T19:00:00+05:00",
+      "confidence": "estimated"
+    },
+    "end": {
+      "value": "2026-12-13T00:00:00+05:00",
+      "confidence": "estimated"
+    },
+    "ring_walk": {
+      "value": null,
+      "confidence": "tba"
+    },
+    "venue": {
+      "name": "UMMC Arena",
+      "city": "Yekaterinburg",
+      "country": "Russia",
+      "timezone": "Asia/Yekaterinburg"
+    },
+    "promotion": [
+      "Matchroom Boxing"
+    ],
+    "titles": [
+      "Unified light heavyweight world championship"
+    ],
+    "broadcast": {
+      "australia": "TBA (DAZN reported; Australian availability unconfirmed)"
+    },
+    "main_card": [
+      "Dmitry Bivol vs Callum Smith",
+      "Undercard TBA"
+    ],
+    "sources": [
+      {
+        "url": "https://www.matchroomboxing.com/events/bivol-vs-smith/",
+        "publisher": "Matchroom",
+        "checked_at": "2026-10-16T11:37:27+11:00"
+      },
+      {
+        "url": "https://www.matchroomboxing.com/events/",
+        "publisher": "Matchroom",
+        "checked_at": "2026-10-16T11:37:27+11:00"
+      }
+    ],
+    "history": [
+      {
+        "version": 1,
+        "date": "2026-10-16",
+        "changes": [
+          "Approved from Matchroom staging with unified world title and venue confirmed",
+          "Main-card start estimated pending official broadcast time"
+        ]
+      }
+    ]
+  },
+  {
+    "uid": "mbc-2026-12-19-cacace-ball@jk-0087.github.io",
+    "sequence": 1,
+    "status": "Official",
+    "title": "Anthony Cacace vs Nick Ball",
+    "fighters": {
+      "red": "Anthony Cacace",
+      "blue": "Nick Ball"
+    },
+    "main_card_start": {
+      "value": "2026-12-19T19:00:00+00:00",
+      "confidence": "estimated"
+    },
+    "end": {
+      "value": "2026-12-20T00:00:00+00:00",
+      "confidence": "estimated"
+    },
+    "ring_walk": {
+      "value": null,
+      "confidence": "tba"
+    },
+    "venue": {
+      "name": "The O2 Belfast",
+      "city": "Belfast",
+      "country": "United Kingdom",
+      "timezone": "Europe/London"
+    },
+    "promotion": [
+      "Queensberry Promotions"
+    ],
+    "titles": [
+      "WBA super featherweight world championship"
+    ],
+    "broadcast": {
+      "australia": "DAZN"
+    },
+    "main_card": [
+      "Anthony Cacace vs Nick Ball",
+      "Undercard TBA"
+    ],
+    "sources": [
+      {
+        "url": "https://queensberry.co.uk/pages/anthony-cacace-vs-nick-ball-weight-for-it",
+        "publisher": "Queensberry Promotions",
+        "checked_at": "2026-10-16T11:37:27+11:00"
+      },
+      {
+        "url": "https://theo2belfast.com/events/cacace-v-ball",
+        "publisher": "The O2 Belfast",
+        "checked_at": "2026-10-16T11:37:27+11:00"
+      }
+    ],
+    "history": [
+      {
+        "version": 1,
+        "date": "2026-10-16",
+        "changes": [
+          "Approved from Queensberry staging with venue confirmed by The O2 Belfast",
+          "Main-card start estimated pending official DAZN broadcast time"
+        ]
+      }
+    ]
   }
 ]

@@ -373,6 +373,20 @@ STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:mbc-2026-11-18-teremoana-ahio@jk-0087.github.io
+DTSTAMP:20261016T003727Z
+LAST-MODIFIED:20261016T003727Z
+SEQUENCE:1
+DTSTART:20261118T080000Z
+DTEND:20261118T130000Z
+SUMMARY:Teremoana Teremoana vs Hemi Ahio
+LOCATION:Pullman Melbourne Albert Park
+DESCRIPTION:Status\nOfficial\n\nPromotion\nMatchroom Boxing\n\nCity\nMelbourne\, Victoria\n\nCountry\nAustralia\n\nTitles\nMajor heavyweight bout\nWBA Oceania middleweight title: Mitch Leek vs Joel Camilleri\nVacant Australian super welterweight title: Ky Hodgson vs Victor Adis-Iosifidis\n\nAustralia\nFox Sports / Kayo Sports\n\nMain Card Start (Sydney)\n7:00 PM AEDT\, Wed 18 Nov 2026 (Estimated)\n\nVenue Local Start\n7:00 PM AEDT\, Wed 18 Nov 2026 (Estimated)\n\nEstimated Finish\n12:00 AM AEDT\, Thu 19 Nov 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nTeremoana Teremoana vs Hemi Ahio\nMitch Leek vs Joel Camilleri\nKy Hodgson vs Victor Adis-Iosifidis\nOmar El-Abdallah vs Lilo Telepe\nFurther undercard TBA\n\nOfficial / Schedule Source\nhttps://www.matchroomboxing.com/events/teremoana-vs-ahio/\n\nVerified\n16 Oct 2026\, 11:37 AM
+URL:https://www.matchroomboxing.com/events/teremoana-vs-ahio/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:mbc-2026-11-28-kabayel-hysa@jk-0087.github.io
 DTSTAMP:20261006T052532Z
 LAST-MODIFIED:20261006T052532Z
@@ -397,6 +411,34 @@ SUMMARY:Tyson Fury vs Anthony Joshua
 LOCATION:Principality Stadium
 DESCRIPTION:Status\nOfficial\n\nPromotion\nThe Ring / Riyadh Season\, Matchroom Boxing\n\nCity\nCardiff\n\nCountry\nUnited Kingdom\n\nTitles\nMajor heavyweight bout\; titles TBA\n\nAustralia\nNetflix\n\nMain Card Start (Sydney)\n6:00 AM AEDT\, Sat 12 Dec 2026 (Estimated)\n\nVenue Local Start\n7:00 PM GMT\, Fri 11 Dec 2026 (Estimated)\n\nEstimated Finish\n11:00 AM AEDT\, Sat 12 Dec 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nTyson Fury vs Anthony Joshua\nUndercard TBA\n\nOfficial / Schedule Source\nhttps://www.matchroomboxing.com/events/fury-vs-joshua/\n\nVerified\n01 Oct 2026\, 4:28 PM
 URL:https://www.matchroomboxing.com/events/fury-vs-joshua/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:mbc-2026-12-12-bivol-smith@jk-0087.github.io
+DTSTAMP:20261016T003727Z
+LAST-MODIFIED:20261016T003727Z
+SEQUENCE:1
+DTSTART:20261212T140000Z
+DTEND:20261212T190000Z
+SUMMARY:Dmitry Bivol vs Callum Smith
+LOCATION:UMMC Arena
+DESCRIPTION:Status\nOfficial\n\nPromotion\nMatchroom Boxing\n\nCity\nYekaterinburg\n\nCountry\nRussia\n\nTitles\nUnified light heavyweight world championship\n\nAustralia\nTBA (DAZN reported\; Australian availability unconfirmed)\n\nMain Card Start (Sydney)\n1:00 AM AEDT\, Sun 13 Dec 2026 (Estimated)\n\nVenue Local Start\n7:00 PM +05\, Sat 12 Dec 2026 (Estimated)\n\nEstimated Finish\n6:00 AM AEDT\, Sun 13 Dec 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nDmitry Bivol vs Callum Smith\nUndercard TBA\n\nOfficial / Schedule Source\nhttps://www.matchroomboxing.com/events/bivol-vs-smith/\n\nVerified\n16 Oct 2026\, 11:37 AM
+URL:https://www.matchroomboxing.com/events/bivol-vs-smith/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:mbc-2026-12-19-cacace-ball@jk-0087.github.io
+DTSTAMP:20261016T003727Z
+LAST-MODIFIED:20261016T003727Z
+SEQUENCE:1
+DTSTART:20261219T190000Z
+DTEND:20261220T000000Z
+SUMMARY:Anthony Cacace vs Nick Ball
+LOCATION:The O2 Belfast
+DESCRIPTION:Status\nOfficial\n\nPromotion\nQueensberry Promotions\n\nCity\nBelfast\n\nCountry\nUnited Kingdom\n\nTitles\nWBA super featherweight world championship\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n6:00 AM AEDT\, Sun 20 Dec 2026 (Estimated)\n\nVenue Local Start\n7:00 PM GMT\, Sat 19 Dec 2026 (Estimated)\n\nEstimated Finish\n11:00 AM AEDT\, Sun 20 Dec 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nAnthony Cacace vs Nick Ball\nUndercard TBA\n\nOfficial / Schedule Source\nhttps://queensberry.co.uk/pages/anthony-cacace-vs-nick-ball-weight-for-it\n\nVerified\n16 Oct 2026\, 11:37 AM
+URL:https://queensberry.co.uk/pages/anthony-cacace-vs-nick-ball-weight-for-it
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
