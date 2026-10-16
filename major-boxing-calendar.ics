@@ -262,71 +262,71 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:mbc-2026-10-17-fundora-hadribeaj@jk-0087.github.io
-DTSTAMP:20260901T005128Z
-LAST-MODIFIED:20260901T005128Z
-SEQUENCE:1
+DTSTAMP:20261016T005339Z
+LAST-MODIFIED:20261016T005339Z
+SEQUENCE:2
 DTSTART:20261018T000000Z
 DTEND:20261018T050000Z
 SUMMARY:Sebastian Fundora vs Ermal Hadribeaj
 LOCATION:The Chelsea at The Cosmopolitan of Las Vegas
-DESCRIPTION:Status\nOfficial\n\nPromotion\nPremier Boxing Champions\n\nCity\nLas Vegas\, Nevada\n\nCountry\nUSA\n\nTitles\nWBC super welterweight world championship\nWBA featherweight world championship: Brandon Figueroa vs Tomoki Kameda\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n11:00 AM AEDT\, Sun 18 Oct 2026 (Confirmed)\n\nVenue Local Start\n5:00 PM PDT\, Sat 17 Oct 2026 (Confirmed)\n\nEstimated Finish\n4:00 PM AEDT\, Sun 18 Oct 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nSebastian Fundora vs Ermal Hadribeaj\nBrandon Figueroa vs Tomoki Kameda\nJermall Charlo vs Koen Mazoudier\n\nOfficial / Schedule Source\nhttps://www.premierboxingchampions.com/fight-night-october-17-2026\n\nVerified\n01 Sep 2026\, 10:51 AM
-URL:https://www.premierboxingchampions.com/fight-night-october-17-2026
+DESCRIPTION:Status\nOfficial\n\nPromotion\nPremier Boxing Champions\n\nCity\nLas Vegas\, Nevada\n\nCountry\nUSA\n\nTitles\nWBC super welterweight world championship\nWBA featherweight world championship: Brandon Figueroa vs Tomoki Kameda\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n11:00 AM AEDT\, Sun 18 Oct 2026 (Confirmed)\n\nVenue Local Start\n5:00 PM PDT\, Sat 17 Oct 2026 (Confirmed)\n\nEstimated Finish\n4:00 PM AEDT\, Sun 18 Oct 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nSebastian Fundora vs Ermal Hadribeaj\nBrandon Figueroa vs Tomoki Kameda\nArmando Resendiz vs Koen Mazoudier\nMarco Romero vs Braulio Ferreira\n\nOfficial / Schedule Source\nhttps://www.premierboxingchampions.com/events/854219\n\nVerified\n16 Oct 2026\, 11:53 AM
+URL:https://www.premierboxingchampions.com/events/854219
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:mbc-2026-10-17-dubois-wardley@jk-0087.github.io
-DTSTAMP:20260903T034347Z
-LAST-MODIFIED:20260903T034347Z
-SEQUENCE:1
+DTSTAMP:20261016T005339Z
+LAST-MODIFIED:20261016T005339Z
+SEQUENCE:2
 DTSTART:20261017T180000Z
 DTEND:20261017T230000Z
 SUMMARY:Daniel Dubois vs Fabio Wardley
 LOCATION:The O2
-DESCRIPTION:Status\nOfficial\n\nPromotion\nQueensberry Promotions\n\nCity\nLondon\n\nCountry\nUnited Kingdom\n\nTitles\nWBO heavyweight world championship\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n5:00 AM AEDT\, Sun 18 Oct 2026 (Estimated)\n\nVenue Local Start\n7:00 PM BST\, Sat 17 Oct 2026 (Estimated)\n\nEstimated Finish\n10:00 AM AEDT\, Sun 18 Oct 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nDaniel Dubois vs Fabio Wardley\nUndercard TBA\n\nOfficial / Schedule Source\nhttps://queensberry.co.uk/pages/daniel-dubois-vs-fabio-wardley-2-run-it-back\n\nVerified\n03 Sep 2026\, 1:43 PM
-URL:https://queensberry.co.uk/pages/daniel-dubois-vs-fabio-wardley-2-run-it-back
+DESCRIPTION:Status\nOfficial\n\nPromotion\nQueensberry Promotions\n\nCity\nLondon\n\nCountry\nUnited Kingdom\n\nTitles\nWBO heavyweight world championship\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n5:00 AM AEDT\, Sun 18 Oct 2026 (Confirmed)\n\nVenue Local Start\n7:00 PM BST\, Sat 17 Oct 2026 (Confirmed)\n\nEstimated Finish\n10:00 AM AEDT\, Sun 18 Oct 2026 (Estimated)\n\nRing Walk\n8:00 AM AEDT\, Sun 18 Oct 2026 (Estimated)\n\nMain Card Bouts\nDaniel Dubois vs Fabio Wardley\nLouie O'Doherty vs Michael Gomez Jr\nAdam Olaniyan vs Dan Garber\nBakhodir Jalolov vs Solomon Dacres\nNelson Birchall vs Levi Gilles\n\nOfficial / Schedule Source\nhttps://www.dazn.com/fr-CA/help/articles/39722510152733-daniel-dubois-vs-fabio-wardley-2-ppv-faqs\n\nVerified\n16 Oct 2026\, 11:53 AM
+URL:https://www.dazn.com/fr-CA/help/articles/39722510152733-daniel-dubois-vs-fabio-wardley-2-ppv-faqs
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:mbc-2026-10-24-navarrete-foster@jk-0087.github.io
-DTSTAMP:20260903T034347Z
-LAST-MODIFIED:20260903T034347Z
-SEQUENCE:1
+DTSTAMP:20261016T005339Z
+LAST-MODIFIED:20261016T005339Z
+SEQUENCE:2
 DTSTART:20261025T000000Z
 DTEND:20261025T050000Z
 SUMMARY:Emanuel Navarrete vs O'Shaquie Foster
 LOCATION:Frost Bank Center
-DESCRIPTION:Status\nOfficial\n\nPromotion\nTop Rank\n\nCity\nSan Antonio\, Texas\n\nCountry\nUSA\n\nTitles\nWBO\, IBF and WBC super featherweight world championships\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n11:00 AM AEDT\, Sun 25 Oct 2026 (Confirmed)\n\nVenue Local Start\n7:00 PM CDT\, Sat 24 Oct 2026 (Confirmed)\n\nEstimated Finish\n4:00 PM AEDT\, Sun 25 Oct 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nEmanuel Navarrete vs O'Shaquie Foster\nAlbert Gonzalez vs Edward Vazquez\nFrank Martin vs TBA\n\nOfficial / Schedule Source\nhttps://toprank.com/events/navarrete-vs-foster\n\nVerified\n03 Sep 2026\, 1:43 PM
+DESCRIPTION:Status\nOfficial\n\nPromotion\nTop Rank\n\nCity\nSan Antonio\, Texas\n\nCountry\nUSA\n\nTitles\nWBO\, IBF and WBC super featherweight world championships\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n11:00 AM AEDT\, Sun 25 Oct 2026 (Confirmed)\n\nVenue Local Start\n7:00 PM CDT\, Sat 24 Oct 2026 (Confirmed)\n\nEstimated Finish\n4:00 PM AEDT\, Sun 25 Oct 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nEmanuel Navarrete vs O'Shaquie Foster\nAlbert Gonzalez vs Edward Vazquez\nFrank Martin vs Tarik Zaina\nSteven Navarro vs Emanuel Moreno\nScooter Davis vs Joaquin Silva Faccio\nSammy Contreras vs Oscar Pedroza Padilla\nDaniel Cortez III vs Oziel Rangel Aradillas\nJoseph Almajdi vs Jalen Moore\n\nOfficial / Schedule Source\nhttps://toprank.com/events/navarrete-vs-foster\n\nVerified\n16 Oct 2026\, 11:53 AM
 URL:https://toprank.com/events/navarrete-vs-foster
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:mbc-2026-10-24-smith-puello@jk-0087.github.io
-DTSTAMP:20260901T012645Z
-LAST-MODIFIED:20260901T012645Z
-SEQUENCE:5
+DTSTAMP:20261016T005339Z
+LAST-MODIFIED:20261016T005339Z
+SEQUENCE:6
 DTSTART:20261024T180000Z
 DTEND:20261024T230000Z
 SUMMARY:Dalton Smith vs Alberto Puello
 LOCATION:Utilita Arena Sheffield
-DESCRIPTION:Status\nOfficial\n\nPromotion\nMatchroom Boxing\n\nCity\nSheffield\n\nCountry\nUnited Kingdom\n\nTitles\nWBC super lightweight world championship\nWBC International Silver lightweight title: Giorgio Visioli vs Maxi Hughes\nBritish\, Commonwealth and IBF Intercontinental super flyweight titles: Shannon Ryan vs Emma Dolan\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n5:00 AM AEDT\, Sun 25 Oct 2026 (Estimated)\n\nVenue Local Start\n7:00 PM BST\, Sat 24 Oct 2026 (Estimated)\n\nEstimated Finish\n10:00 AM AEDT\, Sun 25 Oct 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nDalton Smith vs Alberto Puello\nGiorgio Visioli vs Maxi Hughes\nLeo Atang vs TBA\nAqib Fiaz vs Jordan Flynn\nShannon Ryan vs Emma Dolan\nJoe Hayden vs Will Harrison\n\nOfficial / Schedule Source\nhttps://www.matchroomboxing.com/events/smith-vs-puello/\n\nVerified\n01 Sep 2026\, 11:26 AM
+DESCRIPTION:Status\nOfficial\n\nPromotion\nMatchroom Boxing\n\nCity\nSheffield\n\nCountry\nUnited Kingdom\n\nTitles\nWBC super lightweight world championship\nWBC International Silver lightweight title: Giorgio Visioli vs Maxi Hughes\nBritish\, Commonwealth and IBF Intercontinental super flyweight titles: Shannon Ryan vs Emma Dolan\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n5:00 AM AEDT\, Sun 25 Oct 2026 (Estimated)\n\nVenue Local Start\n7:00 PM BST\, Sat 24 Oct 2026 (Estimated)\n\nEstimated Finish\n10:00 AM AEDT\, Sun 25 Oct 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nDalton Smith vs Alberto Puello\nGiorgio Visioli vs Maxi Hughes\nLeo Atang vs Jonathan Vergara\nAqib Fiaz vs Jordan Flynn\nShannon Ryan vs Emma Dolan\nJoe Hayden vs Will Harrison\nEd Hardy vs TBC\nDivine Omojor vs Goran Kozul\nChris Mulunda vs Harley Collison\n\nOfficial / Schedule Source\nhttps://www.matchroomboxing.com/events/smith-vs-puello/\n\nVerified\n16 Oct 2026\, 11:53 AM
 URL:https://www.matchroomboxing.com/events/smith-vs-puello/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:mbc-2026-09-12-canelo-mbilli@jk-0087.github.io
-DTSTAMP:20260728T120946Z
-LAST-MODIFIED:20260728T120946Z
-SEQUENCE:7
+DTSTAMP:20261016T005339Z
+LAST-MODIFIED:20261016T005339Z
+SEQUENCE:8
 DTSTART:20261031T150000Z
 DTEND:20261031T200000Z
 SUMMARY:Canelo Alvarez vs Christian Mbilli
-LOCATION:Venue TBA
-DESCRIPTION:Status\nOfficial\n\nPromotion\nRiyadh Season\n\nCity\nRiyadh\n\nCountry\nSaudi Arabia\n\nTitles\nWBC super middleweight world title\n\nAustralia\nDAZN / DAZN PPV status TBA\n\nMain Card Start (Sydney)\n2:00 AM AEDT\, Sun 1 Nov 2026 (Estimated)\n\nVenue Local Start\n6:00 PM +03\, Sat 31 Oct 2026 (Estimated)\n\nEstimated Finish\n7:00 AM AEDT\, Sun 1 Nov 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nUndercard TBA\n\nOfficial / Schedule Source\nhttps://boxingnewsonline.net/news/canelo-announces-new-date-for-mbilli/\n\nVerified\n28 Jul 2026\, 10:09 PM
-URL:https://boxingnewsonline.net/news/canelo-announces-new-date-for-mbilli/
+LOCATION:The Venue Riyadh Season
+DESCRIPTION:Status\nOfficial\n\nPromotion\nRiyadh Season\n\nCity\nRiyadh\n\nCountry\nSaudi Arabia\n\nTitles\nWBC super middleweight world title\n\nAustralia\nDAZN PPV\n\nMain Card Start (Sydney)\n2:00 AM AEDT\, Sun 1 Nov 2026 (Estimated)\n\nVenue Local Start\n6:00 PM +03\, Sat 31 Oct 2026 (Estimated)\n\nEstimated Finish\n7:00 AM AEDT\, Sun 1 Nov 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nCanelo Alvarez vs Christian Mbilli\nMunguia vs Zon\nDelgado vs Biyarslanov\nEspinoza vs Parra\nPicasso vs Martin\nTsutsumi vs Garcia\n\nOfficial / Schedule Source\nhttps://www.ringmagazine.com/events/canelo-vs-mbilli-2GvGyiilViQYAkq4EWkfAu\n\nVerified\n16 Oct 2026\, 11:53 AM
+URL:https://www.ringmagazine.com/events/canelo-vs-mbilli-2GvGyiilViQYAkq4EWkfAu
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -346,29 +346,29 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:mbc-2026-11-08-turhan-baumgardner@jk-0087.github.io
-DTSTAMP:20260901T012645Z
-LAST-MODIFIED:20260901T012645Z
-SEQUENCE:2
-DTSTART:20261108T230000Z
-DTEND:20261109T040000Z
+DTSTAMP:20261016T005339Z
+LAST-MODIFIED:20261016T005339Z
+SEQUENCE:3
+DTSTART:20261109T013000Z
+DTEND:20261109T063000Z
 SUMMARY:Elif Nur Turhan vs Alycia Baumgardner
 LOCATION:College Park Center
-DESCRIPTION:Status\nOfficial\n\nPromotion\nMost Valuable Promotions\n\nCity\nArlington\, Texas\n\nCountry\nUSA\n\nTitles\nIBF lightweight world championship\nWBC featherweight world championship: Tiara Brown vs Ellie Scotney\nWBC super bantamweight world championship: Skye Nicolson vs Miyo Yoshida\nVacant WBO and IBF super bantamweight world championships: Ramla Ali vs Mikiah Kreps\n\nAustralia\nESPN / ESPN App (availability varies)\n\nMain Card Start (Sydney)\n10:00 AM AEDT\, Mon 9 Nov 2026 (Confirmed)\n\nVenue Local Start\n5:00 PM CST\, Sun 8 Nov 2026 (Confirmed)\n\nEstimated Finish\n3:00 PM AEDT\, Mon 9 Nov 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nElif Nur Turhan vs Alycia Baumgardner\nTiara Brown vs Ellie Scotney\nSkye Nicolson vs Miyo Yoshida\nRamla Ali vs Mikiah Kreps\n\nOfficial / Schedule Source\nhttps://www.mostvaluablepromotions.com/event/mvpw-07-turhan-vs-baumgardner/\n\nVerified\n01 Sep 2026\, 11:26 AM
-URL:https://www.mostvaluablepromotions.com/event/mvpw-07-turhan-vs-baumgardner/
+DESCRIPTION:Status\nOfficial\n\nPromotion\nMost Valuable Promotions\n\nCity\nArlington\, Texas\n\nCountry\nUSA\n\nTitles\nIBF lightweight world championship (10 three-minute rounds)\nVacant WBO and IBF super bantamweight world championships: Ramla Ali vs Mikiah Kreps\nWBC super bantamweight world championship: Skye Nicolson vs Miyo Yoshida\nIBF and WBA super flyweight world championships: Irma Garcia vs Nataly Delgado\n\nAustralia\nESPN / ESPN App (availability varies)\n\nMain Card Start (Sydney)\n12:30 PM AEDT\, Mon 9 Nov 2026 (Confirmed)\n\nVenue Local Start\n7:30 PM CST\, Sun 8 Nov 2026 (Confirmed)\n\nEstimated Finish\n5:30 PM AEDT\, Mon 9 Nov 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nElif Nur Turhan vs Alycia Baumgardner\nRamla Ali vs Mikiah Kreps\nSkye Nicolson vs Miyo Yoshida\nIrma Garcia vs Nataly Delgado\n\nOfficial / Schedule Source\nhttps://www.mostvaluablepromotions.com/mvpw-07-turhan-baumgardner-espn-womens-sports-sundays/\n\nVerified\n16 Oct 2026\, 11:53 AM
+URL:https://www.mostvaluablepromotions.com/mvpw-07-turhan-baumgardner-espn-womens-sports-sundays/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:mbc-2026-11-14-pacheco-fulghum@jk-0087.github.io
-DTSTAMP:20261006T052532Z
-LAST-MODIFIED:20261006T052532Z
-SEQUENCE:1
+DTSTAMP:20261016T005339Z
+LAST-MODIFIED:20261016T005339Z
+SEQUENCE:2
 DTSTART:20261115T010000Z
 DTEND:20261115T060000Z
 SUMMARY:Diego Pacheco vs Darius Fulghum
 LOCATION:Dignity Health Sports Park
-DESCRIPTION:Status\nOfficial\n\nPromotion\nMatchroom Boxing\, Golden Boy Promotions\n\nCity\nCarson\, California\n\nCountry\nUSA\n\nTitles\nWBO International and WBC Silver super middleweight titles\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n12:00 PM AEDT\, Sun 15 Nov 2026 (Estimated)\n\nVenue Local Start\n5:00 PM PST\, Sat 14 Nov 2026 (Estimated)\n\nEstimated Finish\n5:00 PM AEDT\, Sun 15 Nov 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nDiego Pacheco vs Darius Fulghum\nUndercard TBA\n\nOfficial / Schedule Source\nhttps://www.matchroomboxing.com/events/pacheco-vs-fulghum/\n\nVerified\n06 Oct 2026\, 4:25 PM
-URL:https://www.matchroomboxing.com/events/pacheco-vs-fulghum/
+DESCRIPTION:Status\nOfficial\n\nPromotion\nMatchroom Boxing\, Golden Boy Promotions\n\nCity\nCarson\, California\n\nCountry\nUSA\n\nTitles\nWBO International and WBC Silver super middleweight titles\nWBO flyweight world championship: Anthony Olascuaga vs Yuberjen Martinez\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n12:00 PM AEDT\, Sun 15 Nov 2026 (Estimated)\n\nVenue Local Start\n5:00 PM PST\, Sat 14 Nov 2026 (Estimated)\n\nEstimated Finish\n5:00 PM AEDT\, Sun 15 Nov 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nDiego Pacheco vs Darius Fulghum\nAnthony Olascuaga vs Yuberjen Martinez\nCharlie Sheehy vs Gabriel Flores Jr.\nDavid Adeleye vs Alexander Flores\nZaquin Moses vs TBA\nFrank Espinoza vs TBA\nNishant Dev vs TBA\nFederico Pacheco vs TBA\n\nOfficial / Schedule Source\nhttps://www.matchroomboxing.com/news/olascuaga-pens-multi-fight-deal-with-matchroom-and-defends-world-title-against-two-time-olympian-yuberjen-martinez-on-nov-14-in-carson-ca/\n\nVerified\n16 Oct 2026\, 11:53 AM
+URL:https://www.matchroomboxing.com/news/olascuaga-pens-multi-fight-deal-with-matchroom-and-defends-world-title-against-two-time-olympian-yuberjen-martinez-on-nov-14-in-carson-ca/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT

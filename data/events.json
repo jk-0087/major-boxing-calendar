@@ -889,7 +889,7 @@
   },
   {
     "uid": "mbc-2026-09-12-canelo-mbilli@jk-0087.github.io",
-    "sequence": 7,
+    "sequence": 8,
     "status": "Official",
     "title": "Canelo Alvarez vs Christian Mbilli",
     "fighters": {
@@ -905,7 +905,7 @@
       "confidence": "estimated"
     },
     "venue": {
-      "name": "Venue TBA",
+      "name": "The Venue Riyadh Season",
       "city": "Riyadh",
       "country": "Saudi Arabia",
       "timezone": "Asia/Riyadh"
@@ -917,12 +917,22 @@
       "WBC super middleweight world title"
     ],
     "broadcast": {
-      "australia": "DAZN / DAZN PPV status TBA"
+      "australia": "DAZN PPV"
     },
     "main_card": [
-      "Undercard TBA"
+      "Canelo Alvarez vs Christian Mbilli",
+      "Munguia vs Zon",
+      "Delgado vs Biyarslanov",
+      "Espinoza vs Parra",
+      "Picasso vs Martin",
+      "Tsutsumi vs Garcia"
     ],
     "sources": [
+      {
+        "url": "https://www.ringmagazine.com/events/canelo-vs-mbilli-2GvGyiilViQYAkq4EWkfAu",
+        "publisher": "The Ring",
+        "checked_at": "2026-10-16T11:53:39+11:00"
+      },
       {
         "url": "https://boxingnewsonline.net/news/canelo-announces-new-date-for-mbilli/",
         "publisher": "Boxing News (Canelo confirmation)",
@@ -976,6 +986,14 @@
         "date": "2026-07-29",
         "changes": [
           "Added Box.Live schedule source"
+        ]
+      },
+      {
+        "version": 7,
+        "date": "2026-10-16",
+        "changes": [
+          "Confirmed The Venue Riyadh Season and DAZN PPV from The Ring listing",
+          "Added supporting bouts as named by The Ring; broadcast start remains estimated because event timing is ambiguous"
         ]
       }
     ],
@@ -1472,7 +1490,7 @@
   },
   {
     "uid": "mbc-2026-10-24-smith-puello@jk-0087.github.io",
-    "sequence": 5,
+    "sequence": 6,
     "status": "Official",
     "title": "Dalton Smith vs Alberto Puello",
     "fighters": {
@@ -1507,16 +1525,19 @@
     "main_card": [
       "Dalton Smith vs Alberto Puello",
       "Giorgio Visioli vs Maxi Hughes",
-      "Leo Atang vs TBA",
+      "Leo Atang vs Jonathan Vergara",
       "Aqib Fiaz vs Jordan Flynn",
       "Shannon Ryan vs Emma Dolan",
-      "Joe Hayden vs Will Harrison"
+      "Joe Hayden vs Will Harrison",
+      "Ed Hardy vs TBC",
+      "Divine Omojor vs Goran Kozul",
+      "Chris Mulunda vs Harley Collison"
     ],
     "sources": [
       {
         "url": "https://www.matchroomboxing.com/events/smith-vs-puello/",
         "publisher": "Matchroom",
-        "checked_at": "2026-09-01T11:26:45+10:00"
+        "checked_at": "2026-10-16T11:53:39+11:00"
       }
     ],
     "history": [
@@ -1541,6 +1562,14 @@
         "changes": [
           "Added published Matchroom card bouts",
           "Added supporting title fights"
+        ]
+      },
+      {
+        "version": 4,
+        "date": "2026-10-16",
+        "changes": [
+          "Named Leo Atang's opponent and added newly published supporting bouts",
+          "Retained Aqib Fiaz vs Jordan Flynn pending explicit confirmation of any withdrawal"
         ]
       }
     ],
@@ -1688,7 +1717,7 @@
   },
   {
     "uid": "mbc-2026-10-17-fundora-hadribeaj@jk-0087.github.io",
-    "sequence": 1,
+    "sequence": 2,
     "status": "Official",
     "title": "Sebastian Fundora vs Ermal Hadribeaj",
     "fighters": {
@@ -1722,9 +1751,15 @@
     "main_card": [
       "Sebastian Fundora vs Ermal Hadribeaj",
       "Brandon Figueroa vs Tomoki Kameda",
-      "Jermall Charlo vs Koen Mazoudier"
+      "Armando Resendiz vs Koen Mazoudier",
+      "Marco Romero vs Braulio Ferreira"
     ],
     "sources": [
+      {
+        "url": "https://www.premierboxingchampions.com/events/854219",
+        "publisher": "Premier Boxing Champions",
+        "checked_at": "2026-10-16T11:53:39+11:00"
+      },
       {
         "url": "https://www.premierboxingchampions.com/fight-night-october-17-2026",
         "publisher": "Premier Boxing Champions",
@@ -1738,6 +1773,13 @@
         "changes": [
           "Approved from Premier Boxing Champions staged events",
           "Confirmed main-card start from the official PBC listing"
+        ]
+      },
+      {
+        "version": 2,
+        "date": "2026-10-16",
+        "changes": [
+          "Updated Koen Mazoudier's opponent to Armando Resendiz and added Marco Romero vs Braulio Ferreira"
         ]
       }
     ],
@@ -1812,7 +1854,7 @@
   },
   {
     "uid": "mbc-2026-11-08-turhan-baumgardner@jk-0087.github.io",
-    "sequence": 2,
+    "sequence": 3,
     "status": "Official",
     "title": "Elif Nur Turhan vs Alycia Baumgardner",
     "fighters": {
@@ -1820,7 +1862,7 @@
       "blue": "Alycia Baumgardner"
     },
     "end": {
-      "value": "2026-11-08T22:00:00-06:00",
+      "value": "2026-11-09T00:30:00-06:00",
       "confidence": "estimated"
     },
     "ring_walk": {
@@ -1837,21 +1879,31 @@
       "Most Valuable Promotions"
     ],
     "titles": [
-      "IBF lightweight world championship",
-      "WBC featherweight world championship: Tiara Brown vs Ellie Scotney",
+      "IBF lightweight world championship (10 three-minute rounds)",
+      "Vacant WBO and IBF super bantamweight world championships: Ramla Ali vs Mikiah Kreps",
       "WBC super bantamweight world championship: Skye Nicolson vs Miyo Yoshida",
-      "Vacant WBO and IBF super bantamweight world championships: Ramla Ali vs Mikiah Kreps"
+      "IBF and WBA super flyweight world championships: Irma Garcia vs Nataly Delgado"
     ],
     "broadcast": {
       "australia": "ESPN / ESPN App (availability varies)"
     },
     "main_card": [
       "Elif Nur Turhan vs Alycia Baumgardner",
-      "Tiara Brown vs Ellie Scotney",
+      "Ramla Ali vs Mikiah Kreps",
       "Skye Nicolson vs Miyo Yoshida",
-      "Ramla Ali vs Mikiah Kreps"
+      "Irma Garcia vs Nataly Delgado"
     ],
     "sources": [
+      {
+        "url": "https://www.mostvaluablepromotions.com/mvpw-07-turhan-baumgardner-espn-womens-sports-sundays/",
+        "publisher": "Most Valuable Promotions",
+        "checked_at": "2026-10-16T11:53:39+11:00"
+      },
+      {
+        "url": "https://www.mostvaluablepromotions.com/mvp-espn-announce-full-mvpw-07-fight-card-nov-8/",
+        "publisher": "Most Valuable Promotions",
+        "checked_at": "2026-10-16T11:53:39+11:00"
+      },
       {
         "url": "https://www.mostvaluablepromotions.com/event/mvpw-07-turhan-vs-baumgardner/",
         "publisher": "Most Valuable Promotions",
@@ -1878,16 +1930,25 @@
         "changes": [
           "Corrected the MVP start-time conversion to 5:00 PM CST at the Texas venue"
         ]
+      },
+      {
+        "version": 3,
+        "date": "2026-10-16",
+        "changes": [
+          "Corrected broadcast start to 8:30 PM Eastern / 7:30 PM Central from the explicit MVP broadcast announcement",
+          "Removed Tiara Brown vs Ellie Scotney following confirmed injury withdrawal",
+          "Added Irma Garcia vs Nataly Delgado unification and elevated Ali vs Kreps to co-main"
+        ]
       }
     ],
     "main_card_start": {
-      "value": "2026-11-08T17:00:00-06:00",
+      "value": "2026-11-08T19:30:00-06:00",
       "confidence": "confirmed"
     }
   },
   {
     "uid": "mbc-2026-10-17-dubois-wardley@jk-0087.github.io",
-    "sequence": 1,
+    "sequence": 2,
     "status": "Official",
     "title": "Daniel Dubois vs Fabio Wardley",
     "fighters": {
@@ -1899,8 +1960,8 @@
       "confidence": "estimated"
     },
     "ring_walk": {
-      "value": null,
-      "confidence": "tba"
+      "value": "2026-10-17T22:00:00+01:00",
+      "confidence": "estimated"
     },
     "venue": {
       "name": "The O2",
@@ -1919,9 +1980,22 @@
     },
     "main_card": [
       "Daniel Dubois vs Fabio Wardley",
-      "Undercard TBA"
+      "Louie O'Doherty vs Michael Gomez Jr",
+      "Adam Olaniyan vs Dan Garber",
+      "Bakhodir Jalolov vs Solomon Dacres",
+      "Nelson Birchall vs Levi Gilles"
     ],
     "sources": [
+      {
+        "url": "https://www.dazn.com/fr-CA/help/articles/39722510152733-daniel-dubois-vs-fabio-wardley-2-ppv-faqs",
+        "publisher": "DAZN",
+        "checked_at": "2026-10-16T11:53:39+11:00"
+      },
+      {
+        "url": "https://www.dazn.com/en-CA/help/articles/39722510152733-daniel-dubois-vs-fabio-wardley-2-ppv-faqs",
+        "publisher": "DAZN",
+        "checked_at": "2026-10-16T11:53:39+11:00"
+      },
       {
         "url": "https://queensberry.co.uk/pages/daniel-dubois-vs-fabio-wardley-2-run-it-back",
         "publisher": "Queensberry Promotions",
@@ -1936,16 +2010,24 @@
           "Approved from Queensberry staged events",
           "Main-card start estimated pending an official DAZN broadcast time"
         ]
+      },
+      {
+        "version": 2,
+        "date": "2026-10-16",
+        "changes": [
+          "Confirmed 7:00 PM BST broadcast start and estimated 10:00 PM BST ring walks from DAZN",
+          "Added published DAZN main card"
+        ]
       }
     ],
     "main_card_start": {
       "value": "2026-10-17T19:00:00+01:00",
-      "confidence": "estimated"
+      "confidence": "confirmed"
     }
   },
   {
     "uid": "mbc-2026-10-24-navarrete-foster@jk-0087.github.io",
-    "sequence": 1,
+    "sequence": 2,
     "status": "Official",
     "title": "Emanuel Navarrete vs O'Shaquie Foster",
     "fighters": {
@@ -1978,13 +2060,18 @@
     "main_card": [
       "Emanuel Navarrete vs O'Shaquie Foster",
       "Albert Gonzalez vs Edward Vazquez",
-      "Frank Martin vs TBA"
+      "Frank Martin vs Tarik Zaina",
+      "Steven Navarro vs Emanuel Moreno",
+      "Scooter Davis vs Joaquin Silva Faccio",
+      "Sammy Contreras vs Oscar Pedroza Padilla",
+      "Daniel Cortez III vs Oziel Rangel Aradillas",
+      "Joseph Almajdi vs Jalen Moore"
     ],
     "sources": [
       {
         "url": "https://toprank.com/events/navarrete-vs-foster",
         "publisher": "Top Rank",
-        "checked_at": "2026-09-03T13:43:47+10:00"
+        "checked_at": "2026-10-16T11:53:39+11:00"
       }
     ],
     "history": [
@@ -1994,6 +2081,13 @@
         "changes": [
           "Approved from Top Rank staged events",
           "Confirmed the 8:00 PM ET main-card start from Top Rank"
+        ]
+      },
+      {
+        "version": 2,
+        "date": "2026-10-16",
+        "changes": [
+          "Named Frank Martin's opponent and added published Top Rank supporting bouts"
         ]
       }
     ],
@@ -2103,24 +2197,58 @@
   },
   {
     "uid": "mbc-2026-11-14-pacheco-fulghum@jk-0087.github.io",
-    "sequence": 1,
+    "sequence": 2,
     "status": "Official",
     "title": "Diego Pacheco vs Darius Fulghum",
-    "fighters": {"red": "Diego Pacheco", "blue": "Darius Fulghum"},
-    "main_card_start": {"value": "2026-11-14T17:00:00-08:00", "confidence": "estimated"},
-    "end": {"value": "2026-11-14T22:00:00-08:00", "confidence": "estimated"},
-    "ring_walk": {"value": null, "confidence": "tba"},
+    "fighters": {
+      "red": "Diego Pacheco",
+      "blue": "Darius Fulghum"
+    },
+    "main_card_start": {
+      "value": "2026-11-14T17:00:00-08:00",
+      "confidence": "estimated"
+    },
+    "end": {
+      "value": "2026-11-14T22:00:00-08:00",
+      "confidence": "estimated"
+    },
+    "ring_walk": {
+      "value": null,
+      "confidence": "tba"
+    },
     "venue": {
       "name": "Dignity Health Sports Park",
       "city": "Carson, California",
       "country": "USA",
       "timezone": "America/Los_Angeles"
     },
-    "promotion": ["Matchroom Boxing", "Golden Boy Promotions"],
-    "titles": ["WBO International and WBC Silver super middleweight titles"],
-    "broadcast": {"australia": "DAZN"},
-    "main_card": ["Diego Pacheco vs Darius Fulghum", "Undercard TBA"],
+    "promotion": [
+      "Matchroom Boxing",
+      "Golden Boy Promotions"
+    ],
+    "titles": [
+      "WBO International and WBC Silver super middleweight titles",
+      "WBO flyweight world championship: Anthony Olascuaga vs Yuberjen Martinez"
+    ],
+    "broadcast": {
+      "australia": "DAZN"
+    },
+    "main_card": [
+      "Diego Pacheco vs Darius Fulghum",
+      "Anthony Olascuaga vs Yuberjen Martinez",
+      "Charlie Sheehy vs Gabriel Flores Jr.",
+      "David Adeleye vs Alexander Flores",
+      "Zaquin Moses vs TBA",
+      "Frank Espinoza vs TBA",
+      "Nishant Dev vs TBA",
+      "Federico Pacheco vs TBA"
+    ],
     "sources": [
+      {
+        "url": "https://www.matchroomboxing.com/news/olascuaga-pens-multi-fight-deal-with-matchroom-and-defends-world-title-against-two-time-olympian-yuberjen-martinez-on-nov-14-in-carson-ca/",
+        "publisher": "Matchroom",
+        "checked_at": "2026-10-16T11:53:39+11:00"
+      },
       {
         "url": "https://www.matchroomboxing.com/events/pacheco-vs-fulghum/",
         "publisher": "Matchroom",
@@ -2132,11 +2260,24 @@
         "checked_at": "2026-10-06T16:25:32+11:00"
       }
     ],
-    "history": [{
-      "version": 1,
-      "date": "2026-10-06",
-      "changes": ["Approved from Matchroom staging with venue, titles and broadcaster confirmed", "Main-card start estimated pending official broadcast time"]
-    }]
+    "history": [
+      {
+        "version": 1,
+        "date": "2026-10-06",
+        "changes": [
+          "Approved from Matchroom staging with venue, titles and broadcaster confirmed",
+          "Main-card start estimated pending official broadcast time"
+        ]
+      },
+      {
+        "version": 2,
+        "date": "2026-10-16",
+        "changes": [
+          "Added Anthony Olascuaga vs Yuberjen Martinez for the WBO flyweight title",
+          "Added published supporting and preliminary bouts"
+        ]
+      }
+    ]
   },
   {
     "uid": "mbc-2026-11-28-kabayel-hysa@jk-0087.github.io",
