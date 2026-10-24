@@ -81,7 +81,7 @@ def test_ring_reads_more_than_twenty_and_deduplicates_card_ids():
     assert len(parse_ring_schedule(payload, date(2026, 10, 24))) == 26
 
 
-@patch("scripts.sources.ring.requests.get")
+@patch("scripts.sources.ring.http.get")
 def test_ring_fetch_uses_anonymous_schedule_and_preserves_safety(mock_get):
     spec = next(s for s in OFFICIAL_SOURCES if s.name == "The Ring / Riyadh Season")
     mock_get.return_value = Mock(status_code=200, json=Mock(return_value=schedule()))

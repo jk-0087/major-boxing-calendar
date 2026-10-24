@@ -1,6 +1,31 @@
 from copy import deepcopy
+import json
+from pathlib import Path
+import pytest
 
-from scripts.validate import validate_revision, validate_staged_events
+from scripts.validate import validate_events, validate_revision, validate_staged_events
+
+
+@pytest.mark.parametrize("field,value", [
+    ("broadcast", None), ("sources", []), ("history", [{}]),
+    ("promotion", "Promoter"), ("sequence", True), ("fighters", []),
+    ("venue", None), ("main_card", []), ("titles", []),
+    ("main_card_start", {"value": None, "confidence": "estimated"}),
+    ("end", {"value": "2026-10-24T12:00:00", "confidence": "confirmed"}),
+    ("ring_walk", {"value": None, "confidence": []}),
+    ("venue", {"name": "TBA", "city": "TBA", "country": "TBA"}),
+    ("sources", [{"url": "https://example.com", "publisher": "Official", "checked_at": "2026-10-24"}]),
+])
+def test_malformed_approved_fields_return_errors_not_exceptions(field, value):
+    event = json.loads((Path(__file__).resolve().parents[1] / "data/events.json").read_text())[0]
+    assert validate_events([event]) == []
+    event[field] = value
+    assert validate_events([event])
+
+
+@pytest.mark.parametrize("value", [None, {}, [None], [{"title": []}]])
+def test_malformed_event_containers_return_errors(value):
+    assert validate_events(value)
 
 
 def approved_event():

@@ -1,0 +1,2 @@
+# iCalendar requires CRLF; folded content may legitimately end with a space.
+major-boxing-calendar.ics -text whitespace=-blank-at-eol,cr-at-eol

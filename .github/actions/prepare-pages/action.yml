@@ -1,0 +1,14 @@
+name: Prepare public calendar artifact
+description: Package only the public website and subscription feed for deployment
+runs:
+  using: composite
+  steps:
+    - name: Package public files
+      shell: bash
+      run: |
+        mkdir -p "$RUNNER_TEMP/calendar-site"
+        cp index.html major-boxing-calendar.ics "$RUNNER_TEMP/calendar-site/"
+        touch "$RUNNER_TEMP/calendar-site/.nojekyll"
+    - uses: actions/upload-pages-artifact@v4
+      with:
+        path: ${{ runner.temp }}/calendar-site

@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import re
 import json
-from dataclasses import dataclass
 from datetime import date
 from urllib.parse import unquote, urljoin, urlsplit
 
@@ -11,12 +10,15 @@ from bs4 import BeautifulSoup
 from dateutil import parser as date_parser
 
 from scripts.models import DiscoveredEvent
-
-
-@dataclass(frozen=True)
-class SourceSpec:
-    name: str
-    url: str
+from scripts.sources import http
+from scripts.sources.common import (
+    SourceSpec, OfficialSourceError, FIGHT_RE, _clean, _clean_fighter,
+    _parse_date, looks_like_fight,
+)
+from scripts.sources.boxxer import parse_boxxer_schedule
+from scripts.sources.pbc import parse_pbc_schedule
+from scripts.sources.zuffa import parse_zuffa_headlines
+from scripts.sources.ring import fetch_ring_events
 
 
 OFFICIAL_SOURCES = (
@@ -29,72 +31,6 @@ OFFICIAL_SOURCES = (
     SourceSpec("No Limit Boxing", "https://nolimitboxing.com.au/events"),
     SourceSpec("Zuffa Boxing", "https://www.ufc.com/zuffaboxing"),
 )
-
-EDITORIAL_WORDS = {
-    "auction",
-    "memorabilia",
-    "angle",
-    "anniversary",
-    "delivered",
-    "highlights",
-    "hoodie",
-    "interview",
-    "post-show",
-    "provides",
-    "results",
-    "scorecards",
-    "shirt",
-    "statement",
-    "update",
-    "video",
-    "weigh-in",
-}
-
-MONTHS = (
-    "January|February|March|April|May|June|July|August|September|October|November|December|"
-    "Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec"
-)
-DATE_RE = re.compile(
-    rf"\b(?:(?:{MONTHS})\s+\d{{1,2}}(?:st|nd|rd|th)?(?:,)?(?:\s+\d{{4}})?|"
-    rf"\d{{1,2}}(?:st|nd|rd|th)?\s+(?:{MONTHS})(?:\s+\d{{4}})?)\b",
-    re.I,
-)
-NUMERIC_DATE_RE = re.compile(
-    r"\b(?P<day>\d{1,2})\s*\|\s*(?P<month>\d{1,2})\s*\|\s*(?P<year>\d{2}|\d{4})\b"
-)
-FIGHT_RE = re.compile(
-    r"(?P<a>[A-ZÀ-ÖØ-öø-ÿ][\wÀ-ÖØ-öø-ÿ.'’\- ]{1,55}?)\s*"
-    r"(?:v(?:s\.?|\.)|versus)(?:\s*\(versus\))?\s*"
-    r"(?P<b>[A-ZÀ-ÖØ-öø-ÿ][\wÀ-ÖØ-öø-ÿ.'’\- ]{1,55})",
-    re.I,
-)
-
-
-class OfficialSourceError(RuntimeError):
-    pass
-
-
-def _clean(value: str) -> str:
-    return " ".join(value.strip(" -–—:;,.\t\n").split())
-
-
-def _clean_fighter(value: str) -> str:
-    value = re.sub(r"\s+Tickets$", "", value, flags=re.I)
-    value = re.sub(r"\s+Live on\s+.+$", "", value, flags=re.I)
-    value = " ".join(part.strip("-–—") for part in _clean(value).split())
-    if value.isupper() or value.islower():
-        value = value.title()
-    return value
-
-
-def looks_like_fight(left: str, right: str) -> bool:
-    words = {word.casefold().strip(".'’") for word in f"{left} {right}".split()}
-    return (
-        bool(left and right)
-        and len(left.split()) <= 7
-        and len(right.split()) <= 7
-        and not words.intersection(EDITORIAL_WORDS)
-    )
 
 
 def _event_url_score(event: DiscoveredEvent) -> tuple[int, int]:
@@ -162,31 +98,6 @@ def select_main_events(
                 selected.append(fight_nights[0])
 
     return sorted(selected, key=lambda event: (event.event_date, event.title))
-
-
-def _parse_date(value: str, today: date) -> date | None:
-    numeric = NUMERIC_DATE_RE.search(value)
-    if numeric:
-        year = int(numeric.group("year"))
-        if year < 100:
-            year += 2000
-        try:
-            return date(year, int(numeric.group("month")), int(numeric.group("day")))
-        except ValueError:
-            return None
-    match = DATE_RE.search(value)
-    if not match:
-        return None
-    raw = re.sub(r"(?<=\d)(?:st|nd|rd|th)\b", "", match.group(0), flags=re.I)
-    if not re.search(r"\b\d{4}\b", raw):
-        raw = f"{raw} {today.year}"
-    try:
-        parsed = date_parser.parse(raw, fuzzy=False, dayfirst=raw[0].isdigit()).date()
-    except (ValueError, OverflowError):
-        return None
-    if parsed < today and (today - parsed).days > 150 and str(today.year) not in match.group(0):
-        parsed = parsed.replace(year=today.year + 1)
-    return parsed
 
 
 def parse_official_schedule(html: str, spec: SourceSpec, today: date) -> list[DiscoveredEvent]:
@@ -330,121 +241,6 @@ def parse_official_schedule(html: str, spec: SourceSpec, today: date) -> list[Di
     return sorted(found.values(), key=lambda event: (event.event_date, event.title))
 
 
-def parse_zuffa_headlines(
-    soup: BeautifulSoup,
-    spec: SourceSpec,
-    today: date,
-) -> list[DiscoveredEvent]:
-    """Read official headline features even when their links only sell tickets."""
-    found: dict[tuple[str, date], DiscoveredEvent] = {}
-    for block in soup.select(".fifty-fifty__text-block"):
-        heading = block.select_one(".fifty-fifty__title")
-        body = block.select_one(".fifty-fifty__body")
-        if heading is None or body is None:
-            continue
-        text = _clean(body.get_text(" ", strip=True))
-        if not re.search(r"\b(?:main[ -]event|headline\w*)\b", text, re.I):
-            continue
-        fight = FIGHT_RE.fullmatch(_clean(heading.get_text(" ", strip=True)))
-        event_date = _parse_date(text, today)
-        if fight is None or event_date is None or event_date < today:
-            continue
-        left, right = (_clean_fighter(fight.group(side)) for side in ("a", "b"))
-        if not looks_like_fight(left, right):
-            continue
-        title = f"{left} vs {right}"
-        # Keep the verifiable official source, not an external ticket shortlink.
-        found[(title.casefold(), event_date)] = DiscoveredEvent(
-            title, event_date, spec.url, card_role="main_event"
-        )
-    return sorted(found.values(), key=lambda event: (event.event_date, event.title))
-
-
-def parse_boxxer_schedule(
-    soup: BeautifulSoup,
-    spec: SourceSpec,
-    today: date,
-) -> list[DiscoveredEvent]:
-    """Pair BOXXER's linked fight headings with their own event dates."""
-    found: dict[tuple[str, date], DiscoveredEvent] = {}
-    for heading in soup.select("h2, h3, h4"):
-        anchor = heading.select_one("a[href]")
-        if anchor is None:
-            continue
-        url = urljoin(spec.url, anchor["href"])
-        parsed_url = urlsplit(url)
-        if parsed_url.netloc.casefold() not in {"www.boxxer.com", "boxxer.com"}:
-            continue
-        if not parsed_url.path.startswith("/events/"):
-            continue
-        fight = FIGHT_RE.fullmatch(_clean(anchor.get_text(" ", strip=True)))
-        if fight is None:
-            continue
-        left, right = (_clean_fighter(fight.group(side)) for side in ("a", "b"))
-        if not looks_like_fight(left, right):
-            continue
-        # Dated event slugs include a year, unlike the abbreviated card labels.
-        event_date = _parse_date(unquote(parsed_url.path).replace("-", " "), today)
-        if event_date is None:
-            card = heading.find_parent(class_="elementor-widget-wrap")
-            if card is not None:
-                # Never borrow a date from a container holding multiple cards.
-                linked_fights = [node for node in card.select("h2, h3, h4")
-                                 if FIGHT_RE.fullmatch(_clean(node.get_text(" ", strip=True)))]
-                if len(linked_fights) == 1:
-                    event_date = _parse_date(card.get_text(" ", strip=True), today)
-        if event_date is None or event_date < today:
-            continue
-        found[(url, event_date)] = DiscoveredEvent(
-            f"{left} vs {right}", event_date, url, card_role="main_event"
-        )
-    return sorted(found.values(), key=lambda event: (event.event_date, event.title))
-
-
-def parse_pbc_schedule(
-    soup: BeautifulSoup,
-    spec: SourceSpec,
-    today: date,
-) -> list[DiscoveredEvent]:
-    """Read redesigned PBC cards, whose first bout is the headline."""
-    found: dict[tuple[str, date], DiscoveredEvent] = {}
-    for card in soup.select(".pbc-schedule__fight-inner"):
-        date_node = card.select_one(".pbc-schedule__date")
-        bouts = card.select_one(".pbc-schedule__card")
-        if date_node is None or bouts is None:
-            continue
-        event_date = _parse_date(date_node.get_text(" ", strip=True), today)
-        if event_date is None or event_date < today:
-            continue
-        event_link = next(
-            (anchor for anchor in bouts.select("a[href]")
-             if re.fullmatch(r"/events/\d+/?", urlsplit(urljoin(spec.url, anchor["href"])).path)
-             and source_is_pbc(urljoin(spec.url, anchor["href"]))),
-            None,
-        )
-        headline = bouts.select_one("h2")
-        if event_link is None or headline is None:
-            continue
-        # Two fighter spans avoid parsing hidden accessibility labels in 'vs'.
-        names = headline.select("a > span")
-        if len(names) != 2:
-            continue
-        left, right = (_clean_fighter(node.get_text(" ", strip=True)) for node in names)
-        if not looks_like_fight(left, right):
-            continue
-        url = urljoin(spec.url, event_link["href"])
-        found[(url, event_date)] = DiscoveredEvent(
-            f"{left} vs {right}", event_date, url, card_role="main_event"
-        )
-    return sorted(found.values(), key=lambda event: (event.event_date, event.title))
-
-
-def source_is_pbc(url: str) -> bool:
-    return urlsplit(url).netloc.casefold() in {
-        "premierboxingchampions.com", "www.premierboxingchampions.com"
-    }
-
-
 def parse_no_limit_event_detail(
     html: str,
     source_url: str,
@@ -503,7 +299,7 @@ def fetch_no_limit_events(
     found: dict[tuple[str, date], DiscoveredEvent] = {}
     for detail_url in sorted(detail_urls):
         try:
-            response = requests.get(detail_url, timeout=30, headers=headers)
+            response = http.get(detail_url, timeout=30, headers=headers)
         except requests.RequestException:
             continue
         if response.status_code != 200:
@@ -516,19 +312,11 @@ def fetch_no_limit_events(
 
 def fetch_official_events(spec: SourceSpec, today: date | None = None) -> list[DiscoveredEvent]:
     today = today or date.today()
-    headers = {
-        "User-Agent": (
-            "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
-            "Chrome/126.0 Safari/537.36 MajorBoxingCalendar/1.0"
-        ),
-        "Accept-Language": "en-AU,en;q=0.9",
-    }
+    headers = http.HEADERS
     if spec.name == "The Ring / Riyadh Season":
-        from scripts.sources.ring import fetch_ring_events
-
         return fetch_ring_events(today, headers)
     try:
-        response = requests.get(
+        response = http.get(
             spec.url,
             timeout=30,
             headers=headers,

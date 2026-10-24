@@ -12,8 +12,8 @@ def render_summary(report: dict) -> str:
         "",
         f"Checked: `{report['checked_at']}`",
         "",
-        "| Source | Status | Events | Detail |",
-        "| --- | --- | ---: | --- |",
+        "| Source | Status | Events | Seconds | Failure streak | Last success | Detail |",
+        "| --- | --- | ---: | ---: | ---: | --- | --- |",
     ]
     for source in report["sources"]:
         detail = str(
@@ -21,7 +21,8 @@ def render_summary(report: dict) -> str:
         ).replace("\n", "<br>").replace("|", "\\|")
         lines.append(
             f"| {source['source']} | {source['status']} | "
-            f"{source.get('events', '—')} | {detail} |"
+            f"{source.get('events', '—')} | {source.get('duration_seconds', '—')} | "
+            f"{source.get('consecutive_failures', '—')} | {source.get('last_success_at') or '—'} | {detail} |"
         )
     lines.extend(
         [

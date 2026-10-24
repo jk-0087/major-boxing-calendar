@@ -1,4 +1,5 @@
 import json
+import pytest
 from datetime import date
 from unittest.mock import patch
 from scripts.discover import (
@@ -9,6 +10,7 @@ from scripts.discover import (
     prefer_primary_sources,
     run,
     update_existing,
+    update_source_health,
 )
 from scripts.models import DiscoveredEvent
 from scripts.sources.matchroom import MatchroomSourceError
@@ -27,6 +29,48 @@ def sample_event():
         "sources": [],
         "history": [{"version": 3, "date": "2026-07-21", "changes": ["Migrated"]}],
     }
+
+
+def test_preview_changes_neither_approved_nor_staged_data(tmp_path):
+    events_path, proposals_path = tmp_path / "events.json", tmp_path / "proposals.json"
+    events_path.write_text(json.dumps([sample_event()]))
+    proposals_path.write_text("[]\n")
+    before = (events_path.read_bytes(), proposals_path.read_bytes())
+    item = DiscoveredEvent("New Fighter vs Challenger", date(2099, 1, 1),
+                           "https://example.com/new", "main_event")
+    report_path = tmp_path / "report.json"
+    health_path = tmp_path / "health.json"
+    health_path.write_text("{}\n")
+    with patch("scripts.discover.EVENTS_PATH", events_path), \
+         patch("scripts.discover.PROPOSALS_PATH", proposals_path), \
+         patch("scripts.discover.discover_all", return_value=([item], [])):
+        assert run(False, str(report_path), str(health_path)) == 0
+    assert (events_path.read_bytes(), proposals_path.read_bytes()) == before
+    assert len(json.loads(report_path.read_text())["staged"]) == 1
+    assert health_path.read_text() == "{}\n"
+
+
+def test_reports_cannot_overwrite_calendar_data(tmp_path):
+    data_path = tmp_path / "events.json"
+    with patch("scripts.discover.EVENTS_PATH", data_path):
+        with pytest.raises(ValueError, match="must not overwrite"):
+            run(False, str(data_path))
+
+
+def test_health_history_tracks_failures_and_recovers_separately():
+    url = "https://example.com"
+    ok = {"url": url, "status": "ok"}
+    state = update_source_health([ok], {}, "first")
+    assert ok["last_success_at"] == "first"
+    for count in (1, 2):
+        failed = {"url": url, "status": "skipped"}
+        state = update_source_health([failed], state, "later")
+        assert failed["consecutive_failures"] == count
+        assert failed["last_success_at"] == "first"
+    recovered = {"url": url, "status": "ok"}
+    update_source_health([recovered], state, "recovered")
+    assert recovered["consecutive_failures"] == 0
+    assert recovered["last_success_at"] == "recovered"
 
 
 def test_ring_yields_to_direct_source_and_preserves_ring_only_cards():
@@ -262,7 +306,7 @@ def test_duplicate_source_match_is_not_staged(
         [],
     )
 
-    assert run(apply=False) == 0
+    assert run(apply=True) == 10
     mock_proposals_path.write_text.assert_called_once_with(
         "[]\n",
         encoding="utf-8",
@@ -291,7 +335,7 @@ def test_undercard_discovery_is_not_staged(
         [],
     )
 
-    assert run(apply=False) == 0
+    assert run(apply=True) == 0
     mock_proposals_path.write_text.assert_called_once_with(
         "[]\n",
         encoding="utf-8",
@@ -328,7 +372,7 @@ def test_bout_from_approved_card_source_is_not_staged(
         [],
     )
 
-    assert run(apply=False) == 0
+    assert run(apply=True) == 0
     mock_proposals_path.write_text.assert_called_once_with(
         "[]\n",
         encoding="utf-8",

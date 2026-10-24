@@ -32,7 +32,7 @@ LIVE_STYLE_HTML = """
 """
 
 
-@patch("scripts.sources.matchroom.requests.get")
+@patch("scripts.sources.matchroom.http.get")
 def test_matchroom_parser_extracts_event_cards(mock_get):
     response = Mock(status_code=200, text=HTML)
     mock_get.return_value = response
@@ -44,7 +44,7 @@ def test_matchroom_parser_extracts_event_cards(mock_get):
     assert events[0].source_url.endswith("/events/teremoana-vs-savage/")
 
 
-@patch("scripts.sources.matchroom.requests.get")
+@patch("scripts.sources.matchroom.http.get")
 def test_matchroom_parser_handles_generic_see_event_links(mock_get):
     mock_get.return_value = Mock(status_code=200, text=LIVE_STYLE_HTML)
     events = fetch_matchroom_events(today=date(2026, 7, 21))

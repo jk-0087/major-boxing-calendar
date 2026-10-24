@@ -9,12 +9,12 @@ on:
       - "scripts/**"
       - "tests/**"
       - "requirements*.txt"
-      - ".github/actions/setup-calendar/**"
-      - ".github/workflows/build-calendar.yml"
+      - ".github/actions/**"
+      - ".github/workflows/**"
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: boxing-calendar-main-writer
@@ -25,6 +25,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -44,3 +46,12 @@ jobs:
           git add major-boxing-calendar.ics index.html
           git commit -m "Rebuild calendar and website"
           git push
+      - uses: ./.github/actions/prepare-pages
+
+  publish:
+    needs: build
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/deploy-pages.yml

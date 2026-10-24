@@ -8,7 +8,8 @@ import requests
 from dateutil import parser as date_parser
 
 from scripts.models import DiscoveredEvent
-from scripts.sources.official import OfficialSourceError, _clean_fighter, looks_like_fight
+from scripts.sources.common import OfficialSourceError, _clean_fighter, looks_like_fight
+from scripts.sources import http
 
 
 RING_SCHEDULE_API = "https://www.ringmagazine.com/api/cached/v1/content/search/events/upcoming"
@@ -87,7 +88,7 @@ def parse_ring_schedule(payload: object, today: date) -> list[DiscoveredEvent]:
 
 def fetch_ring_events(today: date, headers: dict[str, str]) -> list[DiscoveredEvent]:
     try:
-        response = requests.get(
+        response = http.get(
             RING_SCHEDULE_API, params={"limit": 100, "language": "en", "_ttl": 60},
             timeout=30, headers=headers,
         )

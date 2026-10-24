@@ -10,6 +10,7 @@ from copy import deepcopy
 from datetime import date, datetime
 from difflib import SequenceMatcher
 from pathlib import Path
+from time import perf_counter
 from urllib.parse import urlsplit
 from zoneinfo import ZoneInfo
 
@@ -17,6 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from scripts.models import DiscoveredEvent
+from scripts.generate import current_time
 from scripts.sources.matchroom import (
     MATCHROOM_EVENTS_URL,
     MatchroomSourceError,
@@ -155,6 +157,7 @@ def prefer_primary_sources(items: list[DiscoveredEvent]) -> list[DiscoveredEvent
 def discover_all() -> tuple[list[DiscoveredEvent], list[dict]]:
     discovered: list[DiscoveredEvent] = []
     statuses: list[dict] = []
+    today = current_time().astimezone(SYDNEY).date()
 
     # Sources are independent and network-bound, so fetch them concurrently.
     # Results are still processed in a fixed order to keep matching and output
@@ -164,14 +167,14 @@ def discover_all() -> tuple[list[DiscoveredEvent], list[dict]]:
         (
             "Matchroom",
             MATCHROOM_EVENTS_URL,
-            fetch_matchroom_events,
+            lambda: fetch_matchroom_events(today),
             MatchroomSourceError,
             "Primary Matchroom source skipped safely",
         ),
         (
             "Most Valuable Promotions",
             MVP_EVENTS_URL,
-            fetch_mvp_events,
+            lambda: fetch_mvp_events(today),
             MvpSourceError,
             "Optional MVP source skipped",
         ),
@@ -180,28 +183,32 @@ def discover_all() -> tuple[list[DiscoveredEvent], list[dict]]:
         (
             spec.name,
             spec.url,
-            lambda spec=spec: fetch_official_events(spec),
+            lambda spec=spec: fetch_official_events(spec, today),
             OfficialSourceError,
             f"Optional {spec.name} source skipped",
         )
         for spec in OFFICIAL_SOURCES
     )
 
+    def fetch_timed(job):
+        name, url, fetch, error_type, error_label = job
+        started = perf_counter()
+        try:
+            items = fetch()
+            status = {"source": name, "url": url, "status": "ok", "events": len(items)}
+        except error_type as exc:
+            items = []
+            status = {"source": name, "url": url, "status": "skipped", "error": str(exc)}
+            print(f"{error_label}: {exc}", file=sys.stderr)
+        status["duration_seconds"] = round(perf_counter() - started, 3)
+        return items, status
+
     with ThreadPoolExecutor(max_workers=min(6, len(jobs))) as executor:
-        futures = [executor.submit(fetch) for _, _, fetch, _, _ in jobs]
-        for (name, url, _, error_type, error_label), future in zip(jobs, futures):
-            try:
-                items = future.result()
-            except error_type as exc:
-                statuses.append(
-                    {"source": name, "url": url, "status": "skipped", "error": str(exc)}
-                )
-                print(f"{error_label}: {exc}", file=sys.stderr)
-                continue
+        futures = [executor.submit(fetch_timed, job) for job in jobs]
+        for future in futures:
+            items, status = future.result()
             discovered.extend(items)
-            statuses.append(
-                {"source": name, "url": url, "status": "ok", "events": len(items)}
-            )
+            statuses.append(status)
 
     deduped: dict[tuple[str, object], DiscoveredEvent] = {}
     for item in prefer_primary_sources(discovered):
@@ -268,13 +275,40 @@ def merge_staged_events(
     return list(deduped.values())
 
 
-def run(apply: bool, report_path: str | None = None) -> int:
+def update_source_health(statuses: list[dict], previous: dict, checked_at: str) -> dict:
+    """Operational state is separate from approved events and their sequences."""
+    state = {}
+    for status in statuses:
+        prior = previous.get(status["url"], {})
+        if not isinstance(prior, dict):
+            prior = {}
+        failures = prior.get("consecutive_failures", 0)
+        if type(failures) is not int or failures < 0:
+            failures = 0
+        healthy = status["status"] == "ok" and not status.get("proposal_policy")
+        status["last_success_at"] = checked_at if healthy else prior.get("last_success_at")
+        status["consecutive_failures"] = 0 if healthy else failures + 1
+        state[status["url"]] = {
+            "last_success_at": status["last_success_at"],
+            "consecutive_failures": status["consecutive_failures"],
+        }
+    return state
+
+
+def run(apply: bool, report_path: str | None = None, health_state_path: str | None = None) -> int:
+    data_paths = {EVENTS_PATH.resolve(), PROPOSALS_PATH.resolve()}
+    for output in (report_path, health_state_path):
+        if output and Path(output).resolve() in data_paths:
+            raise ValueError("Operational report paths must not overwrite approved or staged data")
+    if report_path and health_state_path and Path(report_path).resolve() == Path(health_state_path).resolve():
+        raise ValueError("Report and source-health history require distinct paths")
     existing = json.loads(EVENTS_PATH.read_text(encoding="utf-8"))
     existing_proposals = json.loads(PROPOSALS_PATH.read_text(encoding="utf-8"))
     discovered, statuses = discover_all()
 
-    checked_at = datetime.now(SYDNEY).replace(microsecond=0).isoformat()
-    today = datetime.now(SYDNEY).date()
+    now = current_time().astimezone(SYDNEY)
+    checked_at = now.replace(microsecond=0).isoformat()
+    today = now.date()
     updated = deepcopy(existing)
     report = {
         "checked_at": checked_at,
@@ -322,10 +356,23 @@ def run(apply: bool, report_path: str | None = None) -> int:
         statuses,
         today,
     )
-    PROPOSALS_PATH.write_text(
-        json.dumps(report["staged"], indent=2, ensure_ascii=False) + "\n",
-        encoding="utf-8",
-    )
+    previous_health = {}
+    if health_state_path and Path(health_state_path).exists():
+        try:
+            previous_health = json.loads(Path(health_state_path).read_text(encoding="utf-8"))
+            if not isinstance(previous_health, dict):
+                raise ValueError("History must be an object")
+        except (ValueError, OSError) as exc:
+            print(f"Ignoring invalid operational history: {exc}", file=sys.stderr)
+            previous_health = {}
+    health = update_source_health(statuses, previous_health, checked_at)
+    if apply:
+        PROPOSALS_PATH.write_text(
+            json.dumps(report["staged"], indent=2, ensure_ascii=False) + "\n",
+            encoding="utf-8",
+        )
+        if health_state_path:
+            Path(health_state_path).write_text(json.dumps(health, indent=2) + "\n", encoding="utf-8")
     if report_path:
         Path(report_path).write_text(
             json.dumps(report, indent=2, ensure_ascii=False) + "\n",
@@ -336,13 +383,14 @@ def run(apply: bool, report_path: str | None = None) -> int:
         print(f"Applied {len(report['changes'])} matched event update(s).")
         return 10
     print("No safe existing-event changes detected." if not report["changes"] else f"Dry run found {len(report['changes'])} matched event update(s).")
-    print(f"Staged {len(report['staged'])} unmatched future fight(s) for inspection.")
+    print(f"{'Staged' if apply else 'Would stage'} {len(report['staged'])} unmatched future fight(s) for inspection.")
     return 0
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--apply", action="store_true", help="Write safe matched changes to events.json")
+    parser.add_argument("--apply", action="store_true", help="Write safe matched changes and the staged queue (otherwise read-only)")
     parser.add_argument("--report", help="Write a full source-health report to this path")
+    parser.add_argument("--health-state", help="Optional operational history file; updated only with --apply")
     args = parser.parse_args()
-    raise SystemExit(run(args.apply, args.report))
+    raise SystemExit(run(args.apply, args.report, args.health_state))

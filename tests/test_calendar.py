@@ -1,8 +1,10 @@
 import html
 import json
+from copy import deepcopy
 from datetime import datetime, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
+from scripts.generate import fold_ics_line, generate, render
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -11,11 +13,14 @@ def utc_stamp(value: str) -> str:
     return datetime.fromisoformat(value).astimezone(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
 
 
-def test_generated_calendar_and_website_are_current():
-    website_now = datetime.now(timezone.utc)
+def test_generated_calendar_and_website_are_current(tmp_path):
+    website_now = datetime.fromisoformat("2026-10-24T12:00:00+11:00")
     events = json.loads((ROOT / "data/events.json").read_text(encoding="utf-8"))
-    calendar = (ROOT / "major-boxing-calendar.ics").read_text(encoding="utf-8")
-    website = (ROOT / "index.html").read_text(encoding="utf-8")
+    generate(ROOT / "data/events.json", tmp_path, website_now)
+    raw_calendar = (tmp_path / "major-boxing-calendar.ics").read_bytes()
+    assert all(len(line) <= 75 for line in raw_calendar.split(b"\r\n"))
+    calendar = raw_calendar.decode("utf-8").replace("\r\n ", "")
+    website = (tmp_path / "index.html").read_text(encoding="utf-8")
 
     assert calendar.count("BEGIN:VEVENT") == len(events)
     assert "X-WR-CALNAME:Major Boxing Calendar" in calendar
@@ -56,3 +61,29 @@ def test_generated_calendar_and_website_are_current():
             assert f'<div class="date">{sydney_date}</div>' in website
         else:
             assert html.escape(event["title"]) not in website
+
+
+def test_folding_preserves_multibyte_characters_and_escaped_text():
+    original = "DESCRIPTION:" + "é 🥊 \\n\\,\\;" * 40
+    folded = fold_ics_line(original)
+    assert folded.replace("\r\n ", "") == original
+    assert all(len(line.encode("utf-8")) <= 75 for line in folded.split("\r\n"))
+
+
+def test_render_orders_instants_not_local_dates_without_mutating_input():
+    event = json.loads((ROOT / "data/events.json").read_text())[0]
+    late, early = deepcopy(event), deepcopy(event)
+    late.update(uid="late", title="Late vs Fight")
+    early.update(uid="early", title="Early vs Fight")
+    late["main_card_start"]["value"] = "2099-10-24T19:00:00-05:00"
+    early["main_card_start"]["value"] = "2099-10-25T05:00:00+11:00"
+    for item in (early, late):
+        item["end"]["value"] = "2099-10-26T00:00:00+00:00"
+    events = [late, early]
+    before = deepcopy(events)
+    now = datetime.fromisoformat("2099-10-01T00:00:00+00:00")
+    calendar, website = render(events, now)
+    assert calendar.index("UID:early") < calendar.index("UID:late")
+    assert website.index("Early vs Fight") < website.index("Late vs Fight")
+    assert events == before
+    assert render(events, now) == (calendar, website)

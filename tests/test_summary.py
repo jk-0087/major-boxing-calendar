@@ -23,6 +23,7 @@ def test_discovery_summary_reports_health_and_counts():
         }
     )
     assert "| Matchroom | ok | 5 |" in summary
-    assert "| Optional Source | skipped | — | HTTP 403 |" in summary
+    assert "| Optional Source | skipped | — |" in summary
+    assert "| HTTP 403 |" in summary
     assert "New unmatched this run: **1**" in summary
     assert "Total staged after safe merge: **2**" in summary

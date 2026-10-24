@@ -6,7 +6,7 @@ on:
     - cron: "17 */6 * * *"
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: boxing-calendar-main-writer
@@ -17,15 +17,23 @@ jobs:
   update:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup-calendar
+      - name: Restore operational source-health history
+        uses: actions/cache/restore@v4
+        with:
+          path: ${{ runner.temp }}/source-health.json
+          key: source-health-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: source-health-
       - name: Check official boxing sources and apply safe updates
         id: discover
         shell: bash
         run: |
           set +e
-          python scripts/discover.py --apply --report "$RUNNER_TEMP/discovery-report.json"
+          python scripts/discover.py --apply --report "$RUNNER_TEMP/discovery-report.json" --health-state "$RUNNER_TEMP/source-health.json"
           code=$?
           echo "exit_code=$code" >> "$GITHUB_OUTPUT"
           if [ "$code" -ne 0 ] && [ "$code" -ne 10 ]; then
@@ -38,6 +46,12 @@ jobs:
       - name: Add source health to workflow summary
         if: always()
         run: python scripts/summarize_discovery.py "$RUNNER_TEMP/discovery-report.json" >> "$GITHUB_STEP_SUMMARY"
+      - name: Preserve operational source-health history
+        if: always() && steps.discover.outcome == 'success'
+        uses: actions/cache/save@v4
+        with:
+          path: ${{ runner.temp }}/source-health.json
+          key: source-health-${{ github.run_id }}-${{ github.run_attempt }}
       - name: Upload discovery report
         if: always()
         uses: actions/upload-artifact@v4
@@ -60,3 +74,12 @@ jobs:
           fi
           git commit -m "Automatically update boxing discovery results"
           git push
+      - uses: ./.github/actions/prepare-pages
+
+  publish:
+    needs: update
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/deploy-pages.yml

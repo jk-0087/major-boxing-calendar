@@ -9,7 +9,8 @@ from bs4 import BeautifulSoup
 from dateutil import parser as date_parser
 
 from scripts.models import DiscoveredEvent
-from scripts.sources.official import FIGHT_RE, _clean
+from scripts.sources.common import FIGHT_RE, _clean
+from scripts.sources import http
 
 MVP_EVENTS_URL = "https://www.mostvaluablepromotions.com/events/"
 MVP_PREFIX_RE = re.compile(r"^MVPW\s*\d+\s*[-–—:]\s*", re.I)
@@ -110,16 +111,9 @@ def parse_mvp_schedule(html: str, today: date) -> list[DiscoveredEvent]:
 def fetch_mvp_events(today: date | None = None) -> list[DiscoveredEvent]:
     today = today or date.today()
     try:
-        response = requests.get(
+        response = http.get(
             MVP_EVENTS_URL,
-            timeout=30,
-            headers={
-                "User-Agent": (
-                    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
-                    "Chrome/126.0 Safari/537.36 MajorBoxingCalendar/1.0"
-                ),
-                "Accept-Language": "en-AU,en;q=0.9",
-            },
+            headers=http.HEADERS,
         )
     except requests.RequestException as exc:
         raise MvpSourceError(f"Unable to fetch MVP: {exc}") from exc

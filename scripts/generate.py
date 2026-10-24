@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import argparse
 import html
 import json
 import os
@@ -9,7 +10,6 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parents[1]
-events = json.loads((ROOT / "data/events.json").read_text(encoding="utf-8"))
 
 def parse_dt(value: str) -> datetime:
     return datetime.fromisoformat(value)
@@ -49,100 +49,117 @@ def current_time() -> datetime:
         raise ValueError("MBC_NOW must include a timezone offset")
     return now
 
-events.sort(key=lambda item: item["main_card_start"]["value"] or "9999")
-now = current_time()
+def fold_ics_line(line: str) -> str:
+    """Fold content lines to 75 UTF-8 octets, including continuation spaces."""
+    parts: list[str] = []
+    current = ""
+    size = 0
+    for character in line:
+        width = len(character.encode("utf-8"))
+        if size + width > 75:
+            parts.append(current)
+            current, size = " ", 1
+        current += character
+        size += width
+    parts.append(current)
+    return "\r\n".join(parts)
 
-ics_lines = [
-    "BEGIN:VCALENDAR",
-    "VERSION:2.0",
-    "PRODID:-//Major Boxing Calendar v4//jk-0087//EN",
-    "CALSCALE:GREGORIAN",
-    "METHOD:PUBLISH",
-    "X-WR-CALNAME:Major Boxing Calendar",
-    "X-WR-TIMEZONE:Australia/Sydney",
-    "X-WR-CALDESC:Curated major professional boxing events in Australian Eastern Time.",
-    "REFRESH-INTERVAL;VALUE=DURATION:PT12H",
-    "X-PUBLISHED-TTL:PT12H",
-]
 
-cards = []
+def render(events: list[dict], now: datetime | None = None) -> tuple[str, str]:
+    """Render without changing data or writing files."""
+    events = sorted(events, key=lambda item: parse_dt(item["main_card_start"]["value"]))
+    now = now or current_time()
+    if now.tzinfo is None:
+        raise ValueError("Generation time must include a timezone offset")
 
-for event in events:
-    checked_at = max(source["checked_at"] for source in event["sources"])
-    checked_dt = parse_dt(checked_at)
-    source_url = event["sources"][0]["url"]
-    venue_timezone = event["venue"]["timezone"]
-    venue_local_start = (
-        friendly(
-            event["main_card_start"]["value"],
-            event["main_card_start"]["confidence"],
-            venue_timezone,
-        )
-        if venue_timezone
-        else "TBA (venue timezone not yet confirmed)"
-    )
+    ics_lines = [
+        "BEGIN:VCALENDAR",
+        "VERSION:2.0",
+        "PRODID:-//Major Boxing Calendar v4//jk-0087//EN",
+        "CALSCALE:GREGORIAN",
+        "METHOD:PUBLISH",
+        "X-WR-CALNAME:Major Boxing Calendar",
+        "X-WR-TIMEZONE:Australia/Sydney",
+        "X-WR-CALDESC:Curated major professional boxing events in Australian Eastern Time.",
+        "REFRESH-INTERVAL;VALUE=DURATION:PT12H",
+        "X-PUBLISHED-TTL:PT12H",
+    ]
 
-    description = (
-        f"Status\n{event['status']}\n\n"
-        f"Promotion\n{', '.join(event['promotion'])}\n\n"
-        f"City\n{event['venue']['city']}\n\n"
-        f"Country\n{event['venue']['country']}\n\n"
-        f"Titles\n" + "\n".join(event["titles"]) + "\n\n"
-        f"Australia\n{event['broadcast']['australia']}\n\n"
-        f"Main Card Start (Sydney)\n{friendly(event['main_card_start']['value'], event['main_card_start']['confidence'])}\n\n"
-        f"Venue Local Start\n{venue_local_start}\n\n"
-        f"Estimated Finish\n{friendly(event['end']['value'], event['end']['confidence'])}\n\n"
-        f"Ring Walk\n{friendly(event['ring_walk']['value'], event['ring_walk']['confidence'])}\n\n"
-        f"Main Card Bouts\n" + "\n".join(event["main_card"]) + "\n\n"
-        f"Official / Schedule Source\n{source_url}\n\n"
-        f"Verified\n{checked_dt.strftime('%d %b %Y, %-I:%M %p')}"
-    )
+    cards = []
 
-    modified = checked_dt.astimezone(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
-    ics_lines.extend([
-        "BEGIN:VEVENT",
-        f"UID:{event['uid']}",
-        f"DTSTAMP:{modified}",
-        f"LAST-MODIFIED:{modified}",
-        f"SEQUENCE:{event['sequence']}",
-        f"DTSTART:{utc_stamp(event['main_card_start']['value'])}",
-        f"DTEND:{utc_stamp(event['end']['value'])}",
-        f"SUMMARY:{escape_ics(event['title'])}",
-        f"LOCATION:{escape_ics(event['venue']['name'])}",
-        f"DESCRIPTION:{escape_ics(description)}",
-        f"URL:{source_url}",
-        "STATUS:CANCELLED" if event["status"] == "Cancelled" else "STATUS:CONFIRMED",
-        "TRANSP:TRANSPARENT",
-        "END:VEVENT",
-    ])
-
-    # Keep completed cards in the source data and subscription feed, but remove
-    # them from the public upcoming-events page after their estimated finish.
-    if parse_dt(event["end"]["value"]) > now:
-        date_label = (
-            parse_dt(event["main_card_start"]["value"])
-            .astimezone(SYDNEY)
-            .strftime("%-d %b")
-        )
-        cards.append(
-            '<article class="event">'
-            f'<div class="date">{html.escape(date_label)}</div>'
-            '<div>'
-            f'<h2>{html.escape(event["title"])}</h2>'
-            f'<p>{html.escape(event["venue"]["name"])} · {html.escape(event["venue"]["city"])}</p>'
-            f'<p><strong>{html.escape(event["status"])}</strong> · '
-            f'{html.escape(event["broadcast"]["australia"])}</p>'
-            '</div>'
-            '</article>'
+    for event in events:
+        checked_at = max((source["checked_at"] for source in event["sources"]), key=parse_dt)
+        checked_dt = parse_dt(checked_at)
+        source_url = event["sources"][0]["url"]
+        venue_timezone = event["venue"]["timezone"]
+        venue_local_start = (
+            friendly(
+                event["main_card_start"]["value"],
+                event["main_card_start"]["confidence"],
+                venue_timezone,
+            )
+            if venue_timezone
+            else "TBA (venue timezone not yet confirmed)"
         )
 
-ics_lines.append("END:VCALENDAR")
-(ROOT / "major-boxing-calendar.ics").write_text(
-    "\r\n".join(ics_lines) + "\r\n",
-    encoding="utf-8",
-)
+        description = (
+            f"Status\n{event['status']}\n\n"
+            f"Promotion\n{', '.join(event['promotion'])}\n\n"
+            f"City\n{event['venue']['city']}\n\n"
+            f"Country\n{event['venue']['country']}\n\n"
+            f"Titles\n" + "\n".join(event["titles"]) + "\n\n"
+            f"Australia\n{event['broadcast']['australia']}\n\n"
+            f"Main Card Start (Sydney)\n{friendly(event['main_card_start']['value'], event['main_card_start']['confidence'])}\n\n"
+            f"Venue Local Start\n{venue_local_start}\n\n"
+            f"Estimated Finish\n{friendly(event['end']['value'], event['end']['confidence'])}\n\n"
+            f"Ring Walk\n{friendly(event['ring_walk']['value'], event['ring_walk']['confidence'])}\n\n"
+            f"Main Card Bouts\n" + "\n".join(event["main_card"]) + "\n\n"
+            f"Official / Schedule Source\n{source_url}\n\n"
+            f"Verified\n{checked_dt.astimezone(SYDNEY).strftime('%d %b %Y, %-I:%M %p %Z')}"
+        )
 
-index_html = """<!doctype html>
+        modified = checked_dt.astimezone(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+        ics_lines.extend([
+            "BEGIN:VEVENT",
+            f"UID:{event['uid']}",
+            f"DTSTAMP:{modified}",
+            f"LAST-MODIFIED:{modified}",
+            f"SEQUENCE:{event['sequence']}",
+            f"DTSTART:{utc_stamp(event['main_card_start']['value'])}",
+            f"DTEND:{utc_stamp(event['end']['value'])}",
+            f"SUMMARY:{escape_ics(event['title'])}",
+            f"LOCATION:{escape_ics(event['venue']['name'])}",
+            f"DESCRIPTION:{escape_ics(description)}",
+            f"URL:{source_url}",
+            "STATUS:CANCELLED" if event["status"] == "Cancelled" else "STATUS:CONFIRMED",
+            "TRANSP:TRANSPARENT",
+            "END:VEVENT",
+        ])
+
+        # Keep completed cards in the source data and subscription feed, but remove
+        # them from the public upcoming-events page after their estimated finish.
+        if parse_dt(event["end"]["value"]) > now:
+            date_label = (
+                parse_dt(event["main_card_start"]["value"])
+                .astimezone(SYDNEY)
+                .strftime("%-d %b")
+            )
+            cards.append(
+                '<article class="event">'
+                f'<div class="date">{html.escape(date_label)}</div>'
+                '<div>'
+                f'<h2>{html.escape(event["title"])}</h2>'
+                f'<p>{html.escape(event["venue"]["name"])} · {html.escape(event["venue"]["city"])}</p>'
+                f'<p><strong>{html.escape(event["status"])}</strong> · '
+                f'{html.escape(event["broadcast"]["australia"])}</p>'
+                '</div>'
+                '</article>'
+            )
+
+    ics_lines.append("END:VCALENDAR")
+    calendar = "\r\n".join(fold_ics_line(line) for line in ics_lines) + "\r\n"
+
+    index_html = """<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -225,8 +242,32 @@ main { display: grid; gap: 12px; }
 </html>
 """
 
-(ROOT / "index.html").write_text(index_html, encoding="utf-8")
-print(
-    f"Generated calendar for {len(events)} events and website for "
-    f"{len(cards)} upcoming events."
-)
+    return calendar, index_html
+
+
+def generate(
+    events_path: Path = ROOT / "data/events.json",
+    output_dir: Path = ROOT,
+    now: datetime | None = None,
+) -> None:
+    events = json.loads(events_path.read_text(encoding="utf-8"))
+    calendar, website = render(events, now)
+    output_dir.mkdir(parents=True, exist_ok=True)
+    (output_dir / "major-boxing-calendar.ics").write_bytes(calendar.encode("utf-8"))
+    (output_dir / "index.html").write_text(website, encoding="utf-8")
+    count = website.count('class="event"')
+    print(f"Generated calendar for {len(events)} events and website for {count} upcoming events.")
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--events", type=Path, default=ROOT / "data/events.json")
+    parser.add_argument("--output-dir", type=Path, default=ROOT)
+    parser.add_argument("--now", help="Timezone-aware reference time (defaults to MBC_NOW or now)")
+    args = parser.parse_args(argv)
+    generate(args.events, args.output_dir, parse_dt(args.now) if args.now else None)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

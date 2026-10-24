@@ -9,6 +9,7 @@ from bs4 import BeautifulSoup
 from dateutil import parser as date_parser
 
 from scripts.models import DiscoveredEvent
+from scripts.sources import http
 
 MATCHROOM_EVENTS_URL = "https://www.matchroomboxing.com/events/"
 
@@ -76,16 +77,9 @@ def _extract_from_block(text: str, href: str, today: date) -> DiscoveredEvent | 
 def fetch_matchroom_events(today: date | None = None) -> list[DiscoveredEvent]:
     today = today or date.today()
     try:
-        response = requests.get(
+        response = http.get(
             MATCHROOM_EVENTS_URL,
-            timeout=30,
-            headers={
-                "User-Agent": (
-                    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
-                    "Chrome/126.0 Safari/537.36 MajorBoxingCalendar/1.0"
-                ),
-                "Accept-Language": "en-GB,en;q=0.9",
-            },
+            headers=http.HEADERS,
         )
     except requests.RequestException as exc:
         raise MatchroomSourceError(f"Unable to fetch Matchroom schedule: {exc}") from exc

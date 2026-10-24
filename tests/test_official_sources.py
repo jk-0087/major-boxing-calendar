@@ -85,7 +85,7 @@ def test_redesigned_pbc_schedule_does_not_promote_undercard_on_malformed_card():
         assert parse_official_schedule(broken, spec, date(2026, 10, 24)) == []
 
 
-@patch("scripts.sources.official.requests.get")
+@patch("scripts.sources.official.http.get")
 def test_pbc_fetch_uses_new_schedule_and_preserves_http_safety(mock_get):
     spec = next(s for s in OFFICIAL_SOURCES if s.name == "Premier Boxing Champions")
     mock_get.return_value = Mock(status_code=200, text=PBC_SCHEDULE_HTML)
@@ -187,7 +187,7 @@ def test_boxxer_short_date_fallback_does_not_cross_card_boundaries():
     assert parse_official_schedule(ambiguous, spec, date(2026, 10, 24)) == []
 
 
-@patch("scripts.sources.official.requests.get")
+@patch("scripts.sources.official.http.get")
 def test_boxxer_fetch_uses_homepage_and_rejects_empty_ticket_shop(mock_get):
     spec = next(s for s in OFFICIAL_SOURCES if s.name == "BOXXER")
     mock_get.return_value = Mock(status_code=200, text=BOXXER_HTML)
@@ -249,7 +249,7 @@ def test_zuffa_ambiguous_or_editorial_features_are_not_staged(html):
     assert parse_official_schedule(html, spec, date(2026, 10, 24)) == []
 
 
-@patch("scripts.sources.official.requests.get")
+@patch("scripts.sources.official.http.get")
 def test_zuffa_fetch_reads_feature_and_keeps_empty_response_safety(mock_get):
     spec = next(s for s in OFFICIAL_SOURCES if s.name == "Zuffa Boxing")
     mock_get.return_value = Mock(status_code=200, text=ZUFFA_HEADLINE_HTML)
@@ -414,7 +414,7 @@ def test_no_limit_detail_parser_extracts_bout_and_date():
     assert event.event_date.isoformat() == "2026-08-26"
 
 
-@patch("scripts.sources.official.requests.get")
+@patch("scripts.sources.official.http.get")
 def test_no_limit_fetch_follows_event_detail_links(mock_get):
     listing = """
     <a href="/events/nikita-tszyu-vs-ben-mahoney">
