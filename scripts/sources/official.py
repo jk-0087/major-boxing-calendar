@@ -286,7 +286,16 @@ def parse_official_schedule(html: str, spec: SourceSpec, today: date) -> list[Di
                 break
 
     if spec in OFFICIAL_SOURCES:
-        return select_main_events(list(found.values()), spec)
+        selected = select_main_events(list(found.values()), spec)
+        if spec.name == "Zuffa Boxing":
+            headlines = parse_zuffa_headlines(soup, spec, today)
+            headline_dates = {event.event_date for event in headlines}
+            # The explicit headline feature takes precedence over bout news
+            # published elsewhere on the page for the same fight night.
+            selected = headlines + [
+                event for event in selected if event.event_date not in headline_dates
+            ]
+        return sorted(selected, key=lambda event: (event.event_date, event.title))
 
     for index, line in enumerate(lines):
         parsed = _parse_date(line, today)
@@ -318,6 +327,36 @@ def parse_official_schedule(html: str, spec: SourceSpec, today: date) -> list[Di
             card_role="main_event",
         )
 
+    return sorted(found.values(), key=lambda event: (event.event_date, event.title))
+
+
+def parse_zuffa_headlines(
+    soup: BeautifulSoup,
+    spec: SourceSpec,
+    today: date,
+) -> list[DiscoveredEvent]:
+    """Read official headline features even when their links only sell tickets."""
+    found: dict[tuple[str, date], DiscoveredEvent] = {}
+    for block in soup.select(".fifty-fifty__text-block"):
+        heading = block.select_one(".fifty-fifty__title")
+        body = block.select_one(".fifty-fifty__body")
+        if heading is None or body is None:
+            continue
+        text = _clean(body.get_text(" ", strip=True))
+        if not re.search(r"\b(?:main[ -]event|headline\w*)\b", text, re.I):
+            continue
+        fight = FIGHT_RE.fullmatch(_clean(heading.get_text(" ", strip=True)))
+        event_date = _parse_date(text, today)
+        if fight is None or event_date is None or event_date < today:
+            continue
+        left, right = (_clean_fighter(fight.group(side)) for side in ("a", "b"))
+        if not looks_like_fight(left, right):
+            continue
+        title = f"{left} vs {right}"
+        # Keep the verifiable official source, not an external ticket shortlink.
+        found[(title.casefold(), event_date)] = DiscoveredEvent(
+            title, event_date, spec.url, card_role="main_event"
+        )
     return sorted(found.values(), key=lambda event: (event.event_date, event.title))
 
 

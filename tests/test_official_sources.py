@@ -198,6 +198,67 @@ def test_boxxer_fetch_uses_homepage_and_rejects_empty_ticket_shop(mock_get):
         fetch_official_events(spec, date(2026, 10, 24))
 
 
+ZUFFA_HEADLINE_HTML = """
+<div class="fifty-fifty__text-block">
+  <h2 class="fifty-fifty__title">Billam-Smith vs Clarke</h2>
+  <div class="fifty-fifty__body"><p>Zuffa Boxing returns to London's Copper Box Arena
+    on Saturday, November 7, with an all-British cruiserweight main event.
+    For Zuffa Boxing 12, former world champion Chris Billam-Smith faces Olympian Chev Clarke.</p></div>
+  <div class="fifty-fifty__link"><a href="https://t.co/example">Get Tickets!</a></div>
+</div>
+<article><time>November 7, 2026</time>
+  <a href="/news/title-fight-preview-bentley-vs-mosley">Bentley vs Mosley</a>
+</article>
+"""
+
+
+def test_zuffa_headline_feature_discovers_event_without_fight_link():
+    spec = next(s for s in OFFICIAL_SOURCES if s.name == "Zuffa Boxing")
+    events = parse_official_schedule(ZUFFA_HEADLINE_HTML, spec, date(2026, 10, 24))
+    assert [(e.title, e.event_date, e.source_url, e.card_role) for e in events] == [
+        ("Billam-Smith vs Clarke", date(2026, 11, 7),
+         "https://www.ufc.com/zuffaboxing", "main_event")
+    ]
+    assert parse_official_schedule(ZUFFA_HEADLINE_HTML, spec, date(2026, 11, 8)) == []
+
+
+def test_zuffa_explicit_headline_takes_precedence_over_same_card_bout_articles():
+    spec = next(s for s in OFFICIAL_SOURCES if s.name == "Zuffa Boxing")
+    html = ZUFFA_HEADLINE_HTML + """
+    <article><time>November 7, 2026</time>
+      <a href="/news/bentley-vs-mosley-announced">Bentley vs Mosley</a>
+    </article>
+    <article><time>December 12, 2026</time>
+      <a href="/news/fighter-alpha-vs-fighter-beta-announced">Fighter Alpha vs Fighter Beta</a>
+    </article>
+    """
+    events = parse_official_schedule(html, spec, date(2026, 10, 24))
+    assert [(e.title, e.event_date) for e in events] == [
+        ("Billam-Smith vs Clarke", date(2026, 11, 7)),
+        ("Fighter Alpha vs Fighter Beta", date(2026, 12, 12)),
+    ]
+
+
+@pytest.mark.parametrize("html", [
+    ZUFFA_HEADLINE_HTML.replace("cruiserweight main event", "cruiserweight interview"),
+    ZUFFA_HEADLINE_HTML.replace("Saturday, November 7", "a future date"),
+    ZUFFA_HEADLINE_HTML.replace("Billam-Smith vs Clarke</h2>", "Billam-Smith vs Clarke highlights</h2>"),
+])
+def test_zuffa_ambiguous_or_editorial_features_are_not_staged(html):
+    spec = next(s for s in OFFICIAL_SOURCES if s.name == "Zuffa Boxing")
+    assert parse_official_schedule(html, spec, date(2026, 10, 24)) == []
+
+
+@patch("scripts.sources.official.requests.get")
+def test_zuffa_fetch_reads_feature_and_keeps_empty_response_safety(mock_get):
+    spec = next(s for s in OFFICIAL_SOURCES if s.name == "Zuffa Boxing")
+    mock_get.return_value = Mock(status_code=200, text=ZUFFA_HEADLINE_HTML)
+    assert len(fetch_official_events(spec, date(2026, 10, 24))) == 1
+    mock_get.return_value = Mock(status_code=200, text="<h2>Zuffa Boxing Featured Content</h2>")
+    with pytest.raises(OfficialSourceError, match="parsed 0"):
+        fetch_official_events(spec, date(2026, 10, 24))
+
+
 def test_all_agreed_promoters_are_registered():
     names = {spec.name for spec in OFFICIAL_SOURCES}
     assert names == {
