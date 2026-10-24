@@ -1,9 +1,12 @@
 from datetime import date
 from unittest.mock import Mock, patch
 
+import pytest
+
 from scripts.models import DiscoveredEvent
 from scripts.sources.official import (
     OFFICIAL_SOURCES,
+    OfficialSourceError,
     SourceSpec,
     fetch_official_events,
     parse_no_limit_event_detail,
@@ -24,6 +27,73 @@ HTML = """
   </section>
 </body></html>
 """
+
+
+# Markup from the redesigned public PBC schedule, October 24, 2026.
+PBC_SCHEDULE_HTML = """
+<div class="pbc-schedule__fight-inner">
+  <div class="pbc-schedule__fight-when">
+    <h4 class="pbc-schedule__date"><span><abbr title="Saturday">Sat</abbr>,</span>
+      <span><abbr title="December">Dec</abbr></span> 5, 2026
+      <span class="pbc-schedule__time">8PM <abbr title="Eastern Time">ET</abbr> /
+        5PM <abbr title="Pacific Time">PT</abbr></span></h4>
+    <div class="pbc-schedule__clock" data-countdown="2026-12-06T01:00:00.000Z"></div>
+  </div>
+  <div class="pbc-schedule__fight-what"><div class="pbc-schedule__card"><ul>
+    <li><h2><a href="/bouts/255422"><span>David Benavidez</span>
+      <em><abbr title="versus">vs</abbr></em> <span>Michal Cieslak</span></a></h2></li>
+    <li><h2><a href="/bouts/809398"><span>Vergil Ortiz Jr.</span>
+      <em><abbr title="versus">vs</abbr></em> <span>Keith Thurman</span></a></h2></li>
+    <li><h2><a href="/bouts/783768"><span>Nikita Tszyu</span>
+      <em><abbr title="versus">vs</abbr></em> <span>Opponent TBA</span></a></h2></li>
+    <li class="pbc-schedule__arena">Desert Diamond Arena, Glendale, AZ</li>
+    <li><a href="/events/391735" class="pbc-schedule__btn">View Fight Night</a></li>
+  </ul></div></div>
+</div>
+"""
+
+
+def test_redesigned_pbc_schedule_extracts_only_headline_and_venue_date():
+    spec = next(s for s in OFFICIAL_SOURCES if s.name == "Premier Boxing Champions")
+    events = parse_official_schedule(PBC_SCHEDULE_HTML, spec, date(2026, 10, 24))
+    assert [(e.title, e.event_date, e.source_url, e.card_role) for e in events] == [
+        ("David Benavidez vs Michal Cieslak", date(2026, 12, 5),
+         "https://www.premierboxingchampions.com/events/391735", "main_event")
+    ]
+    assert parse_official_schedule(PBC_SCHEDULE_HTML, spec, date(2026, 12, 6)) == []
+
+
+def test_redesigned_pbc_schedule_keeps_dates_scoped_to_each_card():
+    spec = next(s for s in OFFICIAL_SOURCES if s.name == "Premier Boxing Champions")
+    second = (PBC_SCHEDULE_HTML.replace("5, 2026", "12, 2026")
+              .replace("391735", "999999").replace("David Benavidez", "Fighter Alpha")
+              .replace("Michal Cieslak", "Fighter Beta"))
+    events = parse_official_schedule(PBC_SCHEDULE_HTML + second, spec, date(2026, 10, 24))
+    assert [(e.title, e.event_date) for e in events] == [
+        ("David Benavidez vs Michal Cieslak", date(2026, 12, 5)),
+        ("Fighter Alpha vs Fighter Beta", date(2026, 12, 12)),
+    ]
+
+
+def test_redesigned_pbc_schedule_does_not_promote_undercard_on_malformed_card():
+    spec = next(s for s in OFFICIAL_SOURCES if s.name == "Premier Boxing Champions")
+    for broken in [
+        PBC_SCHEDULE_HTML.replace('/events/391735', '/bouts/255422'),
+        PBC_SCHEDULE_HTML.replace('/events/391735', 'https://example.com/events/391735'),
+        PBC_SCHEDULE_HTML.replace('David Benavidez', ''),
+    ]:
+        assert parse_official_schedule(broken, spec, date(2026, 10, 24)) == []
+
+
+@patch("scripts.sources.official.requests.get")
+def test_pbc_fetch_uses_new_schedule_and_preserves_http_safety(mock_get):
+    spec = next(s for s in OFFICIAL_SOURCES if s.name == "Premier Boxing Champions")
+    mock_get.return_value = Mock(status_code=200, text=PBC_SCHEDULE_HTML)
+    assert len(fetch_official_events(spec, date(2026, 10, 24))) == 1
+    assert mock_get.call_args.args[0] == "https://www.premierboxingchampions.com/events/schedule"
+    mock_get.return_value = Mock(status_code=403)
+    with pytest.raises(OfficialSourceError, match="HTTP 403"):
+        fetch_official_events(spec, date(2026, 10, 24))
 
 
 def test_zuffa_bout_preview_is_not_a_standalone_main_event():
