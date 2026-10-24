@@ -7,6 +7,41 @@
     "score": 0.314
   },
   {
+    "title": "Billam-Smith vs Clarke",
+    "date": "2026-11-07",
+    "source": "https://www.ufc.com/zuffaboxing",
+    "card_role": "main_event",
+    "score": 0.486
+  },
+  {
+    "title": "Yamato Hata vs Ryo Sagawa",
+    "date": "2026-11-07",
+    "source": "https://www.ringmagazine.com/events/1b33P5KLk8N5LcCIxoMHIs",
+    "card_role": "main_event",
+    "score": 0.342
+  },
+  {
+    "title": "Bakary Samake vs Uisma Lima",
+    "date": "2026-11-13",
+    "source": "https://www.ringmagazine.com/events/eYwBfoP3ywTUn802N1mOH",
+    "card_role": "main_event",
+    "score": 0.431
+  },
+  {
+    "title": "Viddal Riley vs Seydi Coupe",
+    "date": "2026-11-14",
+    "source": "https://www.ringmagazine.com/events/19TqCuP4wYf8bhZzcKuCpl",
+    "card_role": "main_event",
+    "score": 0.401
+  },
+  {
+    "title": "Amari Jones vs DeAundre Pettus",
+    "date": "2026-11-20",
+    "source": "https://www.ringmagazine.com/events/8WBnTgP76EAXXUhm81osI",
+    "card_role": "main_event",
+    "score": 0.34
+  },
+  {
     "title": "Price vs Kotaskova",
     "date": "2026-11-20",
     "source": "https://www.boxxer.com/events/lauren-price-vs-michaela-kotaskova-20-november-2026-utilita-arena-cardiff/",
@@ -19,6 +54,20 @@
     "source": "https://www.boxxer.com/events/gradus-kraus-28-november-2026-amsterdam/",
     "card_role": "main_event",
     "score": 0.316
+  },
+  {
+    "title": "Riku Masuda vs Seiya Tsutsumi",
+    "date": "2026-11-29",
+    "source": "https://www.ringmagazine.com/events/31w1t973awbhOX5Mkb5cqK",
+    "card_role": "main_event",
+    "score": 0.33
+  },
+  {
+    "title": "David Benavidez vs Michal Cieslak",
+    "date": "2026-12-05",
+    "source": "https://www.premierboxingchampions.com/events/391735",
+    "card_role": "main_event",
+    "score": 0.339
   },
   {
     "title": "Walker vs Rocha",
@@ -38,6 +87,13 @@
     "title": "Ryan Garner vs Jazza Dickens",
     "date": "2027-01-09",
     "source": "https://queensberry.co.uk/pages/ryan-garner-vs-jazza-dickens-coastal-chaos",
+    "card_role": "main_event",
+    "score": 0.0
+  },
+  {
+    "title": "Jacob Bank vs Janibek Alimkhanuly",
+    "date": "2027-01-23",
+    "source": "https://www.ringmagazine.com/events/7BgYBO0plKaCQLdBG8vJ6t",
     "card_role": "main_event",
     "score": 0.0
   }
