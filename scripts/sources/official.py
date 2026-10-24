@@ -523,6 +523,10 @@ def fetch_official_events(spec: SourceSpec, today: date | None = None) -> list[D
         ),
         "Accept-Language": "en-AU,en;q=0.9",
     }
+    if spec.name == "The Ring / Riyadh Season":
+        from scripts.sources.ring import fetch_ring_events
+
+        return fetch_ring_events(today, headers)
     try:
         response = requests.get(
             spec.url,

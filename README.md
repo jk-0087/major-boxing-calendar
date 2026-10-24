@@ -7,7 +7,7 @@ The live source of truth is `data/events.json`. Every six hours, GitHub Actions 
 - **Matchroom Boxing**
 - **Queensberry Promotions**
 - **Top Rank**
-- **The Ring / Riyadh Season**
+- **The Ring / Riyadh Season** — supplementary aggregate discovery only
 - **Premier Boxing Champions (PBC)**
 - **Golden Boy Promotions**
 - **BOXXER**
@@ -16,6 +16,10 @@ The live source of truth is `data/events.json`. Every six hours, GitHub Actions 
 - **Zuffa Boxing**
 
 Every source is isolated: independent checks run concurrently, while HTTP errors, timeouts, blocking, or suspicious parser results are logged and skipped without failing the workflow. A failed source never causes existing calendar events or its staged future proposals to be deleted or cleared.
+
+The Ring reads the site's public structured upcoming schedule, selecting only explicitly marked main events. Direct sources take priority for overlapping cards. Ring-only discoveries go to staging for manual inclusion review; The Ring never automatically modifies approved events or their times. Incomplete, empty, or ambiguous schedule responses are safely skipped.
+
+Ring main events at flyweight (112 lb) or lighter are excluded. Super flyweight/junior bantamweight and higher divisions remain eligible for review. Unknown divisions remain review leads; undercard weights do not exclude a qualifying headline card. This filter does not change approved events or direct-source discovery.
 
 ## Automatic behavior
 

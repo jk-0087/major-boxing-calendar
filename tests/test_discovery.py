@@ -6,6 +6,7 @@ from scripts.discover import (
     discover_all,
     merge_staged_events,
     pair_score,
+    prefer_primary_sources,
     run,
     update_existing,
 )
@@ -26,6 +27,52 @@ def sample_event():
         "sources": [],
         "history": [{"version": 3, "date": "2026-07-21", "changes": ["Migrated"]}],
     }
+
+
+def test_ring_yields_to_direct_source_and_preserves_ring_only_cards():
+    ring = DiscoveredEvent("David Benavidez vs Michal Cieslak", date(2026, 12, 6),
+                           "https://www.ringmagazine.com/events/Card123", "main_event")
+    direct = DiscoveredEvent("Benavidez vs Cieslak", date(2026, 12, 5),
+                             "https://www.premierboxingchampions.com/events/391735", "main_event")
+    extra = DiscoveredEvent("ArAr Andales vs Raito Kataoka", date(2026, 10, 29),
+                            "https://www.ringmagazine.com/events/Card456", "main_event")
+    assert prefer_primary_sources([ring, extra, direct]) == [direct, extra]
+    assert prefer_primary_sources([ring, extra]) == [ring, extra]
+
+
+def test_ring_cannot_mutate_approved_events_but_stages_new_leads(tmp_path):
+    events_path = tmp_path / "events.json"
+    proposals_path = tmp_path / "proposals.json"
+    event = sample_event()
+    event["main_card_start"]["value"] = "2099-07-26T11:00:00+10:00"
+    original = json.dumps([event])
+    events_path.write_text(original)
+    proposals_path.write_text("[]")
+    items = [
+        DiscoveredEvent("Spence vs Tszyu", date(2099, 7, 25),
+                        "https://www.ringmagazine.com/events/Matched", "main_event"),
+        DiscoveredEvent("ArAr Andales vs Raito Kataoka", date(2099, 10, 29),
+                        "https://www.ringmagazine.com/events/NewCard", "main_event"),
+    ]
+    with patch("scripts.discover.EVENTS_PATH", events_path), \
+         patch("scripts.discover.PROPOSALS_PATH", proposals_path), \
+         patch("scripts.discover.discover_all", return_value=(items, [])):
+        assert run(apply=True) == 0
+    assert events_path.read_text() == original
+    proposals = json.loads(proposals_path.read_text())
+    assert [p["title"] for p in proposals] == ["ArAr Andales vs Raito Kataoka"]
+
+
+def test_failed_ring_lead_yields_to_new_direct_proposal():
+    ring = {"title": "David Benavidez vs Michal Cieslak", "date": "2026-12-06",
+            "source": "https://www.ringmagazine.com/events/Card123", "card_role": "main_event", "score": 0.0}
+    direct = {"title": "Benavidez vs Cieslak", "date": "2026-12-05",
+              "source": "https://www.premierboxingchampions.com/events/391735", "card_role": "main_event", "score": 0.0}
+    statuses = [
+        {"url": "https://www.ringmagazine.com/events", "status": "skipped"},
+        {"url": "https://www.premierboxingchampions.com/events/schedule", "status": "ok", "events": 1},
+    ]
+    assert merge_staged_events([ring], [direct], statuses, date(2026, 10, 24)) == [direct]
 
 
 def test_name_matching_handles_junior_suffix():

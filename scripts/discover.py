@@ -137,6 +137,21 @@ def update_existing(event: dict, discovered: DiscoveredEvent, checked_at: str) -
     return changes
 
 
+def is_supplementary(item: DiscoveredEvent) -> bool:
+    return source_domain(item.source_url) == "ringmagazine.com"
+
+
+def prefer_primary_sources(items: list[DiscoveredEvent]) -> list[DiscoveredEvent]:
+    """Use Ring-only cards as leads; direct sources win overlapping discoveries."""
+    primary = [item for item in items if not is_supplementary(item)]
+    supplementary = [item for item in items if is_supplementary(item)]
+    return primary + [item for item in supplementary if not any(
+        abs((item.event_date - direct.event_date).days) <= 1
+        and pair_score(item.title, direct.title) >= 0.90
+        for direct in primary
+    )]
+
+
 def discover_all() -> tuple[list[DiscoveredEvent], list[dict]]:
     discovered: list[DiscoveredEvent] = []
     statuses: list[dict] = []
@@ -189,7 +204,7 @@ def discover_all() -> tuple[list[DiscoveredEvent], list[dict]]:
             )
 
     deduped: dict[tuple[str, object], DiscoveredEvent] = {}
-    for item in discovered:
+    for item in prefer_primary_sources(discovered):
         deduped.setdefault((normalise_name(item.title), item.event_date), item)
     return sorted(deduped.values(), key=lambda x: (x.event_date, x.title)), statuses
 
@@ -236,6 +251,16 @@ def merge_staged_events(
             candidates.append(proposal)
 
     candidates.extend(current_proposals)
+    # A retained Ring lead can overlap a newly healthy direct source even when
+    # the Ring fetch itself failed. Keep the direct proposal in that case.
+    direct_proposals = [p for p in candidates
+                        if source_domain(p["source"]) != "ringmagazine.com"]
+    candidates = [p for p in candidates if source_domain(p["source"]) != "ringmagazine.com"
+                  or not any(
+                      abs((date.fromisoformat(p["date"]) - date.fromisoformat(d["date"])).days) <= 1
+                      and pair_score(p["title"], d["title"]) >= 0.90
+                      for d in direct_proposals
+                  )]
     deduped: dict[tuple[str, str], dict] = {}
     for proposal in sorted(candidates, key=lambda item: (item["date"], item["title"])):
         key = (normalise_name(proposal["title"]), proposal["date"])
@@ -265,11 +290,15 @@ def run(apply: bool, report_path: str | None = None) -> int:
         for event in updated
         for source in event.get("sources", [])
     }
-    for item in discovered:
+    for item in prefer_primary_sources(discovered):
         if item.card_role != "main_event":
             continue
         match, score = best_match(updated, item)
         if match is not None and score >= 0.90:
+            # The aggregate supplies review leads only. It cannot modify an
+            # approved event, even when a direct source is temporarily down.
+            if is_supplementary(item):
+                continue
             if match["uid"] not in matched_uids:
                 matched_uids.add(match["uid"])
                 changes = update_existing(match, item, checked_at)
