@@ -25,7 +25,7 @@ OFFICIAL_SOURCES = (
     SourceSpec("The Ring / Riyadh Season", "https://www.ringmagazine.com/events"),
     SourceSpec("Premier Boxing Champions", "https://www.premierboxingchampions.com/events/schedule"),
     SourceSpec("Golden Boy", "https://www.goldenboy.com/events/"),
-    SourceSpec("BOXXER", "https://www.boxxer.com/tickets/"),
+    SourceSpec("BOXXER", "https://www.boxxer.com/"),
     SourceSpec("No Limit Boxing", "https://nolimitboxing.com.au/events"),
     SourceSpec("Zuffa Boxing", "https://www.ufc.com/zuffaboxing"),
 )
@@ -191,6 +191,8 @@ def _parse_date(value: str, today: date) -> date | None:
 
 def parse_official_schedule(html: str, spec: SourceSpec, today: date) -> list[DiscoveredEvent]:
     soup = BeautifulSoup(html, "html.parser")
+    if spec.name == "BOXXER":
+        return parse_boxxer_schedule(soup, spec, today)
     if spec.name == "Premier Boxing Champions" and soup.select_one(".pbc-schedule__fight-inner"):
         return parse_pbc_schedule(soup, spec, today)
     lines = [_clean(line) for line in soup.get_text("\n").splitlines() if _clean(line)]
@@ -316,6 +318,47 @@ def parse_official_schedule(html: str, spec: SourceSpec, today: date) -> list[Di
             card_role="main_event",
         )
 
+    return sorted(found.values(), key=lambda event: (event.event_date, event.title))
+
+
+def parse_boxxer_schedule(
+    soup: BeautifulSoup,
+    spec: SourceSpec,
+    today: date,
+) -> list[DiscoveredEvent]:
+    """Pair BOXXER's linked fight headings with their own event dates."""
+    found: dict[tuple[str, date], DiscoveredEvent] = {}
+    for heading in soup.select("h2, h3, h4"):
+        anchor = heading.select_one("a[href]")
+        if anchor is None:
+            continue
+        url = urljoin(spec.url, anchor["href"])
+        parsed_url = urlsplit(url)
+        if parsed_url.netloc.casefold() not in {"www.boxxer.com", "boxxer.com"}:
+            continue
+        if not parsed_url.path.startswith("/events/"):
+            continue
+        fight = FIGHT_RE.fullmatch(_clean(anchor.get_text(" ", strip=True)))
+        if fight is None:
+            continue
+        left, right = (_clean_fighter(fight.group(side)) for side in ("a", "b"))
+        if not looks_like_fight(left, right):
+            continue
+        # Dated event slugs include a year, unlike the abbreviated card labels.
+        event_date = _parse_date(unquote(parsed_url.path).replace("-", " "), today)
+        if event_date is None:
+            card = heading.find_parent(class_="elementor-widget-wrap")
+            if card is not None:
+                # Never borrow a date from a container holding multiple cards.
+                linked_fights = [node for node in card.select("h2, h3, h4")
+                                 if FIGHT_RE.fullmatch(_clean(node.get_text(" ", strip=True)))]
+                if len(linked_fights) == 1:
+                    event_date = _parse_date(card.get_text(" ", strip=True), today)
+        if event_date is None or event_date < today:
+            continue
+        found[(url, event_date)] = DiscoveredEvent(
+            f"{left} vs {right}", event_date, url, card_role="main_event"
+        )
     return sorted(found.values(), key=lambda event: (event.event_date, event.title))
 
 

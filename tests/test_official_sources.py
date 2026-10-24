@@ -133,6 +133,71 @@ def test_zuffa_memorabilia_auction_is_not_a_fight():
     assert [event.title for event in events] == ["Daniel Dubois vs Fabio Wardley"]
 
 
+BOXXER_HTML = """
+<div class="elementor-widget-wrap">
+  <h2><a href="/events/lauren-price-vs-michaela-kotaskova-20-november-2026-utilita-arena-cardiff/">Price vs Kotaskova</a></h2>
+  <h4><a href="/events/boxxer-expands-into-the-netherlands/">UTILITA ARENA, CARDIFF</a></h4>
+  <a href="/events/lauren-price-vs-michaela-kotaskova-20-november-2026-utilita-arena-cardiff/">20 NOV</a>
+  <a href="https://tickets.boxxer.com/event-details/lauren-price">Buy Tickets</a>
+</div>
+<div class="elementor-widget-wrap">
+  <h2><a href="/events/gradus-kraus-28-november-2026-amsterdam/">KRAUS VS DEINES</a></h2>
+  <a href="/events/gradus-kraus-28-november-2026-amsterdam/">28 NOV</a>
+</div>
+<h2><a href="https://tickets.boxxer.com/event-details/fighter-a-vs-fighter-b">Fighter A vs Fighter B</a></h2>
+"""
+
+
+def test_boxxer_homepage_keeps_official_links_and_separate_event_dates():
+    spec = next(s for s in OFFICIAL_SOURCES if s.name == "BOXXER")
+    events = parse_official_schedule(BOXXER_HTML, spec, date(2026, 10, 24))
+    assert [(e.title, e.event_date, e.source_url) for e in events] == [
+        ("Price vs Kotaskova", date(2026, 11, 20),
+         "https://www.boxxer.com/events/lauren-price-vs-michaela-kotaskova-20-november-2026-utilita-arena-cardiff/"),
+        ("Kraus vs Deines", date(2026, 11, 28),
+         "https://www.boxxer.com/events/gradus-kraus-28-november-2026-amsterdam/"),
+    ]
+    assert all(e.card_role == "main_event" for e in events)
+    assert parse_official_schedule(BOXXER_HTML, spec, date(2026, 12, 1)) == []
+
+
+def test_boxxer_uses_explicit_year_at_year_boundary():
+    spec = next(s for s in OFFICIAL_SOURCES if s.name == "BOXXER")
+    html = '<h2><a href="/events/price-vs-kotaskova-9-january-2027/">Price vs Kotaskova</a></h2>'
+    events = parse_official_schedule(html, spec, date(2026, 12, 30))
+    assert events[0].event_date == date(2027, 1, 9)
+
+
+def test_boxxer_short_date_fallback_does_not_cross_card_boundaries():
+    spec = next(s for s in OFFICIAL_SOURCES if s.name == "BOXXER")
+    html = """
+    <div class="elementor-widget-wrap">
+      <h2><a href="/events/price-vs-kotaskova/">Price vs Kotaskova</a></h2>
+      <span>20 NOV</span>
+    </div>
+    <div class="elementor-widget-wrap">
+      <h2><a href="/events/kraus-vs-deines/">Kraus vs Deines</a></h2>
+    </div>
+    """
+    events = parse_official_schedule(html, spec, date(2026, 10, 24))
+    assert [(e.title, e.event_date) for e in events] == [
+        ("Price vs Kotaskova", date(2026, 11, 20))
+    ]
+    ambiguous = html.replace('</div>\n    <div class="elementor-widget-wrap">', '')
+    assert parse_official_schedule(ambiguous, spec, date(2026, 10, 24)) == []
+
+
+@patch("scripts.sources.official.requests.get")
+def test_boxxer_fetch_uses_homepage_and_rejects_empty_ticket_shop(mock_get):
+    spec = next(s for s in OFFICIAL_SOURCES if s.name == "BOXXER")
+    mock_get.return_value = Mock(status_code=200, text=BOXXER_HTML)
+    assert len(fetch_official_events(spec, date(2026, 10, 24))) == 2
+    assert mock_get.call_args.args[0] == "https://www.boxxer.com/"
+    mock_get.return_value = Mock(status_code=200, text="<title>Buy your tickets online now!</title>")
+    with pytest.raises(OfficialSourceError, match="parsed 0"):
+        fetch_official_events(spec, date(2026, 10, 24))
+
+
 def test_all_agreed_promoters_are_registered():
     names = {spec.name for spec in OFFICIAL_SOURCES}
     assert names == {
