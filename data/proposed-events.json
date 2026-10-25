@@ -7,13 +7,6 @@
     "score": 0.314
   },
   {
-    "title": "Billam-Smith vs Clarke",
-    "date": "2026-11-07",
-    "source": "https://www.ufc.com/zuffaboxing",
-    "card_role": "main_event",
-    "score": 0.486
-  },
-  {
     "title": "Yamato Hata vs Ryo Sagawa",
     "date": "2026-11-07",
     "source": "https://www.ringmagazine.com/events/1b33P5KLk8N5LcCIxoMHIs",
@@ -63,13 +56,6 @@
     "score": 0.33
   },
   {
-    "title": "David Benavidez vs Michal Cieslak",
-    "date": "2026-12-05",
-    "source": "https://www.premierboxingchampions.com/events/391735",
-    "card_role": "main_event",
-    "score": 0.339
-  },
-  {
     "title": "Walker vs Rocha",
     "date": "2026-12-05",
     "source": "https://www.matchroomboxing.com/events/walker-vs-rocha/",
@@ -87,13 +73,6 @@
     "title": "Ryan Garner vs Jazza Dickens",
     "date": "2027-01-09",
     "source": "https://queensberry.co.uk/pages/ryan-garner-vs-jazza-dickens-coastal-chaos",
-    "card_role": "main_event",
-    "score": 0.0
-  },
-  {
-    "title": "Jacob Bank vs Janibek Alimkhanuly",
-    "date": "2027-01-23",
-    "source": "https://www.ringmagazine.com/events/7BgYBO0plKaCQLdBG8vJ6t",
     "card_role": "main_event",
     "score": 0.0
   }

@@ -581,6 +581,29 @@ STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:mbc-2026-11-07-chris-billam-smith-vs-cheavon-clarke@jk-0087.github.io
+DTSTAMP:20261025T015926Z
+LAST-MODIFIED:20261025T015926Z
+SEQUENCE:1
+DTSTART:20261107T190000Z
+DTEND:20261108T000000Z
+SUMMARY:Chris Billam-Smith vs Cheavon Clarke
+LOCATION:Copper Box Arena
+DESCRIPTION:Status\nOfficial\n\nPromotion\nZuffa Boxing\n\nCity\nLondon\n\n
+ Country\nUnited Kingdom\n\nTitles\n10-round cruiserweight bout\; no world 
+ title announced\n\nAustralia\nTBA (Paramount+ expected\; event-specific Au
+ stralian listing unconfirmed)\n\nMain Card Start (Sydney)\n6:00 AM AEDT\, 
+ Sun 8 Nov 2026 (Estimated)\n\nVenue Local Start\n7:00 PM GMT\, Sat 7 Nov 2
+ 026 (Estimated)\n\nEstimated Finish\n11:00 AM AEDT\, Sun 8 Nov 2026 (Estim
+ ated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nChris Billam-Smith vs Cheavon 
+ Clarke\nDenzel Bentley vs Shane Mosley Jr\nZach Parker vs Umar Dzambekov\n
+ Further undercard TBA\n\nOfficial / Schedule Source\nhttps://www.ufc.com/z
+ uffaboxing\n\nVerified\n25 Oct 2026\, 12:59 PM AEDT
+URL:https://www.ufc.com/zuffaboxing
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:mbc-2026-11-08-turhan-baumgardner@jk-0087.github.io
 DTSTAMP:20261016T043405Z
 LAST-MODIFIED:20261016T043405Z
@@ -682,6 +705,30 @@ STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:mbc-2026-12-05-david-benavidez-vs-michal-cieslak@jk-0087.github.io
+DTSTAMP:20261025T015926Z
+LAST-MODIFIED:20261025T015926Z
+SEQUENCE:1
+DTSTART:20261206T010000Z
+DTEND:20261206T060000Z
+SUMMARY:David Benavidez vs Michal Cieslak
+LOCATION:Desert Diamond Arena
+DESCRIPTION:Status\nOfficial\n\nPromotion\nPremier Boxing Champions\n\nCity
+ \nGlendale\, Arizona\n\nCountry\nUSA\n\nTitles\nWBA\, WBO and WBC cruiserw
+ eight world title unification\n\nAustralia\nTBA (DAZN / Prime Video PPV an
+ nounced\; Australian availability unconfirmed)\n\nMain Card Start (Sydney)
+ \n12:00 PM AEDT\, Sun 6 Dec 2026 (Confirmed)\n\nVenue Local Start\n6:00 PM
+  MST\, Sat 5 Dec 2026 (Confirmed)\n\nEstimated Finish\n5:00 PM AEDT\, Sun 
+ 6 Dec 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nDavid Benavid
+ ez vs Michal Cieslak\nVergil Ortiz Jr vs Keith Thurman\nEmiliano Vargas vs
+  Opponent TBA\nMarco Romero vs Opponent TBA\nNikita Tszyu vs Opponent TBA\
+ n\nOfficial / Schedule Source\nhttps://www.premierboxingchampions.com/even
+ ts/391735\n\nVerified\n25 Oct 2026\, 12:59 PM AEDT
+URL:https://www.premierboxingchampions.com/events/391735
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:mbc-2026-12-11-fury-joshua@jk-0087.github.io
 DTSTAMP:20261001T062834Z
 LAST-MODIFIED:20261001T062834Z
@@ -745,6 +792,29 @@ DESCRIPTION:Status\nOfficial\n\nPromotion\nQueensberry Promotions\n\nCity\n
  6\, 11:37 AM AEDT
 URL:https://queensberry.co.uk/pages/anthony-cacace-vs-nick-ball-weight-for-
  it
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:mbc-2027-01-23-jacob-bank-vs-janibek-alimkhanuly@jk-0087.github.io
+DTSTAMP:20261025T015926Z
+LAST-MODIFIED:20261025T015926Z
+SEQUENCE:1
+DTSTART:20270123T170000Z
+DTEND:20270123T220000Z
+SUMMARY:Jacob Bank vs Janibek Alimkhanuly
+LOCATION:Forum Horsens
+DESCRIPTION:Status\nOfficial\n\nPromotion\nPrimetime Boxing\, Gold Star Pro
+ motions\, Top Rank\n\nCity\nHorsens\n\nCountry\nDenmark\n\nTitles\nVacant 
+ WBO super middleweight world championship\n\nAustralia\nTBA (DAZN reported
+ \; Australian availability unconfirmed)\n\nMain Card Start (Sydney)\n4:00 
+ AM AEDT\, Sun 24 Jan 2027 (Estimated)\n\nVenue Local Start\n6:00 PM CET\, 
+ Sat 23 Jan 2027 (Estimated)\n\nEstimated Finish\n9:00 AM AEDT\, Sun 24 Jan
+  2027 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nJacob Bank vs Jani
+ bek Alimkhanuly\nUndercard TBA\n\nOfficial / Schedule Source\nhttps://www.
+ ringmagazine.com/events/7BgYBO0plKaCQLdBG8vJ6t\n\nVerified\n25 Oct 2026\, 
+ 12:59 PM AEDT
+URL:https://www.ringmagazine.com/events/7BgYBO0plKaCQLdBG8vJ6t
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT

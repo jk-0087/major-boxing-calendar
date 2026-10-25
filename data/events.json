@@ -2571,5 +2571,218 @@
         ]
       }
     ]
+  },
+  {
+    "status": "Official",
+    "title": "Chris Billam-Smith vs Cheavon Clarke",
+    "fighters": {
+      "red": "Chris Billam-Smith",
+      "blue": "Cheavon Clarke"
+    },
+    "main_card_start": {
+      "value": "2026-11-07T19:00:00+00:00",
+      "confidence": "estimated"
+    },
+    "end": {
+      "value": "2026-11-08T00:00:00+00:00",
+      "confidence": "estimated"
+    },
+    "ring_walk": {
+      "value": null,
+      "confidence": "tba"
+    },
+    "venue": {
+      "name": "Copper Box Arena",
+      "city": "London",
+      "country": "United Kingdom",
+      "timezone": "Europe/London"
+    },
+    "promotion": [
+      "Zuffa Boxing"
+    ],
+    "titles": [
+      "10-round cruiserweight bout; no world title announced"
+    ],
+    "broadcast": {
+      "australia": "TBA (Paramount+ expected; event-specific Australian listing unconfirmed)"
+    },
+    "main_card": [
+      "Chris Billam-Smith vs Cheavon Clarke",
+      "Denzel Bentley vs Shane Mosley Jr",
+      "Zach Parker vs Umar Dzambekov",
+      "Further undercard TBA"
+    ],
+    "sources": [
+      {
+        "url": "https://www.ufc.com/zuffaboxing",
+        "publisher": "Zuffa Boxing / UFC",
+        "checked_at": "2026-10-25T12:59:26+11:00"
+      },
+      {
+        "url": "https://copperboxarena.org.uk/events/zuffa-boxing-12",
+        "publisher": "Copper Box Arena",
+        "checked_at": "2026-10-25T12:59:26+11:00"
+      },
+      {
+        "url": "https://www.ringmagazine.com/events/3sHwclaBnp8zPkyWdt4kdx",
+        "publisher": "The Ring",
+        "checked_at": "2026-10-25T12:59:26+11:00"
+      },
+      {
+        "url": "https://www.ufc.com/news/how-to-watch-and-stream-zuffa-boxing",
+        "publisher": "Zuffa Boxing / UFC (previous-event Australian broadcast reference only)",
+        "checked_at": "2026-10-25T12:59:26+11:00"
+      }
+    ],
+    "uid": "mbc-2026-11-07-chris-billam-smith-vs-cheavon-clarke@jk-0087.github.io",
+    "sequence": 1,
+    "history": [
+      {
+        "date": "2026-10-25",
+        "changes": [
+          "Approved Zuffa headline card with venue confirmed; 19:00 GMT main-card start is an estimate, not the venue opening time or Ring event-start field; Australian broadcast listing pending"
+        ],
+        "version": 1
+      }
+    ]
+  },
+  {
+    "status": "Official",
+    "title": "David Benavidez vs Michal Cieslak",
+    "fighters": {
+      "red": "David Benavidez",
+      "blue": "Michal Cieslak"
+    },
+    "main_card_start": {
+      "value": "2026-12-05T18:00:00-07:00",
+      "confidence": "confirmed"
+    },
+    "end": {
+      "value": "2026-12-05T23:00:00-07:00",
+      "confidence": "estimated"
+    },
+    "ring_walk": {
+      "value": null,
+      "confidence": "tba"
+    },
+    "venue": {
+      "name": "Desert Diamond Arena",
+      "city": "Glendale, Arizona",
+      "country": "USA",
+      "timezone": "America/Phoenix"
+    },
+    "promotion": [
+      "Premier Boxing Champions"
+    ],
+    "titles": [
+      "WBA, WBO and WBC cruiserweight world title unification"
+    ],
+    "broadcast": {
+      "australia": "TBA (DAZN / Prime Video PPV announced; Australian availability unconfirmed)"
+    },
+    "main_card": [
+      "David Benavidez vs Michal Cieslak",
+      "Vergil Ortiz Jr vs Keith Thurman",
+      "Emiliano Vargas vs Opponent TBA",
+      "Marco Romero vs Opponent TBA",
+      "Nikita Tszyu vs Opponent TBA"
+    ],
+    "sources": [
+      {
+        "url": "https://www.premierboxingchampions.com/events/391735",
+        "publisher": "Premier Boxing Champions",
+        "checked_at": "2026-10-25T12:59:26+11:00"
+      },
+      {
+        "url": "https://www.premierboxingchampions.com/events/schedule",
+        "publisher": "Premier Boxing Champions",
+        "checked_at": "2026-10-25T12:59:26+11:00"
+      }
+    ],
+    "uid": "mbc-2026-12-05-david-benavidez-vs-michal-cieslak@jk-0087.github.io",
+    "sequence": 1,
+    "history": [
+      {
+        "date": "2026-10-25",
+        "changes": [
+          "Approved PBC headline card with title unification, venue and supporting bouts; main-card broadcast start confirmed as 8 pm ET (18:00 America/Phoenix); finish estimated and Australian availability pending"
+        ],
+        "version": 1
+      }
+    ]
+  },
+  {
+    "status": "Official",
+    "title": "Jacob Bank vs Janibek Alimkhanuly",
+    "fighters": {
+      "red": "Jacob Bank",
+      "blue": "Janibek Alimkhanuly"
+    },
+    "main_card_start": {
+      "value": "2027-01-23T18:00:00+01:00",
+      "confidence": "estimated"
+    },
+    "end": {
+      "value": "2027-01-23T23:00:00+01:00",
+      "confidence": "estimated"
+    },
+    "ring_walk": {
+      "value": null,
+      "confidence": "tba"
+    },
+    "venue": {
+      "name": "Forum Horsens",
+      "city": "Horsens",
+      "country": "Denmark",
+      "timezone": "Europe/Copenhagen"
+    },
+    "promotion": [
+      "Primetime Boxing",
+      "Gold Star Promotions",
+      "Top Rank"
+    ],
+    "titles": [
+      "Vacant WBO super middleweight world championship"
+    ],
+    "broadcast": {
+      "australia": "TBA (DAZN reported; Australian availability unconfirmed)"
+    },
+    "main_card": [
+      "Jacob Bank vs Janibek Alimkhanuly",
+      "Undercard TBA"
+    ],
+    "sources": [
+      {
+        "url": "https://www.ringmagazine.com/events/7BgYBO0plKaCQLdBG8vJ6t",
+        "publisher": "The Ring",
+        "checked_at": "2026-10-25T12:59:26+11:00"
+      },
+      {
+        "url": "https://www.ringmagazine.com/news/6pIangZHZ0OfhCpwNU3vuH",
+        "publisher": "The Ring",
+        "checked_at": "2026-10-25T12:59:26+11:00"
+      },
+      {
+        "url": "https://knock-out.dk/nyheder/primetime-boxing-bliver-bemaerket-i-udlandet/32702/",
+        "publisher": "KNOCK OUT",
+        "checked_at": "2026-10-25T12:59:26+11:00"
+      },
+      {
+        "url": "https://asiadaily.org/news/15651/",
+        "publisher": "Asia Daily (DAZN report; Australian availability unconfirmed)",
+        "checked_at": "2026-10-25T12:59:26+11:00"
+      }
+    ],
+    "uid": "mbc-2027-01-23-jacob-bank-vs-janibek-alimkhanuly@jk-0087.github.io",
+    "sequence": 1,
+    "history": [
+      {
+        "date": "2026-10-25",
+        "changes": [
+          "Manually approved Ring-staged world title card with date and venue corroborated; 18:00 CET start is provisional from the aggregate listing, not a confirmed main-card broadcast time; Australian availability pending"
+        ],
+        "version": 1
+      }
+    ]
   }
 ]
