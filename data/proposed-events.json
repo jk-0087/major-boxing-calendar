@@ -42,11 +42,18 @@
     "score": 0.34
   },
   {
-    "title": "Price vs Kotaskova",
+    "title": "Edwards vs Mcgregor",
     "date": "2026-11-20",
     "source": "https://www.boxxer.com/events/lauren-price-vs-michaela-kotaskova-20-november-2026-utilita-arena-cardiff/",
     "card_role": "main_event",
-    "score": 0.268
+    "score": 0.333
+  },
+  {
+    "title": "Lauren Price vs Michaela Kotaskova",
+    "date": "2026-11-20",
+    "source": "https://www.ringmagazine.com/events/67sxriccxSOsRSyVoGI12M",
+    "card_role": "main_event",
+    "score": 0.359
   },
   {
     "title": "Kraus vs Deines",
@@ -63,11 +70,18 @@
     "score": 0.33
   },
   {
-    "title": "Azim vs Valenzuela",
+    "title": "Adam Azim vs Gabriel Valenzuela",
+    "date": "2026-12-04",
+    "source": "https://www.ringmagazine.com/events/aujUFp3UopnABCvptWqkj",
+    "card_role": "main_event",
+    "score": 0.324
+  },
+  {
+    "title": "Hennessy vs Wonyou",
     "date": "2026-12-04",
     "source": "https://www.boxxer.com/events/adam-azim-vs-gabriel-gollaz-valenzuela-4-december-2026-copper-box-arena-london/",
     "card_role": "main_event",
-    "score": 0.315
+    "score": 0.324
   },
   {
     "title": "Walker vs Rocha",
@@ -89,6 +103,13 @@
     "source": "https://www.ringmagazine.com/events/4ZotPZfi94SjMQW7xcVTvM",
     "card_role": "main_event",
     "score": 0.287
+  },
+  {
+    "title": "Jake Paul vs Cedric Doumbe",
+    "date": "2026-12-24",
+    "source": "https://www.ringmagazine.com/events/45cB0rUXOuGGKj7JF83lTh",
+    "card_role": "main_event",
+    "score": 0.312
   },
   {
     "title": "Paul vs Doumbé",
