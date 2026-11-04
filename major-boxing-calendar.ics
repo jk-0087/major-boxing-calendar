@@ -773,6 +773,30 @@ STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:mbc-2026-12-13-erislandy-lara-vs-tim-tszyu@jk-0087.github.io
+DTSTAMP:20261104T101158Z
+LAST-MODIFIED:20261104T101158Z
+SEQUENCE:1
+DTSTART:20261212T233000Z
+DTEND:20261213T043000Z
+SUMMARY:Erislandy Lara vs Tim Tszyu
+LOCATION:Cbus Super Stadium
+DESCRIPTION:Status\nOfficial\n\nPromotion\nNo Limit Boxing\, Premier Boxing
+  Champions\n\nCity\nGold Coast\, Queensland\n\nCountry\nAustralia\n\nTitle
+ s\nWBA middleweight world title\nWBA super featherweight world title: Elnu
+ r Samedov vs Liam Wilson\n\nAustralia\nMain Event PPV on Kayo Sports\n\nMa
+ in Card Start (Sydney)\n10:30 AM AEDT\, Sun 13 Dec 2026 (Confirmed)\n\nVen
+ ue Local Start\n9:30 AM AEST\, Sun 13 Dec 2026 (Confirmed)\n\nEstimated Fi
+ nish\n3:30 PM AEDT\, Sun 13 Dec 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain
+  Card Bouts\nErislandy Lara vs Tim Tszyu\nJermell Charlo vs Brock Jarvis\n
+ Elnur Samedov vs Liam Wilson\n\nOfficial / Schedule Source\nhttps://nolimi
+ tboxing.com.au/events/tim-tszyu-vs-erislandy-lara\n\nVerified\n04 Nov 2026
+ \, 9:11 PM AEDT
+URL:https://nolimitboxing.com.au/events/tim-tszyu-vs-erislandy-lara
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:mbc-2026-12-19-cacace-ball@jk-0087.github.io
 DTSTAMP:20261016T003727Z
 LAST-MODIFIED:20261016T003727Z
@@ -792,6 +816,50 @@ DESCRIPTION:Status\nOfficial\n\nPromotion\nQueensberry Promotions\n\nCity\n
  6\, 11:37 AM AEDT
 URL:https://queensberry.co.uk/pages/anthony-cacace-vs-nick-ball-weight-for-
  it
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:mbc-2026-12-19-devin-haney-vs-liam-paro@jk-0087.github.io
+DTSTAMP:20261104T101158Z
+LAST-MODIFIED:20261104T101158Z
+SEQUENCE:1
+DTSTART:20261220T010000Z
+DTEND:20261220T060000Z
+SUMMARY:Devin Haney vs Liam Paro
+LOCATION:Chase Center (reported)
+DESCRIPTION:Status\nReported\; official announcement pending\n\nPromotion\n
+ TBA\n\nCity\nSan Francisco\, California\n\nCountry\nUSA\n\nTitles\nReporte
+ d WBO and IBF welterweight world title unification\n\nAustralia\nTBA\n\nMa
+ in Card Start (Sydney)\n12:00 PM AEDT\, Sun 20 Dec 2026 (Estimated)\n\nVen
+ ue Local Start\n5:00 PM PST\, Sat 19 Dec 2026 (Estimated)\n\nEstimated Fin
+ ish\n5:00 PM AEDT\, Sun 20 Dec 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain 
+ Card Bouts\nDevin Haney vs Liam Paro\nUndercard TBA\n\nOfficial / Schedule
+  Source\nhttps://www.ringmagazine.com/events/4ZotPZfi94SjMQW7xcVTvM\n\nVer
+ ified\n04 Nov 2026\, 9:11 PM AEDT
+URL:https://www.ringmagazine.com/events/4ZotPZfi94SjMQW7xcVTvM
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:mbc-2026-12-24-jake-paul-vs-cedric-doumbe@jk-0087.github.io
+DTSTAMP:20261104T101158Z
+LAST-MODIFIED:20261104T101158Z
+SEQUENCE:1
+DTSTART:20261224T140000Z
+DTEND:20261224T190000Z
+SUMMARY:Jake Paul vs Cédric Doumbé
+LOCATION:Coca-Cola Arena
+DESCRIPTION:Status\nOfficial\n\nPromotion\nMost Valuable Promotions\n\nCity
+ \nDubai\n\nCountry\nUnited Arab Emirates\n\nTitles\nEight-round profession
+ al cruiserweight bout\; non-title\n\nAustralia\nTBA\n\nMain Card Start (Sy
+ dney)\n1:00 AM AEDT\, Fri 25 Dec 2026 (Confirmed)\n\nVenue Local Start\n6:
+ 00 PM +04\, Thu 24 Dec 2026 (Confirmed)\n\nEstimated Finish\n6:00 AM AEDT\
+ , Fri 25 Dec 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nJake P
+ aul vs Cédric Doumbé\nUndercard TBA\n\nOfficial / Schedule Source\nhttps
+ ://www.mostvaluablepromotions.com/event/paul-vs-doumbe/\n\nVerified\n04 No
+ v 2026\, 9:11 PM AEDT
+URL:https://www.mostvaluablepromotions.com/event/paul-vs-doumbe/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT

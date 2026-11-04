@@ -2784,5 +2784,204 @@
         "version": 1
       }
     ]
+  },
+  {
+    "status": "Official",
+    "title": "Erislandy Lara vs Tim Tszyu",
+    "fighters": {
+      "red": "Erislandy Lara",
+      "blue": "Tim Tszyu"
+    },
+    "main_card_start": {
+      "value": "2026-12-13T09:30:00+10:00",
+      "confidence": "confirmed"
+    },
+    "end": {
+      "value": "2026-12-13T14:30:00+10:00",
+      "confidence": "estimated"
+    },
+    "ring_walk": {
+      "value": null,
+      "confidence": "tba"
+    },
+    "venue": {
+      "name": "Cbus Super Stadium",
+      "city": "Gold Coast, Queensland",
+      "country": "Australia",
+      "timezone": "Australia/Brisbane"
+    },
+    "promotion": [
+      "No Limit Boxing",
+      "Premier Boxing Champions"
+    ],
+    "titles": [
+      "WBA middleweight world title",
+      "WBA super featherweight world title: Elnur Samedov vs Liam Wilson"
+    ],
+    "broadcast": {
+      "australia": "Main Event PPV on Kayo Sports"
+    },
+    "main_card": [
+      "Erislandy Lara vs Tim Tszyu",
+      "Jermell Charlo vs Brock Jarvis",
+      "Elnur Samedov vs Liam Wilson"
+    ],
+    "sources": [
+      {
+        "url": "https://nolimitboxing.com.au/events/tim-tszyu-vs-erislandy-lara",
+        "publisher": "No Limit Boxing",
+        "checked_at": "2026-11-04T21:11:58+11:00"
+      },
+      {
+        "url": "https://www.premierboxingchampions.com/events/682551",
+        "publisher": "Premier Boxing Champions",
+        "checked_at": "2026-11-04T21:11:58+11:00"
+      },
+      {
+        "url": "https://cbussuperstadium.com.au/events/wba-middleweight-world-title-fight--tszyu-vs-lara-1",
+        "publisher": "Cbus Super Stadium",
+        "checked_at": "2026-11-04T21:11:58+11:00"
+      }
+    ],
+    "uid": "mbc-2026-12-13-erislandy-lara-vs-tim-tszyu@jk-0087.github.io",
+    "sequence": 1,
+    "history": [
+      {
+        "date": "2026-11-04",
+        "changes": [
+          "Approved using No Limit's 9:30 am AEST Australian main-card broadcast, not the PBC US listing or stadium opening time"
+        ],
+        "version": 1
+      }
+    ]
+  },
+  {
+    "status": "Reported; official announcement pending",
+    "title": "Devin Haney vs Liam Paro",
+    "fighters": {
+      "red": "Devin Haney",
+      "blue": "Liam Paro"
+    },
+    "main_card_start": {
+      "value": "2026-12-19T17:00:00-08:00",
+      "confidence": "estimated"
+    },
+    "end": {
+      "value": "2026-12-19T22:00:00-08:00",
+      "confidence": "estimated"
+    },
+    "ring_walk": {
+      "value": null,
+      "confidence": "tba"
+    },
+    "venue": {
+      "name": "Chase Center (reported)",
+      "city": "San Francisco, California",
+      "country": "USA",
+      "timezone": "America/Los_Angeles"
+    },
+    "promotion": [
+      "TBA"
+    ],
+    "titles": [
+      "Reported WBO and IBF welterweight world title unification"
+    ],
+    "broadcast": {
+      "australia": "TBA"
+    },
+    "main_card": [
+      "Devin Haney vs Liam Paro",
+      "Undercard TBA"
+    ],
+    "sources": [
+      {
+        "url": "https://www.ringmagazine.com/events/4ZotPZfi94SjMQW7xcVTvM",
+        "publisher": "The Ring",
+        "checked_at": "2026-11-04T21:11:58+11:00"
+      },
+      {
+        "url": "https://www.ringmagazine.com/news/sources-haney-paro-set-for-dec-19-title-unification-XHwslKzof7wLNMDmDEIGc",
+        "publisher": "The Ring",
+        "checked_at": "2026-11-04T21:11:58+11:00"
+      }
+    ],
+    "uid": "mbc-2026-12-19-devin-haney-vs-liam-paro@jk-0087.github.io",
+    "sequence": 1,
+    "history": [
+      {
+        "date": "2026-11-04",
+        "changes": [
+          "Approved provisional listing from The Ring; date and venue reported, main-card time estimated and broadcaster unconfirmed"
+        ],
+        "version": 1
+      }
+    ]
+  },
+  {
+    "status": "Official",
+    "title": "Jake Paul vs Cédric Doumbé",
+    "fighters": {
+      "red": "Jake Paul",
+      "blue": "Cédric Doumbé"
+    },
+    "main_card_start": {
+      "value": "2026-12-24T18:00:00+04:00",
+      "confidence": "confirmed"
+    },
+    "end": {
+      "value": "2026-12-24T23:00:00+04:00",
+      "confidence": "estimated"
+    },
+    "ring_walk": {
+      "value": null,
+      "confidence": "tba"
+    },
+    "venue": {
+      "name": "Coca-Cola Arena",
+      "city": "Dubai",
+      "country": "United Arab Emirates",
+      "timezone": "Asia/Dubai"
+    },
+    "promotion": [
+      "Most Valuable Promotions"
+    ],
+    "titles": [
+      "Eight-round professional cruiserweight bout; non-title"
+    ],
+    "broadcast": {
+      "australia": "TBA"
+    },
+    "main_card": [
+      "Jake Paul vs Cédric Doumbé",
+      "Undercard TBA"
+    ],
+    "sources": [
+      {
+        "url": "https://www.mostvaluablepromotions.com/event/paul-vs-doumbe/",
+        "publisher": "Most Valuable Promotions",
+        "checked_at": "2026-11-04T21:11:58+11:00"
+      },
+      {
+        "url": "https://www.mostvaluablepromotions.com/jake-paul-vs-cedric-doumbe-dubai-christmas-eve/",
+        "publisher": "Most Valuable Promotions",
+        "checked_at": "2026-11-04T21:11:58+11:00"
+      },
+      {
+        "url": "https://www.ringmagazine.com/events/45cB0rUXOuGGKj7JF83lTh",
+        "publisher": "The Ring",
+        "checked_at": "2026-11-04T21:11:58+11:00"
+      }
+    ],
+    "uid": "mbc-2026-12-24-jake-paul-vs-cedric-doumbe@jk-0087.github.io",
+    "sequence": 1,
+    "history": [
+      {
+        "date": "2026-11-04",
+        "changes": [
+          "Approved MVP card; published main-card time of 09:00 EST converts to 18:00 Dubai time; Australian broadcaster TBA"
+        ],
+        "version": 1
+      }
+    ]
   }
 ]
