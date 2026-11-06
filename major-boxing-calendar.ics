@@ -821,9 +821,9 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:mbc-2026-12-19-devin-haney-vs-liam-paro@jk-0087.github.io
-DTSTAMP:20261104T101158Z
-LAST-MODIFIED:20261104T101158Z
-SEQUENCE:1
+DTSTAMP:20261106T064940Z
+LAST-MODIFIED:20261106T064940Z
+SEQUENCE:2
 DTSTART:20261220T010000Z
 DTEND:20261220T060000Z
 SUMMARY:Devin Haney vs Liam Paro
@@ -836,7 +836,7 @@ DESCRIPTION:Status\nReported\; official announcement pending\n\nPromotion\n
  ish\n5:00 PM AEDT\, Sun 20 Dec 2026 (Estimated)\n\nRing Walk\nTBA\n\nMain 
  Card Bouts\nDevin Haney vs Liam Paro\nUndercard TBA\n\nOfficial / Schedule
   Source\nhttps://www.ringmagazine.com/events/4ZotPZfi94SjMQW7xcVTvM\n\nVer
- ified\n04 Nov 2026\, 9:11 PM AEDT
+ ified\n06 Nov 2026\, 5:49 PM AEDT
 URL:https://www.ringmagazine.com/events/4ZotPZfi94SjMQW7xcVTvM
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT

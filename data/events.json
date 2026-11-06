@@ -2903,10 +2903,15 @@
         "url": "https://www.ringmagazine.com/news/sources-haney-paro-set-for-dec-19-title-unification-XHwslKzof7wLNMDmDEIGc",
         "publisher": "The Ring",
         "checked_at": "2026-11-04T21:11:58+11:00"
+      },
+      {
+        "url": "https://toprank.com/events/haney-vs-paro",
+        "publisher": "Top Rank",
+        "checked_at": "2026-11-06T17:49:40+11:00"
       }
     ],
     "uid": "mbc-2026-12-19-devin-haney-vs-liam-paro@jk-0087.github.io",
-    "sequence": 1,
+    "sequence": 2,
     "history": [
       {
         "date": "2026-11-04",
@@ -2914,6 +2919,13 @@
           "Approved provisional listing from The Ring; date and venue reported, main-card time estimated and broadcaster unconfirmed"
         ],
         "version": 1
+      },
+      {
+        "version": 2,
+        "date": "2026-11-06",
+        "changes": [
+          "Added Top Rank schedule source"
+        ]
       }
     ]
   },
