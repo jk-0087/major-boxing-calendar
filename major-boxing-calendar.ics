@@ -683,6 +683,27 @@ STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:mbc-2026-11-27-artur-subkhankulov-vs-andy-cruz@jk-0087.github.io
+DTSTAMP:20261111T102415Z
+LAST-MODIFIED:20261111T102415Z
+SEQUENCE:1
+DTSTART:20261127T130000Z
+DTEND:20261127T180000Z
+SUMMARY:Artur Subkhankulov vs Andy Cruz
+LOCATION:Wrestling Palace
+DESCRIPTION:Status\nOfficial\n\nPromotion\nIBA Pro\n\nCity\nUfa\n\nCountry\
+ nRussia\n\nTitles\nVacant IBF lightweight world title\n\nAustralia\nTBA\n\
+ nMain Card Start (Sydney)\n12:00 AM AEDT\, Sat 28 Nov 2026 (Estimated)\n\n
+ Venue Local Start\n6:00 PM +05\, Fri 27 Nov 2026 (Estimated)\n\nEstimated 
+ Finish\n5:00 AM AEDT\, Sat 28 Nov 2026 (Estimated)\n\nRing Walk\nTBA\n\nMa
+ in Card Bouts\nArtur Subkhankulov vs Andy Cruz\nUndercard TBA\n\nOfficial 
+ / Schedule Source\nhttps://www.ringmagazine.com/events/3AYicthvZgerZDoA5Pd
+ zf8\n\nVerified\n11 Nov 2026\, 9:24 PM AEDT
+URL:https://www.ringmagazine.com/events/3AYicthvZgerZDoA5Pdzf8
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:mbc-2026-11-28-kabayel-hysa@jk-0087.github.io
 DTSTAMP:20261006T052532Z
 LAST-MODIFIED:20261006T052532Z
@@ -883,6 +904,28 @@ DESCRIPTION:Status\nOfficial\n\nPromotion\nPrimetime Boxing\, Gold Star Pro
  ringmagazine.com/events/7BgYBO0plKaCQLdBG8vJ6t\n\nVerified\n25 Oct 2026\, 
  12:59 PM AEDT
 URL:https://www.ringmagazine.com/events/7BgYBO0plKaCQLdBG8vJ6t
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:mbc-2027-02-20-caroline-dubois-vs-stephanie-han@jk-0087.github.io
+DTSTAMP:20261111T102415Z
+LAST-MODIFIED:20261111T102415Z
+SEQUENCE:1
+DTSTART:20270221T000000Z
+DTEND:20270221T050000Z
+SUMMARY:Caroline Dubois vs Stephanie Han
+LOCATION:GECU Arena at the Don Haskins Center
+DESCRIPTION:Status\nOfficial\n\nPromotion\nMost Valuable Promotions\n\nCity
+ \nEl Paso\, Texas\n\nCountry\nUSA\n\nTitles\nWBA\, WBC and WBO lightweight
+  world title unification\n\nAustralia\nTBA\n\nMain Card Start (Sydney)\n11
+ :00 AM AEDT\, Sun 21 Feb 2027 (Confirmed)\n\nVenue Local Start\n5:00 PM MS
+ T\, Sat 20 Feb 2027 (Confirmed)\n\nEstimated Finish\n4:00 PM AEDT\, Sun 21
+  Feb 2027 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nCaroline Duboi
+ s vs Stephanie Han\nUndercard TBA\n\nOfficial / Schedule Source\nhttps://w
+ ww.mostvaluablepromotions.com/event/mvpw-09-dubois-vs-han/\n\nVerified\n11
+  Nov 2026\, 9:24 PM AEDT
+URL:https://www.mostvaluablepromotions.com/event/mvpw-09-dubois-vs-han/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT

@@ -2995,5 +2995,134 @@
         "version": 1
       }
     ]
+  },
+  {
+    "status": "Official",
+    "title": "Artur Subkhankulov vs Andy Cruz",
+    "fighters": {
+      "red": "Artur Subkhankulov",
+      "blue": "Andy Cruz"
+    },
+    "main_card_start": {
+      "value": "2026-11-27T18:00:00+05:00",
+      "confidence": "estimated"
+    },
+    "end": {
+      "value": "2026-11-27T23:00:00+05:00",
+      "confidence": "estimated"
+    },
+    "ring_walk": {
+      "value": null,
+      "confidence": "tba"
+    },
+    "venue": {
+      "name": "Wrestling Palace",
+      "city": "Ufa",
+      "country": "Russia",
+      "timezone": "Asia/Yekaterinburg"
+    },
+    "promotion": [
+      "IBA Pro"
+    ],
+    "titles": [
+      "Vacant IBF lightweight world title"
+    ],
+    "broadcast": {
+      "australia": "TBA"
+    },
+    "main_card": [
+      "Artur Subkhankulov vs Andy Cruz",
+      "Undercard TBA"
+    ],
+    "sources": [
+      {
+        "url": "https://www.ringmagazine.com/events/3AYicthvZgerZDoA5Pdzf8",
+        "publisher": "The Ring",
+        "checked_at": "2026-11-11T21:24:15+11:00"
+      },
+      {
+        "url": "https://rusboxing.ru/news/9385",
+        "publisher": "Russian Boxing Federation",
+        "checked_at": "2026-11-11T21:24:15+11:00"
+      },
+      {
+        "url": "https://ufa.kassir.ru/sport/vecher-professionalnogo-boksa-ibapro22",
+        "publisher": "Kassir.ru",
+        "checked_at": "2026-11-11T21:24:15+11:00"
+      }
+    ],
+    "uid": "mbc-2026-11-27-artur-subkhankulov-vs-andy-cruz@jk-0087.github.io",
+    "sequence": 1,
+    "history": [
+      {
+        "date": "2026-11-11",
+        "changes": [
+          "Approved world title card; 18:00 Ufa time is a provisional main-card estimate based on the ticketed event start"
+        ],
+        "version": 1
+      }
+    ]
+  },
+  {
+    "status": "Official",
+    "title": "Caroline Dubois vs Stephanie Han",
+    "fighters": {
+      "red": "Caroline Dubois",
+      "blue": "Stephanie Han"
+    },
+    "main_card_start": {
+      "value": "2027-02-20T17:00:00-07:00",
+      "confidence": "confirmed"
+    },
+    "end": {
+      "value": "2027-02-20T22:00:00-07:00",
+      "confidence": "estimated"
+    },
+    "ring_walk": {
+      "value": null,
+      "confidence": "tba"
+    },
+    "venue": {
+      "name": "GECU Arena at the Don Haskins Center",
+      "city": "El Paso, Texas",
+      "country": "USA",
+      "timezone": "America/Denver"
+    },
+    "promotion": [
+      "Most Valuable Promotions"
+    ],
+    "titles": [
+      "WBA, WBC and WBO lightweight world title unification"
+    ],
+    "broadcast": {
+      "australia": "TBA"
+    },
+    "main_card": [
+      "Caroline Dubois vs Stephanie Han",
+      "Undercard TBA"
+    ],
+    "sources": [
+      {
+        "url": "https://www.mostvaluablepromotions.com/event/mvpw-09-dubois-vs-han/",
+        "publisher": "Most Valuable Promotions",
+        "checked_at": "2026-11-11T21:24:15+11:00"
+      },
+      {
+        "url": "https://www.mostvaluablepromotions.com/mvpw-09-caroline-dubois-vs-stephanie-han-el-paso-february-20/",
+        "publisher": "Most Valuable Promotions",
+        "checked_at": "2026-11-11T21:24:15+11:00"
+      }
+    ],
+    "uid": "mbc-2027-02-20-caroline-dubois-vs-stephanie-han@jk-0087.github.io",
+    "sequence": 1,
+    "history": [
+      {
+        "date": "2026-11-11",
+        "changes": [
+          "Approved title unification; MVP main-card timestamp is 00:00 UTC on February 21 (17:00 El Paso on February 20)"
+        ],
+        "version": 1
+      }
+    ]
   }
 ]
