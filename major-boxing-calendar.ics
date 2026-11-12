@@ -863,6 +863,28 @@ STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:mbc-2026-12-20-jarrell-miller-vs-tony-yoka@jk-0087.github.io
+DTSTAMP:20261112T103010Z
+LAST-MODIFIED:20261112T103010Z
+SEQUENCE:1
+DTSTART:20261220T190000Z
+DTEND:20261221T000000Z
+SUMMARY:Jarrell Miller vs Tony Yoka
+LOCATION:The Grand Arena\, Accra International Conference Centre
+DESCRIPTION:Status\nOfficial\n\nPromotion\nMatchroom Boxing\, Legacy Rise S
+ ports\n\nCity\nAccra\n\nCountry\nGhana\n\nTitles\nHeavyweight bout\; no ti
+ tle announced\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n6:00 AM AEDT
+ \, Mon 21 Dec 2026 (Estimated)\n\nVenue Local Start\n7:00 PM GMT\, Sun 20 
+ Dec 2026 (Estimated)\n\nEstimated Finish\n11:00 AM AEDT\, Mon 21 Dec 2026 
+ (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nJarrell Miller vs Tony Y
+ oka\nJonathan Tetteh vs Elvis Ahorgah\nFurther undercard TBA\n\nOfficial /
+  Schedule Source\nhttps://www.matchroomboxing.com/events/miller-vs-yoka/\n
+ \nVerified\n12 Nov 2026\, 9:30 PM AEDT
+URL:https://www.matchroomboxing.com/events/miller-vs-yoka/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:mbc-2026-12-24-jake-paul-vs-cedric-doumbe@jk-0087.github.io
 DTSTAMP:20261104T101158Z
 LAST-MODIFIED:20261104T101158Z
@@ -926,6 +948,28 @@ DESCRIPTION:Status\nOfficial\n\nPromotion\nMost Valuable Promotions\n\nCity
  ww.mostvaluablepromotions.com/event/mvpw-09-dubois-vs-han/\n\nVerified\n11
   Nov 2026\, 9:24 PM AEDT
 URL:https://www.mostvaluablepromotions.com/event/mvpw-09-dubois-vs-han/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:mbc-2027-02-27-jaron-ennis-vs-josh-kelly@jk-0087.github.io
+DTSTAMP:20261112T103010Z
+LAST-MODIFIED:20261112T103010Z
+SEQUENCE:1
+DTSTART:20270228T000000Z
+DTEND:20270228T050000Z
+SUMMARY:Jaron Ennis vs Josh Kelly
+LOCATION:State Farm Arena
+DESCRIPTION:Status\nOfficial\n\nPromotion\nMatchroom Boxing\n\nCity\nAtlant
+ a\, Georgia\n\nCountry\nUSA\n\nTitles\nWBA\, WBO and IBF super welterweigh
+ t world title unification\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n
+ 11:00 AM AEDT\, Sun 28 Feb 2027 (Estimated)\n\nVenue Local Start\n7:00 PM 
+ EST\, Sat 27 Feb 2027 (Estimated)\n\nEstimated Finish\n4:00 PM AEDT\, Sun 
+ 28 Feb 2027 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nJaron Ennis 
+ vs Josh Kelly\nUndercard TBA\n\nOfficial / Schedule Source\nhttps://www.ma
+ tchroomboxing.com/events/boots-ennis-vs-kelly/\n\nVerified\n12 Nov 2026\, 
+ 9:30 PM AEDT
+URL:https://www.matchroomboxing.com/events/boots-ennis-vs-kelly/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT

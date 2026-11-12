@@ -3124,5 +3124,141 @@
         "version": 1
       }
     ]
+  },
+  {
+    "status": "Official",
+    "title": "Jarrell Miller vs Tony Yoka",
+    "fighters": {
+      "red": "Jarrell Miller",
+      "blue": "Tony Yoka"
+    },
+    "main_card_start": {
+      "value": "2026-12-20T19:00:00+00:00",
+      "confidence": "estimated"
+    },
+    "end": {
+      "value": "2026-12-21T00:00:00+00:00",
+      "confidence": "estimated"
+    },
+    "ring_walk": {
+      "value": null,
+      "confidence": "tba"
+    },
+    "venue": {
+      "name": "The Grand Arena, Accra International Conference Centre",
+      "city": "Accra",
+      "country": "Ghana",
+      "timezone": "Africa/Accra"
+    },
+    "promotion": [
+      "Matchroom Boxing",
+      "Legacy Rise Sports"
+    ],
+    "titles": [
+      "Heavyweight bout; no title announced"
+    ],
+    "broadcast": {
+      "australia": "DAZN"
+    },
+    "main_card": [
+      "Jarrell Miller vs Tony Yoka",
+      "Jonathan Tetteh vs Elvis Ahorgah",
+      "Further undercard TBA"
+    ],
+    "sources": [
+      {
+        "url": "https://www.matchroomboxing.com/events/miller-vs-yoka/",
+        "publisher": "Matchroom Boxing",
+        "checked_at": "2026-11-12T21:30:10+11:00"
+      },
+      {
+        "url": "https://www.matchroomboxing.com/news/big-baby-miller-faces-tony-yoka-in-accra-on-december-20/",
+        "publisher": "Matchroom Boxing",
+        "checked_at": "2026-11-12T21:30:10+11:00"
+      },
+      {
+        "url": "https://www.ringmagazine.com/events/6huxdqlfsQPpdz3uosby45",
+        "publisher": "The Ring",
+        "checked_at": "2026-11-12T21:30:10+11:00"
+      }
+    ],
+    "uid": "mbc-2026-12-20-jarrell-miller-vs-tony-yoka@jk-0087.github.io",
+    "sequence": 1,
+    "history": [
+      {
+        "date": "2026-11-12",
+        "changes": [
+          "Approved with Matchroom confirmation of venue and DAZN coverage; main-card broadcast start remains estimated"
+        ],
+        "version": 1
+      }
+    ]
+  },
+  {
+    "status": "Official",
+    "title": "Jaron Ennis vs Josh Kelly",
+    "fighters": {
+      "red": "Jaron Ennis",
+      "blue": "Josh Kelly"
+    },
+    "main_card_start": {
+      "value": "2027-02-27T19:00:00-05:00",
+      "confidence": "estimated"
+    },
+    "end": {
+      "value": "2027-02-28T00:00:00-05:00",
+      "confidence": "estimated"
+    },
+    "ring_walk": {
+      "value": null,
+      "confidence": "tba"
+    },
+    "venue": {
+      "name": "State Farm Arena",
+      "city": "Atlanta, Georgia",
+      "country": "USA",
+      "timezone": "America/New_York"
+    },
+    "promotion": [
+      "Matchroom Boxing"
+    ],
+    "titles": [
+      "WBA, WBO and IBF super welterweight world title unification"
+    ],
+    "broadcast": {
+      "australia": "DAZN"
+    },
+    "main_card": [
+      "Jaron Ennis vs Josh Kelly",
+      "Undercard TBA"
+    ],
+    "sources": [
+      {
+        "url": "https://www.matchroomboxing.com/events/boots-ennis-vs-kelly/",
+        "publisher": "Matchroom Boxing",
+        "checked_at": "2026-11-12T21:30:10+11:00"
+      },
+      {
+        "url": "https://www.matchroomboxing.com/news/boots-kelly-meet-in-unification-blockbuster-on-feb-27-in-atlanta/",
+        "publisher": "Matchroom Boxing",
+        "checked_at": "2026-11-12T21:30:10+11:00"
+      },
+      {
+        "url": "https://www.statefarmarena.com/events/detail/jaron-boots-ennis-vs-josh-kelly-tickets-atlanta-georgia-2027-02-27-24",
+        "publisher": "State Farm Arena",
+        "checked_at": "2026-11-12T21:30:10+11:00"
+      }
+    ],
+    "uid": "mbc-2027-02-27-jaron-ennis-vs-josh-kelly@jk-0087.github.io",
+    "sequence": 1,
+    "history": [
+      {
+        "date": "2026-11-12",
+        "changes": [
+          "Approved with Matchroom confirmation of venue and DAZN coverage; main-card broadcast start remains estimated"
+        ],
+        "version": 1
+      }
+    ]
   }
 ]
