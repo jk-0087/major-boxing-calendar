@@ -3260,5 +3260,68 @@
         "version": 1
       }
     ]
+  },
+  {
+    "status": "Official",
+    "title": "Arnold Barboza Jr. vs Oscar Duarte",
+    "fighters": {
+      "red": "Arnold Barboza Jr.",
+      "blue": "Oscar Duarte"
+    },
+    "main_card_start": {
+      "value": "2027-01-23T17:00:00-08:00",
+      "confidence": "estimated"
+    },
+    "end": {
+      "value": "2027-01-23T22:00:00-08:00",
+      "confidence": "estimated"
+    },
+    "ring_walk": {
+      "value": null,
+      "confidence": "tba"
+    },
+    "venue": {
+      "name": "Honda Center",
+      "city": "Anaheim, California",
+      "country": "USA",
+      "timezone": "America/Los_Angeles"
+    },
+    "promotion": [
+      "Golden Boy Promotions",
+      "Cancun Boxing"
+    ],
+    "titles": [
+      "12-round welterweight bout; no title announced"
+    ],
+    "broadcast": {
+      "australia": "DAZN"
+    },
+    "main_card": [
+      "Arnold Barboza Jr. vs Oscar Duarte",
+      "Undercard TBA"
+    ],
+    "sources": [
+      {
+        "url": "https://www.goldenboy.com/the-event/jan-23-barboza-vs-duarte/",
+        "publisher": "Golden Boy Promotions",
+        "checked_at": "2026-11-16T14:38:59+11:00"
+      },
+      {
+        "url": "https://www.goldenboy.com/arnold-barboza-jr-and-oscar-duarte-set-for-high-stakes-clash-in-cant-miss-main-event-on-dazn/",
+        "publisher": "Golden Boy Promotions",
+        "checked_at": "2026-11-16T14:38:59+11:00"
+      }
+    ],
+    "uid": "mbc-2027-01-23-arnold-barboza-jr-vs-oscar-duarte@jk-0087.github.io",
+    "sequence": 1,
+    "history": [
+      {
+        "date": "2026-11-16",
+        "changes": [
+          "Approved official Golden Boy main event; DAZN broadcast confirmed worldwide, main-card start estimated separately from venue event time"
+        ],
+        "version": 1
+      }
+    ]
   }
 ]

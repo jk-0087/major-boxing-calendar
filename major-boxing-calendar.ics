@@ -930,6 +930,28 @@ STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:mbc-2027-01-23-arnold-barboza-jr-vs-oscar-duarte@jk-0087.github.io
+DTSTAMP:20261116T033859Z
+LAST-MODIFIED:20261116T033859Z
+SEQUENCE:1
+DTSTART:20270124T010000Z
+DTEND:20270124T060000Z
+SUMMARY:Arnold Barboza Jr. vs Oscar Duarte
+LOCATION:Honda Center
+DESCRIPTION:Status\nOfficial\n\nPromotion\nGolden Boy Promotions\, Cancun B
+ oxing\n\nCity\nAnaheim\, California\n\nCountry\nUSA\n\nTitles\n12-round we
+ lterweight bout\; no title announced\n\nAustralia\nDAZN\n\nMain Card Start
+  (Sydney)\n12:00 PM AEDT\, Sun 24 Jan 2027 (Estimated)\n\nVenue Local Star
+ t\n5:00 PM PST\, Sat 23 Jan 2027 (Estimated)\n\nEstimated Finish\n5:00 PM 
+ AEDT\, Sun 24 Jan 2027 (Estimated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nA
+ rnold Barboza Jr. vs Oscar Duarte\nUndercard TBA\n\nOfficial / Schedule So
+ urce\nhttps://www.goldenboy.com/the-event/jan-23-barboza-vs-duarte/\n\nVer
+ ified\n16 Nov 2026\, 2:38 PM AEDT
+URL:https://www.goldenboy.com/the-event/jan-23-barboza-vs-duarte/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:mbc-2027-02-20-caroline-dubois-vs-stephanie-han@jk-0087.github.io
 DTSTAMP:20261111T102415Z
 LAST-MODIFIED:20261111T102415Z
