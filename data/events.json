@@ -3323,5 +3323,62 @@
         "version": 1
       }
     ]
+  },
+  {
+    "status": "Official",
+    "title": "Daniel Dubois vs Joseph Parker",
+    "fighters": {
+      "red": "Daniel Dubois",
+      "blue": "Joseph Parker"
+    },
+    "main_card_start": {
+      "value": "2027-01-30T19:00:00+00:00",
+      "confidence": "estimated"
+    },
+    "end": {
+      "value": "2027-01-31T00:00:00+00:00",
+      "confidence": "estimated"
+    },
+    "ring_walk": {
+      "value": null,
+      "confidence": "tba"
+    },
+    "venue": {
+      "name": "Co-op Live",
+      "city": "Manchester",
+      "country": "United Kingdom",
+      "timezone": "Europe/London"
+    },
+    "promotion": [
+      "Queensberry Promotions"
+    ],
+    "titles": [
+      "WBO heavyweight world championship"
+    ],
+    "broadcast": {
+      "australia": "DAZN"
+    },
+    "main_card": [
+      "Daniel Dubois vs Joseph Parker",
+      "Undercard TBA"
+    ],
+    "sources": [
+      {
+        "url": "https://queensberry.co.uk/pages/daniel-dubois-vs-joseph-parker-new-years-retribution",
+        "publisher": "Queensberry Promotions",
+        "checked_at": "2026-11-26T10:45:35+11:00"
+      }
+    ],
+    "uid": "mbc-2027-01-30-daniel-dubois-vs-joseph-parker@jk-0087.github.io",
+    "sequence": 1,
+    "history": [
+      {
+        "date": "2026-11-25",
+        "changes": [
+          "Approved Queensberry world title main event with venue and DAZN confirmed; main-card broadcast start and finish estimated pending official times"
+        ],
+        "version": 1
+      }
+    ]
   }
 ]

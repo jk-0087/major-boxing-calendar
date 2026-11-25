@@ -952,6 +952,29 @@ STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:mbc-2027-01-30-daniel-dubois-vs-joseph-parker@jk-0087.github.io
+DTSTAMP:20261125T234535Z
+LAST-MODIFIED:20261125T234535Z
+SEQUENCE:1
+DTSTART:20270130T190000Z
+DTEND:20270131T000000Z
+SUMMARY:Daniel Dubois vs Joseph Parker
+LOCATION:Co-op Live
+DESCRIPTION:Status\nOfficial\n\nPromotion\nQueensberry Promotions\n\nCity\n
+ Manchester\n\nCountry\nUnited Kingdom\n\nTitles\nWBO heavyweight world cha
+ mpionship\n\nAustralia\nDAZN\n\nMain Card Start (Sydney)\n6:00 AM AEDT\, S
+ un 31 Jan 2027 (Estimated)\n\nVenue Local Start\n7:00 PM GMT\, Sat 30 Jan 
+ 2027 (Estimated)\n\nEstimated Finish\n11:00 AM AEDT\, Sun 31 Jan 2027 (Est
+ imated)\n\nRing Walk\nTBA\n\nMain Card Bouts\nDaniel Dubois vs Joseph Park
+ er\nUndercard TBA\n\nOfficial / Schedule Source\nhttps://queensberry.co.uk
+ /pages/daniel-dubois-vs-joseph-parker-new-years-retribution\n\nVerified\n2
+ 6 Nov 2026\, 10:45 AM AEDT
+URL:https://queensberry.co.uk/pages/daniel-dubois-vs-joseph-parker-new-year
+ s-retribution
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:mbc-2027-02-20-caroline-dubois-vs-stephanie-han@jk-0087.github.io
 DTSTAMP:20261111T102415Z
 LAST-MODIFIED:20261111T102415Z
